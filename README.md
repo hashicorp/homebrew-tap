@@ -1,0 +1,50 @@
+# HashiCorp Homebrew Tap
+
+## What is Homebrew?
+
+Package manager for macOS (or Linux), see more at https://brew.sh
+
+## What is Tap?
+
+A third-party (in relation to Homebrew) repository providing installable
+packages (so called formulae) on macOS and Linux.
+
+See more at https://docs.brew.sh/Taps
+
+## How do I install packages from here?
+
+```sh
+brew install hashicorp/tap/name
+```
+
+You can also only add the tap which makes formulae within it
+available in search results (`brew search` output):
+
+```sh
+brew tap hashicorp/tap
+```
+
+While you may search across taps, it is recommended to always use
+fully qualified name (incl. the `hashicorp/tap/` prefix)
+when refering to formulae in external tap such as this one.
+
+## Why should I install packages from this tap?
+
+Formulae for the same HashiCorp software may exist in other taps
+or the [community-maintained main tap](https://github.com/Homebrew/homebrew-core).
+This may raise a question of why would someone prefer one tap over the other.
+
+The _community-maintained tap_ compiles HashiCorp software on Homebrew's own infrastructure, and builds it according to the local formulae definition.
+
+Formulae _in this tap_ are maintained by HashiCorp, which means that it distributes
+the exact (byte-to-byte) same binaries which are published to https://releases.hashicorp.com
+
+ - macOS binaries are signed by HashiCorp and the signature can be verified
+	per instructions on the [HashiCorp's Security](https://www.hashicorp.com/security#code-signature-verification) page
+ - Teams maintaining HashiCorp software choose Go version and any build flags _deliberately_ while
+ 	factoring in support, security and other concerns. Binaries distributed through this tap reflect this.
+ - Updating of formulae is automated, which means that updates become available as they're released.
+
+### Why doesn't HashiCorp maintain formulae in the main tap?
+
+See [relevant discussion](https://discourse.brew.sh/t/maintenance-of-formulas-by-vendor/7649).
