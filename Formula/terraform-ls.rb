@@ -14,6 +14,8 @@ class TerraformLs < Formula
     end
   end
 
+  conflicts_with "terraform-ls"
+
   def install
     bin.install "terraform-ls"
   end
