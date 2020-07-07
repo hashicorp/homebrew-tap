@@ -24,9 +24,10 @@ available in search results (`brew search` output):
 brew tap hashicorp/tap
 ```
 
-While you may search across taps, it is recommended to always use
+While you may search across taps, it is necessary to always use
 fully qualified name (incl. the `hashicorp/tap/` prefix)
-when refering to formulae in external tap such as this one.
+when refering to formulae in external tap such as this one
+outside of search.
 
 ## Why should I install packages from this tap?
 
