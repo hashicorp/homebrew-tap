@@ -2,16 +2,16 @@
 class TerraformLs < Formula
   desc "Terraform Language Server"
   homepage "https://github.com/hashicorp/terraform-ls"
-  version "0.5.1"
+  version "0.5.2"
   bottle :unneeded
 
   if OS.mac?
-    url "https://releases.hashicorp.com/terraform-ls/0.5.1/terraform-ls_0.5.1_darwin_amd64.zip"
-    sha256 "baed46680be6559e1c653b86dad7da4f2ff9fe54360a3dbfd896863ba0683d74"
+    url "https://releases.hashicorp.com/terraform-ls/0.5.2/terraform-ls_0.5.2_darwin_amd64.zip"
+    sha256 "7dc894dd3c7e4dd546dfce5d079b35af0ae724226a85e536ae54b821fb3114e1"
   elsif OS.linux?
     if Hardware::CPU.intel?
-      url "https://releases.hashicorp.com/terraform-ls/0.5.1/terraform-ls_0.5.1_linux_amd64.zip"
-      sha256 "6263583fc3d2b8767def4b6db0e5da86682e3f95580984e33d6933d2d633e8c5"
+      url "https://releases.hashicorp.com/terraform-ls/0.5.2/terraform-ls_0.5.2_linux_amd64.zip"
+      sha256 "a3bbc9e082b569e7f7c0fe3f3e8111bef1072305bca89a1501dd9904c2cc2fea"
     end
   end
   
