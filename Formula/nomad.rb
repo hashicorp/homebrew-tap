@@ -1,15 +1,15 @@
 class Nomad < Formula
     desc "Nomad"
-    homepage "https://github.com/hashicorp/nomad"
+    homepage "https://www.nomadproject.io/"
     version: "0.11.3"
     bottle: unneeded
     if OS.mac?
       url "https://releases.hashicorp.com/nomad/0.11.3/nomad_0.11.3_darwin_amd64.zip"
-      sha256 "f839e98d0f1650815b0077b6ab66ed4de315aad45100789719ddc776e7f33976"
+      sha256 "5c4087d6e79e1465bd9464d17d196b489abfb0c3c1290fc56ab88843d92a08da"
     elsif OS.linux?
       if Hardware::CPU.intel?
         url "https://releases.hashicorp.com/nomad/0.11.3/nomad_0.11.3_linux_amd64.zip"
-        sha256 "f486da4f6d08e42eb2c17e95cf36cc7f9d9c0e7cc8ced06ce3fca7c3abd7db3d"
+        sha256 "f6a38099e27e8ff1dd7e1fe7215c954ebe4986d05ed6320739186ff3502bb78a"
       end
     end
     conflicts_with "nomad"
