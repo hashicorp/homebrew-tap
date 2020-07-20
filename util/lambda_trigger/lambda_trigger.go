@@ -6,6 +6,9 @@ import (
 	"io/ioutil"
 	"net/http"
 
+	"encoding/json"
+
+	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
@@ -28,8 +31,8 @@ func shouldTriggerWorkflow(product string) bool {
 	return false
 }
 
-func triggerGithubWorkflow(event ReleaseEvent) error {
-	workflowEndpoint := "https://github.com/hashicorp/homebrew-tap/dispatches"
+func triggerGithubWorkflow(event *ReleaseEvent) error {
+	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
 	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"sha256\":\"%s\"}}", event.Product, event.Version, event.SHA256)
 	resp, err := http.Post(workflowEndpoint, "application/json", bytes.NewBufferString(postBody))
 	if err != nil {
@@ -42,13 +45,24 @@ func triggerGithubWorkflow(event ReleaseEvent) error {
 }
 
 // HandleLambdaEvent handler function to trigger github workflow
-func HandleLambdaEvent(event ReleaseEvent) error {
-	fmt.Printf("Received message: %+v", event)
+func HandleLambdaEvent(snsEvent events.SNSEvent) error {
+	for _, record := range snsEvent.Records {
+		snsRecord := record.SNS
+		fmt.Printf("[%s %s] Message = %s \n", record.EventSource, snsRecord.Timestamp, snsRecord.Message)
+		message := record.SNS.Message
 
-	if shouldTriggerWorkflow(event.Product) {
-		err := triggerGithubWorkflow(event)
+		// Parse message to ReleaseEvent type
+		event := &ReleaseEvent{}
+		err := json.Unmarshal([]byte(message), event)
+		if err != nil {
+			return err
+		}
 
-		return err
+		if shouldTriggerWorkflow(event.Product) {
+			err := triggerGithubWorkflow(event)
+
+			return err
+		}
 	}
 
 	return nil
