@@ -16,7 +16,7 @@ import (
 type ReleaseEvent struct {
 	Product string `json:"product"`
 	Version string `json:"version"`
-	SHA256  string `json:"shasum"`
+	SHA256  string `json:"sha256"`
 }
 
 func shouldTriggerWorkflow(product string) bool {
