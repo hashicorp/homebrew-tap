@@ -30,8 +30,6 @@ jobs:
           revision: ${{repository_dispatch.inputs.sha256}}
       - name: Labeler
         uses: actions/labeler@v3-preview
-        automerge:
-          - Formula/${{repository_dispatch.inputs.name}}.rb
         with:
           token: ${{secrets.TOKEN}}
       - name: Merge pull requests
