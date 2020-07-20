@@ -1,6 +1,6 @@
 class Nomad < Formula
-    desc "Nomad"
-    homepage "https://www.nomadproject.io/"
+    desc: "Nomad"
+    homepage: "https://www.nomadproject.io/"
     version: "0.11.3"
     bottle: unneeded
     if OS.mac?
