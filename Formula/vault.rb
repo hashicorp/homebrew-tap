@@ -1,8 +1,8 @@
 class Vault < Formula
-  desc: "Vault"
-  homepage: "https://www.vaultproject.io"
-  version: "1.4.2"
-  bottle: unneeded
+  desc "Vault"
+  homepage "https://www.vaultproject.io"
+  version "1.4.2"
+  bottle :unneeded
 
   if OS.mac?
     url "https://releases.hashicorp.com/vault/1.4.2/vault_1.4.2_darwin_amd64.zip"
