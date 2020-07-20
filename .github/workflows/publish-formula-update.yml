@@ -5,16 +5,16 @@ on:
   repository_dispatch:
     types: [version-updated]
     # this event type is set in the repository dispatch event
-    inputs:
-      name:
-        description: 'name of the formula being updated'
-        required: true
-      sha256:
-        description: 'SHA256 of updated product zip'
-        required: true
-      version:
-        description: 'most current product version number'
-        required: true
+#    inputs:
+#      name:
+#        description: 'name of the formula being updated'
+#        required: true
+#      sha256:
+#        description: 'SHA256 of updated product zip'
+#        required: true
+#      version:
+#        description: 'most current product version number'
+#        required: true
 
 jobs:
   formula-bump-pr:
@@ -26,12 +26,12 @@ jobs:
         with:
           token: ${{secrets.TOKEN}}
           tap: hashicorp/homebrew-tap
-          formula: ${{repository_dispatch.inputs.name}}
-          revision: ${{repository_dispatch.inputs.sha256}}
+          formula: ${{github.event.client_payload.name}}
+          revision: ${{github.event.client_payload.sha256}}
       - name: Labeler
         uses: actions/labeler@v3-preview
         automerge:
-          - Formula/${{repository_dispatch.inputs.name}}.rb
+          - Formula/${{github.event.client_payload.name}}.rb
         with:
           token: ${{secrets.TOKEN}}
       - name: Merge pull requests
