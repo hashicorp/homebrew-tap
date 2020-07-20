@@ -1,7 +1,7 @@
 Name: Update Product Formula in Tap
 # This workflow will automatically update our product formulae on the release of
 # new versions
-On:
+on:
   repository_dispatch:
     types: [version-updated]
     # this event type is set in the repository dispatch event
