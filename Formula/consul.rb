@@ -1,6 +1,6 @@
 class Consul < Formula
-  desc "Consul"
-  homepage "https://www.consul.io"
+  desc: "Consul"
+  homepage: "https://www.consul.io"
   version: "1.7.4"
   bottle: unneeded
   if OS.mac?
