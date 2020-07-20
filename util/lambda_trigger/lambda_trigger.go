@@ -20,7 +20,7 @@ type ReleaseEvent struct {
 }
 
 func shouldTriggerWorkflow(product string) bool {
-	supportedProducts := []string{"vault", "consul", "nomad"}
+	supportedProducts := []string{"vault", "consul", "nomad", "terraform", "packer"}
 
 	for _, p := range supportedProducts {
 		if p == product {
