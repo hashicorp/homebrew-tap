@@ -27,7 +27,7 @@ jobs:
           token: ${{secrets.HOMEBREW_TOKEN}}
           tap: hashicorp/homebrew-tap
           formula: ${{github.event.client_payload.name}}
-          revision: ${{github.event.client_payload.sha256}}
+          tag: ${{github.event.client_payload.version}}
       - name: Labeler
         uses: actions/labeler@v3-preview
         with:
