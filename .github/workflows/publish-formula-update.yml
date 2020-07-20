@@ -30,8 +30,6 @@ jobs:
           revision: ${{github.event.client_payload.sha256}}
       - name: Labeler
         uses: actions/labeler@v3-preview
-        automerge:
-          - Formula/${{github.event.client_payload.name}}.rb
         with:
           token: ${{secrets.TOKEN}}
       - name: Merge pull requests
