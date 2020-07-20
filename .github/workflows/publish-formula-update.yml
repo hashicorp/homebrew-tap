@@ -24,7 +24,7 @@ jobs:
       - name: Homebrew bump formula
         uses: dawidd6/action-homebrew-bump-formula@v3.1.1
         with:
-          token: ${{secrets.TOKEN}}
+          token: ${{secrets.HOMEBREW_TOKEN}}
           tap: hashicorp/homebrew-tap
           formula: ${{github.event.client_payload.name}}
           revision: ${{github.event.client_payload.sha256}}
