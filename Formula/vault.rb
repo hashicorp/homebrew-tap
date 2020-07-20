@@ -1,6 +1,6 @@
 class Vault < Formula
-  desc "Vault"
-  homepage "https://www.vaultproject.io"
+  desc: "Vault"
+  homepage: "https://www.vaultproject.io"
   version: "1.4.2"
   bottle: unneeded
 
