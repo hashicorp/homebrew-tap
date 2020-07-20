@@ -1,4 +1,4 @@
-Name: Update Product Formula in Tap
+name: Update Product Formula in Tap
 # This workflow will automatically update our product formulae on the release of
 # new versions
 on:
