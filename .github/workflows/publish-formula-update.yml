@@ -28,11 +28,3 @@ jobs:
           tap: hashicorp/homebrew-tap
           formula: ${{github.event.client_payload.name}}
           tag: ${{github.event.client_payload.version}}
-      - name: Labeler
-        uses: actions/labeler@v3-preview
-        with:
-          repo-token: ${{secrets.HOMEBREW_TOKEN}}
-      - name: Merge pull requests
-        uses: pascalgn/automerge-action@v0.8.4
-        env:
-          GITHUB_TOKEN: "${{secrets.HOMEBREW_TOKEN}}"
