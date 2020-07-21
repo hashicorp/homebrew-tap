@@ -29,8 +29,8 @@ jobs:
           formula: ${{github.event.client_payload.name}}
           tag: ${{github.event.client_payload.version}}
       - name: Merge pull requests
-          uses: pascalgn/automerge-action@v0.8.4
-          env:
-            GITHUB_TOKEN: "${{secrets.HOMEBREW_TOKEN}}"
-            MERGE_LABELS: ""
-            MERGE_FILTER_AUTHOR: "Omar-Khawaja"
+        uses: pascalgn/automerge-action@v0.8.4
+        env:
+          GITHUB_TOKEN: "${{secrets.HOMEBREW_TOKEN}}"
+          MERGE_LABELS: ""
+          MERGE_FILTER_AUTHOR: "Omar-Khawaja"
