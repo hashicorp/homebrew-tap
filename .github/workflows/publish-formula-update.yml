@@ -22,9 +22,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: kpenfound fork of dawidd6 Homebrew bump formula
-        uses: kpenfound/action-homebrew-bump-formula@v3.2.3
+        uses: kpenfound/action-homebrew-bump-formula@v3.2.4
         with:
           token: ${{secrets.HOMEBREW_TOKEN}}
           tap: hashicorp/homebrew-tap
           formula: ${{github.event.client_payload.name}}
           tag: ${{github.event.client_payload.version}}
+          nofork: true
