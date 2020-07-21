@@ -34,4 +34,3 @@ jobs:
           GITHUB_TOKEN: "${{secrets.HOMEBREW_TOKEN}}"
           MERGE_LABELS: ""
           MERGE_FILTER_AUTHOR: "Omar-Khawaja"
-          
