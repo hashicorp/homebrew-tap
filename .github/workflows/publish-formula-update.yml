@@ -28,3 +28,9 @@ jobs:
           tap: hashicorp/homebrew-tap
           formula: ${{github.event.client_payload.name}}
           tag: ${{github.event.client_payload.version}}
+      - name: kpenfound fork of Merge pull requests
+        uses: kpenfound/automerge-action@v0.9.0
+        env:
+          GITHUB_TOKEN: "${{secrets.HOMEBREW_TOKEN}}"
+          MERGE_LABELS: ""
+          MERGE_FILTER_AUTHOR: "Omar-Khawaja"
