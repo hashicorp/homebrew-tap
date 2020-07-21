@@ -11,6 +11,6 @@ jobs:
       - name: Merge pull requests
         uses: pascalgn/automerge-action@v0.8.4
         env:
-          GITHUB_TOKEN: "${{secrets.HOMEBREW_TOKEN}}"
+          GITHUB_TOKEN: "${{secrets.GITHUB_TOKEN}}"
           MERGE_LABELS: ""
           MERGE_FILTER_AUTHOR: "Omar-Khawaja"
