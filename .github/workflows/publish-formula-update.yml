@@ -21,8 +21,8 @@ jobs:
     name: Create PR
     runs-on: ubuntu-latest
     steps:
-      - name: Homebrew bump formula
-        uses: dawidd6/action-homebrew-bump-formula@v3.1.1
+      - name: kpenfound fork of dawidd6 Homebrew bump formula
+        uses: kpenfound/action-homebrew-bump-formula@v3.2.3
         with:
           token: ${{secrets.HOMEBREW_TOKEN}}
           tap: hashicorp/homebrew-tap
