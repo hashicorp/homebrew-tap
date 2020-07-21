@@ -12,8 +12,8 @@ jobs:
       - name: Labeler
         uses: actions/labeler@v3-preview
         with:
-          repo-token: ${{secrets.GITHUB_TOKEN}}
+          repo-token: ${{secrets.HOMEBREW_TOKEN}}
       - name: Merge pull requests
         uses: pascalgn/automerge-action@v0.8.4
         env:
-          GITHUB_TOKEN: "${{secrets.GITHUB_TOKEN}}"
+          GITHUB_TOKEN: "${{secrets.HOMEBEW_TOKEN}}"
