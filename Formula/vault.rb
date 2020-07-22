@@ -4,10 +4,9 @@ class Vault < Formula
   version "1.4.3"
   bottle :unneeded
 
-  if OS.mac?
-    url "https://releases.hashicorp.com/vault/1.4.3/vault_1.4.3_darwin_amd64.zip"
-    sha256 "2198a1e7b5a006434f6acb22ec39d45d17315477a86e2f9d85e2f6f5e845483c"
-  end
+
+  url "https://releases.hashicorp.com/vault/1.4.3/vault_1.4.3_darwin_amd64.zip"
+  sha256 "2198a1e7b5a006434f6acb22ec39d45d17315477a86e2f9d85e2f6f5e845483c"
 
   conflicts_with "vault"
 
