@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
 
 	"encoding/json"
 
@@ -16,7 +17,7 @@ import (
 type ReleaseEvent struct {
 	Product string `json:"product"`
 	Version string `json:"version"`
-	SHA256  string `json:"sha256"`
+	SHASUM  string `json:"shasum"`
 }
 
 func shouldTriggerWorkflow(product string) bool {
@@ -32,9 +33,19 @@ func shouldTriggerWorkflow(product string) bool {
 }
 
 func triggerGithubWorkflow(event *ReleaseEvent) error {
+	githubToken := os.Getenv("GITHUB_TOKEN")
 	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
-	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"sha256\":\"%s\"}}", event.Product, event.Version, event.SHA256)
-	resp, err := http.Post(workflowEndpoint, "application/json", bytes.NewBufferString(postBody))
+	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"shasum\":\"%s\"}}", event.Product, event.Version, event.SHASUM)
+	fmt.Printf("POSTing to Github: %s\n", postBody)
+
+	httpClient := &http.Client{}
+	req, err := http.NewRequest("POST", workflowEndpoint, bytes.NewBufferString(postBody))
+	if err != nil {
+		return err
+	}
+	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", githubToken))
+	resp, err := httpClient.Do(req)
 	if err != nil {
 		return err
 	}
