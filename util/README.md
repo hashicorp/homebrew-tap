@@ -1,0 +1,1 @@
+util is a place to store utilities related to the Hashicorp tap pipeline
