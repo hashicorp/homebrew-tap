@@ -34,6 +34,7 @@ func shouldTriggerWorkflow(product string) bool {
 
 func triggerGithubWorkflow(event *ReleaseEvent) error {
 	githubToken := os.Getenv("GITHUB_TOKEN")
+	// Create dispatch event https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
 	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
 	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"shasum\":\"%s\"}}", event.Product, event.Version, event.SHASUM)
 	fmt.Printf("POSTing to Github: %s\n", postBody)
