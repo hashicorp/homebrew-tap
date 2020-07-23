@@ -6,7 +6,7 @@ class Packer < Formula
 
 
     url "https://releases.hashicorp.com/packer/1.6.0/packer_1.6.0_darwin_amd64.zip"
-    sha256 "118b32c3caa07fa8f824e6b9c89f2a7a94c3f3dbde73d79cd75c6f72662a0230"
+    sha256 "037572085722adbeac22b69940330f86b1e82547056740cf1cc42636b057d2a2"
 
     conflicts_with "packer"
 
