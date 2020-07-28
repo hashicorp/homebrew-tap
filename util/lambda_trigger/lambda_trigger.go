@@ -70,7 +70,12 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 		}
 
 		if shouldTriggerWorkflow(event.Product) {
-			err := triggerGithubWorkflow(event)
+			version, err := getLatestReleaseVersion(event.Product)
+			if err != nil {
+				return err
+			}
+			event.Version = version.Version
+			err = triggerGithubWorkflow(event)
 
 			return err
 		}
