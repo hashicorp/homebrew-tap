@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"strings"
 
 	semver "github.com/coreos/go-semver/semver"
 )
@@ -34,8 +35,8 @@ type ReleaseBuild struct {
 	URL      string
 }
 
-func getLatestReleaseVersion(product string) (ReleaseVersion, error) {
-	resp, err := http.Get(fmt.Sprintf("https://releases.hashicorp.com/%s/", product))
+func getLatestReleaseVersion(product string, skipPrerelease bool, skipBeta bool) (ReleaseVersion, error) {
+	resp, err := http.Get(fmt.Sprintf("https://releases.hashicorp.com/%s/index.json", product))
 	if err != nil {
 		return ReleaseVersion{}, err
 	}
@@ -55,6 +56,10 @@ func getLatestReleaseVersion(product string) (ReleaseVersion, error) {
 
 	for versionString, releaseVersion := range releaseResponse.Versions {
 		less, err := compareVersionStrings(latest.Version, versionString)
+
+		less = less && !(skipPrerelease && strings.Contains(versionString, "-"))
+		less = less && !(skipBeta && strings.Contains(versionString, "+"))
+
 		if err != nil || less {
 			latest = releaseVersion
 		}
