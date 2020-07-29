@@ -4,6 +4,7 @@ import (
 	hb "github.com/gulducat/hashi-bin/types"
 )
 
+// ReleasesURL The url to read the releases index from
 const ReleasesURL = "https://releases.hashicorp.com/index.json"
 
 func getLatestVersion(productName string) (*hb.Version, error) {
