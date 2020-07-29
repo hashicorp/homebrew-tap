@@ -70,7 +70,7 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 		}
 
 		if shouldTriggerWorkflow(event.Product) {
-			version, err := getLatestReleaseVersion(event.Product, true, true)
+			version, err := getLatestVersion(event.Product)
 			if err != nil {
 				return err
 			}

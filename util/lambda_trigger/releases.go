@@ -1,83 +1,19 @@
 package main
 
 import (
-	"encoding/json"
-	"fmt"
-	"io/ioutil"
-	"net/http"
-	"strings"
-
-	semver "github.com/coreos/go-semver/semver"
+	hr "github.com/gulducat/hashi-bin/types"
 )
 
-// ReleaseResponse object format from releases.hashicorp.com/*/index.json
-type ReleaseResponse struct {
-	Name     string
-	Versions map[string]ReleaseVersion
-}
+const ReleasesURL = "https://releases.hashicorp.com/index.json"
 
-// ReleaseVersion name, version, and shasum of a release
-type ReleaseVersion struct {
-	Name             string
-	Version          string
-	Shasums          string
-	ShasumsSignature string
-	Builds           []ReleaseBuild
-}
-
-// ReleaseBuild individual build information of a release
-type ReleaseBuild struct {
-	Name     string
-	Version  string
-	OS       string
-	Arch     string
-	Filename string
-	URL      string
-}
-
-func getLatestReleaseVersion(product string, skipPrerelease bool, skipBeta bool) (ReleaseVersion, error) {
-	resp, err := http.Get(fmt.Sprintf("https://releases.hashicorp.com/%s/index.json", product))
+func getLatestVersion(productName string) (*hr.Version, error) {
+	index, err := hr.NewIndex(ReleasesURL)
 	if err != nil {
-		return ReleaseVersion{}, err
+		return &hr.Version{}, err
 	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
+	product, err := index.GetProduct(productName)
 	if err != nil {
-		return ReleaseVersion{}, err
+		return &hr.Version{}, err
 	}
-
-	releaseResponse := &ReleaseResponse{}
-	err = json.Unmarshal([]byte(body), releaseResponse)
-	if err != nil {
-		return ReleaseVersion{}, err
-	}
-
-	latest := ReleaseVersion{Version: "0.0.0"}
-
-	for versionString, releaseVersion := range releaseResponse.Versions {
-		less, err := compareVersionStrings(latest.Version, versionString)
-
-		less = less && !(skipPrerelease && strings.Contains(versionString, "-"))
-		less = less && !(skipBeta && strings.Contains(versionString, "+"))
-
-		if err != nil || less {
-			latest = releaseVersion
-		}
-	}
-
-	return latest, nil
-}
-
-func compareVersionStrings(a string, b string) (bool, error) {
-	aVersion, err := semver.NewVersion(a)
-	if err != nil {
-		return false, err
-	}
-
-	bVersion, err := semver.NewVersion(b)
-	if err != nil {
-		return false, err
-	}
-
-	return aVersion.LessThan(*bVersion), nil
+	return product.LatestVersion(), nil
 }
