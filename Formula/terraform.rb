@@ -1,11 +1,11 @@
 class Terraform < Formula
     desc "Terraform"
     homepage "https://www.terraform.io/"
-    version "0.12.29"
+    version "0.13.0"
     bottle :unneeded
 
-    url "https://releases.hashicorp.com/terraform/0.12.29/terraform_0.12.29_darwin_amd64.zip"
-    sha256 "fdcda98ff7b7e65832248f64ef6c2922e05036de25d40c5cdcd732c5117150aa"
+    url "https://releases.hashicorp.com/terraform/0.13.0/terraform_0.13.0_darwin_amd64.zip"
+    sha256 "080af0420732cd08941aa4c0d2b4693056b24366724faa11b107bf052f7de203"
 
     conflicts_with "terraform"
 
