@@ -2,10 +2,12 @@ package main
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
+	"regexp"
 
 	"encoding/json"
 
@@ -19,7 +21,7 @@ type ReleaseEvent struct {
 	Version string `json:"version"`
 }
 
-func shouldTriggerWorkflow(product string) bool {
+func isProductSupported(product string) bool {
 	supportedProducts := []string{"vault", "consul", "nomad", "terraform", "packer"}
 
 	for _, p := range supportedProducts {
@@ -29,6 +31,26 @@ func shouldTriggerWorkflow(product string) bool {
 	}
 
 	return false
+}
+
+func getFormulaVersion(product string) (string, error) {
+	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/Formula/%s.rb", product)
+	resp, err := http.Get(formulaURL)
+	if err != nil {
+		return "", err
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return "", err
+	}
+
+	re := regexp.MustCompile(`version "(.+)"`)
+	matched := re.FindStringSubmatch(string(body))
+	if matched == nil || len(matched) < 2 {
+		return "", errors.New("No version found in formula")
+	}
+	return matched[1], nil
 }
 
 func triggerGithubWorkflow(event *ReleaseEvent) error {
@@ -69,12 +91,22 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			return err
 		}
 
-		if shouldTriggerWorkflow(event.Product) {
+		if isProductSupported(event.Product) {
 			version, err := getLatestVersion(event.Product)
 			if err != nil {
 				return err
 			}
 			event.Version = version.Version
+
+			oldVersion, err := getFormulaVersion(event.Product)
+			if err != nil {
+				return err
+			}
+
+			if event.Version == oldVersion {
+				return errors.New("formula is already latest version")
+			}
+
 			err = triggerGithubWorkflow(event)
 
 			return err
