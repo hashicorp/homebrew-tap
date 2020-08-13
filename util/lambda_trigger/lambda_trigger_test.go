@@ -16,3 +16,10 @@ func TestGetFormulaVersion(t *testing.T) {
 	require.Nil(t, err)
 	assert.Equal(t, test_version, gotLatest)
 }
+
+func TestGetLatestVersion(t *testing.T) {
+	gotLatest, err := getLatestVersion(test_product)
+
+	require.Nil(t, err)
+	assert.Equal(t, test_version, gotLatest.Version)
+}

@@ -106,7 +106,7 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			}
 
 			if event.Version == oldVersion {
-				return errors.New("No new version to publish")
+				return errors.New("formula is already latest version")
 			}
 
 			err = triggerGithubWorkflow(event)
