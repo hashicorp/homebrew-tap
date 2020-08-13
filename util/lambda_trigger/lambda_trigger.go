@@ -34,25 +34,23 @@ func isProductSupported(product string) bool {
 }
 
 func getFormulaVersion(product string) (string, error) {
-	version := ""
 	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/Formula/%s.rb", product)
 	resp, err := http.Get(formulaURL)
 	if err != nil {
-		return version, err
+		return "", err
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		return version, err
+		return "", err
 	}
 
 	re := regexp.MustCompile(`version "(.+)"`)
 	matched := re.FindStringSubmatch(string(body))
 	if matched == nil || len(matched) < 2 {
-		return version, errors.New("No version found in formula")
+		return "", errors.New("No version found in formula")
 	}
-	version = matched[1]
-	return version, nil
+	return matched[1], nil
 }
 
 func triggerGithubWorkflow(event *ReleaseEvent) error {
