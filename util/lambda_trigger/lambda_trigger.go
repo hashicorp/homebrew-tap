@@ -96,12 +96,15 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			if err != nil {
 				return err
 			}
+			fmt.Printf("Latest version is %s\n", version)
 			event.Version = version.Version
 
 			oldVersion, err := getFormulaVersion(event.Product)
 			if err != nil {
 				return err
 			}
+
+			fmt.Printf("Current formula version is %s\n", oldVersion)
 
 			if event.Version == oldVersion {
 				return errors.New("formula is already latest version")
