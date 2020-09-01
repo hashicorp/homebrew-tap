@@ -46,6 +46,6 @@ the exact (byte-to-byte) same binaries which are published to https://releases.h
  	factoring in support, security and other concerns. Binaries distributed through this tap reflect this.
  - Updating of formulae is automated, which means that updates become available as they're released.
 
-### Why doesn't HashiCorp maintain formulae in the `homebrew-core` (main) tap?
+### Why doesn't HashiCorp maintain formulae in the `homebrew-core` (main tap)?
 
-Homebrew's core team prefers to keep the main taps as community maintained and built from source to maintain consistency across vendors in terms of expectations around tap contents and updates. See [relevant discussion](https://discourse.brew.sh/t/maintenance-of-formulas-by-vendor/7649) for more information.
+Homebrew's core team prefers to keep `homebrew-core` as community maintained and built from source to maintain consistency across vendors in terms of expectations around contents and updates. See [relevant discussion](https://discourse.brew.sh/t/maintenance-of-formulas-by-vendor/7649) for more information.
