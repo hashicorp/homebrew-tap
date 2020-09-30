@@ -2,9 +2,9 @@ class Packer < Formula
   desc "Packer"
   homepage "https://www.packer.io/"
 
-  url "https://releases.hashicorp.com/packer/1.6.3/packer_1.6.3_darwin_amd64.zip"
-  version "1.6.3"
-  sha256 "dc476dcc49a36ee8fdd6ed8a5fdd48147b17fdf6f3d69db2d616e19b15915b73"
+  url "https://releases.hashicorp.com/packer/1.6.4/packer_1.6.4_darwin_amd64.zip"
+  version "1.6.4"
+  sha256 "320dceba07e4b36df8e05ef196edaa2b337224c8086de9240eeafa031cf92f02"
   bottle :unneeded
 
   conflicts_with "packer"
