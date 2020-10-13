@@ -22,7 +22,7 @@ type ReleaseEvent struct {
 }
 
 func isProductSupported(product string) bool {
-	supportedProducts := []string{"vault", "consul", "nomad", "terraform", "packer"}
+	supportedProducts := []string{"vault", "consul", "nomad", "terraform", "packer", "boundary"}
 
 	for _, p := range supportedProducts {
 		if p == product {
