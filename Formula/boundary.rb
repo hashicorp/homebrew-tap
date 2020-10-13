@@ -8,7 +8,7 @@ class Boundary < Formula
   sha256 "fb8c64f98ac222ddd723c9c043a6afe5f50609080e549d82563c81d006c77271"
   bottle :unneeded
 
-  conflicts_with "boundary"
+  # conflicts_with "boundary"
 
   def install
     bin.install "boundary"
