@@ -5,7 +5,7 @@ class Waypoint < Formula
   url "https://releases.hashicorp.com/waypoint/0.1.0/waypoint_0.1.0_darwin_amd64.zip"
 
   version "0.1.0"
-  sha256 "b1adf2ef8844cbdee70b4fcbb6caba55839d433432346b08bb5a1d985bf7ef92"
+  sha256 "86be77f811024e966bb3f408ed343f3d5f65a0f19e10dad488911be558e0de67"
   bottle :unneeded
 
   #conflicts_with "waypoint"
