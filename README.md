@@ -29,6 +29,22 @@ fully qualified name (incl. the `hashicorp/tap/` prefix)
 when refering to formulae in external tap such as this one
 outside of search.
 
+## What packages are available?
+
+With the following commands, you can install the latest version of each product:
+```sh
+brew install hashicorp/tap/boundary
+brew install hashicorp/tap/consul
+brew install hashicorp/tap/nomad
+brew install hashicorp/tap/packer
+brew install hashicorp/tap/terraform
+brew install hashicorp/tap/vault
+brew install hashicorp/tap/waypoint
+
+brew cask install vagrant
+```
+* Note: Vagrant is available as a cask from Homebrew core. It is packaged as a cask to include required dependencies of Vagrant.
+
 ## Why should I install packages from this tap?
 
 Formulae for the same HashiCorp software may exist in other taps
