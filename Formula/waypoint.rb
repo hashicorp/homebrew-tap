@@ -10,7 +10,7 @@ class Waypoint < Formula
   elsif OS.linux?
     if Hardware::CPU.intel?
       url "https://releases.hashicorp.com/waypoint/0.1.2/waypoint_0.1.2_linux_amd64.zip"
-      sha256 "bdf668eacd418ca412df9a93e9c243d790653eea75df608a242965ef79998633"
+      sha256 "05c2be901fa0cc24e4bd40c96267f9af7d8b62fe75e0a2f1b5862179bbc81c11"
     else
       url "https://releases.hashicorp.com/waypoint/0.1.2/waypoint_0.1.2_linux_arm.zip"
       sha256 "5eeb40fb850c3932463cb56a8a61a0283a06b9cbd40d3a2f230670f7783bb54a"
