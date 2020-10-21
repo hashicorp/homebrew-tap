@@ -2,9 +2,9 @@ class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
 
-  url "https://releases.hashicorp.com/vault/1.5.4/vault_1.5.4_darwin_amd64.zip"
-  version "1.5.4"
-  sha256 "15effe53a7f4a6b7b61192d3540df5b4b5ca7ea95a4dae4767d550de26aaa515"
+  url "https://releases.hashicorp.com/vault/1.5.5/vault_1.5.5_darwin_amd64.zip"
+  version "1.5.5"
+  sha256 "ff193fa9e7853dba5735c76a9989756837130efe2df9632e922762d86a4ecaca"
   bottle :unneeded
 
   conflicts_with "vault"
