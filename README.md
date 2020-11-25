@@ -4,10 +4,10 @@
 
 Package manager for macOS (or Linux), see more at https://brew.sh
 
-## What is Tap?
+## What is a Tap?
 
 A third-party (in relation to Homebrew) repository providing installable
-packages (so called formulae) on macOS and Linux.
+packages (formulae) on macOS and Linux.
 
 See more at https://docs.brew.sh/Taps
 
@@ -26,7 +26,7 @@ brew tap hashicorp/tap
 
 While you may search across taps, it is necessary to always use
 fully qualified name (incl. the `hashicorp/tap/` prefix)
-when refering to formulae in external tap such as this one
+when refering to formulae in external taps such as this one
 outside of search.
 
 ## What packages are available?
