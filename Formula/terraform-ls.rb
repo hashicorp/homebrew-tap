@@ -2,18 +2,18 @@
 class TerraformLs < Formula
   desc "Terraform Language Server"
   homepage "https://github.com/hashicorp/terraform-ls"
-  version "0.10.0"
+  version "0.11.0"
   bottle :unneeded
 
   if OS.mac?
-    url "https://releases.hashicorp.com/terraform-ls/0.10.0/terraform-ls_0.10.0_darwin_amd64.zip"
-    sha256 "8871817576cfacf258d202ce4e85a940ff4908324a7a4f3d937125101aa58bcb"
+    url "https://releases.hashicorp.com/terraform-ls/0.11.0/terraform-ls_0.11.0_darwin_amd64.zip"
+    sha256 "4e9a50771c70359cabe768667a7878440f8a1a9d93f1b513c6e48bd1c9d0c85c"
   end
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform-ls/0.10.0/terraform-ls_0.10.0_linux_amd64.zip"
-    sha256 "889a0fd33036e8be59001b197e305fd9706d4e18db6dc2646ef634dbc9a46567"
+    url "https://releases.hashicorp.com/terraform-ls/0.11.0/terraform-ls_0.11.0_linux_amd64.zip"
+    sha256 "69419d92f4a02d0bf811abe5d9cec0e3c182f1d0a20e11370053c69b3b6739dc"
   end
-  
+
   conflicts_with "terraform-ls"
 
   def install
