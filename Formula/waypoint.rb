@@ -2,10 +2,10 @@ class Waypoint < Formula
   desc "Waypoint"
   homepage "https://www.waypointproject.io/"
 
-  url "https://releases.hashicorp.com/waypoint/0.1.5/waypoint_0.1.5_darwin_amd64.zip"
+  url "https://releases.hashicorp.com/waypoint/0.2.0/waypoint_0.2.0_darwin_amd64.zip"
 
-  version "0.1.5"
-  sha256 "52a7c1285c06faa03b7972b9dc77204012db35724eb522d01fcb29b8a54f498e"
+  version "0.2.0"
+  sha256 "f3db0bd82dee06a35cacd0318181bea002ec4abe6925b72d975ab3e999f63063"
   bottle :unneeded
 
   #conflicts_with "waypoint"
