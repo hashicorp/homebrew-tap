@@ -2,9 +2,9 @@ class Nomad < Formula
   desc "Nomad"
   homepage "https://www.nomadproject.io/"
 
-  url "https://releases.hashicorp.com/nomad/1.0.1/nomad_1.0.1_darwin_amd64.zip"
-  version "1.0.1"
-  sha256 "247064ff81bb6bbb35761b14e66f9077b31b5551414d2ad0178b5e4f7ff3b392"
+  url "https://releases.hashicorp.com/nomad/1.0.2/nomad_1.0.2_darwin_amd64.zip"
+  version "1.0.2"
+  sha256 "1515a2fb706d2b961adac27b8bf671ffd4967e464ea0a37f43f162e613350e42"
   bottle :unneeded
 
   conflicts_with "nomad"
