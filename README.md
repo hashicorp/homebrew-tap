@@ -27,7 +27,7 @@ brew tap hashicorp/tap
 Note: to clone the tap via SSH you will need to use:
 
 ```sh
-brew tap hasicorp/tap https://github.com/hashicorp/homebrew-tap
+brew tap hashicorp/tap https://github.com/hashicorp/homebrew-tap
 ```
 
 While you may search across taps, it is necessary to always use
