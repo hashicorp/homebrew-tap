@@ -2,10 +2,10 @@ class Boundary < Formula
   desc "Boundary"
   homepage "https://www.boundaryproject.io/"
 
-  url "https://releases.hashicorp.com/boundary/0.1.6/boundary_0.1.6_darwin_amd64.zip"
+  url "https://releases.hashicorp.com/boundary/0.1.7/boundary_0.1.7_darwin_amd64.zip"
 
-  version "0.1.6"
-  sha256 "b2d4e777b144a3f44e49745a1fdbc6b77fb4b4ef45a2a9b16a0804cf5b88d1d9"
+  version "0.1.7"
+  sha256 "adf8dc8696119b0455951e7f05a480804e0239c0ac82c2e14404d28bfcec67e3"
   bottle :unneeded
 
   # conflicts_with "boundary"
