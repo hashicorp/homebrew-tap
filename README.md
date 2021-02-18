@@ -39,6 +39,7 @@ outside of search.
 
 With the following commands, you can install the latest version of each product:
 ```sh
+# Formulae
 brew install hashicorp/tap/boundary
 brew install hashicorp/tap/consul
 brew install hashicorp/tap/nomad
@@ -47,9 +48,12 @@ brew install hashicorp/tap/terraform
 brew install hashicorp/tap/vault
 brew install hashicorp/tap/waypoint
 
-brew cask install vagrant
+# Casks
+brew install hashicorp-boundary-desktop
+
+brew install vagrant
 ```
-* Note: Vagrant is available as a cask from Homebrew core. It is packaged as a cask to include required dependencies of Vagrant.
+* Note: Vagrant is available as a cask from Homebrew core and not provided by this tap.
 
 ## Why should I install packages from this tap?
 
