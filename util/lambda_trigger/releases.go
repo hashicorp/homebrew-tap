@@ -5,7 +5,7 @@ import (
 )
 
 // ReleasesURL The url to read the releases index from
-const ReleasesURL = "http://hc-releases.s3-website-us-east-1.amazonaws.com/index.json"
+const ReleasesURL = "http://hc-releases-prod.s3-website-us-east-1.amazonaws.com/index.json"
 
 func getLatestVersion(productName string) (*hb.Version, error) {
 	index, err := hb.NewIndex(ReleasesURL)
