@@ -2,9 +2,9 @@ class Consul < Formula
   desc "Consul"
   homepage "https://www.consul.io"
 
-  url "https://releases.hashicorp.com/consul/1.9.3/consul_1.9.3_darwin_amd64.zip"
-  version "1.9.3"
-  sha256 "59ca09ae027416ab13406a7c8f33fc52bc84c3a0cf1d198d952f12123e5608e0"
+  url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_darwin_amd64.zip"
+  version "1.9.4"
+  sha256 "c168240d52f67c71b30ef51b3594673cad77d0dbbf38c412b2ee30b39ef30843"
   bottle :unneeded
 
   conflicts_with "consul"
