@@ -2,9 +2,9 @@ class Terraform < Formula
   desc "Terraform"
   homepage "https://www.terraform.io/"
 
-  url "https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_darwin_amd64.zip"
-  version "0.14.7"
-  sha256 "8a5ec04afcc9c2653bb927844eb76ad51e12bcaec0638103512d7b160dd530ea"
+  url "https://releases.hashicorp.com/terraform/0.14.8/terraform_0.14.8_darwin_amd64.zip"
+  version "0.14.8"
+  sha256 "30115a2ee5f61178527089d8e5da20053927b364b08dc7aee6894a162ccbd793"
   bottle :unneeded
 
   conflicts_with "terraform"
