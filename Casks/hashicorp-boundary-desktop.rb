@@ -1,11 +1,11 @@
 cask "hashicorp-boundary-desktop" do
-  version "1.0.0-alpha"
-  sha256 "7a5ecb05bb7056a8ed95e2f8ef9fb06fd1f200c568423d410ab0670204baad32"
+  version "1.0.0-beta"
+  sha256 "af1e81661a2e059c65548985976fb33e5f4b4cb4509e7baec463abf09063132c"
 
   url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_amd64.dmg"
   name "Boundary Desktop"
   desc ""
   homepage "https://www.boundaryproject.io/"
 
-  app "Boundary Desktop.app"
+  app "Boundary.app"
 end
