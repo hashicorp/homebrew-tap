@@ -6,20 +6,31 @@ on:
     types: [version-updated]
 
 jobs:
-  formula-bump-pr:
-    name: Create PR
+  update-formula:
+    name: Update Formula
     runs-on: ubuntu-latest
     steps:
-      - name: kpenfound fork of dawidd6 Homebrew bump formula
-        uses: kpenfound/action-homebrew-bump-formula@v3.3.1
+      -
+        name: Checkout
+        uses: actions/checkout@2.3.4
         with:
-          token: ${{secrets.HOMEBREW_TOKEN}}
-          tap: hashicorp/homebrew-tap
-          formula: ${{github.event.client_payload.name}}
-          tag: ${{github.event.client_payload.version}}
-      - name: Merge pull requests
-        uses: pascalgn/automerge-action@v0.9.0
-        env:
-          GITHUB_TOKEN: "${{secrets.HOMEBREW_TOKEN}}"
-          MERGE_LABELS: ""
-          MERGE_FILTER_AUTHOR: "hc-espd-packager"
+          fetch-depth: 0
+      -
+        name: Setup Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.16'
+      -
+        name: Build formula_templater CLI
+        run: |
+          cd util/formula_templater && go build
+      -
+        name: Generate new formula
+        run: |
+          ./util/formula_templater/formula_templater ${{github.event.client_payload.name}} ${{github.event.client_payload.version}} ./util/formula_templater/config.hcl > ./Formula/${{github.event.client_payload.name}}.rb
+      -
+        name: Commit new formula
+        run: |
+          git add ./Formula/${{github.event.client_payload.name}}.rb
+          git commit -m'${{github.event.client_payload.name}} ${{github.event.client_payload.version}}'
+          git push
