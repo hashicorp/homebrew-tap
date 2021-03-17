@@ -5,11 +5,14 @@ import (
 	"os"
 )
 
+// Usage: formula_templater <product> <version> <configPath>
+// Example: formula_templater vault 1.6.3 ./config.hcl
 func main() {
-	product := "vault"
-	version := "1.6.3"
+	product := os.Args[1]
+	version := os.Args[2]
+	config := os.Args[3]
 
-	err := printFormula(product, version, "./config.hcl")
+	err := printFormula(product, version, config)
 	if err != nil {
 		fmt.Println(err)
 	}
