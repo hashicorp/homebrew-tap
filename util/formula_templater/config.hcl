@@ -1,30 +1,31 @@
-formulae = [
-    {
-        product = "boundary"
-        name = "Boundary"
-        desc = "Boundary"
-        homepage = "https://www.boundaryproject.io/"
-        architectures = {
-            darwin_amd64 = true
-            darwin_arm64 = false
-            linux_amd64 = true
-            linux_arm = true
-            linux_arm64 = true
-        }
-    },
-    {
-        product = "consul"
-        name = "Consul"
-        desc = "Consul"
-        homepage = "https://www.consul.io"
-        architectures = {
-            darwin_amd64 = true
-            darwin_arm64 = false
-            linux_amd64 = true
-            linux_arm = false
-            linux_arm64 = true
-        }
-        plist =<<EOF
+
+formula {
+    product = "boundary"
+    name = "Boundary"
+    desc = "Boundary"
+    homepage = "https://www.boundaryproject.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "consul"
+    name = "Consul"
+    desc = "Consul"
+    homepage = "https://www.consul.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = true
+    }
+    plist =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -55,21 +56,22 @@ formulae = [
 </dict>
 </plist>
 EOF
-        plist_options = "consul agent -dev -bind 127.0.0.1"
-    },
-    {
-        product = "nomad"
-        name = "Nomad"
-        desc = "Nomad"
-        homepage = "https://www.nomadproject.io/"
-        architectures = {
-            darwin_amd64 = true
-            darwin_arm64 = false
-            linux_amd64 = true
-            linux_arm = true
-            linux_arm64 = true
-        }
-        plist =<<EOF
+    plist_options = "consul agent -dev -bind 127.0.0.1"
+}
+
+formula {
+    product = "nomad"
+    name = "Nomad"
+    desc = "Nomad"
+    homepage = "https://www.nomadproject.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    plist =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -98,47 +100,50 @@ EOF
 </dict>
 </plist>
 EOF
-        plist_options = "nomad agent -dev"
-    },
-    {
-        product = "packer"
-        name = "Packer"
-        desc = "Packer"
-        homepage = "https://www.packer.io/"
-        architectures = {
-            darwin_amd64 = true
-            darwin_arm64 = false
-            linux_amd64 = true
-            linux_arm = true
-            linux_arm64 = true
-        }
-    },
-    {
-        product = "terraform"
-        name = "Terraform"
-        desc = "Terraform"
-        homepage = "https://www.terraform.io/"
-        architectures = {
-            darwin_amd64 = true
-            darwin_arm64 = false
-            linux_amd64 = true
-            linux_arm = true
-            linux_arm64 = true
-        }
-    },
-    {
-        product = "vault"
-        name = "Vault"
-        desc = "Vault"
-        homepage = "https://www.vaultproject.io"
-        architectures = {
-            darwin_amd64 = true
-            darwin_arm64 = false
-            linux_amd64 = true
-            linux_arm = true
-            linux_arm64 = true
-        }
-        plist =<<EOF
+    plist_options = "nomad agent -dev"
+}
+
+formula {
+    product = "packer"
+    name = "Packer"
+    desc = "Packer"
+    homepage = "https://www.packer.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "terraform"
+    name = "Terraform"
+    desc = "Terraform"
+    homepage = "https://www.terraform.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "vault"
+    name = "Vault"
+    desc = "Vault"
+    homepage = "https://www.vaultproject.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    plist =<<EOF
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -167,19 +172,19 @@ EOF
 </dict>
 </plist>
 EOF
-        plist_options = "vault server -dev"
-    },
-    {
-        product = "waypoint"
-        name = "Waypoint"
-        desc = "Waypoint"
-        homepage = "https://www.waypointproject.io/"
-        architectures = {
-            darwin_amd64 = true
-            darwin_arm64 = true
-            linux_amd64 = true
-            linux_arm = true
-            linux_arm64 = false
-        }
+    plist_options = "vault server -dev"
+}
+
+formula {
+    product = "waypoint"
+    name = "Waypoint"
+    desc = "Waypoint"
+    homepage = "https://www.waypointproject.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = false
     }
-]
+}

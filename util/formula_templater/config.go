@@ -6,7 +6,7 @@ import (
 
 // Config configuration top level options
 type Config struct {
-	Formulae []FormulaConfig `hcl:"formulae"`
+	Formulae []FormulaConfig `hcl:"formula,block"`
 }
 
 // FormulaConfig all required formula data
@@ -16,10 +16,10 @@ type FormulaConfig struct {
 	Desc          string `hcl:"desc"`
 	Homepage      string `hcl:"homepage"`
 	Version       string
-	Architectures FormulaArchitectures `hcl:"architectures"`
-	Depends       []string             `hcl:"depends"`
-	Plist         string               `hcl:"plist"`
-	PlistOptions  string               `hcl:"plist_options"`
+	Architectures FormulaArchitectures `hcl:"architectures,block"`
+	Depends       []string             `hcl:"depends,optional"`
+	Plist         string               `hcl:"plist,optional"`
+	PlistOptions  string               `hcl:"plist_options,optional"`
 }
 
 // FormulaArchitectures architecture support

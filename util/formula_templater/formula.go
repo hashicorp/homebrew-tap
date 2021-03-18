@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
+	"io"
 	"text/template"
 )
 
-func printFormula(product string, version string, configLocation string) error {
+func printFormula(product string, version string, configLocation string, out io.Writer) error {
 	shasums, err := loadShasums(product, version)
 	if err != nil {
 		return err
@@ -46,7 +46,7 @@ func printFormula(product string, version string, configLocation string) error {
 	}
 
 	template := template.Must(template.New("formula").Parse(formulaTemplate))
-	return template.Execute(os.Stdout, productConfig)
+	return template.Execute(out, productConfig)
 }
 
 const formulaTemplate = `class {{ .Name }} < Formula
@@ -108,7 +108,7 @@ const formulaTemplate = `class {{ .Name }} < Formula
   {{- if .Plist }}
 
   plist_options manual: "{{ .PlistOptions }}"
-  
+
   def plist; <<~EOS
 {{ .Plist }}
 EOS

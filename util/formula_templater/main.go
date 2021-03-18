@@ -12,7 +12,7 @@ func main() {
 	version := os.Args[2]
 	config := os.Args[3]
 
-	err := printFormula(product, version, config)
+	err := printFormula(product, version, config, os.Stdout)
 	if err != nil {
 		fmt.Println(err)
 	}
