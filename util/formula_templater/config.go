@@ -1,9 +1,7 @@
 package main
 
 import (
-	"os"
-
-	"github.com/hashicorp/hcl"
+	"github.com/hashicorp/hcl/v2/hclsimple"
 )
 
 // Config configuration top level options
@@ -41,22 +39,9 @@ type FormulaArchitectures struct {
 func loadConfig(filepath string) (Config, error) {
 	var config Config
 
-	file, err := os.Open(filepath)
-	if err != nil {
-		return config, err
-	}
-	defer file.Close()
-	fileInfo, _ := file.Stat()
-	var size int64 = fileInfo.Size()
-	buffer := make([]byte, size)
-	file.Read(buffer)
+	err := hclsimple.DecodeFile(filepath, nil, &config)
 
-	err = hcl.Unmarshal(buffer, &config)
-	if err != nil {
-		return config, err
-	}
-
-	return config, nil
+	return config, err
 }
 
 func (c Config) getFormula(product string) FormulaConfig {
