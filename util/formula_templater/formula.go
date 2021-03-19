@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"io"
 	"text/template"
 )
@@ -45,8 +46,15 @@ func printFormula(product string, version string, configLocation string, out io.
 		productConfig.Architectures.LinuxArm64SHA = sha
 	}
 
-	template := template.Must(template.New("formula").Parse(formulaTemplate))
-	return template.Execute(out, productConfig)
+	if productConfig.Cask == true {
+		dmg := fmt.Sprintf("%s_%s_%s.dmg", product, version, "darwin_amd64")
+		productConfig.Architectures.DarwinAmd64SHA = shasums[dmg]
+		template := template.Must(template.New("cask").Parse(caskTemplate))
+		return template.Execute(out, productConfig)
+	} else {
+		template := template.Must(template.New("formula").Parse(formulaTemplate))
+		return template.Execute(out, productConfig)
+	}
 }
 
 const formulaTemplate = `class {{ .Name }} < Formula
@@ -118,5 +126,18 @@ EOS
   test do
     system "#{bin}/{{ .Product }} --version"
   end
+end
+`
+
+const caskTemplate = `cask "hashicorp-{{ .Product }}" do
+  version "{{ .Version }}"
+  sha256 "{{ .Architectures.DarwinAmd64SHA }}"
+
+  url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg"
+  name "{{ .Name }}"
+  desc "{{ .Desc }}"
+  homepage "{{ .Homepage }}"
+
+  app "{{ .CaskApp }}"
 end
 `

@@ -188,3 +188,19 @@ formula {
         linux_arm64 = false
     }
 }
+
+formula {
+    product = "boundary-desktop"
+    name = "Boundary Desktop"
+    desc = ""
+    homepage = "https://www.boundaryproject.io/"
+    cask = true
+    cask_app = "Boundary.app"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = false
+        linux_arm = false
+        linux_arm64 = false
+    }
+}

@@ -20,6 +20,8 @@ type FormulaConfig struct {
 	Depends       []string             `hcl:"depends,optional"`
 	Plist         string               `hcl:"plist,optional"`
 	PlistOptions  string               `hcl:"plist_options,optional"`
+	Cask          bool                 `hcl:"cask,optional"`
+	CaskApp       string               `hcl:"cask_app,optional"`
 }
 
 // FormulaArchitectures architecture support
