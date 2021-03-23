@@ -21,40 +21,42 @@ func printFormula(product string, version string, configLocation string, out io.
 
 	productConfig.Version = version
 
-	if productConfig.Architectures.DarwinAmd64 {
-		sha := getShasum(shasums, product, version, "darwin_amd64")
-		productConfig.Architectures.DarwinAmd64SHA = sha
-	}
-
-	if productConfig.Architectures.DarwinArm64 {
-		sha := getShasum(shasums, product, version, "darwin_arm64")
-		productConfig.Architectures.DarwinArm64SHA = sha
-	}
-
-	if productConfig.Architectures.LinuxAmd64 {
-		sha := getShasum(shasums, product, version, "linux_amd64")
-		productConfig.Architectures.LinuxAmd64SHA = sha
-	}
-
-	if productConfig.Architectures.LinuxArm {
-		sha := getShasum(shasums, product, version, "linux_arm")
-		productConfig.Architectures.LinuxArmSHA = sha
-	}
-
-	if productConfig.Architectures.LinuxArm64 {
-		sha := getShasum(shasums, product, version, "linux_arm64")
-		productConfig.Architectures.LinuxArm64SHA = sha
-	}
-
+	var template *template.Template
 	if productConfig.Cask == true {
 		dmg := fmt.Sprintf("%s_%s_%s.dmg", product, version, "darwin_amd64")
 		productConfig.Architectures.DarwinAmd64SHA = shasums[dmg]
-		template := template.Must(template.New("cask").Parse(caskTemplate))
-		return template.Execute(out, productConfig)
+
+		template = template.Must(template.New("cask").Parse(caskTemplate))
 	} else {
-		template := template.Must(template.New("formula").Parse(formulaTemplate))
-		return template.Execute(out, productConfig)
+		if productConfig.Architectures.DarwinAmd64 {
+			sha := getShasum(shasums, product, version, "darwin_amd64")
+			productConfig.Architectures.DarwinAmd64SHA = sha
+		}
+
+		if productConfig.Architectures.DarwinArm64 {
+			sha := getShasum(shasums, product, version, "darwin_arm64")
+			productConfig.Architectures.DarwinArm64SHA = sha
+		}
+
+		if productConfig.Architectures.LinuxAmd64 {
+			sha := getShasum(shasums, product, version, "linux_amd64")
+			productConfig.Architectures.LinuxAmd64SHA = sha
+		}
+
+		if productConfig.Architectures.LinuxArm {
+			sha := getShasum(shasums, product, version, "linux_arm")
+			productConfig.Architectures.LinuxArmSHA = sha
+		}
+
+		if productConfig.Architectures.LinuxArm64 {
+			sha := getShasum(shasums, product, version, "linux_arm64")
+			productConfig.Architectures.LinuxArm64SHA = sha
+		}
+
+		template = template.Must(template.New("formula").Parse(formulaTemplate))
 	}
+
+	return template.Execute(out, productConfig)
 }
 
 const formulaTemplate = `class {{ .Name }} < Formula

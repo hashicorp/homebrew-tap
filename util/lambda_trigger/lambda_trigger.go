@@ -22,9 +22,21 @@ type ReleaseEvent struct {
 }
 
 func isProductSupported(product string) bool {
-	supportedProducts := []string{"vault", "consul", "nomad", "terraform", "packer", "boundary", "waypoint"}
+	supportedProducts := []string{"vault", "consul", "nomad", "terraform", "packer", "boundary", "waypoint", "boundary-desktop"}
 
 	for _, p := range supportedProducts {
+		if p == product {
+			return true
+		}
+	}
+
+	return false
+}
+
+func isCask(product string) bool {
+	casks := []string{"boundary-desktop"}
+
+	for _, p := range casks {
 		if p == product {
 			return true
 		}
@@ -57,7 +69,8 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 	// Create dispatch event https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
 	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
-	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\"}}", event.Product, event.Version)
+	cask := isCask(event.Product)
+	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%s\"}}", event.Product, event.Version, cask)
 	fmt.Printf("POSTing to Github: %s\n", postBody)
 
 	httpClient := &http.Client{}

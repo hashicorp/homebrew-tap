@@ -26,11 +26,25 @@ jobs:
           cd util/formula_templater && go build
       -
         name: Generate new formula
+        if: ${{ github.event.client_payload.cask == 'false' }}
         run: |
           ./util/formula_templater/formula_templater ${{github.event.client_payload.name}} ${{github.event.client_payload.version}} ./util/formula_templater/config.hcl > ./Formula/${{github.event.client_payload.name}}.rb
       -
+        name: Generate new formula
+        if: ${{ github.event.client_payload.cask == 'true' }}
+        run: |
+          ./util/formula_templater/formula_templater ${{github.event.client_payload.name}} ${{github.event.client_payload.version}} ./util/formula_templater/config.hcl > ./Casks/${{github.event.client_payload.name}}.rb
+      -
         name: Commit new formula
+        if: ${{ github.event.client_payload.cask == 'false' }}
         run: |
           git add ./Formula/${{github.event.client_payload.name}}.rb
+          git commit -m'${{github.event.client_payload.name}} ${{github.event.client_payload.version}}'
+          git push
+      -
+        name: Commit new formula
+        if: ${{ github.event.client_payload.cask == 'true' }}
+        run: |
+          git add ./Casks/${{github.event.client_payload.name}}.rb
           git commit -m'${{github.event.client_payload.name}} ${{github.event.client_payload.version}}'
           git push
