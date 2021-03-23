@@ -21,12 +21,12 @@ func printFormula(product string, version string, configLocation string, out io.
 
 	productConfig.Version = version
 
-	var template *template.Template
+	var t *template.Template
 	if productConfig.Cask == true {
 		dmg := fmt.Sprintf("%s_%s_%s.dmg", product, version, "darwin_amd64")
 		productConfig.Architectures.DarwinAmd64SHA = shasums[dmg]
 
-		template = template.Must(template.New("cask").Parse(caskTemplate))
+		t = template.Must(template.New("cask").Parse(caskTemplate))
 	} else {
 		if productConfig.Architectures.DarwinAmd64 {
 			sha := getShasum(shasums, product, version, "darwin_amd64")
@@ -53,10 +53,10 @@ func printFormula(product string, version string, configLocation string, out io.
 			productConfig.Architectures.LinuxArm64SHA = sha
 		}
 
-		template = template.Must(template.New("formula").Parse(formulaTemplate))
+		t = template.Must(template.New("formula").Parse(formulaTemplate))
 	}
 
-	return template.Execute(out, productConfig)
+	return t.Execute(out, productConfig)
 }
 
 const formulaTemplate = `class {{ .Name }} < Formula
