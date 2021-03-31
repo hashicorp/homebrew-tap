@@ -1,6 +1,8 @@
 package main
 
 import (
+	"errors"
+
 	"github.com/hashicorp/hcl/v2/hclsimple"
 )
 
@@ -46,11 +48,11 @@ func loadConfig(filepath string) (Config, error) {
 	return config, err
 }
 
-func (c Config) getFormula(product string) FormulaConfig {
+func (c Config) getFormula(product string) (FormulaConfig, error) {
 	for _, formula := range c.Formulae {
 		if formula.Product == product {
-			return formula
+			return formula, nil
 		}
 	}
-	return FormulaConfig{}
+	return FormulaConfig{}, errors.New("Formula not found")
 }

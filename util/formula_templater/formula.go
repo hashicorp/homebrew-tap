@@ -17,7 +17,10 @@ func printFormula(product string, version string, configLocation string, out io.
 		return err
 	}
 
-	productConfig := config.getFormula(product)
+	productConfig, err := config.getFormula(product)
+	if err != nil {
+		return err
+	}
 
 	productConfig.Version = version
 
