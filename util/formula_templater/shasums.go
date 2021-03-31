@@ -21,9 +21,11 @@ func loadShasums(product string, version string) (map[string]string, error) {
 	for _, l := range lines {
 		if len(l) > 0 {
 			parts := strings.Split(l, "  ")
-			shasum := parts[0]
-			zip := parts[1]
-			shasums[zip] = shasum
+			if len(parts) == 2 {
+				shasum := parts[0]
+				zip := parts[1]
+				shasums[zip] = shasum
+			}
 		}
 	}
 
