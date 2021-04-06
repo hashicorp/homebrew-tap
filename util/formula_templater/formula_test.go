@@ -18,7 +18,7 @@ func TestPrintFormula(t *testing.T) {
   homepage "https://www.consul.io"
   version "1.9.4"
 
-  if OS.mac? && Hardware::CPU.intel?
+  if OS.mac?
     url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_darwin_amd64.zip"
     sha256 "c168240d52f67c71b30ef51b3594673cad77d0dbbf38c412b2ee30b39ef30843"
   end

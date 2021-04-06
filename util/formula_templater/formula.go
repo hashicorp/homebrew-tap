@@ -68,18 +68,24 @@ const formulaTemplate = `class {{ .Name }} < Formula
   version "{{ .Version }}"
 
   {{- if .Architectures.DarwinAmd64 }}
+  {{- if .Architectures.DarwinArm64 }}
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_darwin_amd64.zip"
     sha256 "{{ .Architectures.DarwinAmd64SHA }}"
   end
-  {{- end }}
-  {{- if .Architectures.DarwinArm64 }}
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_darwin_arm64.zip"
     sha256 "{{ .Architectures.DarwinArm64SHA }}"
   end
+  {{- else }}
+
+  if OS.mac?
+    url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_darwin_amd64.zip"
+    sha256 "{{ .Architectures.DarwinAmd64SHA }}"
+  end
+  {{- end }}
   {{- end }}
   {{- if .Architectures.LinuxAmd64 }}
 
