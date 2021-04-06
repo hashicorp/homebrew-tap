@@ -67,8 +67,7 @@ const formulaTemplate = `class {{ .Name }} < Formula
   homepage "{{ .Homepage }}"
   version "{{ .Version }}"
 
-  {{- if .Architectures.DarwinAmd64 }}
-  {{- if .Architectures.DarwinArm64 }}
+  {{- if and .Architectures.DarwinAmd64 .Architectures.DarwinArm64 }}
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_darwin_amd64.zip"
@@ -85,7 +84,6 @@ const formulaTemplate = `class {{ .Name }} < Formula
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_darwin_amd64.zip"
     sha256 "{{ .Architectures.DarwinAmd64SHA }}"
   end
-  {{- end }}
   {{- end }}
   {{- if .Architectures.LinuxAmd64 }}
 
