@@ -23,6 +23,16 @@ func TestPrintFormula(t *testing.T) {
     sha256 "c168240d52f67c71b30ef51b3594673cad77d0dbbf38c412b2ee30b39ef30843"
   end
 
+  if OS.mac? && Hardware::CPU.arm?
+    def caveats
+      <<~EOS
+        The darwin_arm64 architecture is not supported for this product
+        at this time.  The darwin_amd64 binary has been installed and
+        is not guaranteed to work.
+      EOS
+    end
+  end
+
   if OS.linux? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_linux_amd64.zip"
     sha256 "da3919197ef33c4205bb7df3cc5992ccaae01d46753a72fe029778d7f52fb610"
