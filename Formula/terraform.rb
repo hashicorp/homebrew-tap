@@ -3,9 +3,20 @@ class Terraform < Formula
   homepage "https://www.terraform.io/"
   version "0.14.9"
 
-  if OS.mac? && Hardware::CPU.intel?
+  if OS.mac?
     url "https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_darwin_amd64.zip"
     sha256 "96d0b1c807415ba295a70e8afed04e233778673103587f321164ebb96be123d8"
+  end
+
+  if OS.mac? && Hardware::CPU.arm?
+    def caveats
+      <<~EOS
+        The darwin_arm64 architecture is not supported for this product
+        at this time, however we do plan to support this in the future. The
+        darwin_amd64 binary has been installed and may work in
+        compatibility mode, but it is not fully supported.
+      EOS
+    end
   end
 
   if OS.linux? && Hardware::CPU.intel?

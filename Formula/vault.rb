@@ -3,9 +3,20 @@ class Vault < Formula
   homepage "https://www.vaultproject.io"
   version "1.7.0"
 
-  if OS.mac? && Hardware::CPU.intel?
+  if OS.mac?
     url "https://releases.hashicorp.com/vault/1.7.0/vault_1.7.0_darwin_amd64.zip"
     sha256 "374fca0c8fcde45d5710e06673d03596371e92e18c33612396484758d2967d07"
+  end
+
+  if OS.mac? && Hardware::CPU.arm?
+    def caveats
+      <<~EOS
+        The darwin_arm64 architecture is not supported for this product
+        at this time, however we do plan to support this in the future. The
+        darwin_amd64 binary has been installed and may work in
+        compatibility mode, but it is not fully supported.
+      EOS
+    end
   end
 
   if OS.linux? && Hardware::CPU.intel?
