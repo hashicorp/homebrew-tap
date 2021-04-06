@@ -84,6 +84,16 @@ const formulaTemplate = `class {{ .Name }} < Formula
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_darwin_amd64.zip"
     sha256 "{{ .Architectures.DarwinAmd64SHA }}"
   end
+
+  if OS.mac? && Hardware::CPU.arm?
+    def caveats
+      <<~EOS
+        The darwin_arm64 architecture is not supported for this product
+        at this time.  The darwin_amd64 binary has been installed and
+        is not guaranteed to work.
+      EOS
+    end
+  end
   {{- end }}
   {{- if .Architectures.LinuxAmd64 }}
 
