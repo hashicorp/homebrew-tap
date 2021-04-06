@@ -3,9 +3,20 @@ class Nomad < Formula
   homepage "https://www.nomadproject.io/"
   version "1.0.4"
 
-  if OS.mac? && Hardware::CPU.intel?
+  if OS.mac?
     url "https://releases.hashicorp.com/nomad/1.0.4/nomad_1.0.4_darwin_amd64.zip"
     sha256 "329f9ffca0dc709d04ba465d2dd3b12f54cf2e5f8b1ae169e4313239ada3e5b5"
+  end
+
+  if OS.mac? && Hardware::CPU.arm?
+    def caveats
+      <<~EOS
+        The darwin_arm64 architecture is not supported for this product
+        at this time, however we do plan to support this in the future. The
+        darwin_amd64 binary has been installed and may work in
+        compatibility mode, but it is not fully supported.
+      EOS
+    end
   end
 
   if OS.linux? && Hardware::CPU.intel?

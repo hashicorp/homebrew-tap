@@ -3,9 +3,20 @@ class Consul < Formula
   homepage "https://www.consul.io"
   version "1.9.4"
 
-  if OS.mac? && Hardware::CPU.intel?
+  if OS.mac?
     url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_darwin_amd64.zip"
     sha256 "c168240d52f67c71b30ef51b3594673cad77d0dbbf38c412b2ee30b39ef30843"
+  end
+
+  if OS.mac? && Hardware::CPU.arm?
+    def caveats
+      <<~EOS
+        The darwin_arm64 architecture is not supported for this product
+        at this time, however we do plan to support this in the future. The
+        darwin_amd64 binary has been installed and may work in
+        compatibility mode, but it is not fully supported.
+      EOS
+    end
   end
 
   if OS.linux? && Hardware::CPU.intel?
