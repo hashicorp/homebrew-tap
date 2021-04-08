@@ -1,26 +1,26 @@
 class Waypoint < Formula
   desc "Waypoint"
   homepage "https://www.waypointproject.io/"
-  version "0.2.4"
+  version "0.3.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/waypoint/0.2.4/waypoint_0.2.4_darwin_amd64.zip"
-    sha256 "bda5d7427379d8679b7475a8c04ccf522ef2bbad6c20bc3bc3ecfe7a63a075c1"
+    url "https://releases.hashicorp.com/waypoint/0.3.0/waypoint_0.3.0_darwin_amd64.zip"
+    sha256 "f8d245d1ef7cd3e6d4d8c03e3a8e863e6a8162648ef946a8834afb92d9651436"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/waypoint/0.2.4/waypoint_0.2.4_darwin_arm64.zip"
-    sha256 "713c73e67297fc31cfdaab26252ec4c3febef2a949353b2786af9cb21a372f9d"
+    url "https://releases.hashicorp.com/waypoint/0.3.0/waypoint_0.3.0_darwin_arm64.zip"
+    sha256 "471467a3d0414186c580265e5011ea9ba2e73be6363ea98c9d1615562f8b2b36"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/waypoint/0.2.4/waypoint_0.2.4_linux_amd64.zip"
-    sha256 "114c34148ad714e2ac0332b9e10437cf8402c37f8d0ad13c90410497fc47fdc1"
+    url "https://releases.hashicorp.com/waypoint/0.3.0/waypoint_0.3.0_linux_amd64.zip"
+    sha256 "80fa965a4c9f0c7b4e8fffa255a1823ff8df350523b336433debb17d79ad8d6d"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/waypoint/0.2.4/waypoint_0.2.4_linux_arm.zip"
-    sha256 "32024af1ee5088bb49a577cf9ce8fcdea83af07133cb8795c7c816847f0c0f82"
+    url "https://releases.hashicorp.com/waypoint/0.3.0/waypoint_0.3.0_linux_arm.zip"
+    sha256 "010f75266d99f164dc33c087aa71612d638f2ef15d389c6d1d854657dab30816"
   end
 
   bottle :unneeded

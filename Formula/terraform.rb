@@ -1,11 +1,11 @@
 class Terraform < Formula
   desc "Terraform"
   homepage "https://www.terraform.io/"
-  version "0.14.9"
+  version "0.14.10"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_darwin_amd64.zip"
-    sha256 "96d0b1c807415ba295a70e8afed04e233778673103587f321164ebb96be123d8"
+    url "https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_darwin_amd64.zip"
+    sha256 "4b2acb55c6350cba92769c852d4502dff3e185726fc5293e3ab0bb64393846c4"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +20,18 @@ class Terraform < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_linux_amd64.zip"
-    sha256 "47e097cfbfb64e97492934f50e646cb84df952eb76897182557811b45603dbf0"
+    url "https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_amd64.zip"
+    sha256 "45d4a12ca7b5c52983f43837d696f45c5ed9ebe536d6b44104f2edb2e1a39894"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_linux_arm.zip"
-    sha256 "a58df5be281c7e2c0627cf15f755634201220f0c55ce30c7b37d3fc088bd3ef2"
+    url "https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_arm.zip"
+    sha256 "3594abff30bd487e814ea458321fb003541b361c8441d65650a44d08bcce0d0b"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/0.14.9/terraform_0.14.9_linux_arm64.zip"
-    sha256 "5bcdaf46927edcc46f063faef02878620b137a84a4523004c70b6ab05b20a15c"
+    url "https://releases.hashicorp.com/terraform/0.14.10/terraform_0.14.10_linux_arm64.zip"
+    sha256 "e69e69796e7dbb9462d52a22295541fbd7ffa5a9b979ba4bee963309bc65a73d"
   end
 
   bottle :unneeded
