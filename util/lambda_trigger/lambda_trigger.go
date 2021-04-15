@@ -70,7 +70,7 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 	// Create dispatch event https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
 	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
 	cask := isCask(event.Product)
-	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%s\"}}", event.Product, event.Version, cask)
+	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%t\"}}", event.Product, event.Version, cask)
 	fmt.Printf("POSTing to Github: %s\n", postBody)
 
 	httpClient := &http.Client{}
