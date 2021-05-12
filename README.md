@@ -44,6 +44,7 @@ brew install hashicorp/tap/boundary
 brew install hashicorp/tap/consul
 brew install hashicorp/tap/nomad
 brew install hashicorp/tap/packer
+brew install hashicorp/tap/sentinel
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/vault
 brew install hashicorp/tap/waypoint

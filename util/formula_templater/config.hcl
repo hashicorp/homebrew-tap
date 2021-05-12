@@ -204,3 +204,17 @@ formula {
         linux_arm64 = false
     }
 }
+
+formula {
+    product = "sentinel"
+    name = "Sentinel"
+    desc = ""
+    homepage = "https://docs.hashicorp.com/sentinel"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
