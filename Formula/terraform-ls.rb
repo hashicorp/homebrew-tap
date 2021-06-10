@@ -5,28 +5,33 @@
 class TerraformLs < Formula
   desc "Terraform Language Server"
   homepage "https://github.com/hashicorp/terraform-ls"
-  version "0.17.1"
+  version "0.18.0"
   bottle :unneeded
 
-  if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform-ls/0.17.1/terraform-ls_0.17.1_darwin_amd64.zip"
-    sha256 "946e13d17d7d976f07e1985ee5d767eac2d2ecad088840b6b6754b02da5537b8"
+  on_macos do
+    if Hardware::CPU.intel?
+      url "https://releases.hashicorp.com/terraform-ls/0.18.0/terraform-ls_0.18.0_darwin_amd64.zip"
+      sha256 "0c68ce725f2a5904f349bdf621baa9f9ca46cd3d4f9fdc22c2b319eaa5f547cf"
+    end
+    if Hardware::CPU.arm?
+      url "https://releases.hashicorp.com/terraform-ls/0.18.0/terraform-ls_0.18.0_darwin_arm64.zip"
+      sha256 "c635bcd371db6ff828436aee7d1a910ac1ca55b89f730893f0cccabcbaec058d"
+    end
   end
-  if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/terraform-ls/0.17.1/terraform-ls_0.17.1_darwin_arm64.zip"
-    sha256 "d3557cfa65af52344a4b292d90824eafab4589fd8db7908e9ec112e064c7b41b"
-  end
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform-ls/0.17.1/terraform-ls_0.17.1_linux_amd64.zip"
-    sha256 "0c45fb669217eb2a6f5414a92402a55c08abf3149cc5ce6b382d55a68bf1c27c"
-  end
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform-ls/0.17.1/terraform-ls_0.17.1_linux_arm.zip"
-    sha256 "0dcd2ab1611fe15517bb5d58e31b6681b82c33e0c62960e0706c0e516da2c974"
-  end
-  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform-ls/0.17.1/terraform-ls_0.17.1_linux_arm64.zip"
-    sha256 "b98aee8ffdac8ebf0b207aea2659ca7167ae171e8d39d6e2676a4b3b9a941c57"
+
+  on_linux do
+    if Hardware::CPU.intel?
+      url "https://releases.hashicorp.com/terraform-ls/0.18.0/terraform-ls_0.18.0_linux_amd64.zip"
+      sha256 "1aa74ceaff310bb0e0fb5ba79dc0b66cf8019899d9fffee315113bbd13798448"
+    end
+    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+      url "https://releases.hashicorp.com/terraform-ls/0.18.0/terraform-ls_0.18.0_linux_arm.zip"
+      sha256 "869086c2b2df06ec0b052315ec19709bbeadc0ce1b2a72b218d20cf40b0d07c7"
+    end
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://releases.hashicorp.com/terraform-ls/0.18.0/terraform-ls_0.18.0_linux_arm64.zip"
+      sha256 "761d112f661a66a1d1e9d3602124d9df1431a06a58e7b8e4f75bf56bc5ff2639"
+    end
   end
 
   conflicts_with "terraform-ls"
