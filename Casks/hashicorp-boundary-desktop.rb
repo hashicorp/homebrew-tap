@@ -1,6 +1,6 @@
 cask "hashicorp-boundary-desktop" do
-  version "1.0.1"
-  sha256 "6bac4b7d28b563ef80966b070fc4ecc610a38c05a30202307c00cf26355ae600"
+  version "1.1.0"
+  sha256 "a0f1ca2ab60c1ec106e1a4e067ea24ab75f6eb5e9fc9dc90a6680a8c37d1a29a"
 
   url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_amd64.dmg"
   name "Boundary Desktop"
