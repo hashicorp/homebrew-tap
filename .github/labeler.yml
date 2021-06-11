@@ -1,6 +1,11 @@
 automerge:
   - Formula/consul.rb
+  - Formula/consul-ent.rb
+  - Formula/consul-template.rb
+  - Formula/envconsul.rb
   - Formula/nomad.rb
+  - Formula/nomad-ent.rb
   - Formula/packer.rb
   - Formula/terraform.rb
   - Formula/vault.rb
+  - Formula/vault-ent.rb
