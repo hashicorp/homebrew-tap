@@ -61,8 +61,8 @@ EOF
 
 formula {
     product = "consul-template"
-    name = "Consul-Template"
-    desc = "Consul-Template"
+    name = "Consul Template"
+    desc = "Consul Template"
     homepage = "https://github.com/hashicorp/consul-template"
     architectures {
         darwin_amd64 = true

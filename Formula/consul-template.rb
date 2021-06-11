@@ -1,5 +1,5 @@
 class ConsulTemplate < Formula
-    desc "Consul-Template"
+    desc "Consul Template"
     homepage "https://github.com/hashicorp/consul-template"
     version "0.26.0"
   
