@@ -60,6 +60,20 @@ EOF
 }
 
 formula {
+    product = "consul-template"
+    name = "Consul Template"
+    desc = "Consul Template"
+    homepage = "https://github.com/hashicorp/consul-template"
+    architectures {
+        darwin_amd64 = true
+        // darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = false
+    }
+}
+
+formula {
     product = "nomad"
     name = "Nomad"
     desc = "Nomad"
