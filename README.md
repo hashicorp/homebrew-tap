@@ -43,6 +43,7 @@ With the following commands, you can install the latest version of each product:
 brew install hashicorp/tap/boundary
 brew install hashicorp/tap/consul
 brew install hashicorp/tap/consul-template
+brew install hashicorp/tap/consul-terraform-sync
 brew install hashicorp/tap/nomad
 brew install hashicorp/tap/packer
 brew install hashicorp/tap/sentinel

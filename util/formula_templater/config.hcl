@@ -74,6 +74,20 @@ formula {
 }
 
 formula {
+    product = "consul-terraform-sync"
+    name = "Consul Terraform Sync"
+    desc = "Consul Terraform Sync"
+    homepage = "https://github.com/hashicorp/consul-terraform-sync"
+    architectures {
+        darwin_amd64 = true
+        // darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = false
+    }
+}
+
+formula {
     product = "nomad"
     name = "Nomad"
     desc = "Nomad"
