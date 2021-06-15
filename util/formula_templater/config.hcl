@@ -66,7 +66,7 @@ formula {
     homepage = "https://github.com/hashicorp/consul-template"
     architectures {
         darwin_amd64 = true
-        // darwin_arm64 = true
+        darwin_arm64 = false
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = false
@@ -80,7 +80,7 @@ formula {
     homepage = "https://github.com/hashicorp/consul-terraform-sync"
     architectures {
         darwin_amd64 = true
-        // darwin_arm64 = true
+        darwin_arm64 = false
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = false
