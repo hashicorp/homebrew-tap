@@ -1,4 +1,4 @@
-class Consul Terraform Sync < Formula
+class ConsulTerraformSync < Formula
   desc "Consul Terraform Sync"
   homepage "https://github.com/hashicorp/consul-terraform-sync"
   version "0.2.0"
