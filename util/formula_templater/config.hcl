@@ -61,7 +61,7 @@ EOF
 
 formula {
     product = "consul-template"
-    name = "Consul Template"
+    name = "ConsulTemplate"
     desc = "Consul Template"
     homepage = "https://github.com/hashicorp/consul-template"
     architectures {
@@ -75,7 +75,7 @@ formula {
 
 formula {
     product = "consul-terraform-sync"
-    name = "Consul Terraform Sync"
+    name = "ConsulTerraformSync"
     desc = "Consul Terraform Sync"
     homepage = "https://github.com/hashicorp/consul-terraform-sync"
     architectures {
