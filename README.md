@@ -52,11 +52,15 @@ brew install hashicorp/tap/vault
 brew install hashicorp/tap/waypoint
 
 # Casks
-brew install hashicorp-boundary-desktop
+brew install hashicorp/tap/hashicorp-boundary-desktop
+```
 
+*Note:* Vagrant is currently available as a cask from Homebrew core and not provided by this tap.
+You can install it via
+
+```sh
 brew install vagrant
 ```
-* Note: Vagrant is available as a cask from Homebrew core and not provided by this tap.
 
 ## Why should I install packages from this tap?
 
