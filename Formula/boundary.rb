@@ -1,11 +1,11 @@
 class Boundary < Formula
   desc "Boundary"
   homepage "https://www.boundaryproject.io/"
-  version "0.3.0"
+  version "0.4.0"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/boundary/0.3.0/boundary_0.3.0_darwin_amd64.zip"
-    sha256 "ab63d10c428d7d95e5bcb0788724f8298ffe29a7c3aac464c33f7e9f58c5167d"
+    url "https://releases.hashicorp.com/boundary/0.4.0/boundary_0.4.0_darwin_amd64.zip"
+    sha256 "cc36896ff37dcdc06e5a991af4f641fc3d7b569cef8ecb9ff1dfd84fa57f0e9b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +20,18 @@ class Boundary < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.3.0/boundary_0.3.0_linux_amd64.zip"
-    sha256 "27758ae25702360f9d5a38d4e255670270719f952f47dce6469ee401f5f71f0a"
+    url "https://releases.hashicorp.com/boundary/0.4.0/boundary_0.4.0_linux_amd64.zip"
+    sha256 "3a7242a9d9e577af7ec023b53713599e2b9d24d68a0b06b12ddd7d297fe909c2"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.3.0/boundary_0.3.0_linux_arm.zip"
-    sha256 "1acecc361511b300113a9f6850d7f37e9636a59d5518ef1c4241f1e0918010df"
+    url "https://releases.hashicorp.com/boundary/0.4.0/boundary_0.4.0_linux_arm.zip"
+    sha256 "e1dfb282349bdd8731230f154554328f36c7305e395975da6d08f2be6334f1b2"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.3.0/boundary_0.3.0_linux_arm64.zip"
-    sha256 "5426b9c4c6ddd8342ceb106fa17da81d1798c5ec89c4396b2fe3a3adda963107"
+    url "https://releases.hashicorp.com/boundary/0.4.0/boundary_0.4.0_linux_arm64.zip"
+    sha256 "206a1e808e0a07357fa4965605e3a9017cacd5b4ae8d06d53c506bbee13e9bf6"
   end
 
   bottle :unneeded
