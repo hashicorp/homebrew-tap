@@ -19,10 +19,23 @@ import (
 type ReleaseEvent struct {
 	Product string `json:"product"`
 	Version string `json:"version"`
+	Cask    bool   `json:"cask"`
 }
 
 func isProductSupported(product string) bool {
-	supportedProducts := []string{"vault", "consul", "consul-template", "consul-terraform-sync", "nomad", "terraform", "packer", "boundary", "waypoint", "boundary-desktop", "sentinel"}
+	supportedProducts := []string{
+		"vault",
+		"consul",
+		"consul-template",
+		"consul-terraform-sync",
+		"nomad",
+		"terraform",
+		"packer",
+		"boundary",
+		"waypoint",
+		"boundary-desktop",
+		"sentinel",
+	}
 
 	for _, p := range supportedProducts {
 		if p == product {
@@ -46,7 +59,15 @@ func isCask(product string) bool {
 }
 
 func getFormulaVersion(product string) (string, error) {
-	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/Formula/%s.rb", product)
+	return getBrewVersion(product, "Formula")
+}
+
+func getCaskVersion(product string) (string, error) {
+	return getBrewVersion(product, "Casks")
+}
+
+func getBrewVersion(product string, brewType string) (string, error) {
+	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/%s/%s.rb", brewType, product)
 	resp, err := http.Get(formulaURL)
 	if err != nil {
 		return "", err
@@ -69,8 +90,7 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 	// Create dispatch event https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
 	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
-	cask := isCask(event.Product)
-	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%t\"}}", event.Product, event.Version, cask)
+	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%t\"}}", event.Product, event.Version, event.Cask)
 	fmt.Printf("POSTing to Github: %s\n", postBody)
 
 	httpClient := &http.Client{}
@@ -111,16 +131,25 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			}
 			fmt.Printf("Latest version is %s\n", version)
 			event.Version = version.Version
+			oldVersion := ""
+			event.Cask = isCask(event.Product)
 
-			oldVersion, err := getFormulaVersion(event.Product)
-			if err != nil {
-				return err
+			if event.Cask {
+				oldVersion, err = getCaskVersion(event.Product)
+				if err != nil {
+					return err
+				}
+			} else {
+				oldVersion, err = getFormulaVersion(event.Product)
+				if err != nil {
+					return err
+				}
 			}
 
-			fmt.Printf("Current formula version is %s\n", oldVersion)
+			fmt.Printf("Current formula/cask version is %s\n", oldVersion)
 
 			if event.Version == oldVersion {
-				return errors.New("formula is already latest version")
+				return errors.New("formula/cask is already latest version")
 			}
 
 			err = triggerGithubWorkflow(event)
