@@ -1,11 +1,11 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.7.3"
+  version "1.8.0"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/vault/1.7.3/vault_1.7.3_darwin_amd64.zip"
-    sha256 "36cf1ae3c0b011f54d7a4dfb97e0f1afd8dc3de41a19f338b54dab256133856b"
+    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_darwin_amd64.zip"
+    sha256 "b9b1b80cba165a6dae8c5bbf6207f1c94f669ee64fdec5c2c21ee0fa4c06147f"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +20,18 @@ class Vault < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.7.3/vault_1.7.3_linux_amd64.zip"
-    sha256 "8453132a93b755c0a89dd4b2f1a99bd4af06f8167b81917f117080839031e03f"
+    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_linux_amd64.zip"
+    sha256 "1fe90f0c4f31baeda580435fe2dfaf09bf939e2f8286407c2b9644808637272a"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.7.3/vault_1.7.3_linux_arm.zip"
-    sha256 "fe898b477161b0152c0b0f2ad62a458e7a98b25d8f35ed1efcf947dc7b05a57e"
+    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_linux_arm.zip"
+    sha256 "4baf2fe4a3cff83f23968c17a6322546c15ca4b379dc0faa69ff2dbd6aecd662"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.7.3/vault_1.7.3_linux_arm64.zip"
-    sha256 "23092f60d8bc96b5c40cec71fec933e76e14afb952c5cd1b8d58354590015c30"
+    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_linux_arm64.zip"
+    sha256 "acba3e6a5f85e2d341c672c71130c367835cc44f76fdb2566732226cd57c53aa"
   end
 
   bottle :unneeded
