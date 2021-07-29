@@ -1,11 +1,11 @@
 class Nomad < Formula
   desc "Nomad"
   homepage "https://www.nomadproject.io/"
-  version "1.1.2"
+  version "1.1.3"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/nomad/1.1.2/nomad_1.1.2_darwin_amd64.zip"
-    sha256 "aac65c387d2929809dabba19cf578637bb172649d52ff79756f444710251809d"
+    url "https://releases.hashicorp.com/nomad/1.1.3/nomad_1.1.3_darwin_amd64.zip"
+    sha256 "483edb14aa310d97209c3434b3fbc53032c21c6badfe8d9739dc643041fc7d98"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +20,18 @@ class Nomad < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.1.2/nomad_1.1.2_linux_amd64.zip"
-    sha256 "fa25e3353db520ac94b1a28c0b08a9ceb35c807c35987ae21910a41c179730d0"
+    url "https://releases.hashicorp.com/nomad/1.1.3/nomad_1.1.3_linux_amd64.zip"
+    sha256 "e07ebf9ec81fb04ace94884d2c0b0e0bdee3510d5a203bcae96d8bee9463b418"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.1.2/nomad_1.1.2_linux_arm.zip"
-    sha256 "7b7d363385388003764cd7a0f66517c2b7cf463c7cf119e830b989ec718d97f7"
+    url "https://releases.hashicorp.com/nomad/1.1.3/nomad_1.1.3_linux_arm.zip"
+    sha256 "e3e4c64409c95336e57c882d9bb7e253e6af8342e0d5154e2237ec54197e809b"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.1.2/nomad_1.1.2_linux_arm64.zip"
-    sha256 "1e8b0d33fe78c213af6fe5d8b53e4c19d1d26385429d37c427baef298b70621f"
+    url "https://releases.hashicorp.com/nomad/1.1.3/nomad_1.1.3_linux_arm64.zip"
+    sha256 "97a725e3a4b5bcb76c3c67df96df4234ac43e37f9ad4027ebffb1c70905a2190"
   end
 
   bottle :unneeded
