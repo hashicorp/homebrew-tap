@@ -1,31 +1,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.8.0"
+  version "1.8.1"
 
-  if OS.mac?
-    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_darwin_amd64.zip"
-    sha256 "b9b1b80cba165a6dae8c5bbf6207f1c94f669ee64fdec5c2c21ee0fa4c06147f"
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_darwin_amd64.zip"
+    sha256 "f87221e4f56b3da41f0a029bf2b48896ec3be84dd7075bdb9466def1e056f809"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_darwin_arm64.zip"
-    sha256 "b057d5314f66609510975236d7ed62825151a45d1dfa079f611d2302fa62b483"
+    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_darwin_arm64.zip"
+    sha256 "571985c34990a2a7b913cee8c50be42b34c8d8cb751a2aed2c80121ad4b4e44b"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_linux_amd64.zip"
-    sha256 "1fe90f0c4f31baeda580435fe2dfaf09bf939e2f8286407c2b9644808637272a"
+    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_linux_amd64.zip"
+    sha256 "bb411f2bbad79c2e4f0640f1d3d5ef50e2bda7d4f40875a56917c95ff783c2db"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_linux_arm.zip"
-    sha256 "4baf2fe4a3cff83f23968c17a6322546c15ca4b379dc0faa69ff2dbd6aecd662"
+    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_linux_arm.zip"
+    sha256 "fda5f70ae3c721c8b43637514f2bdb863e1f6f1de08c668c3c0a496e8e032793"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.8.0/vault_1.8.0_linux_arm64.zip"
-    sha256 "acba3e6a5f85e2d341c672c71130c367835cc44f76fdb2566732226cd57c53aa"
+    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_linux_arm64.zip"
+    sha256 "cd2a4cb4b64bb1f9e1a3e4d3227021713c86af2b6e3af227cb96c3b311b30014"
   end
 
   bottle :unneeded
