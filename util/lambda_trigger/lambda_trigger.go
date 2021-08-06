@@ -63,7 +63,8 @@ func getFormulaVersion(product string) (string, error) {
 }
 
 func getCaskVersion(product string) (string, error) {
-	return getBrewVersion(product, "Casks")
+	namespaced := fmt.Sprintf("hashicorp-%s", product)
+	return getBrewVersion(namespaced, "Casks")
 }
 
 func getBrewVersion(product string, brewType string) (string, error) {
