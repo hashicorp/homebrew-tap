@@ -46,6 +46,7 @@ brew install hashicorp/tap/consul-template
 brew install hashicorp/tap/consul-terraform-sync
 brew install hashicorp/tap/nomad
 brew install hashicorp/tap/packer
+brew install hashicorp/tap/packer-nightly
 brew install hashicorp/tap/sentinel
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/vault
