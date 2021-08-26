@@ -1,31 +1,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.8.1"
+  version "1.8.2"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_darwin_amd64.zip"
-    sha256 "f87221e4f56b3da41f0a029bf2b48896ec3be84dd7075bdb9466def1e056f809"
+    url "https://releases.hashicorp.com/vault/1.8.2/vault_1.8.2_darwin_amd64.zip"
+    sha256 "e33982eb861a539a8122bf674c39af30901825c060b4c8175cbfa06e9b5d4bf5"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_darwin_arm64.zip"
-    sha256 "571985c34990a2a7b913cee8c50be42b34c8d8cb751a2aed2c80121ad4b4e44b"
+    url "https://releases.hashicorp.com/vault/1.8.2/vault_1.8.2_darwin_arm64.zip"
+    sha256 "2ee88db949d21a43f4997539a0bed9350018c25da769d261343c35c8dc9cc878"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_linux_amd64.zip"
-    sha256 "bb411f2bbad79c2e4f0640f1d3d5ef50e2bda7d4f40875a56917c95ff783c2db"
+    url "https://releases.hashicorp.com/vault/1.8.2/vault_1.8.2_linux_amd64.zip"
+    sha256 "d74724d6cc22bf1e1c7c519009b0176809acf6f1c20ee56107de0cab54cd8463"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_linux_arm.zip"
-    sha256 "fda5f70ae3c721c8b43637514f2bdb863e1f6f1de08c668c3c0a496e8e032793"
+    url "https://releases.hashicorp.com/vault/1.8.2/vault_1.8.2_linux_arm.zip"
+    sha256 "7fa4df01af03906d356b2b5616660528e0337c78c943dd23b8f1d85bd313121d"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.8.1/vault_1.8.1_linux_arm64.zip"
-    sha256 "cd2a4cb4b64bb1f9e1a3e4d3227021713c86af2b6e3af227cb96c3b311b30014"
+    url "https://releases.hashicorp.com/vault/1.8.2/vault_1.8.2_linux_arm64.zip"
+    sha256 "0a03433509f2c594a0355deb67270c77fbc6d70e802cc5223584c3b60029e202"
   end
 
   bottle :unneeded
