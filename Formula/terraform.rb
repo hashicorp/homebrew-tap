@@ -1,31 +1,31 @@
 class Terraform < Formula
   desc "Terraform"
   homepage "https://www.terraform.io/"
-  version "1.0.6"
+  version "1.0.7"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.0.6/terraform_1.0.6_darwin_amd64.zip"
-    sha256 "3a97f2fffb75ac47a320d1595e20947afc8324571a784f1bd50bd91e26d5648c"
+    url "https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_darwin_amd64.zip"
+    sha256 "80ae021d6143c7f7cbf4571f65595d154561a2a25fd934b7a8ccc1ebf3014b9b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/terraform/1.0.6/terraform_1.0.6_darwin_arm64.zip"
-    sha256 "aaff1eccaf4099da22fe3c6b662011f8295dad9c94a35e1557b92844610f91f3"
+    url "https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_darwin_arm64.zip"
+    sha256 "cbab9aca5bc4e604565697355eed185bb699733811374761b92000cc188a7725"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.0.6/terraform_1.0.6_linux_amd64.zip"
-    sha256 "6a454323d252d34e928785a3b7c52bfaff1192f82685dfee4da1279bb700b733"
+    url "https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_amd64.zip"
+    sha256 "bc79e47649e2529049a356f9e60e06b47462bf6743534a10a4c16594f443be7b"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.0.6/terraform_1.0.6_linux_arm.zip"
-    sha256 "10c67773334e2f4ee6c39815327f2cc1df242d97df997666d730fbc2b97558db"
+    url "https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_arm.zip"
+    sha256 "be8d9de8c34e3e843ff8cbc713b41ce0c2bd97b0020c80e934443976b4429ae2"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.0.6/terraform_1.0.6_linux_arm64.zip"
-    sha256 "2047f8afc7d0d7b645a0422181ba3fe47b3547c4fe658f95eebeb872752ec129"
+    url "https://releases.hashicorp.com/terraform/1.0.7/terraform_1.0.7_linux_arm64.zip"
+    sha256 "4e71a9e759578020750be41e945c086e387affb58568db6d259d80d123ac80d3"
   end
 
   bottle :unneeded
