@@ -1,31 +1,31 @@
 class Packer < Formula
   desc "Packer"
   homepage "https://www.packer.io/"
-  version "1.7.5"
+  version "1.7.6"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.7.5/packer_1.7.5_darwin_amd64.zip"
-    sha256 "24bad7889985fcdce3c729131407db122af14733cff480fea9bd3b41161a9a3a"
+    url "https://releases.hashicorp.com/packer/1.7.6/packer_1.7.6_darwin_amd64.zip"
+    sha256 "dd947f2ca83e48614ea0b858455ce4dda61151c84d012af9d33179f2019cc451"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/packer/1.7.5/packer_1.7.5_darwin_arm64.zip"
-    sha256 "1cc753f56741e23a70801a44f7277e177e747f2a811ba18a8fa7ba7f05296f43"
+    url "https://releases.hashicorp.com/packer/1.7.6/packer_1.7.6_darwin_arm64.zip"
+    sha256 "3e9214dfae97183b0f6d24651b3a1b19e37547f6815a3266b3b02bad16f7c9c9"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.7.5/packer_1.7.5_linux_amd64.zip"
-    sha256 "a574d20719e86d9d38854050184b78d158e62619b2a4b33b79d03b94c782dbc5"
+    url "https://releases.hashicorp.com/packer/1.7.6/packer_1.7.6_linux_amd64.zip"
+    sha256 "d2717af4d728cd9034c7a3bb2c6eac384d772bae78d856413b14742a0ca28a1c"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.7.5/packer_1.7.5_linux_arm.zip"
-    sha256 "e91eb2fcbe2bd295d97cc62f6718ed97f15e0e40e6d91e529b0c314eebc0f969"
+    url "https://releases.hashicorp.com/packer/1.7.6/packer_1.7.6_linux_arm.zip"
+    sha256 "1f546ccafd81860d7f53744f696db295981fa6502438705ccc658d008374ba0e"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.7.5/packer_1.7.5_linux_arm64.zip"
-    sha256 "6aab44c24367b5d120b1beaa1fe92f53440f83e9063b15836e5c028bb2e5d6d6"
+    url "https://releases.hashicorp.com/packer/1.7.6/packer_1.7.6_linux_arm64.zip"
+    sha256 "903f428556a75bcbda73505ebbc577e4614455d9afb56b947270aa24f9bb3c4b"
   end
 
   bottle :unneeded
