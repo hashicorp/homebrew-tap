@@ -1,11 +1,11 @@
 class ConsulTerraformSync < Formula
   desc "Consul Terraform Sync"
   homepage "https://github.com/hashicorp/consul-terraform-sync"
-  version "0.3.0"
+  version "0.4.0"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.3.0/consul-terraform-sync_0.3.0_darwin_amd64.zip"
-    sha256 "00d318af26a6ca1cba6e2aa45bff9500dfecfdaba1eeed04fdf689fae536933a"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.4.0/consul-terraform-sync_0.4.0_darwin_amd64.zip"
+    sha256 "97ca9b3d036e5b31c2b7bf478ec5798bcc8ee3c12ad6f0cd54e8a0342a7ffbdd"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,13 +20,13 @@ class ConsulTerraformSync < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.3.0/consul-terraform-sync_0.3.0_linux_amd64.zip"
-    sha256 "fd5ff2708809b1a14e4650bdc729367be92ecff66aa9baa585195e6335de04b8"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.4.0/consul-terraform-sync_0.4.0_linux_amd64.zip"
+    sha256 "5d1a44316840caea5cb9d96dbf7666f6aab5a0f975f2b06c09949b565ecbf659"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.3.0/consul-terraform-sync_0.3.0_linux_arm.zip"
-    sha256 "84f43f2f745df55faab66f7974d7dc31d579dfd7af62b5221f9b62517ac68067"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.4.0/consul-terraform-sync_0.4.0_linux_arm.zip"
+    sha256 "c2f644b1643c647a88ff8aad20f15a4700be2fb88137cbb73c0905864e75c3c2"
   end
 
   bottle :unneeded
