@@ -119,8 +119,6 @@ const formulaTemplate = `class {{ .Name }} < Formula
 
   {{- end }}
 
-  bottle :unneeded
-
   {{- with .Depends }}
   {{ range $index, $element := . }}
   depends_on "{{ . }}"

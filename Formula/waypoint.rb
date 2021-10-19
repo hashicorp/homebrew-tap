@@ -23,8 +23,6 @@ class Waypoint < Formula
     sha256 "729e70ac41356d02ed822edaa75d7d341194aca1dc89b774efa967386f52f7b8"
   end
 
-  bottle :unneeded
-
   conflicts_with "waypoint"
 
   def install

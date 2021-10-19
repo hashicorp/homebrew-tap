@@ -28,8 +28,6 @@ class Terraform < Formula
     sha256 "457ac590301126e7b151ea08c5b9586a882c60039a0605fb1e44b8d23d2624fd"
   end
 
-  bottle :unneeded
-
   conflicts_with "terraform"
 
   def install

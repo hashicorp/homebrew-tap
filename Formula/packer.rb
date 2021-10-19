@@ -28,8 +28,6 @@ class Packer < Formula
     sha256 "c44d4f4c6776154a95a700c4b8caefb07c96652deb4ca6b265d19d767b31faeb"
   end
 
-  bottle :unneeded
-
   conflicts_with "packer"
 
   def install

@@ -44,8 +44,6 @@ func TestPrintFormula(t *testing.T) {
     sha256 "012c552aff502f907416c9a119d2dfed88b92e981f9b160eb4fe292676afdaeb"
   end
 
-  bottle :unneeded
-
   conflicts_with "consul"
 
   def install
