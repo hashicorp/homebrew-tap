@@ -34,8 +34,6 @@ class Boundary < Formula
     sha256 "6979dfad5bd7e12503c75858a82603adb1ff8c5a5a902a101f81a794f7052386"
   end
 
-  bottle :unneeded
-
   conflicts_with "boundary"
 
   def install

@@ -34,8 +34,6 @@ class Nomad < Formula
     sha256 "9e8a8171ab06caceca84bd8bd8f96cc0d7649cd504ea99d93bf13070743f8fd5"
   end
 
-  bottle :unneeded
-
   conflicts_with "nomad"
 
   def install

@@ -29,8 +29,6 @@ class Consul < Formula
     sha256 "a6caf82433c48a8938bd308a8593c7336e8a0a9f841c7f1426ea7903b73cc8a1"
   end
 
-  bottle :unneeded
-
   conflicts_with "consul"
 
   def install

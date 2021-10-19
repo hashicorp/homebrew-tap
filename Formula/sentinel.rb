@@ -34,8 +34,6 @@ class Sentinel < Formula
     sha256 ""
   end
 
-  bottle :unneeded
-
   conflicts_with "sentinel"
 
   def install

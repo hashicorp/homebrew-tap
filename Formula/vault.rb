@@ -28,8 +28,6 @@ class Vault < Formula
     sha256 "3270ac43fe2c2923cbbef274017c62ca521762c50fdc839c0bc0edf872072a07"
   end
 
-  bottle :unneeded
-
   conflicts_with "vault"
 
   def install

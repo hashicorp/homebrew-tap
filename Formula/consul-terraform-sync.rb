@@ -29,8 +29,6 @@ class ConsulTerraformSync < Formula
     sha256 "c2f644b1643c647a88ff8aad20f15a4700be2fb88137cbb73c0905864e75c3c2"
   end
 
-  bottle :unneeded
-
   conflicts_with "consul-terraform-sync"
 
   def install

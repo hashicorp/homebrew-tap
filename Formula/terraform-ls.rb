@@ -6,7 +6,6 @@ class TerraformLs < Formula
   desc "Terraform Language Server"
   homepage "https://github.com/hashicorp/terraform-ls"
   version "0.23.0"
-  bottle :unneeded
 
   on_macos do
     if Hardware::CPU.arm?

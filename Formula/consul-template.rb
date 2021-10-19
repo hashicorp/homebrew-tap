@@ -29,8 +29,6 @@ class ConsulTemplate < Formula
     sha256 "ee6d18c70664dbb0eb3f1061188112aaef7b0cf972e8a409c8209ffd488e8567"
   end
 
-  bottle :unneeded
-
   conflicts_with "consul-template"
 
   def install
