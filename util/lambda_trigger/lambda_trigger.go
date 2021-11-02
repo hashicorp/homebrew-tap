@@ -26,6 +26,11 @@ func isProductSupported(product string) bool {
 	supportedProducts := []string{
 		"vault",
 		"consul",
+		"consul-aws",
+		"consul-ecs",
+		"consul-esm",
+		"consul-k8s-control-plane",
+		"consul-k8s",
 		"consul-template",
 		"consul-terraform-sync",
 		"nomad",
