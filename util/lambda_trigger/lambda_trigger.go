@@ -33,6 +33,7 @@ func isProductSupported(product string) bool {
 		"consul-k8s",
 		"consul-template",
 		"consul-terraform-sync",
+		"envconsul",
 		"nomad",
 		"terraform",
 		"packer",
