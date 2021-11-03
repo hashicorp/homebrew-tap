@@ -60,6 +60,48 @@ EOF
 }
 
 formula {
+    product = "consul-aws"
+    name = "ConsulAWS"
+    desc = "Consul AWS"
+    homepage = "https://github.com/hashicorp/consul-aws"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "consul-esm"
+    name = "ConsulESM"
+    desc = "Consul ESM"
+    homepage = "https://github.com/hashicorp/consul-esm"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "consul-k8s"
+    name = "ConsulK8s"
+    desc = "Consul K8s"
+    homepage = "https://github.com/hashicorp/consul-k8s"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
     product = "consul-template"
     name = "ConsulTemplate"
     desc = "Consul Template"
@@ -84,6 +126,20 @@ formula {
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = false
+    }
+}
+
+formula {
+    product = "envconsul"
+    name = "EnvConsul"
+    desc = "Env Consul"
+    homepage = "https://github.com/hashicorp/envconsul"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
     }
 }
 
