@@ -1,4 +1,4 @@
-class ConsulAWS < Formula
+class ConsulAws < Formula
   desc "Consul AWS"
   homepage "https://github.com/hashicorp/consul-aws"
   version "0.1.2"
