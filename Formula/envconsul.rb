@@ -1,4 +1,4 @@
-class EnvConsul < Formula
+class Envconsul < Formula
   desc "Env Consul"
   homepage "https://github.com/hashicorp/envconsul"
   version "0.12.0"

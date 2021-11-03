@@ -1,4 +1,4 @@
-class ConsulESM < Formula
+class ConsulEsm < Formula
   desc "Consul ESM"
   homepage "https://github.com/hashicorp/consul-esm"
   version "0.6.0"

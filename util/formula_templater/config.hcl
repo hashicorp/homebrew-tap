@@ -61,7 +61,7 @@ EOF
 
 formula {
     product = "consul-aws"
-    name = "ConsulAWS"
+    name = "ConsulAws"
     desc = "Consul AWS"
     homepage = "https://github.com/hashicorp/consul-aws"
     architectures {
@@ -75,7 +75,7 @@ formula {
 
 formula {
     product = "consul-esm"
-    name = "ConsulESM"
+    name = "ConsulEsm"
     desc = "Consul ESM"
     homepage = "https://github.com/hashicorp/consul-esm"
     architectures {
@@ -131,7 +131,7 @@ formula {
 
 formula {
     product = "envconsul"
-    name = "EnvConsul"
+    name = "Envconsul"
     desc = "Env Consul"
     homepage = "https://github.com/hashicorp/envconsul"
     architectures {
