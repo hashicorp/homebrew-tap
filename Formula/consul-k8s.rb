@@ -1,11 +1,11 @@
 class ConsulK8s < Formula
   desc "Consul K8s"
   homepage "https://github.com/hashicorp/consul-k8s"
-  version "0.37.0"
+  version "0.38.0"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/consul-k8s/0.37.0/consul-k8s_0.37.0_darwin_amd64.zip"
-    sha256 "23a6d1d55c9083d67435cc34916b0680e7196c2d5037d43179bcf3d7d72de335"
+    url "https://releases.hashicorp.com/consul-k8s/0.38.0/consul-k8s_0.38.0_darwin_amd64.zip"
+    sha256 "23858be270adc6330281349b9cdbae8b9ebf9a5f62fb324da1329ea8b3526d91"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +20,18 @@ class ConsulK8s < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-k8s/0.37.0/consul-k8s_0.37.0_linux_amd64.zip"
-    sha256 "3e2a6e68aa63c8676bf110d240d3e2cd719c7d6c5f9ad741a1f9b58edc33909b"
+    url "https://releases.hashicorp.com/consul-k8s/0.38.0/consul-k8s_0.38.0_linux_amd64.zip"
+    sha256 "d22e82e09d28d66d65a2945226af4cb5f6e0c9ddfe09f8e4c87297e87fb94bda"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-k8s/0.37.0/consul-k8s_0.37.0_linux_arm.zip"
-    sha256 "3ebd43362150fbc75f31cf71fc392b3b26b6613b0f2ea53ccdec893d0d63a0d1"
+    url "https://releases.hashicorp.com/consul-k8s/0.38.0/consul-k8s_0.38.0_linux_arm.zip"
+    sha256 "efa2725fecc22b4becf4c52a2e896e547f17c3abfadbca1a24a090628aaa9be8"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-k8s/0.37.0/consul-k8s_0.37.0_linux_arm64.zip"
-    sha256 "07943aedf3b11aa3211ef16910257b8799e3bdfd1614dad76992535ae29c163e"
+    url "https://releases.hashicorp.com/consul-k8s/0.38.0/consul-k8s_0.38.0_linux_arm64.zip"
+    sha256 "28b9e2e57c5d3af341d4d31f792bf09b5dc34d939eb3ced75825556cb7f35d3f"
   end
 
   conflicts_with "consul-k8s"
