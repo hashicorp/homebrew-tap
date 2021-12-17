@@ -3,20 +3,14 @@ class Boundary < Formula
   homepage "https://www.boundaryproject.io/"
   version "0.7.3"
 
-  if OS.mac?
+  if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/boundary/0.7.3/boundary_0.7.3_darwin_amd64.zip"
     sha256 "d868ec0d7839f506531c0dc3462dcbf91ffc3f5df99c5a66ea8f5bd17d83fb18"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/boundary/0.7.3/boundary_0.7.3_darwin_arm64.zip"
+    sha256 "99a6394dca4b99ce6fe078242414a57e290c0e607db46889c2f90a0118333c67"
   end
 
   if OS.linux? && Hardware::CPU.intel?
