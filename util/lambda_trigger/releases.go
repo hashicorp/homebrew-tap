@@ -1,18 +1,17 @@
 package main
 
 import (
+	"fmt"
+
 	hb "github.com/gulducat/hashi-bin/types"
 )
 
 // ReleasesURL The url to read the releases index from
-const ReleasesURL = "https://hc-releases-prod.s3.amazonaws.com/index.json"
+const ReleasesURL = "https://hc-releases-prod.s3.amazonaws.com"
 
 func getLatestVersion(productName string) (*hb.Version, error) {
-	index, err := hb.NewIndex(ReleasesURL)
-	if err != nil {
-		return &hb.Version{}, err
-	}
-	product, err := index.GetProduct(productName)
+	url := fmt.Sprintf("%s/%s/%s", ReleasesURL, productName, "index.json")
+	product, err := hb.NewProduct(url)
 	if err != nil {
 		return &hb.Version{}, err
 	}
