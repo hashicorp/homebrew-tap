@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"net/url"
 
 	hb "github.com/gulducat/hashi-bin/types"
 )
@@ -10,7 +11,8 @@ import (
 const ReleasesURL = "https://hc-releases-prod.s3.amazonaws.com"
 
 func getLatestVersion(productName string) (*hb.Version, error) {
-	url := fmt.Sprintf("%s/%s/%s", ReleasesURL, productName, "index.json")
+	safeProduct := url.PathEscape(productName)
+	url := fmt.Sprintf("%s/%s/%s", ReleasesURL, safeProduct, "index.json")
 	product, err := hb.NewProduct(url)
 	if err != nil {
 		return &hb.Version{}, err
