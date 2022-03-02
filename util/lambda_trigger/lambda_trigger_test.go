@@ -8,7 +8,7 @@ import (
 )
 
 const test_product = "nomad"
-const test_version = "1.1.2"
+const test_version = "1.2.6"
 
 func TestGetFormulaVersion(t *testing.T) {
 	gotLatest, err := getFormulaVersion(test_product)
