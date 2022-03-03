@@ -1,31 +1,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.9.3"
+  version "1.9.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.9.3/vault_1.9.3_darwin_amd64.zip"
-    sha256 "32614b830aae76cd42d6142cca86d6bc88d4951d505e2e2b39c2e03396e04e4c"
+    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_darwin_amd64.zip"
+    sha256 "25f98a267ea2f4a7b15880592281f0497b78233d0460c1027654c13dcd4a7df9"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.9.3/vault_1.9.3_darwin_arm64.zip"
-    sha256 "36ee0bb83b29842100960fd6a89b826bea5d09d272f4bdeeddae11fcbbf2643e"
+    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_darwin_arm64.zip"
+    sha256 "a46f6aef71c7d6db6e04fe45524df4c69ae9d24c0d7e9602d76f62fe3515398b"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.9.3/vault_1.9.3_linux_amd64.zip"
-    sha256 "16059f245fb4df2800fe6ba320ea66aba9c2615348e37bcfd42754591a528639"
+    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_linux_amd64.zip"
+    sha256 "9be49dc07a1b73cc78dd5e5cca88588758bb1994fd954ae2c983eb5986887db5"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.9.3/vault_1.9.3_linux_arm.zip"
-    sha256 "babbedfa3f134fbd68a4e1bb48e7302b9e40e8eae393f5f3688e295a7ea37f4f"
+    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_linux_arm.zip"
+    sha256 "ebb2bd7b38719648a02dec93119a44de9a1c92decbb5e61349ed5a48fcd7ed4d"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.9.3/vault_1.9.3_linux_arm64.zip"
-    sha256 "c420f14b8b712197c8c47852ea3d1a5976e9ceaf5bb8e6a0b311624111aa14d4"
+    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_linux_arm64.zip"
+    sha256 "420d338c965e8ed4d31babe7ac69d44ad2ce898c54c4bb9b16cc6280ffef0763"
   end
 
   conflicts_with "vault"
