@@ -1,31 +1,31 @@
 class Packer < Formula
   desc "Packer"
   homepage "https://www.packer.io/"
-  version "1.7.10"
+  version "1.8.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.7.10/packer_1.7.10_darwin_amd64.zip"
-    sha256 "8ad75741499fce537de41938faf948ff03e2e671a015afeca3c37b960a0f5a51"
+    url "https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_darwin_amd64.zip"
+    sha256 "2c0ec4e75f54600e3796feb8f3411f7f576af005fecbd2e3d2c530d1316a4ca6"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/packer/1.7.10/packer_1.7.10_darwin_arm64.zip"
-    sha256 "89145519106c8d3cf209c819d3abf9578ba712ef88385e236d8aa72e56bfedc7"
+    url "https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_darwin_arm64.zip"
+    sha256 "4374e8f1990adf926da3ee573fd2d13a721563080b040f7bbf31de8a3fadc503"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.7.10/packer_1.7.10_linux_amd64.zip"
-    sha256 "1c8c176dd30f3b9ec3b418f8cb37822261ccebdaf0b01d9b8abf60213d1205cb"
+    url "https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_linux_amd64.zip"
+    sha256 "94c5d65386fa8f17e36d3496fbbdf18d3bfab01306aa8000c14656b63070b7c2"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.7.10/packer_1.7.10_linux_arm.zip"
-    sha256 "6da48ac438997cc824f8f6c0be75caceebcc8bcebc7f1c54d1a62699fc388b9b"
+    url "https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_linux_arm.zip"
+    sha256 "a00c11f3e19d6e1727d5d34d17c55a591c32436a67be6880919560bcd0ef00b6"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.7.10/packer_1.7.10_linux_arm64.zip"
-    sha256 "541e769c0582be48b15676e263461e1da85c312c35fa3decbcd08115371a8f80"
+    url "https://releases.hashicorp.com/packer/1.8.0/packer_1.8.0_linux_arm64.zip"
+    sha256 "8b3a8768021b148ada2cbdf1c39f55d92e4280147ceb5f76f840a7adf50edce2"
   end
 
   conflicts_with "packer"
