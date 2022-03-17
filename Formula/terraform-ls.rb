@@ -5,20 +5,20 @@
 class TerraformLs < Formula
   desc "Terraform Language Server"
   homepage "https://github.com/hashicorp/terraform-ls"
-  version "0.25.2"
+  version "0.26.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://releases.hashicorp.com/terraform-ls/0.25.2/terraform-ls_0.25.2_darwin_amd64.zip"
-      sha256 "8629ccc47ee8d4dfe6d23efb93b293948a088a936180d07d3f2ed118f6dd64a5"
+    if Hardware::CPU.arm?
+      url "https://releases.hashicorp.com/terraform-ls/0.26.0/terraform-ls_0.26.0_darwin_arm64.zip"
+      sha256 "03da1bdeb11bd2401dcc44b54b12a0b517eb7d54acbb7d4a1afd608f66034865"
 
       def install
         bin.install "terraform-ls"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://releases.hashicorp.com/terraform-ls/0.25.2/terraform-ls_0.25.2_darwin_arm64.zip"
-      sha256 "55ed4973088c19059c864aab727b585ed54ef6498e77db5b8476a55d3e0d22b4"
+    if Hardware::CPU.intel?
+      url "https://releases.hashicorp.com/terraform-ls/0.26.0/terraform-ls_0.26.0_darwin_amd64.zip"
+      sha256 "a90edac54afe03a008d0a1e2cd21da3eb7d459425030dcc49f20723234a7274c"
 
       def install
         bin.install "terraform-ls"
@@ -28,24 +28,24 @@ class TerraformLs < Formula
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://releases.hashicorp.com/terraform-ls/0.25.2/terraform-ls_0.25.2_linux_amd64.zip"
-      sha256 "a821525fda91f6e6f0af582bb6764e19b76dd3a4cb294ad8b2e5b68291c7d7ec"
+      url "https://releases.hashicorp.com/terraform-ls/0.26.0/terraform-ls_0.26.0_linux_amd64.zip"
+      sha256 "3ec6b9fdcaf9820bbdc99f1ba7a5893afb9a3741d6f6f83677876ea383a936f6"
 
       def install
         bin.install "terraform-ls"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://releases.hashicorp.com/terraform-ls/0.25.2/terraform-ls_0.25.2_linux_arm64.zip"
-      sha256 "68ba75c6add7c0253e4709481051a23432e571f0518907b02776ce9132ab7278"
+      url "https://releases.hashicorp.com/terraform-ls/0.26.0/terraform-ls_0.26.0_linux_arm64.zip"
+      sha256 "10a9c71865c524fd006a1db27cda9773c1e1fa03ad91c6681e8db434d77c2eb8"
 
       def install
         bin.install "terraform-ls"
       end
     end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://releases.hashicorp.com/terraform-ls/0.25.2/terraform-ls_0.25.2_linux_arm.zip"
-      sha256 "fb37cea5ee55337e7b9ce498a7c7499dddea15c5797bba83373e820036f78382"
+      url "https://releases.hashicorp.com/terraform-ls/0.26.0/terraform-ls_0.26.0_linux_arm.zip"
+      sha256 "c922d2d69c8dca3ac3784273d9e24130e6315d4abec886c6467052b26bb9bda9"
 
       def install
         bin.install "terraform-ls"
