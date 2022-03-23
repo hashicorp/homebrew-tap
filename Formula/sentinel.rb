@@ -1,11 +1,11 @@
 class Sentinel < Formula
   desc ""
   homepage "https://docs.hashicorp.com/sentinel"
-  version "0.18.8"
+  version "0.18.9"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/sentinel/0.18.8/sentinel_0.18.8_darwin_amd64.zip"
-    sha256 "6c55b0e051339d1e6f7d1ed0f0a318515bc027abe608e4ce234411607a343676"
+    url "https://releases.hashicorp.com/sentinel/0.18.9/sentinel_0.18.9_darwin_amd64.zip"
+    sha256 "22e896d631283e2dbde09b8b4e19799c4d6ecc8a234e73c96c2aba07f685f95d"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +20,18 @@ class Sentinel < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/sentinel/0.18.8/sentinel_0.18.8_linux_amd64.zip"
-    sha256 "13149fa8503dcb476f60a94bdc5931751d00c1607fa1e1d4e90059462b7960cc"
+    url "https://releases.hashicorp.com/sentinel/0.18.9/sentinel_0.18.9_linux_amd64.zip"
+    sha256 "33e76b1a2e47d52a2fd4d2e2c339f0a397675ab0bda44d1605a616b6cf50cac6"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.18.8/sentinel_0.18.8_linux_arm.zip"
-    sha256 "ef82178b60bc26240a2c666c355f529fc8e99b96a19ad756afeab579603b65ca"
+    url "https://releases.hashicorp.com/sentinel/0.18.9/sentinel_0.18.9_linux_arm.zip"
+    sha256 "46e1c2b531759d2087bce430a983d21a2e1b1ced8da638d8ab2b9b60a869ba01"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.18.8/sentinel_0.18.8_linux_arm64.zip"
-    sha256 "1b235855aca2d92c65eb722081e941ada60eaac5bef19a719ee351fb343d0641"
+    url "https://releases.hashicorp.com/sentinel/0.18.9/sentinel_0.18.9_linux_arm64.zip"
+    sha256 "3fd0bbd6913d7ce1b16320f2b1a28a61125b31bf3a1d94002d21842f76fe6f29"
   end
 
   conflicts_with "sentinel"
