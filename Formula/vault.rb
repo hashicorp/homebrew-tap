@@ -1,31 +1,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.9.4"
+  version "1.10.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_darwin_amd64.zip"
-    sha256 "25f98a267ea2f4a7b15880592281f0497b78233d0460c1027654c13dcd4a7df9"
+    url "https://releases.hashicorp.com/vault/1.10.0/vault_1.10.0_darwin_amd64.zip"
+    sha256 "de25ae02c15fa8d0be2871a21c91b9e99495fe4f1c76b245fde300b7dd6a00ad"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_darwin_arm64.zip"
-    sha256 "a46f6aef71c7d6db6e04fe45524df4c69ae9d24c0d7e9602d76f62fe3515398b"
+    url "https://releases.hashicorp.com/vault/1.10.0/vault_1.10.0_darwin_arm64.zip"
+    sha256 "320e7a6927afc611ec004758072c2b6dc053e216236fde0ee9e2a914b5e84db2"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_linux_amd64.zip"
-    sha256 "9be49dc07a1b73cc78dd5e5cca88588758bb1994fd954ae2c983eb5986887db5"
+    url "https://releases.hashicorp.com/vault/1.10.0/vault_1.10.0_linux_amd64.zip"
+    sha256 "ec06473d79e77c05700f051278c54b0f7b6f2df64f57f630a0690306323f1175"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_linux_arm.zip"
-    sha256 "ebb2bd7b38719648a02dec93119a44de9a1c92decbb5e61349ed5a48fcd7ed4d"
+    url "https://releases.hashicorp.com/vault/1.10.0/vault_1.10.0_linux_arm.zip"
+    sha256 "342d450170f6396a9656c99205c4336b480fc0adb1e68b132d88abe5109fee29"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.9.4/vault_1.9.4_linux_arm64.zip"
-    sha256 "420d338c965e8ed4d31babe7ac69d44ad2ce898c54c4bb9b16cc6280ffef0763"
+    url "https://releases.hashicorp.com/vault/1.10.0/vault_1.10.0_linux_arm64.zip"
+    sha256 "e4f963616ed0c4a4a03d541fb531d692014357f2fb53b3c64e75dfe35b96d7be"
   end
 
   conflicts_with "vault"
