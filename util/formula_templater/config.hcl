@@ -316,3 +316,17 @@ formula {
         linux_arm64 = true
     }
 }
+
+formula {
+    product = "levant"
+    name = "Levant"
+    desc = "Levant"
+    homepage = "https://github.com/hashicorp/levant"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}

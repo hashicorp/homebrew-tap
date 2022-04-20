@@ -44,6 +44,7 @@ brew install hashicorp/tap/boundary
 brew install hashicorp/tap/consul
 brew install hashicorp/tap/consul-template
 brew install hashicorp/tap/consul-terraform-sync
+brew install hashicorp/tap/levant
 brew install hashicorp/tap/nomad
 brew install hashicorp/tap/nomad-pack
 brew install hashicorp/tap/packer
