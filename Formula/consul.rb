@@ -1,11 +1,11 @@
 class Consul < Formula
   desc "Consul"
   homepage "https://www.consul.io"
-  version "1.11.5"
+  version "1.12.0"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/consul/1.11.5/consul_1.11.5_darwin_amd64.zip"
-    sha256 "d9f2b69d2693d5716028ea62aafb8e6cf3185e5160a47dbd8b1b27896745dbe0"
+    url "https://releases.hashicorp.com/consul/1.12.0/consul_1.12.0_darwin_amd64.zip"
+    sha256 "efc169c5f9a07b8a4743686e7159a864c7993746a01caeefc411b9655a59eeec"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,13 +20,13 @@ class Consul < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.11.5/consul_1.11.5_linux_amd64.zip"
-    sha256 "e22c0967f052e7672317b115678010135b5b4eec34e3c9ac0e0875211159289a"
+    url "https://releases.hashicorp.com/consul/1.12.0/consul_1.12.0_linux_amd64.zip"
+    sha256 "109e2077236cae4560b2fa3dce7974ef58d6a7093d72494614d875e5c86e3b2c"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.11.5/consul_1.11.5_linux_arm64.zip"
-    sha256 "93712afc0e2d1e6652b7752f5c91305075d409f7f3a0b002e482b4c7e5664c4a"
+    url "https://releases.hashicorp.com/consul/1.12.0/consul_1.12.0_linux_arm64.zip"
+    sha256 "2d22f648af307b63800d291554d3c312beff01d2b4fc8437aeb004935c6bd0cb"
   end
 
   conflicts_with "consul"
