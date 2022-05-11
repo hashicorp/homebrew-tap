@@ -4,7 +4,7 @@ class Nomad < Formula
   version "1.3.0"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/nomad/1.2.6/nomad_1.2.6_darwin_amd64.zip"
+    url "https://releases.hashicorp.com/nomad/1.3.0/nomad_1.3.0_darwin_amd64.zip"
     sha256 "80b15bef0af6c16b0488342447542bbb0b2a9e036062dbcf7162bf21f9d235e9"
   end
 
