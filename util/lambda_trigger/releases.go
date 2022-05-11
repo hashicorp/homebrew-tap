@@ -8,7 +8,7 @@ import (
 )
 
 // ReleasesURL The url to read the releases index from
-const ReleasesURL = "https://hc-releases-prod.s3.amazonaws.com"
+const ReleasesURL = "https://hc-publish-prod-artifacts.s3.amazonaws.com"
 
 func getLatestVersion(productName string) (*hb.Version, error) {
 	safeProduct := url.PathEscape(productName)
