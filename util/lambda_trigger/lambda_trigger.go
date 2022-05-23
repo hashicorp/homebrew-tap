@@ -32,6 +32,7 @@ func isProductSupported(product string) bool {
 		"consul-template",
 		"consul-terraform-sync",
 		"envconsul",
+		"hcdiag",
 		"levant",
 		"nomad",
 		"nomad-pack",
