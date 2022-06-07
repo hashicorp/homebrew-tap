@@ -37,6 +37,7 @@ func isProductSupported(product string) bool {
 		"nomad",
 		"nomad-pack",
 		"terraform",
+		"terraform-ls",
 		"packer",
 		"boundary",
 		"waypoint",
