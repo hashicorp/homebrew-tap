@@ -1,46 +1,40 @@
 class Hcdiag < Formula
-    desc "Hcdiag"
-    homepage "https://github.com/hashicorp/hcdiag"
-    version "0.2.0"
-  
-    if OS.mac?
-      url "https://releases.hashicorp.com/hcdiag/0.2.0/hcdiag_0.2.0_darwin_amd64.zip"
-      sha256 "965201aec99ee640642e542c785ece105799833bee20606d8d102d68577a4271"
-    end
-  
-    if OS.mac? && Hardware::CPU.arm?
-      def caveats
-        <<~EOS
-          The darwin_arm64 architecture is not supported for this product
-          at this time, however we do plan to support this in the future. The
-          darwin_amd64 binary has been installed and may work in
-          compatibility mode, but it is not fully supported.
-        EOS
-      end
-    end
-  
-    if OS.linux? && Hardware::CPU.intel?
-      url "https://releases.hashicorp.com/hcdiag/0.2.0/hcdiag_0.2.0_linux_amd64.zip"
-      sha256 "6cae815fd1cecb212e5f7749a03b2ce1e4e5b79463f28b93e925312c15e2582f"
-    end
-  
-    if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://releases.hashicorp.com/hcdiag/0.2.0/hcdiag_0.2.0_linux_arm.zip"
-      sha256 "74b33535c5d88ff70c5662682e42edeb1b7432181fed6ccdcb18075e755720e9"
-    end
-  
-    if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://releases.hashicorp.com/hcdiag/0.2.0/hcdiag_0.2.0_linux_arm64.zip"
-      sha256 "a6ad75249569a0a638c71fbf861d61ab0bd5e306e05801a830211c0ea4507fbe"
-    end
-  
-    conflicts_with "hcdiag"
-  
-    def install
-      bin.install "hcdiag"
-    end
-  
-    test do
-      system "#{bin}/hcdiag --version"
-    end
+  desc "Hcdiag"
+  homepage "https://github.com/hashicorp/hcdiag"
+  version "0.3.0"
+
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/hcdiag/0.3.0/hcdiag_0.3.0_darwin_amd64.zip"
+    sha256 "ba3ef95d416703398ba3f3b55fff36b387eaaab7502d3e1f932c5d3cdd55417d"
   end
+
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://releases.hashicorp.com/hcdiag/0.3.0/hcdiag_0.3.0_darwin_arm64.zip"
+    sha256 "db755d8cbde9d3b827cd19d3add656562579f063ef0bb7e63ff02dbb7f48935f"
+  end
+
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/hcdiag/0.3.0/hcdiag_0.3.0_linux_amd64.zip"
+    sha256 "f64d4497ab7abe5907865f3deceebabdb842cd0cac043116e341a764c81841fc"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/hcdiag/0.3.0/hcdiag_0.3.0_linux_arm.zip"
+    sha256 "bd2c4aa21b296c0f88b357ec358dcf4f1f13305bdbe9bb2173471a88262452ff"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/hcdiag/0.3.0/hcdiag_0.3.0_linux_arm64.zip"
+    sha256 "440c80b2d03b56aa66357fc4661a1f369fff8a4d1f3f0fcad1914df378417637"
+  end
+
+  conflicts_with "hcdiag"
+
+  def install
+    bin.install "hcdiag"
+  end
+
+  test do
+    system "#{bin}/hcdiag --version"
+  end
+end
