@@ -37,7 +37,7 @@ outside of search.
 
 ## What packages are available?
 
-With the following commands, you can install the latest version of each product:
+With the following commands, you can install the latest generally available (GA) version of each product:
 ```sh
 # Formulae
 brew install hashicorp/tap/boundary
@@ -58,6 +58,8 @@ brew install hashicorp/tap/waypoint
 # Casks
 brew install hashicorp/tap/hashicorp-boundary-desktop
 ```
+
+Prereleases (including as alpha's, beta's, and release candidates) will not be available in this tap.
 
 *Note:* Vagrant is currently available as a cask from Homebrew core and not provided by this tap.
 You can install it via
