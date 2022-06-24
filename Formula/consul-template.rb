@@ -1,11 +1,11 @@
 class ConsulTemplate < Formula
   desc "Consul Template"
   homepage "https://github.com/hashicorp/consul-template"
-  version "0.29.0"
+  version "0.29.1"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/consul-template/0.29.0/consul-template_0.29.0_darwin_amd64.zip"
-    sha256 "c7110580be052789e8955061de56bf616bdba612ad9ca400fca450912f08fd9d"
+    url "https://releases.hashicorp.com/consul-template/0.29.1/consul-template_0.29.1_darwin_amd64.zip"
+    sha256 "953a05a507c48de2aa7556f7d1c1b94844c09a22f96dc2eb4af2f78512cda688"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,13 +20,13 @@ class ConsulTemplate < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-template/0.29.0/consul-template_0.29.0_linux_amd64.zip"
-    sha256 "9178437bde1f0f220010f17806c01b36ccb3814f065d4ebdfba53ade9832012d"
+    url "https://releases.hashicorp.com/consul-template/0.29.1/consul-template_0.29.1_linux_amd64.zip"
+    sha256 "bd051cba75fc86bb1e27a741c69e3f39ea877e15f04e220f8e7e4f2f83127bc3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-template/0.29.0/consul-template_0.29.0_linux_arm.zip"
-    sha256 "f46755c708950baf57ff76203f302344bdcac97c7ebb13ed01fab1a753fca45e"
+    url "https://releases.hashicorp.com/consul-template/0.29.1/consul-template_0.29.1_linux_arm.zip"
+    sha256 "8e85518a104443fa9179f1c2bcf6fb4f342c09312ec685b745cfc34b3c172c28"
   end
 
   conflicts_with "consul-template"
