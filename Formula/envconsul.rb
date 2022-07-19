@@ -1,11 +1,11 @@
 class Envconsul < Formula
   desc "Env Consul"
   homepage "https://github.com/hashicorp/envconsul"
-  version "0.12.1"
+  version "0.13.0"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/envconsul/0.12.1/envconsul_0.12.1_darwin_amd64.zip"
-    sha256 "3af57321fcc21a637f2e9057b884d8f4f0c6e1e2167be1e8c5eee8d224dc301d"
+    url "https://releases.hashicorp.com/envconsul/0.13.0/envconsul_0.13.0_darwin_amd64.zip"
+    sha256 "766b41be96f0829ed15de3f4e6c5e2b8bc89709794ad174f36524522282acbee"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +20,18 @@ class Envconsul < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/envconsul/0.12.1/envconsul_0.12.1_linux_amd64.zip"
-    sha256 "361628aada03816d25ff13f4a0938953beda57f3a4ccd60e4278343762b95f6a"
+    url "https://releases.hashicorp.com/envconsul/0.13.0/envconsul_0.13.0_linux_amd64.zip"
+    sha256 "1db7fa993d4e6182eab10d17210e36b94848799ed4dd75582bf642260af3db53"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/envconsul/0.12.1/envconsul_0.12.1_linux_arm.zip"
-    sha256 "2731dff7a8b705a8956e3b6eeff944ae78a4792e300b36decfb06a96a24b3a85"
+    url "https://releases.hashicorp.com/envconsul/0.13.0/envconsul_0.13.0_linux_arm.zip"
+    sha256 "4b368b5b137562f8cf8eba74cb04d639bbbfd5a307cad9daabf23aa51dba6d24"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/envconsul/0.12.1/envconsul_0.12.1_linux_arm64.zip"
-    sha256 "9173100810f71af462321aa35881551a90c614c45508718288348f72617ad32e"
+    url "https://releases.hashicorp.com/envconsul/0.13.0/envconsul_0.13.0_linux_arm64.zip"
+    sha256 "6c8e489076ec1180018c1ac2630019657cb2cec298d025065e45d5d94105742d"
   end
 
   conflicts_with "envconsul"
