@@ -1,31 +1,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.11.0"
+  version "1.11.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.11.0/vault_1.11.0_darwin_amd64.zip"
-    sha256 "503c0c0be05fd35116ccd15cae970e17f2193b31b1ef4b3c99156f1ab28d8589"
+    url "https://releases.hashicorp.com/vault/1.11.1/vault_1.11.1_darwin_amd64.zip"
+    sha256 "25d3a4e9c6207feb3682244772fea5964374ecc30488a27d5e63e74dc44fd76a"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.11.0/vault_1.11.0_darwin_arm64.zip"
-    sha256 "c4c8d4d8d4e8a574faa323bfdf9151669d292895509605cfe60a5ed31dfc4f62"
+    url "https://releases.hashicorp.com/vault/1.11.1/vault_1.11.1_darwin_arm64.zip"
+    sha256 "5a23c3bc1dbd3c78cbb42b8b62a6893b052f51b0b22d26e2acd8244fb188aeb3"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.11.0/vault_1.11.0_linux_amd64.zip"
-    sha256 "00ec42bed75680c440a16d16c196ab07a1012255448de36af709ec19f1c5b957"
+    url "https://releases.hashicorp.com/vault/1.11.1/vault_1.11.1_linux_amd64.zip"
+    sha256 "aa2ed532d9a0ecc8635fed63cb3fb6de472b4c01ca622a9a199cd92a046bc73a"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.11.0/vault_1.11.0_linux_arm.zip"
-    sha256 "689c00113783181007bfcdcb795d343216d79ea3c891602c6121e1fe81ea0f28"
+    url "https://releases.hashicorp.com/vault/1.11.1/vault_1.11.1_linux_arm.zip"
+    sha256 "c265f8c18d1525cedc815364a6a645dde061624a4ff6037b68e3ef957659ae18"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.11.0/vault_1.11.0_linux_arm64.zip"
-    sha256 "e483b173bed84df453f6f11dba25ffa24548374190652983a96223cb50fdb46e"
+    url "https://releases.hashicorp.com/vault/1.11.1/vault_1.11.1_linux_arm64.zip"
+    sha256 "0ce2090b6c191cb2126d2c4c480a8da5a96064396ae18e7cc678ff926189c27e"
   end
 
   conflicts_with "vault"
