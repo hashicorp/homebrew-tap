@@ -323,7 +323,7 @@ formula {
     homepage = "https://docs.hashicorp.com/sentinel"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = true

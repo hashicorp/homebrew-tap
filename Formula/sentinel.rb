@@ -3,20 +3,14 @@ class Sentinel < Formula
   homepage "https://docs.hashicorp.com/sentinel"
   version "0.18.11"
 
-  if OS.mac?
+  if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/sentinel/0.18.11/sentinel_0.18.11_darwin_amd64.zip"
     sha256 "267f2d2d2bf62476c6b40f112b7c222966da4ee27098cadb99e4446b48e9b68a"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/sentinel/0.18.11/sentinel_0.18.11_darwin_arm64.zip"
+    sha256 "c6c638426c8ef50b5b8500e082a0e8b116f7311f2ee24d24336f22d64b23c5a0"
   end
 
   if OS.linux? && Hardware::CPU.intel?
