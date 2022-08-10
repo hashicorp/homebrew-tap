@@ -1,31 +1,31 @@
 class Boundary < Formula
   desc "Boundary"
   homepage "https://www.boundaryproject.io/"
-  version "0.9.1"
+  version "0.10.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.9.1/boundary_0.9.1_darwin_amd64.zip"
-    sha256 "a439461bf9af078ca86e7c25161cbb5e12c097c85ae4bd0a2ffadc0f9be95e77"
+    url "https://releases.hashicorp.com/boundary/0.10.0/boundary_0.10.0_darwin_amd64.zip"
+    sha256 "9ac2373b5d178c107a8e6588bfb93507edd0aa619d75b456b647ecfc5fddc89d"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/boundary/0.9.1/boundary_0.9.1_darwin_arm64.zip"
-    sha256 "a1de657f8b4a6aeb10b08a16902813c9fa2bda66b56d4f2b39e21cc10e51e1ca"
+    url "https://releases.hashicorp.com/boundary/0.10.0/boundary_0.10.0_darwin_arm64.zip"
+    sha256 "8ed05bd2ebfa0b79cd257cbde7934c92a0ee10d0c60ca178243a8101193f60b2"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.9.1/boundary_0.9.1_linux_amd64.zip"
-    sha256 "cbe308791f917a02430ac3eb7fa651a3031dd74000e7eea3f932db61b366baa0"
+    url "https://releases.hashicorp.com/boundary/0.10.0/boundary_0.10.0_linux_amd64.zip"
+    sha256 "88dc146eb452b3ef29ca79752a4b08c49ab99da8463bbd89af722ce3c48a3ce3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.9.1/boundary_0.9.1_linux_arm.zip"
-    sha256 "97d0acd30b59bb0f5a320f7d888863ffe7f4afc1ef1c877c30a10818aee4697e"
+    url "https://releases.hashicorp.com/boundary/0.10.0/boundary_0.10.0_linux_arm.zip"
+    sha256 "4607e8406943e6d50fb8cb9b5595e0a8a0c3fc6b276f527871a0fd17d69adb80"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.9.1/boundary_0.9.1_linux_arm64.zip"
-    sha256 "7f8d063fe07addeab3c5155317f955d53513215f16348b546e7651d1aa2f83e5"
+    url "https://releases.hashicorp.com/boundary/0.10.0/boundary_0.10.0_linux_arm64.zip"
+    sha256 "cae3b47db37ab935acb90280037071c40bcfd9b73ea740a1abbe84d4764ad2ea"
   end
 
   conflicts_with "boundary"
