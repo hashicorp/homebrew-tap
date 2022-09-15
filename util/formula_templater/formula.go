@@ -125,6 +125,12 @@ const formulaTemplate = `class {{ .Name }} < Formula
   {{- end }}
   {{- end}}
 
+  {{- with .Recommends }}
+  {{ range $index, $element := . }}
+  depends_on "{{ . }}" => :recommended
+  {{- end }}
+  {{- end}}
+
   conflicts_with "{{ .Product }}"
 
   def install

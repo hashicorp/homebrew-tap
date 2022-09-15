@@ -27,6 +27,7 @@ func isProductSupported(product string) bool {
 		"vault",
 		"consul",
 		"consul-aws",
+		"consul-dataplane",
 		"consul-esm",
 		"consul-k8s",
 		"consul-template",
