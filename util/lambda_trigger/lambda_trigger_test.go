@@ -7,19 +7,35 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const test_product = "nomad"
-const test_version = "1.3.1"
+const test_oss_product = "nomad"
+const test_ent_product = "nomad-enterprise"
+const test_oss_version = "1.3.5"
+const test_ent_version = "1.3.5+ent"
 
-func TestGetFormulaVersion(t *testing.T) {
-	gotLatest, err := getFormulaVersion(test_product)
+func TestOSSGetFormulaVersion(t *testing.T) {
+	gotLatest, err := getFormulaVersion(test_oss_product)
 
 	require.Nil(t, err)
-	assert.Equal(t, test_version, gotLatest)
+	assert.Equal(t, test_oss_version, gotLatest)
 }
 
-func TestGetLatestVersion(t *testing.T) {
-	gotLatest, err := getLatestVersion(test_product)
+func TestOSSGetLatestVersion(t *testing.T) {
+	gotLatest, err := getLatestVersion(test_oss_product)
 
 	require.Nil(t, err)
-	assert.Equal(t, test_version, gotLatest.Version)
+	assert.Equal(t, test_oss_version, gotLatest.Version)
+}
+
+func TestENTGetFormulaVersion(t *testing.T) {
+	gotLatest, err := getFormulaVersion(test_ent_product)
+
+	require.Nil(t, err)
+	assert.Equal(t, test_ent_version, gotLatest)
+}
+
+func TestENTGetLatestVersion(t *testing.T) {
+	gotLatest, err := getLatestVersion(test_ent_product)
+
+	require.Nil(t, err)
+	assert.Equal(t, test_ent_version, gotLatest.Version)
 }

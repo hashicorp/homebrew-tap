@@ -7,7 +7,19 @@ import (
 	"strings"
 )
 
+// For enterprise products, remove the "-enterprise" suffix
+// from the product name so that we can successfully get the SHASUMS
+// e.g. product name will be 'vault' instead of 'vault-enterprise'
+// For non-enterprise products, return the product name as-is
+func returnProduct(product string) string {
+	if strings.HasSuffix(strings.ToLower(product), "-enterprise") {
+		product = strings.TrimSuffix(product, "-enterprise")
+	}
+	return product
+}
+
 func loadShasums(product string, version string) (map[string]string, error) {
+	product = returnProduct(product)
 	shasums := make(map[string]string)
 	shasumURL := fmt.Sprintf("https://releases.hashicorp.com/%s/%s/%s_%s_SHA256SUMS", product, version, product, version)
 	resp, err := http.Get(shasumURL)
@@ -33,6 +45,7 @@ func loadShasums(product string, version string) (map[string]string, error) {
 }
 
 func getShasum(shasums map[string]string, product string, version string, arch string) string {
+	product = returnProduct(product)
 	zip := fmt.Sprintf("%s_%s_%s.zip", product, version, arch)
 	return shasums[zip]
 }
