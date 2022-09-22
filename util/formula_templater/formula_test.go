@@ -43,7 +43,7 @@ func TestPrintOSSFormula(t *testing.T) {
     url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_linux_arm64.zip"
     sha256 "012c552aff502f907416c9a119d2dfed88b92e981f9b160eb4fe292676afdaeb"
   end
-  
+
   conflicts_with "consul"
 
   def install

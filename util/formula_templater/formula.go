@@ -139,7 +139,7 @@ const formulaTemplate = `class {{ .Name }} < Formula
 
   conflicts_with "{{ .Product }}-{{ .Variant }}"
   {{- else }}
-  
+
   conflicts_with "{{ .Product }}"
   {{- end }}
 
