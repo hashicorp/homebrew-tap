@@ -19,9 +19,9 @@ formula {
     homepage = "https://www.consul.io"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = false
+        linux_arm = true
         linux_arm64 = true
     }
     plist =<<EOF
@@ -79,7 +79,7 @@ formula {
     homepage = "https://github.com/hashicorp/consul-esm"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = true
@@ -93,7 +93,7 @@ formula {
     homepage = "https://github.com/hashicorp/consul-k8s"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = true
@@ -107,10 +107,10 @@ formula {
     homepage = "https://github.com/hashicorp/consul-template"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
-        linux_arm64 = false
+        linux_arm64 = true
     }
 }
 
@@ -124,7 +124,7 @@ formula {
         darwin_arm64 = false
         linux_amd64 = true
         linux_arm = true
-        linux_arm64 = false
+        linux_arm64 = true
     }
 }
 
@@ -135,7 +135,7 @@ formula {
     homepage = "https://github.com/hashicorp/envconsul"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = true
@@ -163,7 +163,7 @@ formula {
     homepage = "https://www.nomadproject.io/"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = true
@@ -296,7 +296,7 @@ formula {
         darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
-        linux_arm64 = false
+        linux_arm64 = true
     }
 }
 
@@ -323,7 +323,7 @@ formula {
     homepage = "https://docs.hashicorp.com/sentinel"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
         linux_arm = true
         linux_arm64 = true
