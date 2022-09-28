@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"strings"
 	"text/template"
 )
 
@@ -54,6 +55,15 @@ func printFormula(product string, version string, configLocation string, out io.
 		if productConfig.Architectures.LinuxArm64 {
 			sha := getShasum(shasums, product, version, "linux_arm64")
 			productConfig.Architectures.LinuxArm64SHA = sha
+		}
+
+		// For enterprise products only, set a Variant variable to 'enterprise'
+		// and update the product name to be the base product without the variant
+		// e.g. product name will be 'vault' instead of 'vault-enterprise
+		// This is needed to produce the right Formula.rb files for ENT products
+		if strings.HasSuffix(strings.ToLower(productConfig.Product), "-enterprise") {
+			productConfig.Variant = "enterprise"
+			productConfig.Product = strings.TrimSuffix(productConfig.Product, "-enterprise")
 		}
 
 		t = template.Must(template.New("formula").Parse(formulaTemplate))
@@ -125,7 +135,13 @@ const formulaTemplate = `class {{ .Name }} < Formula
   {{- end }}
   {{- end}}
 
+  {{- if .Variant }}
+
+  conflicts_with "{{ .Product }}-{{ .Variant }}"
+  {{- else }}
+
   conflicts_with "{{ .Product }}"
+  {{- end }}
 
   def install
     bin.install "{{ .Product }}"

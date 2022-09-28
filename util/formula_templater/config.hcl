@@ -59,6 +59,52 @@ EOF
 }
 
 formula {
+    product = "consul-enterprise"
+    name = "ConsulEnterprise"
+    desc = "Consul Enterprise"
+    homepage = "https://www.consul.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    plist =<<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>Label</key>
+    <string>#{plist_name}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>#{opt_bin}/consul</string>
+        <string>agent</string>
+        <string>-dev</string>
+        <string>-bind</string>
+        <string>127.0.0.1</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>#{var}</string>
+    <key>StandardErrorPath</key>
+    <string>#{var}/log/consul.log</string>
+    <key>StandardOutPath</key>
+    <string>#{var}/log/consul.log</string>
+</dict>
+</plist>
+EOF
+    plist_options = "consul agent -dev -bind 127.0.0.1"
+}
+
+formula {
     product = "consul-aws"
     name = "ConsulAws"
     desc = "Consul AWS"
@@ -201,6 +247,50 @@ EOF
 }
 
 formula {
+    product = "nomad-enterprise"
+    name = "NomadEnterprise"
+    desc = "Nomad Enterprise"
+    homepage = "https://www.nomadproject.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    plist =<<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>Label</key>
+    <string>#{plist_name}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>#{opt_bin}/nomad</string>
+        <string>agent</string>
+        <string>-dev</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>#{var}</string>
+    <key>StandardErrorPath</key>
+    <string>#{var}/log/nomad.log</string>
+    <key>StandardOutPath</key>
+    <string>#{var}/log/nomad.log</string>
+</dict>
+</plist>
+EOF
+    plist_options = "nomad agent -dev"
+}
+
+formula {
     product = "packer"
     name = "Packer"
     desc = "Packer"
@@ -246,6 +336,50 @@ formula {
     product = "vault"
     name = "Vault"
     desc = "Vault"
+    homepage = "https://www.vaultproject.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    plist =<<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+    <key>Label</key>
+    <string>#{plist_name}</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>#{opt_bin}/vault</string>
+        <string>server</string>
+        <string>-dev</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>#{var}</string>
+    <key>StandardErrorPath</key>
+    <string>#{var}/log/vault.log</string>
+    <key>StandardOutPath</key>
+    <string>#{var}/log/vault.log</string>
+</dict>
+</plist>
+EOF
+    plist_options = "vault server -dev"
+}
+
+formula {
+    product = "vault-enterprise"
+    name = "VaultEnterprise"
+    desc = "Vault Enterprise"
     homepage = "https://www.vaultproject.io"
     architectures {
         darwin_amd64 = true
