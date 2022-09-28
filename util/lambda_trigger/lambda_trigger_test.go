@@ -23,12 +23,9 @@ func TestOSSGetLatestVersion(t *testing.T) {
 	gotLatest, err := getLatestVersion(test_oss_product)
 
 	require.Nil(t, err)
-	assert.Equal(t, test_oss_version, gotLatest.Version)
+	assert.Equal(t, test_oss_version, *gotLatest)
 }
 
-// These ENT tests will fail until
-// the ENT products are made available at
-// https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/Formula/$ENT_PRODUCT_NAME.rb
 func TestENTGetFormulaVersion(t *testing.T) {
 	gotLatest, err := getFormulaVersion(test_ent_product)
 
@@ -40,5 +37,5 @@ func TestENTGetLatestVersion(t *testing.T) {
 	gotLatest, err := getLatestVersion(test_ent_product)
 
 	require.Nil(t, err)
-	assert.Equal(t, test_ent_version, gotLatest.Version)
+	assert.Equal(t, test_ent_version, *gotLatest)
 }

@@ -141,8 +141,7 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			if err != nil {
 				return err
 			}
-			fmt.Printf("Latest version is %s\n", version)
-			event.Version = version.Version
+			event.Version = *version
 			oldVersion := ""
 			event.Cask = isCask(event.Product)
 
