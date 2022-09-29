@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 )
@@ -17,14 +16,13 @@ type Release struct {
 func releasesAPIRequest(apiBaseURL, productName string, license_class string) (*string, error) {
 	release := ReleaseResponse{}
 	url := fmt.Sprintf("%s/%s/latest", apiBaseURL, productName)
-	// For ENT, get the enterprise versions of the product
-	fmt.Printf("%v", license_class)
+	// For ENT products, set the license_class parameter to filter by ENT-only
 	if license_class == "enterprise" {
 		productName = strings.TrimSuffix(productName, "-enterprise")
 		url = fmt.Sprintf("%s/%s/latest?license_class=enterprise", apiBaseURL, productName)
 	}
 
-	log.Printf("Reading %s", url)
+	fmt.Printf("Reading %s", url)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -47,7 +45,7 @@ func getLatestVersion(productName string) (*string, error) {
 		license_class = "enterprise"
 	}
 	release, err := releasesAPIRequest(baseURL, productName, license_class)
-	// log.Printf("PRODUCT %v", product)
+
 	if err != nil {
 		return nil, err
 	}
