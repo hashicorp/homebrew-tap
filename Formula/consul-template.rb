@@ -1,32 +1,31 @@
 class ConsulTemplate < Formula
   desc "Consul Template"
   homepage "https://github.com/hashicorp/consul-template"
-  version "0.29.2"
+  version "0.29.3"
 
-  if OS.mac?
-    url "https://releases.hashicorp.com/consul-template/0.29.2/consul-template_0.29.2_darwin_amd64.zip"
-    sha256 "cdfea794b7a36232af9fd55ebf50874cbccc85194c66bdf210c411e734642baf"
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/consul-template/0.29.3/consul-template_0.29.3_darwin_amd64.zip"
+    sha256 "253bdc57b9c7fef6ba391e2181c972e1a6abcddb42c675fc2d7baa8e5287c1fe"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/consul-template/0.29.3/consul-template_0.29.3_darwin_arm64.zip"
+    sha256 "5030eda175218f8d8bd9b5ba48fb527d3c019ab570cee83a756440020c530b0b"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-template/0.29.2/consul-template_0.29.2_linux_amd64.zip"
-    sha256 "88d57a227967da2f7c14f702245adcf30d80ec59354ed43c8778eb7296c9d4db"
+    url "https://releases.hashicorp.com/consul-template/0.29.3/consul-template_0.29.3_linux_amd64.zip"
+    sha256 "cb6d2f2630ae3950129dff7ff39b1bd27de6e7a04817ecfb6163e00c45f93e0c"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-template/0.29.2/consul-template_0.29.2_linux_arm.zip"
-    sha256 "0dc439d8fc1e3d3dd833cf26f280104a8c74ace88b78ce95a9829284703e3e97"
+    url "https://releases.hashicorp.com/consul-template/0.29.3/consul-template_0.29.3_linux_arm.zip"
+    sha256 "f4f40c723de8d873161856828f99e1701dc86d6f344a670941173d0d3b768655"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/consul-template/0.29.3/consul-template_0.29.3_linux_arm64.zip"
+    sha256 "dac0730e62338d29d76d799d3d955406ac93812476ca8e08c3cc28fcb724a0ce"
   end
 
   conflicts_with "consul-template"
