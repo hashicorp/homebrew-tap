@@ -14,6 +14,7 @@ type Config struct {
 // FormulaConfig all required formula data
 type FormulaConfig struct {
 	Product       string `hcl:"product"`
+	Variant       string `hcl:"variant,optional"`
 	Name          string `hcl:"name"`
 	Desc          string `hcl:"desc"`
 	Homepage      string `hcl:"homepage"`

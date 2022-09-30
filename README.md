@@ -42,17 +42,20 @@ With the following commands, you can install the latest generally available (GA)
 # Formulae
 brew install hashicorp/tap/boundary
 brew install hashicorp/tap/consul
+brew install hashicorp/tap/consul-enterprise
 brew install hashicorp/tap/consul-template
 brew install hashicorp/tap/consul-terraform-sync
 brew install hashicorp/tap/hcdiag
 brew install hashicorp/tap/levant
 brew install hashicorp/tap/nomad
+brew install hashicorp/tap/nomad-enterprise
 brew install hashicorp/tap/nomad-pack
 brew install hashicorp/tap/packer
 brew install hashicorp/tap/sentinel
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
 brew install hashicorp/tap/vault
+brew install hashicorp/tap/vault-enterprise
 brew install hashicorp/tap/waypoint
 
 # Casks

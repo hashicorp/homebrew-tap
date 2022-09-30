@@ -25,7 +25,9 @@ type ReleaseEvent struct {
 func isProductSupported(product string) bool {
 	supportedProducts := []string{
 		"vault",
+		"vault-enterprise",
 		"consul",
+		"consul-enterprise",
 		"consul-aws",
 		"consul-dataplane",
 		"consul-esm",
@@ -36,6 +38,7 @@ func isProductSupported(product string) bool {
 		"hcdiag",
 		"levant",
 		"nomad",
+		"nomad-enterprise",
 		"nomad-pack",
 		"terraform",
 		"terraform-ls",
