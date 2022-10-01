@@ -21,6 +21,7 @@ type FormulaConfig struct {
 	Version       string
 	Architectures FormulaArchitectures `hcl:"architectures,block"`
 	Depends       []string             `hcl:"depends,optional"`
+	Recommends    []string             `hcl:"recommends,optional"`
 	Plist         string               `hcl:"plist,optional"`
 	PlistOptions  string               `hcl:"plist_options,optional"`
 	Cask          bool                 `hcl:"cask,optional"`

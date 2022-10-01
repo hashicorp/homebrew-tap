@@ -29,6 +29,7 @@ func isProductSupported(product string) bool {
 		"consul",
 		"consul-enterprise",
 		"consul-aws",
+		"consul-dataplane",
 		"consul-esm",
 		"consul-k8s",
 		"consul-template",
