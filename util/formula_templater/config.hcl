@@ -119,6 +119,21 @@ formula {
 }
 
 formula {
+    product = "consul-dataplane"
+    name = "ConsulDataplane"
+    desc = "Consul Dataplane"
+    homepage = "https://github.com/hashicorp/consul-dataplane"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    recommends = ["envoy"]
+}
+
+formula {
     product = "consul-esm"
     name = "ConsulEsm"
     desc = "Consul ESM"
