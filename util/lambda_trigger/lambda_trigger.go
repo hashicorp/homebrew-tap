@@ -139,7 +139,7 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 
 		if isProductSupported(event.Product) {
 			version, err := getLatestVersion(event.Product)
-			if err != nil {
+			if err != nil || version == nil {
 				return err
 			}
 			fmt.Printf("Latest version is %s\n", *version)
