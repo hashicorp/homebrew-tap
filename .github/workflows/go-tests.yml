@@ -1,5 +1,5 @@
 name: Run go tests
-# This workflow will run the lambda and formula tests on every cmomit
+# This workflow will run the lambda and formula tests on every commit
 on:
   - push
 
