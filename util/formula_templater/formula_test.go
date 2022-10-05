@@ -10,38 +10,37 @@ import (
 
 func TestPrintOSSFormula(t *testing.T) {
 	product := "consul"
-	version := "1.9.4"
+	version := "1.13.2"
 	config := "./config.hcl"
 	buf := new(bytes.Buffer)
 	expect := `class Consul < Formula
   desc "Consul"
   homepage "https://www.consul.io"
-  version "1.9.4"
+  version "1.13.2"
 
-  if OS.mac?
-    url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_darwin_amd64.zip"
-    sha256 "c168240d52f67c71b30ef51b3594673cad77d0dbbf38c412b2ee30b39ef30843"
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/consul/1.13.2/consul_1.13.2_darwin_amd64.zip"
+    sha256 "6c3783e7f23b7b686ff41e79851a09053855052f9636c4ba2db52f49467f6a4a"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/consul/1.13.2/consul_1.13.2_darwin_arm64.zip"
+    sha256 "25549bf10cadffe8b2e57204624ec36f234077ce83f7c5e61e1c26d0ada6ae3a"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_linux_amd64.zip"
-    sha256 "da3919197ef33c4205bb7df3cc5992ccaae01d46753a72fe029778d7f52fb610"
+    url "https://releases.hashicorp.com/consul/1.13.2/consul_1.13.2_linux_amd64.zip"
+    sha256 "a72e88cbfec6c0fb3620cd58314ff0b42fc9d605a5192d6a568a417180f0b35f"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/consul/1.13.2/consul_1.13.2_linux_arm.zip"
+    sha256 "e507590c4d044bc50651a6a64c25a1d02fd94bd9aaa7f27f93865b750f32d735"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.9.4/consul_1.9.4_linux_arm64.zip"
-    sha256 "012c552aff502f907416c9a119d2dfed88b92e981f9b160eb4fe292676afdaeb"
+    url "https://releases.hashicorp.com/consul/1.13.2/consul_1.13.2_linux_arm64.zip"
+    sha256 "f3c38df5abe515b29520ff72ef11f05013d8da25109da425b1b9e1df1f3c3cc6"
   end
 
   conflicts_with "consul"
