@@ -1,37 +1,31 @@
 class Nomad < Formula
   desc "Nomad"
   homepage "https://www.nomadproject.io/"
-  version "1.3.5"
+  version "1.4.0"
 
-  if OS.mac?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_darwin_amd64.zip"
-    sha256 "36322d32e0c6dc4c98681d9492422551105da89b648d1b29637accc6ed101105"
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_darwin_amd64.zip"
+    sha256 "8460bd1e7c947d0075ce08b35da15b19ac6fbc1fb718407e680bcd5b795d8f63"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_darwin_arm64.zip"
+    sha256 "a1707130397135898ea7c4fed9bb08a06bc077340f99a6903e13591f2c03cbe9"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_linux_amd64.zip"
-    sha256 "a4bf189e6a84c4bc7d6090529c87b32e6b4b09b47163514d33305aa867d7c4dc"
+    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_linux_amd64.zip"
+    sha256 "7584e25ee2396f6c7ca99cfce97a67756ef2444dabfe96d2b926e2758c38767a"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_linux_arm.zip"
-    sha256 "d0958235c852b6a5751e4362c4d6fe4e11d32c0bd17335d0905e836309fb7d52"
+    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_linux_arm.zip"
+    sha256 "7853bc1dbea348c81e51755d096c48192d75015c0bfc728b94d2e6d67b3bc479"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_linux_arm64.zip"
-    sha256 "bf8e6f9ceaa24ba3e43af3afa09d05ed2b67e95cfdbd8ba7453396c63ffe6d4b"
+    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_linux_arm64.zip"
+    sha256 "b4816e0a95e2a1515a0b80b25eb81d8aa385fe5f6de119fd04dac89ad0c5d373"
   end
 
   conflicts_with "nomad"
