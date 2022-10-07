@@ -1,31 +1,31 @@
 class Nomad < Formula
   desc "Nomad"
   homepage "https://www.nomadproject.io/"
-  version "1.4.0"
+  version "1.4.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_darwin_amd64.zip"
-    sha256 "8460bd1e7c947d0075ce08b35da15b19ac6fbc1fb718407e680bcd5b795d8f63"
+    url "https://releases.hashicorp.com/nomad/1.4.1/nomad_1.4.1_darwin_amd64.zip"
+    sha256 "2e95973442855a18d1ac27667a318786bcc156eef18e6b7a595dd1e14ef6a27d"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_darwin_arm64.zip"
-    sha256 "a1707130397135898ea7c4fed9bb08a06bc077340f99a6903e13591f2c03cbe9"
+    url "https://releases.hashicorp.com/nomad/1.4.1/nomad_1.4.1_darwin_arm64.zip"
+    sha256 "6a5b685628901e69265ca65e0c4230c998ff31069aab5325241dec6d23904396"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_linux_amd64.zip"
-    sha256 "7584e25ee2396f6c7ca99cfce97a67756ef2444dabfe96d2b926e2758c38767a"
+    url "https://releases.hashicorp.com/nomad/1.4.1/nomad_1.4.1_linux_amd64.zip"
+    sha256 "f9327818a97fc2f29b6a9283c3175cd13ba6c774c15ee5683035c23b9a3640fa"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_linux_arm.zip"
-    sha256 "7853bc1dbea348c81e51755d096c48192d75015c0bfc728b94d2e6d67b3bc479"
+    url "https://releases.hashicorp.com/nomad/1.4.1/nomad_1.4.1_linux_arm.zip"
+    sha256 "7661e6b0b00837540b1cefc6b32a8a014c0a18bdf75906b54c38c91c35d52b16"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.4.0/nomad_1.4.0_linux_arm64.zip"
-    sha256 "b4816e0a95e2a1515a0b80b25eb81d8aa385fe5f6de119fd04dac89ad0c5d373"
+    url "https://releases.hashicorp.com/nomad/1.4.1/nomad_1.4.1_linux_arm64.zip"
+    sha256 "b3662b65c622b234a7f85adfd1003e4cfd3ab7a2571d3892320443b58228496b"
   end
 
   conflicts_with "nomad"
