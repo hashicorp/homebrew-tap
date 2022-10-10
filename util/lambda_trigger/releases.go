@@ -27,12 +27,11 @@ func getLatestVersion(productName string) (*string, error) {
 
 	// Form the appropriate Releases API request URL
 	release := ReleaseResponse{}
-	url := fmt.Sprintf("%s/%s/latest", apiBaseURL, productName)
-	// For ENT products, set the license_class parameter to filter by ENT-only
+
 	if license_class == "enterprise" {
 		productName = strings.TrimSuffix(productName, "-enterprise")
-		url = fmt.Sprintf("%s/%s/latest?license_class=enterprise", apiBaseURL, productName)
 	}
+	url := fmt.Sprintf("%s/%s/latest?license_class=%s", apiBaseURL, productName, license_class)
 
 	// Make a GET request to the Releases API to fetch
 	// the latest version of the given product
