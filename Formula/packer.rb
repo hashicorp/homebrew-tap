@@ -1,31 +1,31 @@
 class Packer < Formula
   desc "Packer"
   homepage "https://www.packer.io/"
-  version "1.8.3"
+  version "1.8.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_darwin_amd64.zip"
-    sha256 "b5a06ae784895dcf24c64c8a835bf1e8cfb178d0304f55d91c3176cfabe210d9"
+    url "https://releases.hashicorp.com/packer/1.8.4/packer_1.8.4_darwin_amd64.zip"
+    sha256 "c6665df0e967757e7504ac8956ca2d1fe47e4c63f0b0c500a3ff04d7f8ece389"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_darwin_arm64.zip"
-    sha256 "1715d36c110a64ec7d4467e5f933115fecb4380a90f11b4e80f0399753f86b17"
+    url "https://releases.hashicorp.com/packer/1.8.4/packer_1.8.4_darwin_arm64.zip"
+    sha256 "e74cc720c1ca1fc51dbf50d6848d5dab34f8c68d4bb12ffbfaa08753862a6a61"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_linux_amd64.zip"
-    sha256 "0587f7815ed79589cd9c2b754c82115731c8d0b8fd3b746fe40055d969facba5"
+    url "https://releases.hashicorp.com/packer/1.8.4/packer_1.8.4_linux_amd64.zip"
+    sha256 "ba25b84cc4d3541e9a1dcc0b8e1c7c693f1b39a5d129149194eb6b6050ae56c3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_linux_arm.zip"
-    sha256 "a1dcaa97bb9ce93fe9f057733aab8ccef6bf4f2ef520236b7dcad4d90d4030a1"
+    url "https://releases.hashicorp.com/packer/1.8.4/packer_1.8.4_linux_arm.zip"
+    sha256 "25f742fe68f45927b033bfb0c6db1266c767bcf8fb64d53325ec449d39bcbb1f"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.8.3/packer_1.8.3_linux_arm64.zip"
-    sha256 "edb096a34b88193294cb92deaac7ea4f67dfdeb21b0810d9b08a439f6767c2db"
+    url "https://releases.hashicorp.com/packer/1.8.4/packer_1.8.4_linux_arm64.zip"
+    sha256 "13c1895b7e09123d7d45d646b21dc5c194335204c56d8a29851a76e196f39be0"
   end
 
   conflicts_with "packer"
