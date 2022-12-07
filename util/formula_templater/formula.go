@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+  "fmt"
 	"io"
 	"strings"
 	"text/template"
@@ -30,7 +30,7 @@ func printFormula(product string, version string, configLocation string, out io.
 		dmg := fmt.Sprintf("%s_%s_%s.dmg", product, version, "darwin_amd64")
 		productConfig.Architectures.DarwinAmd64SHA = shasums[dmg]
 
-		t = template.Must(template.New("cask").Parse(caskTemplate))
+    t = template.Must(template.New("cask").Parse(caskTemplate))
 	} else {
 		if productConfig.Architectures.DarwinAmd64 {
 			sha := getShasum(shasums, product, version, "darwin_amd64")
@@ -179,21 +179,33 @@ const caskTemplate = `cask "hashicorp-{{ .Product }}" do
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"
 
+  {{- if eq .Product "vagrant" }}
+
   livecheck do
     url "https://github.com/hashicorp/{{ .Product }}"
     strategy :git
   end
+  {{- end }}
+
+  {{- if .CaskApp }}
 
   app "{{ .CaskApp }}"
+  {{- else }}
+
   pkg "{{ .CaskPkg }}"
+  {{- end }}
+
+  {{- if eq .Product "vagrant" }}
 
   uninstall script: {
-            executable: "uninstall.tool",
-            input: ["Yes"], 
-            sudo:  true,
-      }, 
-      pkgutil: "com.{{ .Product}}.{{ .Product }}
-  
+    executable: "uninstall.tool",
+    input: ["Yes"], 
+    sudo:  true,
+  }, 
+  pkgutil: "com.{{ .Product}}.{{ .Product }}"
+
   zap trash: "~/.{{ .Product }}.d"
+  {{- end}}
+
 end
 `

@@ -13,15 +13,15 @@ cask "hashicorp-vagrant" do
     strategy :git
   end
 
-  app ""
   pkg "vagrant.pkg"
 
   uninstall script: {
-            executable: "uninstall.tool",
-            input: ["Yes"], 
-            sudo:  true,
-      }, 
-      pkgutil: "com.vagrant.vagrant
-  
+    executable: "uninstall.tool",
+    input: ["Yes"], 
+    sudo:  true,
+  }, 
+  pkgutil: "com.vagrant.vagrant"
+
   zap trash: "~/.vagrant.d"
+
 end
