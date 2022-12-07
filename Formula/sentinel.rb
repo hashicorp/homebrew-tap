@@ -1,31 +1,31 @@
 class Sentinel < Formula
   desc ""
   homepage "https://docs.hashicorp.com/sentinel"
-  version "0.18.13"
+  version "0.19.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/sentinel/0.18.13/sentinel_0.18.13_darwin_amd64.zip"
-    sha256 "97583fde45562ab2f6cb31029c86a080a4eefe86d99d8229132536441540df0c"
+    url "https://releases.hashicorp.com/sentinel/0.19.0/sentinel_0.19.0_darwin_amd64.zip"
+    sha256 "cb28d3b2a3a0940088a8fb693399609418a03abb11606cf75f995b50372df8b0"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/sentinel/0.18.13/sentinel_0.18.13_darwin_arm64.zip"
-    sha256 "604278234102613c1d9e2fe57235146d6f29b68cfbd6eb099e07f83f941def7e"
+    url "https://releases.hashicorp.com/sentinel/0.19.0/sentinel_0.19.0_darwin_arm64.zip"
+    sha256 "7a22f0a016522df9e0c84743521a899be05d76bff8f0d522820b5cf1935fe135"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/sentinel/0.18.13/sentinel_0.18.13_linux_amd64.zip"
-    sha256 "0584f91f3f7e016086ed710144f415c4dfa2e37b1d68297f7423aed38ff308cf"
+    url "https://releases.hashicorp.com/sentinel/0.19.0/sentinel_0.19.0_linux_amd64.zip"
+    sha256 "4f152b82427f413b60bb04704c06a5220a36b1ea68056c0989e8fa91d54ee135"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.18.13/sentinel_0.18.13_linux_arm.zip"
-    sha256 "51532ababc1661103f8e0af6e286b13c8830df5ecffb1e76abbcbaa5c15e2ba9"
+    url "https://releases.hashicorp.com/sentinel/0.19.0/sentinel_0.19.0_linux_arm.zip"
+    sha256 "4ef85102e34833df7f563c067c28ccbe98d56f64dcc8b0625b1b05dc4cee4496"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.18.13/sentinel_0.18.13_linux_arm64.zip"
-    sha256 "3eec73604e1785c6dcf44172c6e2f6cb5e4c2dffe13df371008a4b909a971a2d"
+    url "https://releases.hashicorp.com/sentinel/0.19.0/sentinel_0.19.0_linux_arm64.zip"
+    sha256 "59ad61a90a0bb88796b1bea8e4ce68babd9bb39959a445ecf91b63967a4f1bc4"
   end
 
   conflicts_with "sentinel"
