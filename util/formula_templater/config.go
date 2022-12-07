@@ -26,6 +26,7 @@ type FormulaConfig struct {
 	PlistOptions  string               `hcl:"plist_options,optional"`
 	Cask          bool                 `hcl:"cask,optional"`
 	CaskApp       string               `hcl:"cask_app,optional"`
+	CaskPkg       string               `hcl:"cask_pkg,optional"`
 }
 
 // FormulaArchitectures architecture support

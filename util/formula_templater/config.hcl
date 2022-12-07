@@ -506,3 +506,19 @@ formula {
         linux_arm64 = true
     }
 }
+
+formula {
+    product = "vagrant"
+    name = "Vagrant"
+    desc = "Development environment"
+    homepage = "https://www.vagrantup.com/"
+    cask = true
+    cask_pkg = "vagrant.pkg"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = false
+        linux_arm = false
+        linux_arm64 = false
+    }
+}

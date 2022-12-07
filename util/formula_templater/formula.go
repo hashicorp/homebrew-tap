@@ -173,11 +173,27 @@ const caskTemplate = `cask "hashicorp-{{ .Product }}" do
   version "{{ .Version }}"
   sha256 "{{ .Architectures.DarwinAmd64SHA }}"
 
-  url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg"
+  url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg", 
+      verified: "hashicorp.com/{{ .Product }}/"
   name "{{ .Name }}"
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"
 
+  livecheck do
+    url "https://github.com/hashicorp/{{ .Product }}"
+    strategy :git
+  end
+
   app "{{ .CaskApp }}"
+  pkg "{{ .CaskPkg }}"
+
+  uninstall script: {
+            executable: "uninstall.tool",
+            input: ["Yes"], 
+            sudo:  true,
+      }, 
+      pkgutil: "com.{{ .Product}}.{{ .Product }}
+  
+  zap trash: "~/.{{ .Product }}.d"
 end
 `
