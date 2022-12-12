@@ -47,6 +47,7 @@ func isProductSupported(product string) bool {
 		"waypoint",
 		"boundary-desktop",
 		"sentinel",
+		"vagrant",
 	}
 
 	for _, p := range supportedProducts {
@@ -59,7 +60,7 @@ func isProductSupported(product string) bool {
 }
 
 func isCask(product string) bool {
-	casks := []string{"boundary-desktop"}
+	casks := []string{"boundary-desktop", "vagrant"}
 
 	for _, p := range casks {
 		if p == product {
