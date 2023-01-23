@@ -5,12 +5,12 @@ class TerraformLs < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/terraform-ls/0.30.1/terraform-ls_0.30.1_darwin_amd64.zip"
-    sha256 "5ba2c6d888e09c2e41c74a71a388eeb9c7cd19eb8fef7d5330b2f06e442e2a82"
+    sha256 "d392d3b59d1ccc09d4f056d5751bb4f77113b46271a8ff4dbf3c3f6efbb58161"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/terraform-ls/0.30.1/terraform-ls_0.30.1_darwin_arm64.zip"
-    sha256 "ecf35a134895e7fd054c6a665af39eda9db8b0a1aea1f0ef2f6592a85bd9bee8"
+    sha256 "194e2c9383103b90cb30a5687ea92699adc689a0971558af41724f06add7fdfc"
   end
 
   if OS.linux? && Hardware::CPU.intel?

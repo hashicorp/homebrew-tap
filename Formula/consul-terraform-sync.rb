@@ -5,7 +5,7 @@ class ConsulTerraformSync < Formula
 
   if OS.mac?
     url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_darwin_amd64.zip"
-    sha256 "270d61b77e99ac7f3e0cddc301ea3eb0c1cffc391edd0ba0822ddc34d70ccee0"
+    sha256 "e9b316ea6d4fc861c54f81d82ffe347162b18bd2c3c75abb73e735b18378a257"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -27,6 +27,11 @@ class ConsulTerraformSync < Formula
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
     url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_linux_arm.zip"
     sha256 "25b3b0b220d6ef31f5864d7babeac24c6cfd5e49f25ed773b14a207d2b127e11"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_linux_arm64.zip"
+    sha256 "6b5adba79bbfd059879572007feb8aec47f61d23f78309b92107f3c403f96703"
   end
 
   conflicts_with "consul-terraform-sync"

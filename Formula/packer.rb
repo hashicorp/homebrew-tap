@@ -5,12 +5,12 @@ class Packer < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/packer/1.8.5/packer_1.8.5_darwin_amd64.zip"
-    sha256 "156f887e662068a8c97011cc1997b482f2961794241fcadd0131b6cacde082fc"
+    sha256 "eddea6a7ba1695b11341de162fdf37aa18bf0c3f12555a3f17b5920488d17c9d"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/packer/1.8.5/packer_1.8.5_darwin_arm64.zip"
-    sha256 "fc1683eb804fc8d1a60ed41476465eb42dbb4b8521361be5dbf9049b7d268f81"
+    sha256 "5cf5d8a30c8412c3c06fe50414fe162fd968f700abd54d596ae3ef5539eaffb3"
   end
 
   if OS.linux? && Hardware::CPU.intel?

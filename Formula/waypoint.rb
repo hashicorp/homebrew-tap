@@ -5,12 +5,12 @@ class Waypoint < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/waypoint/0.10.5/waypoint_0.10.5_darwin_amd64.zip"
-    sha256 "5d11bfbdbd373358cc30a0112508c7fbc65e70e2498eba6d8e38e6ef7994865a"
+    sha256 "30e2a1565446c3d99f762efb207e1a59c77dda9e08b0316888597ee8711c5db6"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/waypoint/0.10.5/waypoint_0.10.5_darwin_arm64.zip"
-    sha256 "dc84482ccb0faef54d8801652bb8b40cc28f4936807d66c394496a0faa2e17c0"
+    sha256 "80d9f40d25851d3520ab3e0bbcc66e7b2566e7d2154a9122cb1077bd8142988e"
   end
 
   if OS.linux? && Hardware::CPU.intel?

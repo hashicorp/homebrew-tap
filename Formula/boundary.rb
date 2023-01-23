@@ -5,12 +5,12 @@ class Boundary < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/boundary/0.11.2/boundary_0.11.2_darwin_amd64.zip"
-    sha256 "353b95e467a96460fcaa5776f75aea4bcb401fa45cc3e9c9d3f38889b235e5ce"
+    sha256 "764da314a000e63babc8fb4d45927c55178b32ec5e4777455fdf006767f9b00a"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/boundary/0.11.2/boundary_0.11.2_darwin_arm64.zip"
-    sha256 "49aeaaf105b32fe2e0e80938ce95c76d2848562968133102bab64f6ae3310e2a"
+    sha256 "ccdaa1c61ea37c8998b184f087e4031cc006e88ea2b26429facab1289e1f36bf"
   end
 
   if OS.linux? && Hardware::CPU.intel?

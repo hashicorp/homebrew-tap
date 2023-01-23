@@ -5,12 +5,12 @@ class ConsulTemplate < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/consul-template/0.29.6/consul-template_0.29.6_darwin_amd64.zip"
-    sha256 "28168e6dd107df2f75a38356340330becd0eba0d59ce2bfd4b6aa436b15c1ab8"
+    sha256 "ac397f703e6e86c69967a045914817296951fa7568fb042b1191946dde604124"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/consul-template/0.29.6/consul-template_0.29.6_darwin_arm64.zip"
-    sha256 "06d1a6e966f9c0242d3265ea009e5e41063d6ceb8f6c6c9d2d72369ccc3f9b27"
+    sha256 "0fc9b69194fdcbbdba40d0ace62e92ee0dd1d286345e7d9ff9cbf42699ec25fa"
   end
 
   if OS.linux? && Hardware::CPU.intel?
