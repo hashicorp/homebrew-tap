@@ -5,12 +5,12 @@ class Hcdiag < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/hcdiag/0.4.0/hcdiag_0.4.0_darwin_amd64.zip"
-    sha256 "a7294b2228c7ff9ec04bff6a8ecff9acfc8d7e64a78ba1d73614b2e724eab0d5"
+    sha256 "5f5ccc8c2197c67a75bfa64596f2942a72483b36bb4bdc9e23853448e4203666"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/hcdiag/0.4.0/hcdiag_0.4.0_darwin_arm64.zip"
-    sha256 "dc2ae6fce56be41b9c7f351c0cf37c0ed5a6e464bc90c001b7ef3be6a87e50e4"
+    sha256 "8fc38094df5d5ec497d95338c77b0f439d3adfee0f040221eb0a38b6ab1c382a"
   end
 
   if OS.linux? && Hardware::CPU.intel?
