@@ -5,12 +5,12 @@ class NomadEnterprise < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/nomad/1.4.1+ent/nomad_1.4.1+ent_darwin_amd64.zip"
-    sha256 "d379c70ecafad3499ae0b56cef97dca1b6e6f7e2f84d0be81beb71abe6214fec"
+    sha256 "fe3f96b0891def6fbd02073c97981dd131c3d478fa0c25774b7c30b1b002c2fb"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/nomad/1.4.1+ent/nomad_1.4.1+ent_darwin_arm64.zip"
-    sha256 "fbd00590a6f168fe01dc473b1b4952ba52588433700841d4fdf1e63b91f5641a"
+    sha256 "2692fc01d04be086d6b1872e4aba4fe513be96f12cecb36084bd53926b76d48b"
   end
 
   if OS.linux? && Hardware::CPU.intel?

@@ -3,14 +3,14 @@ class NomadPack < Formula
   homepage "https://github.com/hashicorp/nomad-pack"
   version "0.0.1-techpreview.3"
 
-  if OS.mac?
+  if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_darwin_amd64.zip"
-    sha256 "fb321cc728ffe726caa495f3b798252bf22f25c0df09da69f48cafe832547302"
+    sha256 "b4cf52e7c974bbd71be38a4e74219ac1eb7d5ee0065ae0cc7897a885c7eb6e15"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_darwin_arm64.zip"
-    sha256 "a1011d811e4ffd55ce823beab471fe2f0bc0d177046c1cfece5941ba15ce849e"
+    sha256 "e43e317048b82ac59850d478c7b57aa832d66527ad29d37d433c19f5c18ff168"
   end
 
   if OS.linux? && Hardware::CPU.intel?

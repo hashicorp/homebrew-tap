@@ -5,12 +5,12 @@ class ConsulK8s < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/consul-k8s/1.0.2/consul-k8s_1.0.2_darwin_amd64.zip"
-    sha256 "75ca9543d4489305c5942f7c3f9aafe837296f998e90643172030099ca5000fc"
+    sha256 "e6cd808a6e62c046e2a155ea660d3d3f2fa3f5e36bb9bdff3601d34d94d7404b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/consul-k8s/1.0.2/consul-k8s_1.0.2_darwin_arm64.zip"
-    sha256 "461199df8221bf2b1edd8d0389b2a472e70f3bd9ae5ef8570ec89c89748a7c04"
+    sha256 "bc1e717ebd0f9bfed034478366820327c55e25cb78b714bffeb9d62f570d07cc"
   end
 
   if OS.linux? && Hardware::CPU.intel?
