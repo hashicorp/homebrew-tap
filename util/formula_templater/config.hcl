@@ -204,6 +204,20 @@ formula {
 }
 
 formula {
+    product = "hc-install"
+    name = "HcInstall"
+    desc = "hc-install CLI"
+    homepage = "https://github.com/hashicorp/hc-install"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
     product = "hcdiag"
     name = "Hcdiag"
     desc = "Hcdiag"
