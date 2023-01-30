@@ -1,31 +1,31 @@
 class ConsulK8s < Formula
   desc "Consul K8s"
   homepage "https://github.com/hashicorp/consul-k8s"
-  version "1.0.2"
+  version "1.0.3"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-k8s/1.0.2/consul-k8s_1.0.2_darwin_amd64.zip"
-    sha256 "e6cd808a6e62c046e2a155ea660d3d3f2fa3f5e36bb9bdff3601d34d94d7404b"
+    url "https://releases.hashicorp.com/consul-k8s/1.0.3/consul-k8s_1.0.3_darwin_amd64.zip"
+    sha256 "bd2d74a5eef4eef563b27e9d3083f428361d9840176d6c4eafec0718a5c78133"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul-k8s/1.0.2/consul-k8s_1.0.2_darwin_arm64.zip"
-    sha256 "bc1e717ebd0f9bfed034478366820327c55e25cb78b714bffeb9d62f570d07cc"
+    url "https://releases.hashicorp.com/consul-k8s/1.0.3/consul-k8s_1.0.3_darwin_arm64.zip"
+    sha256 "868bd95f9ed269a9a6358c465503dd49bc053bd51d1ae0223fd5268839a961a3"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-k8s/1.0.2/consul-k8s_1.0.2_linux_amd64.zip"
-    sha256 "d520c2b47c8498ef2f27a46806ec376f08dd5d24b0267e1f4357c1cf89573974"
+    url "https://releases.hashicorp.com/consul-k8s/1.0.3/consul-k8s_1.0.3_linux_amd64.zip"
+    sha256 "0168efd79238be8056f9e30b2e1d49d7fcf0dcad878902702e0c6fc119e3a904"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-k8s/1.0.2/consul-k8s_1.0.2_linux_arm.zip"
-    sha256 "47fa782021985ceb6f0e4760804bad93a03e077c86fdfe7b1096b1f11644280c"
+    url "https://releases.hashicorp.com/consul-k8s/1.0.3/consul-k8s_1.0.3_linux_arm.zip"
+    sha256 "34209929b7bcab35e6ea617d2c718864397c4ddc5dde30a9184271a30ed09ddf"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-k8s/1.0.2/consul-k8s_1.0.2_linux_arm64.zip"
-    sha256 "b4fc080c859bda250c90f92db3e1e3d8797ff3630e479bad1753361098685286"
+    url "https://releases.hashicorp.com/consul-k8s/1.0.3/consul-k8s_1.0.3_linux_arm64.zip"
+    sha256 "540ace728775c0c09fe23236608c7d9432b384559496db6a354bb9908ce2a179"
   end
 
   conflicts_with "consul-k8s"
