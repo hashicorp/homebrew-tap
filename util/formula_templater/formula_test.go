@@ -20,12 +20,12 @@ func TestPrintOSSFormula(t *testing.T) {
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/consul/1.13.2/consul_1.13.2_darwin_amd64.zip"
-    sha256 "6c3783e7f23b7b686ff41e79851a09053855052f9636c4ba2db52f49467f6a4a"
+    sha256 "c2214b99fab0752fcc988fdae2add0437287332ef6b1f647ecee13d880af29eb"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/consul/1.13.2/consul_1.13.2_darwin_arm64.zip"
-    sha256 "25549bf10cadffe8b2e57204624ec36f234077ce83f7c5e61e1c26d0ada6ae3a"
+    sha256 "054af8ce69b643ea5748a9604aed0e6b87f6176f901184430ee225f022743e32"
   end
 
   if OS.linux? && Hardware::CPU.intel?
@@ -80,12 +80,12 @@ func TestPrintENTFormula(t *testing.T) {
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/consul/1.13.2+ent/consul_1.13.2+ent_darwin_amd64.zip"
-    sha256 "23e6194bea0c7024d507c5339db4c41e53d6200eae3618d96dc2dd3858ad8357"
+    sha256 "ab58cc9dd3ff5fe82e468423e7a27bfa8d2b494980394d8685505d85e1a2b3e8"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/consul/1.13.2+ent/consul_1.13.2+ent_darwin_arm64.zip"
-    sha256 "08d007e82b3ce669bffef522f15c93b598d6e1d416b1b61504d66ec3ef14fa31"
+    sha256 "01be28011910dc4f2efb3b347c40bfbc59d6b7d25641f3f0d2dfc767c76ab6b2"
   end
 
   if OS.linux? && Hardware::CPU.intel?
