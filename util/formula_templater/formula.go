@@ -152,16 +152,16 @@ const formulaTemplate = `class {{ .Name }} < Formula
   def install
     bin.install "{{ .Product }}"
   end
+  {{- if .ServiceArgs }}
 
-  {{- if .Plist }}
-
-  plist_options manual: "{{ .PlistOptions }}"
-
-  def plist; <<~EOS
-{{ .Plist }}
-EOS
+  service do
+    run [bin/"{{ .Product }}"{{ range .ServiceArgs }}, "{{ . }}"{{ end }}]
+    keep_alive true
+    working_dir var
+    log_path var/"log/{{ .Product }}.log"
+    error_log_path var/"log/{{ .Product }}.log"
   end
-  {{- end}}
+  {{- end }}
 
   test do
     system "#{bin}/{{ .Product }} --version"
