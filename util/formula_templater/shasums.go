@@ -18,7 +18,7 @@ func returnProduct(product string) string {
 	return product
 }
 
-func loadShasums(product string, version string) (map[string]string, error) {
+func loadShasums(product, version string) (map[string]string, error) {
 	product = returnProduct(product)
 	shasums := make(map[string]string)
 	shasumURL := fmt.Sprintf("https://releases.hashicorp.com/%s/%s/%s_%s_SHA256SUMS", product, version, product, version)
@@ -27,7 +27,11 @@ func loadShasums(product string, version string) (map[string]string, error) {
 		return shasums, err
 	}
 	defer resp.Body.Close()
+
 	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
 
 	lines := strings.Split(string(body), "\n")
 	for _, l := range lines {
@@ -44,7 +48,7 @@ func loadShasums(product string, version string) (map[string]string, error) {
 	return shasums, nil
 }
 
-func getShasum(shasums map[string]string, product string, version string, arch string) string {
+func getShasum(shasums map[string]string, product, version, arch string) string {
 	product = returnProduct(product)
 	zip := fmt.Sprintf("%s_%s_%s.zip", product, version, arch)
 	return shasums[zip]

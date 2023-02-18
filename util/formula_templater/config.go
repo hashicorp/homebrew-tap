@@ -56,5 +56,6 @@ func (c Config) getFormula(product string) (FormulaConfig, error) {
 			return formula, nil
 		}
 	}
+
 	return FormulaConfig{}, errors.New("Formula not found")
 }
