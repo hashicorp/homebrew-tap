@@ -34,7 +34,7 @@ class Vault < Formula
     bin.install "vault"
   end
 
-  plist_options manual: "vault server -dev"
+  service.require_root manual: "vault server -dev"
 
   def plist; <<~EOS
 <?xml version="1.0" encoding="UTF-8"?>
