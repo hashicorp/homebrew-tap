@@ -36,7 +36,7 @@ class Vault < Formula
 
   service do
     run [bin/"vault", "server", "-dev"]
-    keep_alive true
+    keep_alive successful_exit: false
     working_dir var
     log_path var/"log/vault.log"
     error_log_path var/"log/vault.log"

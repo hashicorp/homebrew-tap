@@ -36,7 +36,7 @@ class Nomad < Formula
 
   service do
     run [bin/"nomad", "agent", "-dev"]
-    keep_alive true
+    keep_alive successful_exit: false
     working_dir var
     log_path var/"log/nomad.log"
     error_log_path var/"log/nomad.log"

@@ -156,7 +156,7 @@ const formulaTemplate = `class {{ .Name }} < Formula
 
   service do
     run [bin/"{{ .Product }}"{{ range .ServiceArgs }}, "{{ . }}"{{ end }}]
-    keep_alive true
+    keep_alive successful_exit: false
     working_dir var
     log_path var/"log/{{ .Product }}.log"
     error_log_path var/"log/{{ .Product }}.log"

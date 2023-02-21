@@ -51,7 +51,7 @@ func TestPrintOSSFormula(t *testing.T) {
 
   service do
     run [bin/"consul", "agent", "-dev", "-bind", "127.0.0.1"]
-    keep_alive true
+    keep_alive successful_exit: false
     working_dir var
     log_path var/"log/consul.log"
     error_log_path var/"log/consul.log"
@@ -111,7 +111,7 @@ func TestPrintENTFormula(t *testing.T) {
 
   service do
     run [bin/"consul", "agent", "-dev", "-bind", "127.0.0.1"]
-    keep_alive true
+    keep_alive successful_exit: false
     working_dir var
     log_path var/"log/consul.log"
     error_log_path var/"log/consul.log"
