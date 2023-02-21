@@ -1,30 +1,30 @@
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "1.12.3+ent.hsm"
+  version "1.12.3+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.12.3+ent.hsm/vault_1.12.3+ent.hsm_darwin_amd64.zip"
+    url "https://releases.hashicorp.com/vault/1.12.3+ent/vault_1.12.3+ent_darwin_amd64.zip"
     sha256 ""
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.12.3+ent.hsm/vault_1.12.3+ent.hsm_darwin_arm64.zip"
+    url "https://releases.hashicorp.com/vault/1.12.3+ent/vault_1.12.3+ent_darwin_arm64.zip"
     sha256 ""
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.12.3+ent.hsm/vault_1.12.3+ent.hsm_linux_amd64.zip"
+    url "https://releases.hashicorp.com/vault/1.12.3+ent/vault_1.12.3+ent_linux_amd64.zip"
     sha256 "02bea9c1aa4e68afb6375e6987526bf0de9a093f8e54da1a56740d25b1e6e162"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.12.3+ent.hsm/vault_1.12.3+ent.hsm_linux_arm.zip"
+    url "https://releases.hashicorp.com/vault/1.12.3+ent/vault_1.12.3+ent_linux_arm.zip"
     sha256 ""
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.12.3+ent.hsm/vault_1.12.3+ent.hsm_linux_arm64.zip"
+    url "https://releases.hashicorp.com/vault/1.12.3+ent/vault_1.12.3+ent_linux_arm64.zip"
     sha256 ""
   end
 
