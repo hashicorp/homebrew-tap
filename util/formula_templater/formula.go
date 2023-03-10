@@ -1,13 +1,13 @@
 package main
 
 import (
-  "fmt"
+	"fmt"
 	"io"
 	"strings"
 	"text/template"
 )
 
-func printFormula(product string, version string, configLocation string, out io.Writer) error {
+func printFormula(product, version, configLocation string, out io.Writer) error {
 	shasums, err := loadShasums(product, version)
 	if err != nil {
 		return err
@@ -26,11 +26,11 @@ func printFormula(product string, version string, configLocation string, out io.
 	productConfig.Version = version
 
 	var t *template.Template
-	if productConfig.Cask == true {
+	if productConfig.Cask {
 		dmg := fmt.Sprintf("%s_%s_%s.dmg", product, version, "darwin_amd64")
 		productConfig.Architectures.DarwinAmd64SHA = shasums[dmg]
 
-    t = template.Must(template.New("cask").Parse(caskTemplate))
+		t = template.Must(template.New("cask").Parse(caskTemplate))
 	} else {
 		if productConfig.Architectures.DarwinAmd64 {
 			sha := getShasum(shasums, product, version, "darwin_amd64")
@@ -152,16 +152,16 @@ const formulaTemplate = `class {{ .Name }} < Formula
   def install
     bin.install "{{ .Product }}"
   end
+  {{- if .ServiceArgs }}
 
-  {{- if .Plist }}
-
-  plist_options manual: "{{ .PlistOptions }}"
-
-  def plist; <<~EOS
-{{ .Plist }}
-EOS
+  service do
+    run [bin/"{{ .Product }}"{{ range .ServiceArgs }}, "{{ . }}"{{ end }}]
+    keep_alive successful_exit: false
+    working_dir var
+    log_path var/"log/{{ .Product }}.log"
+    error_log_path var/"log/{{ .Product }}.log"
   end
-  {{- end}}
+  {{- end }}
 
   test do
     system "#{bin}/{{ .Product }} --version"
@@ -173,7 +173,7 @@ const caskTemplate = `cask "hashicorp-{{ .Product }}" do
   version "{{ .Version }}"
   sha256 "{{ .Architectures.DarwinAmd64SHA }}"
 
-  url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg", 
+  url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg",
       verified: "hashicorp.com/{{ .Product }}/"
   name "{{ .Name }}"
   desc "{{ .Desc }}"
@@ -199,9 +199,9 @@ const caskTemplate = `cask "hashicorp-{{ .Product }}" do
 
   uninstall script: {
     executable: "uninstall.tool",
-    input: ["Yes"], 
+    input: ["Yes"],
     sudo:  true,
-  }, 
+  },
   pkgutil: "com.{{ .Product}}.{{ .Product }}"
 
   zap trash: "~/.{{ .Product }}.d"

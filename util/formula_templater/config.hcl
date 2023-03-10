@@ -24,38 +24,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
-    plist =<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
-    <key>Label</key>
-    <string>#{plist_name}</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>#{opt_bin}/consul</string>
-        <string>agent</string>
-        <string>-dev</string>
-        <string>-bind</string>
-        <string>127.0.0.1</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WorkingDirectory</key>
-    <string>#{var}</string>
-    <key>StandardErrorPath</key>
-    <string>#{var}/log/consul.log</string>
-    <key>StandardOutPath</key>
-    <string>#{var}/log/consul.log</string>
-</dict>
-</plist>
-EOF
-    plist_options = "consul agent -dev -bind 127.0.0.1"
+    service_args = ["agent", "-dev", "-bind", "127.0.0.1"]
 }
 
 formula {
@@ -70,38 +39,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
-    plist =<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
-    <key>Label</key>
-    <string>#{plist_name}</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>#{opt_bin}/consul</string>
-        <string>agent</string>
-        <string>-dev</string>
-        <string>-bind</string>
-        <string>127.0.0.1</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WorkingDirectory</key>
-    <string>#{var}</string>
-    <key>StandardErrorPath</key>
-    <string>#{var}/log/consul.log</string>
-    <key>StandardOutPath</key>
-    <string>#{var}/log/consul.log</string>
-</dict>
-</plist>
-EOF
-    plist_options = "consul agent -dev -bind 127.0.0.1"
+    service_args = ["agent", "-dev", "-bind", "127.0.0.1"]
 }
 
 formula {
@@ -243,36 +181,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
-    plist =<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
-    <key>Label</key>
-    <string>#{plist_name}</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>#{opt_bin}/nomad</string>
-        <string>agent</string>
-        <string>-dev</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WorkingDirectory</key>
-    <string>#{var}</string>
-    <key>StandardErrorPath</key>
-    <string>#{var}/log/nomad.log</string>
-    <key>StandardOutPath</key>
-    <string>#{var}/log/nomad.log</string>
-</dict>
-</plist>
-EOF
-    plist_options = "nomad agent -dev"
+    service_args = ["agent", "-dev"]
 }
 
 formula {
@@ -287,36 +196,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
-    plist =<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
-    <key>Label</key>
-    <string>#{plist_name}</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>#{opt_bin}/nomad</string>
-        <string>agent</string>
-        <string>-dev</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WorkingDirectory</key>
-    <string>#{var}</string>
-    <key>StandardErrorPath</key>
-    <string>#{var}/log/nomad.log</string>
-    <key>StandardOutPath</key>
-    <string>#{var}/log/nomad.log</string>
-</dict>
-</plist>
-EOF
-    plist_options = "nomad agent -dev"
+    service_args = ["agent", "-dev"]
 }
 
 formula {
@@ -373,36 +253,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
-    plist =<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
-    <key>Label</key>
-    <string>#{plist_name}</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>#{opt_bin}/vault</string>
-        <string>server</string>
-        <string>-dev</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WorkingDirectory</key>
-    <string>#{var}</string>
-    <key>StandardErrorPath</key>
-    <string>#{var}/log/vault.log</string>
-    <key>StandardOutPath</key>
-    <string>#{var}/log/vault.log</string>
-</dict>
-</plist>
-EOF
-    plist_options = "vault server -dev"
+    service_args = ["server", "-dev"]
 }
 
 formula {
@@ -417,36 +268,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
-    plist =<<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>KeepAlive</key>
-    <dict>
-        <key>SuccessfulExit</key>
-        <false/>
-    </dict>
-    <key>Label</key>
-    <string>#{plist_name}</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>#{opt_bin}/vault</string>
-        <string>server</string>
-        <string>-dev</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-    <key>WorkingDirectory</key>
-    <string>#{var}</string>
-    <key>StandardErrorPath</key>
-    <string>#{var}/log/vault.log</string>
-    <key>StandardOutPath</key>
-    <string>#{var}/log/vault.log</string>
-</dict>
-</plist>
-EOF
-    plist_options = "vault server -dev"
+    service_args = ["server", "-dev"]
 }
 
 formula {

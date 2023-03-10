@@ -22,8 +22,7 @@ type FormulaConfig struct {
 	Architectures FormulaArchitectures `hcl:"architectures,block"`
 	Depends       []string             `hcl:"depends,optional"`
 	Recommends    []string             `hcl:"recommends,optional"`
-	Plist         string               `hcl:"plist,optional"`
-	PlistOptions  string               `hcl:"plist_options,optional"`
+	ServiceArgs   []string             `hcl:"service_args,optional"`
 	Cask          bool                 `hcl:"cask,optional"`
 	CaskApp       string               `hcl:"cask_app,optional"`
 	CaskPkg       string               `hcl:"cask_pkg,optional"`
@@ -57,5 +56,6 @@ func (c Config) getFormula(product string) (FormulaConfig, error) {
 			return formula, nil
 		}
 	}
+
 	return FormulaConfig{}, errors.New("Formula not found")
 }
