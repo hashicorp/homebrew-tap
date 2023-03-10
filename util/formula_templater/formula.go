@@ -72,7 +72,10 @@ func printFormula(product, version, configLocation string, out io.Writer) error 
 	return t.Execute(out, productConfig)
 }
 
-const formulaTemplate = `class {{ .Name }} < Formula
+const formulaTemplate = `# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
+class {{ .Name }} < Formula
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"
   version "{{ .Version }}"
@@ -169,7 +172,9 @@ const formulaTemplate = `class {{ .Name }} < Formula
 end
 `
 
-const caskTemplate = `cask "hashicorp-{{ .Product }}" do
+const caskTemplate = `# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+cask "hashicorp-{{ .Product }}" do
   version "{{ .Version }}"
   sha256 "{{ .Architectures.DarwinAmd64SHA }}"
 

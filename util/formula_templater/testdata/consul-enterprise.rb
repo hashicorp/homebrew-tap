@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class ConsulEnterprise < Formula
   desc "Consul Enterprise"
   homepage "https://www.consul.io"
