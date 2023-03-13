@@ -17,7 +17,7 @@ jobs:
         name: Setup Go
         uses: actions/setup-go@v2
         with:
-          go-version: '1.16'
+          go-version-file: "util/formula_templater/go.mod"
       -
         name: Build formula_templater CLI
         run: |
