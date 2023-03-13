@@ -1,4 +1,5 @@
 name: Update Product Formula in Tap
+run-name: Update ${{ github.event.client_payload.name }} to ${{ github.event.client_payload.version }}
 # This workflow will automatically update our product formulae on the release of
 # new versions
 on:
