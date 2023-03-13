@@ -1,31 +1,34 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class Nomad < Formula
   desc "Nomad"
   homepage "https://www.nomadproject.io/"
-  version "1.5.0"
+  version "1.5.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.0/nomad_1.5.0_darwin_amd64.zip"
-    sha256 "b74c7aa28e7075d1f27f42dcdda2842b375db940dd7c2ef577eaeb8347af347d"
+    url "https://releases.hashicorp.com/nomad/1.5.1/nomad_1.5.1_darwin_amd64.zip"
+    sha256 "9455f3d6403b72c479929f3250bff747430e7d7c5f8da7d7ae1b4349317998e9"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad/1.5.0/nomad_1.5.0_darwin_arm64.zip"
-    sha256 "6aaaa12651c969e03b9a9cf15827784f5e0781153415fb1c21e2a2d075d06b0f"
+    url "https://releases.hashicorp.com/nomad/1.5.1/nomad_1.5.1_darwin_arm64.zip"
+    sha256 "ff64a916183a721bd1d6dbedb4f42e1c9746a0055265563bcb64acc39018079f"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.0/nomad_1.5.0_linux_amd64.zip"
-    sha256 "3f629ca10452f755580d238f95c0844d7ee9d9c3715f54fb4403fc85b219b720"
+    url "https://releases.hashicorp.com/nomad/1.5.1/nomad_1.5.1_linux_amd64.zip"
+    sha256 "da4b976dfcab27d16fc03e95719685d4ce603b13a3e5ba692df7c434024dc294"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.0/nomad_1.5.0_linux_arm.zip"
-    sha256 "b4307c511ead6db4bf7e81b15b089e8881f09087248cb8f61b2a39feed2d599d"
+    url "https://releases.hashicorp.com/nomad/1.5.1/nomad_1.5.1_linux_arm.zip"
+    sha256 "316f1c5d99ac8b0d4fd71c9d172ba0d4356bbbda5b428d0e6b7deb506161a7be"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.0/nomad_1.5.0_linux_arm64.zip"
-    sha256 "b0918cd1d0c799170df924d98d2465f9d85d7942d68fc11e4e95675d8ec328a1"
+    url "https://releases.hashicorp.com/nomad/1.5.1/nomad_1.5.1_linux_arm64.zip"
+    sha256 "39232209be428e981ed89788608d75a77f3a1dd6838c5fe5fc7380879fb5cdde"
   end
 
   conflicts_with "nomad"

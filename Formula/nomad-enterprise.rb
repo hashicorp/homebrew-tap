@@ -1,31 +1,34 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class NomadEnterprise < Formula
   desc "Nomad Enterprise"
   homepage "https://www.nomadproject.io/"
-  version "1.5.0+ent"
+  version "1.5.1+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.0+ent/nomad_1.5.0+ent_darwin_amd64.zip"
-    sha256 "5650f09c5e228e0e4de9204995f15836b738a03887b72fbf0dbcaeab103ff394"
+    url "https://releases.hashicorp.com/nomad/1.5.1+ent/nomad_1.5.1+ent_darwin_amd64.zip"
+    sha256 "c378c40f672cdeed7e30886a909eebebfe10b108e0baeda5461e08f4c47c85b0"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad/1.5.0+ent/nomad_1.5.0+ent_darwin_arm64.zip"
-    sha256 "d35195387024317a50e618834686d39df705926c035ed5ab32868ac61bafbe72"
+    url "https://releases.hashicorp.com/nomad/1.5.1+ent/nomad_1.5.1+ent_darwin_arm64.zip"
+    sha256 "16fd9b9325c5253b0851f8a115075f1131add3fe24c8958786fff51867544448"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.0+ent/nomad_1.5.0+ent_linux_amd64.zip"
-    sha256 "b77789ca7a86d32cf3b766fe80e56b3ecfe75bb12af6f4beacef93d0a3dc1d30"
+    url "https://releases.hashicorp.com/nomad/1.5.1+ent/nomad_1.5.1+ent_linux_amd64.zip"
+    sha256 "ea7cbc56c8aaaba31425054e716ab2274e29c7edbf44ea451d45a3d8e3681574"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.0+ent/nomad_1.5.0+ent_linux_arm.zip"
-    sha256 "4b0fc8cd9be4c0387f5889a9618a0060792987c471f01a366fff45819749e9e0"
+    url "https://releases.hashicorp.com/nomad/1.5.1+ent/nomad_1.5.1+ent_linux_arm.zip"
+    sha256 "f8d69525fe132dc0f8b42442a7906b007b4826ad39f002e21ae1e4bf859656a8"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.0+ent/nomad_1.5.0+ent_linux_arm64.zip"
-    sha256 "b25b943832cb85c697500565f0eeb15c404979fc00a5e37c43d31b481235e526"
+    url "https://releases.hashicorp.com/nomad/1.5.1+ent/nomad_1.5.1+ent_linux_arm64.zip"
+    sha256 "34ebf4ed62096902be3eecd37eba553cc8e82552418a012ef923805e32eec19e"
   end
 
   conflicts_with "nomad-enterprise"
