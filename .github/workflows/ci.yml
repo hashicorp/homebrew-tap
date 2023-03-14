@@ -1,0 +1,62 @@
+name: Test Utilities
+# This workflow will automatically build and test the utilities within
+on:
+  pull_request:
+  push:
+    paths:
+      - util/**
+      - Makefile
+
+# Triggering on both pull_request and push will cause duplicate workflows to fire. We only need one
+# This occurs when we create a branch on the repository and then makes a PR from it.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-templater:
+    name: Build Formula Templater
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          cache: true
+          cache-dependency-path: util/formula_templater/go.sum
+          go-version-file: util/formula_templater/go.mod 
+
+      - name: Build CLI
+        run: |
+          make formula_templater
+
+      - name: Test
+        run: |
+          make ci-test-formula_templater
+
+  build-trigger:
+    name: Build Lambda Trigger
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          cache: true
+          cache-dependency-path: util/lambda_trigger/go.sum
+          go-version-file: util/lambda_trigger/go.mod
+
+      - name: Build CLI
+        run: |
+          make lambda_trigger
+
+      - name: Test
+        run: |
+          make ci-test-lambda_trigger
+

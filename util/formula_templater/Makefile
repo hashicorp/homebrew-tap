@@ -4,9 +4,13 @@ test: build
 
 .PHONY: ci-test
 ci-test:
-	@go test -json
+	@go test -json | tparse -follow
 
-build: *.go go.*
+.PHONY: mod-download
+mod-download:
+	go mod download
+
+build: *.go go.* mod-download
 	go build
 
 .PHONY: clean
