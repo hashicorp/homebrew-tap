@@ -1,0 +1,62 @@
+{
+  "builds": [
+    {
+      "arch": "amd64",
+      "os": "darwin",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_darwin_amd64.zip"
+    },
+    {
+      "arch": "arm64",
+      "os": "darwin",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_darwin_arm64.zip"
+    },
+    {
+      "arch": "386",
+      "os": "linux",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_linux_386.zip"
+    },
+    {
+      "arch": "amd64",
+      "os": "linux",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_linux_amd64.zip"
+    },
+    {
+      "arch": "arm",
+      "os": "linux",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_linux_arm.zip"
+    },
+    {
+      "arch": "arm64",
+      "os": "linux",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_linux_arm64.zip"
+    },
+    {
+      "arch": "386",
+      "os": "windows",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_windows_386.zip"
+    },
+    {
+      "arch": "amd64",
+      "os": "windows",
+      "url": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_windows_amd64.zip"
+    }
+  ],
+  "is_prerelease": false,
+  "license_class": "enterprise",
+  "name": "nomad",
+  "status": {
+    "state": "supported",
+    "timestamp_updated": "2022-08-31T19:34:25.227Z"
+  },
+  "timestamp_created": "2022-08-31T19:34:25.227Z",
+  "timestamp_updated": "2022-08-31T19:34:25.227Z",
+  "url_changelog": "https://github.com/hashicorp/nomad-enterprise/blob/release/1.3.5+ent/CHANGELOG.md",
+  "url_license": "https://github.com/hashicorp/nomad/blob/main/LICENSE",
+  "url_project_website": "https://www.nomadproject.io/docs/enterprise",
+  "url_shasums": "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_SHA256SUMS",
+  "url_shasums_signatures": [
+    "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_SHA256SUMS.sig",
+    "https://releases.hashicorp.com/nomad/1.3.5+ent/nomad_1.3.5+ent_SHA256SUMS.72D7468F.sig"
+  ],
+  "version": "1.3.5+ent"
+}

@@ -1,0 +1,43 @@
+{
+  "builds": [
+    {
+      "arch": "amd64",
+      "os": "linux",
+      "url": "https://releases.hashicorp.com/boundary-desktop/1.5.0/boundary-desktop_1.5.0_amd64.deb"
+    },
+    {
+      "arch": "amd64",
+      "os": "darwin",
+      "url": "https://releases.hashicorp.com/boundary-desktop/1.5.0/boundary-desktop_1.5.0_darwin_amd64.dmg"
+    },
+    {
+      "arch": "amd64",
+      "os": "darwin",
+      "url": "https://releases.hashicorp.com/boundary-desktop/1.5.0/boundary-desktop_1.5.0_darwin_amd64.zip"
+    },
+    {
+      "arch": "amd64",
+      "os": "windows",
+      "url": "https://releases.hashicorp.com/boundary-desktop/1.5.0/boundary-desktop_1.5.0_windows_amd64.zip"
+    }
+  ],
+  "is_prerelease": false,
+  "license_class": "oss",
+  "name": "boundary-desktop",
+  "status": {
+    "state": "supported",
+    "timestamp_updated": "2022-10-04T19:05:18.793Z"
+  },
+  "timestamp_created": "2022-10-04T19:05:18.793Z",
+  "timestamp_updated": "2022-10-04T19:05:18.793Z",
+  "url_changelog": "https://github.com//blob/v1.5.0/CHANGELOG.md",
+  "url_license": "https://github.com/hashicorp/boundary-ui/blob/main/LICENSE",
+  "url_project_website": "https://learn.hashicorp.com/tutorials/boundary/getting-started-desktop-app",
+  "url_shasums": "https://releases.hashicorp.com/boundary-desktop/1.5.0/boundary-desktop_1.5.0_SHA256SUMS",
+  "url_shasums_signatures": [
+    "https://releases.hashicorp.com/boundary-desktop/1.5.0/boundary-desktop_1.5.0_SHA256SUMS.sig",
+    "https://releases.hashicorp.com/boundary-desktop/1.5.0/boundary-desktop_1.5.0_SHA256SUMS.72D7468F.sig"
+  ],
+  "url_source_repository": "https://github.com/hashicorp/boundary-ui",
+  "version": "1.5.0"
+}
