@@ -5,12 +5,12 @@ class ConsulDataplane < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/consul-dataplane/1.1.0/consul-dataplane_1.1.0_darwin_amd64.zip"
-    sha256 "e0c72e241b18c492c3b4c2aab3427b7806705ff77089dbee23b40b650b2e4a58"
+    sha256 "58890e76a3b261c2cfe0760a28e89a50cd55f3acc91eedf4ea7ac4a4866e006e"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/consul-dataplane/1.1.0/consul-dataplane_1.1.0_darwin_arm64.zip"
-    sha256 "eec0f4e8e07777b1210e477f1f20ebb2b870fbf58c4e07f5ca97bf1d97782cf1"
+    sha256 "711613140d4df4799e6a8f5e2a297a59131a7a1fd68c8f3ea634082dfb1d02b2"
   end
 
   if OS.linux? && Hardware::CPU.intel?

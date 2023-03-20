@@ -5,12 +5,12 @@ class Envconsul < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_darwin_amd64.zip"
-    sha256 "fb84f0f2757592c1c88c2c835bd932f5b828d6c29f125ac875a8d85efdf59d63"
+    sha256 "bb2f03c2b6f41c111e5b3a81e4743f33f9c8d2d995a690a0bd7453d531d9a94b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_darwin_arm64.zip"
-    sha256 "a79c3ba5b67f612eadfa0ca63f4194be39ac1ed70b6e89c1ffb75ff596b8a0ed"
+    sha256 "dbf6238f040362ee7c82571931cee0eb8d198bb0d0316805f7407fd8d2c57084"
   end
 
   if OS.linux? && Hardware::CPU.intel?

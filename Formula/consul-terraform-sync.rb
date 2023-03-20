@@ -5,7 +5,7 @@ class ConsulTerraformSync < Formula
 
   if OS.mac?
     url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_darwin_amd64.zip"
-    sha256 "e9b316ea6d4fc861c54f81d82ffe347162b18bd2c3c75abb73e735b18378a257"
+    sha256 "dfb11f751de5d8eb5ed19d1aa2ee63a2dda417eea2d900cea6f31ae5b5ea88e6"
   end
 
   if OS.mac? && Hardware::CPU.arm?

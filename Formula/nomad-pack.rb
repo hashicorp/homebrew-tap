@@ -5,12 +5,12 @@ class NomadPack < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_darwin_amd64.zip"
-    sha256 "b4cf52e7c974bbd71be38a4e74219ac1eb7d5ee0065ae0cc7897a885c7eb6e15"
+    sha256 "3a73f692053d4e12c904d782a35d5cab6669cb4a3e9f5398802c1f9fc7050330"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_darwin_arm64.zip"
-    sha256 "e43e317048b82ac59850d478c7b57aa832d66527ad29d37d433c19f5c18ff168"
+    sha256 "445263a0b55c0978953a75f935b65c45007f548342ac63fc12f5352c610130dc"
   end
 
   if OS.linux? && Hardware::CPU.intel?

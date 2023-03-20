@@ -5,12 +5,12 @@ class ConsulEsm < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/consul-esm/0.7.1/consul-esm_0.7.1_darwin_amd64.zip"
-    sha256 "ed9203f9f5a1a137929d1a5e0fef4b7cb99533f25f7100f38b1676086349c853"
+    sha256 "017d94d565dc3c4769472978b033be354ded1a1b8baf1230225587e9453ce5bf"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/consul-esm/0.7.1/consul-esm_0.7.1_darwin_arm64.zip"
-    sha256 "73a3df86b0997d3051891a441401f5fe2c7a3dc8360d1b580ba7548d989acecd"
+    sha256 "746e127366c94b8fc6838c877c41d26df65a1ca4936dbbddd596b4ef3d5622e9"
   end
 
   if OS.linux? && Hardware::CPU.intel?

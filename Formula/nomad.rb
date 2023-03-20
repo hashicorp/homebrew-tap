@@ -1,6 +1,3 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-
 class Nomad < Formula
   desc "Nomad"
   homepage "https://www.nomadproject.io/"
