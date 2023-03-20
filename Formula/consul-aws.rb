@@ -5,7 +5,7 @@ class ConsulAws < Formula
 
   if OS.mac?
     url "https://releases.hashicorp.com/consul-aws/0.1.2/consul-aws_0.1.2_darwin_amd64.zip"
-    sha256 "75c22ee681df7c440038ea6879e99d6606d47b5f198eed136d1881602a294390"
+    sha256 "3bd2d8c0863bcc491af7d45b20a01d28234bae24449fe73f71897aac513ddb0b"
   end
 
   if OS.mac? && Hardware::CPU.arm?

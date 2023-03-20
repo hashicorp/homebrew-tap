@@ -5,12 +5,12 @@ class HcInstall < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/hc-install/0.5.0/hc-install_0.5.0_darwin_amd64.zip"
-    sha256 "a3c41de2652861af842391c7d580f4284026b5536ed0b12beb49fa4b2bd3fc8a"
+    sha256 "e96c27d6eab442411112a70853af141172301e64b08e46f31351ebbc94f462fb"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/hc-install/0.5.0/hc-install_0.5.0_darwin_arm64.zip"
-    sha256 "f19618af732827f9af7e3b25e3f079b150129736d8046889fbb3e9cf6dad2e5c"
+    sha256 "b5ff7ca6e8c00a5b0fbc3610341ab7140dbd86b97ca6088ea845672681dc5c8b"
   end
 
   if OS.linux? && Hardware::CPU.intel?
@@ -27,6 +27,8 @@ class HcInstall < Formula
     url "https://releases.hashicorp.com/hc-install/0.5.0/hc-install_0.5.0_linux_arm64.zip"
     sha256 "dff0aa9bf8d6668a5daa3436d520f5ce0b7f7d9d4d9226cf668500d0fe356f4d"
   end
+
+  conflicts_with "hc-install"
 
   def install
     bin.install "hc-install"

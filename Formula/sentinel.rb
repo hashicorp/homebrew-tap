@@ -5,12 +5,12 @@ class Sentinel < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/sentinel/0.21.0/sentinel_0.21.0_darwin_amd64.zip"
-    sha256 "79212c32a7e16e8e815898bb5b3db7bc2251b275472f961ac2e0ec24aa0c8aa0"
+    sha256 "86ac1c9a7e82f85f1564f2be145955a93bee94e84a959df706652a7e00e7b01c"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://releases.hashicorp.com/sentinel/0.21.0/sentinel_0.21.0_darwin_arm64.zip"
-    sha256 "5f994300e835cfc7901ada9e1ed007c39ea3287e6167568a1211ff628e9bd869"
+    sha256 "452f574a2c90f5654c2aa4e5235103c9e8730ef1e5085b73d2dd84a467f4784d"
   end
 
   if OS.linux? && Hardware::CPU.intel?
