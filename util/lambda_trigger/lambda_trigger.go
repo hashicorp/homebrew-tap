@@ -5,7 +5,8 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
+	"log"
 	"net/http"
 	"os"
 	"regexp"
@@ -95,7 +96,7 @@ func getBrewVersion(product string, brewType string) (string, error) {
 		// This formula|cask may be new. We'll assume so.
 		return "", errBrewVersionNotFound
 	}
-	body, err := ioutil.ReadAll(resp.Body)
+	body, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
 	}
@@ -113,7 +114,7 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 	// Create dispatch event https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
 	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
 	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%t\"}}", event.Product, event.Version, event.Cask)
-	fmt.Printf("POSTing to Github: %s\n", postBody)
+	log.Printf("POSTing to Github: %s", postBody)
 
 	httpClient := &http.Client{}
 	req, err := http.NewRequest("POST", workflowEndpoint, bytes.NewBufferString(postBody))
@@ -127,8 +128,8 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 		return err
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	fmt.Printf("Github Response: %+v", body)
+	body, err := io.ReadAll(resp.Body)
+	log.Printf("Github Response: %+v", body)
 	return err
 }
 
@@ -136,7 +137,7 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 	for _, record := range snsEvent.Records {
 		snsRecord := record.SNS
-		fmt.Printf("[%s %s] Message = %s \n", record.EventSource, snsRecord.Timestamp, snsRecord.Message)
+		log.Printf("[%s %s] Message = %s", record.EventSource, snsRecord.Timestamp, snsRecord.Message)
 		message := record.SNS.Message
 
 		// Parse message to ReleaseEvent type
@@ -151,7 +152,7 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			if err != nil || version == nil {
 				return err
 			}
-			fmt.Printf("Latest version is %s\n", *version)
+			log.Printf("Latest version is %s", *version)
 			event.Version = *version
 			oldVersion := ""
 			event.Cask = isCask(event.Product)
@@ -169,9 +170,9 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			}
 
 			if oldVersion != "" {
-				fmt.Printf("Current formula/cask version is %s\n", oldVersion)
+				log.Printf("Current formula/cask version is %s", oldVersion)
 			} else {
-				fmt.Printf("No previous version found, assuming new formula/cask\n")
+				log.Printf("No previous version found, assuming new formula/cask")
 			}
 
 			if event.Version == oldVersion {
