@@ -21,6 +21,8 @@ type ReleaseEvent struct {
 	Cask    bool   `json:"cask"`
 }
 
+var errBrewVersionNotFound = errors.New("no brew version found")
+
 func isProductSupported(product string) bool {
 	supportedProducts := []string{
 		"vault",
@@ -89,6 +91,10 @@ func getBrewVersion(product string, brewType string) (string, error) {
 		return "", err
 	}
 	defer resp.Body.Close()
+	if resp.StatusCode == http.StatusNotFound {
+		// This formula|cask may be new. We'll assume so.
+		return "", errBrewVersionNotFound
+	}
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return "", err
@@ -152,17 +158,21 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 
 			if event.Cask {
 				oldVersion, err = getCaskVersion(event.Product)
-				if err != nil {
+				if err != nil && err != errBrewVersionNotFound {
 					return err
 				}
 			} else {
 				oldVersion, err = getFormulaVersion(event.Product)
-				if err != nil {
+				if err != nil && err != errBrewVersionNotFound {
 					return err
 				}
 			}
 
-			fmt.Printf("Current formula/cask version is %s\n", oldVersion)
+			if oldVersion != "" {
+				fmt.Printf("Current formula/cask version is %s\n", oldVersion)
+			} else {
+				fmt.Printf("No previous version found, assuming new formula/cask\n")
+			}
 
 			if event.Version == oldVersion {
 				return errors.New("formula/cask is already latest version")
