@@ -1,12 +1,13 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"io"
 	"strings"
 	"text/template"
-  _ "embed"
 )
+
 //go:embed templates/formula.tmpl
 var formulaTemplate string
 
