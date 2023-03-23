@@ -11,32 +11,46 @@ jobs:
     name: Update Formula
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
+
+      - name: Checkout
         uses: actions/checkout@v2.3.4
-      -
-        name: Setup Go
+
+      - name: Setup Go
         uses: actions/setup-go@v4
         with:
           go-version-file: "util/formula_templater/go.mod"
-      -
-        name: Build formula_templater CLI
+
+      - name: Build formula_templater CLI
         run: |
           cd util/formula_templater && go build
-      -
-        name: Generate new formula
+
+      - name: Generate new formula
         if: ${{ github.event.client_payload.cask == 'false' }}
         run: |
-          ./util/formula_templater/formula_templater ${{github.event.client_payload.name}} ${{github.event.client_payload.version}} ./util/formula_templater/config.hcl > ./Formula/${{github.event.client_payload.name}}.rb
-      -
-        name: Generate new cask
+          ./util/formula_templater/formula_templater \
+            ${{github.event.client_payload.name}} \
+            ${{github.event.client_payload.version}} \
+            ./util/formula_templater/config.hcl > ./Formula/${{github.event.client_payload.name}}.rb
+
+      - name: Generate new cask
         if: ${{ github.event.client_payload.cask == 'true' }}
         run: |
-          ./util/formula_templater/formula_templater ${{github.event.client_payload.name}} ${{github.event.client_payload.version}} ./util/formula_templater/config.hcl > ./Casks/hashicorp-${{github.event.client_payload.name}}.rb
-      - 
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Bump ${{github.event.client_payload.name}} ${{github.event.client_payload.version}}
-          file_pattern: Formula/*.rb Casks/*.rb
-          commit_user_name: hc-espd-packager
-          commit_user_email: team-product-delivery@hashicorp.com
+          ./util/formula_templater/formula_templater \
+            ${{github.event.client_payload.name}} \
+            ${{github.event.client_payload.version}} \
+            ./util/formula_templater/config.hcl > ./Casks/hashicorp-${{github.event.client_payload.name}}.rb
+
+      - name: Publish Change
+        run: |
+          git config user.name hc-espd-packager
+          git config user.email team-rel-eng@hashicorp.com
+
+          git add Formula/*.rb Casks/*.rb
+
+          git commit -m "Bump ${{ github.event.client_payload.name }} to ${{ github.event.client_payload.version }}"
+
+          # Ensure we have any changes that might have been merged before we push. This narrows the window in which a 
+          # race from multiple changes happening at once can occur. Conflicts/Races could still occur though unlikley.
+          git pull --rebase
+
+          git push
