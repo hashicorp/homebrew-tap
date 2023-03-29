@@ -1,31 +1,34 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.13.0"
+  version "1.13.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.0/vault_1.13.0_darwin_amd64.zip"
-    sha256 "d6cdc97db0db729458b8186f5957fda5a276743b3e342a58f38d8a2bb9ae8abf"
+    url "https://releases.hashicorp.com/vault/1.13.1/vault_1.13.1_darwin_amd64.zip"
+    sha256 "1e36bf545cb0e0bbe74071e78a342460e38ed8e9572b22045c3c83d60f9e2c66"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.13.0/vault_1.13.0_darwin_arm64.zip"
-    sha256 "f43f952b51bd0972e49b2051ac314e8ba4cfcf04c1623269a5541255968a8570"
+    url "https://releases.hashicorp.com/vault/1.13.1/vault_1.13.1_darwin_arm64.zip"
+    sha256 "9825b87faf467f2ea391124b54a0f7504ffaea9e29978bab52313b0fadadb51d"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.0/vault_1.13.0_linux_amd64.zip"
-    sha256 "69c1ce6dd383bb342c4f861a51a91413eb05e1324159e4395532e42a8a59af9d"
+    url "https://releases.hashicorp.com/vault/1.13.1/vault_1.13.1_linux_amd64.zip"
+    sha256 "cf1015d0b30806515120d4a86672ea77da1fb0559e3839ba88d8e02e94e796a6"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.0/vault_1.13.0_linux_arm.zip"
-    sha256 "7a63fd0e7e5d7edf7c68d4d0fac9f3aa6cab7a304fc4eb0390fa935a7fb3f898"
+    url "https://releases.hashicorp.com/vault/1.13.1/vault_1.13.1_linux_arm.zip"
+    sha256 "93d72f8588c65dbf4bd7b163a0eeaed3a24837c7c507339401619bec30acde72"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.0/vault_1.13.0_linux_arm64.zip"
-    sha256 "3234f989678d510f54e0ca20c93e045a9b1a86e337b09f2962e573b81c9a9ebf"
+    url "https://releases.hashicorp.com/vault/1.13.1/vault_1.13.1_linux_arm64.zip"
+    sha256 "8a247a78dd636b3cdc01d7612f81c4cf770260af53e64e906f726a671e6f2a1f"
   end
 
   conflicts_with "vault"
