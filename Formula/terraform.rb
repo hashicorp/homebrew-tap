@@ -1,31 +1,34 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class Terraform < Formula
   desc "Terraform"
   homepage "https://www.terraform.io/"
-  version "1.4.2"
+  version "1.4.3"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_darwin_amd64.zip"
-    sha256 "c218a6c0ef6692b25af16995c8c7bdf6739e9638fef9235c6aced3cd84afaf66"
+    url "https://releases.hashicorp.com/terraform/1.4.3/terraform_1.4.3_darwin_amd64.zip"
+    sha256 "89bdb242bfacf24167f365ef7a3bf0ad0e443ddd27ebde425fb71d77ce1a2597"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_darwin_arm64.zip"
-    sha256 "af8ff7576c8fc41496fdf97e9199b00d8d81729a6a0e821eaf4dfd08aa763540"
+    url "https://releases.hashicorp.com/terraform/1.4.3/terraform_1.4.3_darwin_arm64.zip"
+    sha256 "20b9d484bf99ada6c0de89316176ba33f7c87f64c0738991188465147bba221b"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_amd64.zip"
-    sha256 "9f3ca33d04f5335472829d1df7785115b60176d610ae6f1583343b0a2221a931"
+    url "https://releases.hashicorp.com/terraform/1.4.3/terraform_1.4.3_linux_amd64.zip"
+    sha256 "2252ee6ac8437b93db2b2ba341edc87951e2916afaeb50a88b858e80796e9111"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_arm.zip"
-    sha256 "dbb1e7179279bd739ff889b994738f25a80a8eac5ae255b50bdf5f86b9eda28b"
+    url "https://releases.hashicorp.com/terraform/1.4.3/terraform_1.4.3_linux_arm.zip"
+    sha256 "5fc5c6824a869a9ea9b03933327a2a85efaabfbae03ca4927f31d9548651fc05"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.4.2/terraform_1.4.2_linux_arm64.zip"
-    sha256 "39c182670c4e63e918e0a16080b1cc47bb16e158d7da96333d682d6a9cb8eb91"
+    url "https://releases.hashicorp.com/terraform/1.4.3/terraform_1.4.3_linux_arm64.zip"
+    sha256 "d3d9464953d390970e7f4f7cbcd94dbf63136da6fe1cbb4955d944a9315bdcdb"
   end
 
   conflicts_with "terraform"
