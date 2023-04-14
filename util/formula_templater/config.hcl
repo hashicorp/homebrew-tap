@@ -358,3 +358,19 @@ formula {
         linux_arm64 = false
     }
 }
+
+formula {
+    product = "athena-cli"
+    name = "AthenaCli"
+    desc = "Athena CLI"
+    #FIXME
+    homepage = "https://github.com/hashicorp/hc-install"
+    architectures {
+        # FIXME
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}

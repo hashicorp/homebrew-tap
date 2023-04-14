@@ -2,14 +2,13 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"regexp"
-
-	"encoding/json"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -49,6 +48,7 @@ func isProductSupported(product string) bool {
 		"boundary-desktop",
 		"sentinel",
 		"vagrant",
+		"athena-cli",
 	}
 
 	for _, p := range supportedProducts {
