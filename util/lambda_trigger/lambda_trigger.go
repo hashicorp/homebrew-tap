@@ -2,14 +2,13 @@ package main
 
 import (
 	"bytes"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"os"
 	"regexp"
-
-	"encoding/json"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -24,6 +23,7 @@ type ReleaseEvent struct {
 
 func isProductSupported(product string) bool {
 	supportedProducts := []string{
+		"athena-cli",
 		"vault",
 		"vault-enterprise",
 		"consul",
