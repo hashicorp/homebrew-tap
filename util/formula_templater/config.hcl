@@ -56,6 +56,21 @@ formula {
     }
 }
 
+
+formula {
+    product = "athena-cli"
+    name = "AthenaCli"
+    desc = "Athena CLI"
+    homepage = "https://github.com/hashicorp/athena-cli"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = true
+    }
+}
+
 formula {
     product = "consul-dataplane"
     name = "ConsulDataplane"

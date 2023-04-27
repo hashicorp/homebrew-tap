@@ -40,6 +40,7 @@ outside of search.
 With the following commands, you can install the latest generally available (GA) version of each product:
 ```sh
 # Formulae
+brew install hashicorp/tap/athena-cli
 brew install hashicorp/tap/boundary
 brew install hashicorp/tap/consul
 brew install hashicorp/tap/consul-dataplane
