@@ -4,31 +4,31 @@
 class NomadEnterprise < Formula
   desc "Nomad Enterprise"
   homepage "https://www.nomadproject.io/"
-  version "1.5.3+ent"
+  version "1.5.4+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.3+ent/nomad_1.5.3+ent_darwin_amd64.zip"
-    sha256 "a0213ae81a5bb3426d2da6da13a53cf3e4cc8c541f673baae89b54607c090f68"
+    url "https://releases.hashicorp.com/nomad/1.5.4+ent/nomad_1.5.4+ent_darwin_amd64.zip"
+    sha256 "25eaca2e00de7ee0ddc726bfbc83eadd1af2fc98bf9d10a1a94b56c065a59cb3"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad/1.5.3+ent/nomad_1.5.3+ent_darwin_arm64.zip"
-    sha256 "6165da38d3781f33a2ae971f591ded1d47b0dd2bd1598961967193e66d1280bb"
+    url "https://releases.hashicorp.com/nomad/1.5.4+ent/nomad_1.5.4+ent_darwin_arm64.zip"
+    sha256 "ad4ff883c3113945ff84fd7a498c776d5c039f56eae897628bb9e65e2af54609"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.3+ent/nomad_1.5.3+ent_linux_amd64.zip"
-    sha256 "9db475a373e8afe977d34fc72723c6603b02a05d2dc8b5447c14696e0a2cb592"
+    url "https://releases.hashicorp.com/nomad/1.5.4+ent/nomad_1.5.4+ent_linux_amd64.zip"
+    sha256 "d1bfc48c2e39c397ea0473c7881a89b45f51f7b7128bc56d2694f14304329e72"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.3+ent/nomad_1.5.3+ent_linux_arm.zip"
-    sha256 "8054446e3e357413d360b448999b76ba660f3bae9fe2e91c1753b32697f600ae"
+    url "https://releases.hashicorp.com/nomad/1.5.4+ent/nomad_1.5.4+ent_linux_arm.zip"
+    sha256 "553da9a03a7c29db5017b335335cb73868a0287bdbae972ce97b114fd556def8"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.3+ent/nomad_1.5.3+ent_linux_arm64.zip"
-    sha256 "38165465e70c970d303bb6adaaddf8d66a519aaed126ae21074ad1bc50612015"
+    url "https://releases.hashicorp.com/nomad/1.5.4+ent/nomad_1.5.4+ent_linux_arm64.zip"
+    sha256 "bc67164a420f13910a1b4f985639cd8499a74d10a4b2894c10b817d1510619de"
   end
 
   conflicts_with "nomad-enterprise"
