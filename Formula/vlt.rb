@@ -2,9 +2,9 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Vlt < Formula
-  desc "Vlt"
+  desc "Vlt CLI"
   homepage "https://github.com/hashicorp/vlt"
-  version "0.1.1"
+  version "0.1.3"
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/vlt/0.1.3/vlt_0.1.3_darwin_amd64.zip"
@@ -19,6 +19,11 @@ class Vlt < Formula
   if OS.linux? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/vlt/0.1.3/vlt_0.1.3_linux_amd64.zip"
     sha256 "9cb7e967a81b7348b6bfe08bb6f23dd4ba2af3fd72284ec75ad2d294dfc317f0"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/vlt/0.1.3/vlt_0.1.3_linux_arm.zip"
+    sha256 "bd2f6c321d8721c627142dfb21beea26c298b3dd74087ab3dcff1c33dfad3f3d"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
