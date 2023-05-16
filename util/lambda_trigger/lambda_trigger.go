@@ -23,7 +23,6 @@ type ReleaseEvent struct {
 
 func isProductSupported(product string) bool {
 	supportedProducts := []string{
-		"athena-cli",
 		"vault",
 		"vault-enterprise",
 		"consul",
@@ -49,6 +48,7 @@ func isProductSupported(product string) bool {
 		"boundary-desktop",
 		"sentinel",
 		"vagrant",
+		"vlt",
 	}
 
 	for _, p := range supportedProducts {

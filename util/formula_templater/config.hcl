@@ -58,10 +58,10 @@ formula {
 
 
 formula {
-    product = "athena-cli"
-    name = "AthenaCli"
-    desc = "Athena CLI"
-    homepage = "https://github.com/hashicorp/athena-cli"
+    product = "vlt"
+    name = "Vlt"
+    desc = "Vlt CLI"
+    homepage = "https://github.com/hashicorp/vlt"
     architectures {
         darwin_amd64 = true
         darwin_arm64 = true
