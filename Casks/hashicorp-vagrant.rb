@@ -10,7 +10,7 @@ cask "hashicorp-vagrant" do
 
   livecheck do
     url "https://github.com/hashicorp/vagrant"
-    strategy :git
+    strategy :github_latest
   end
 
   pkg "vagrant.pkg"
