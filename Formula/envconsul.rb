@@ -1,31 +1,34 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class Envconsul < Formula
   desc "Env Consul"
   homepage "https://github.com/hashicorp/envconsul"
-  version "0.13.1"
+  version "0.13.2"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_darwin_amd64.zip"
-    sha256 "bb2f03c2b6f41c111e5b3a81e4743f33f9c8d2d995a690a0bd7453d531d9a94b"
+    url "https://releases.hashicorp.com/envconsul/0.13.2/envconsul_0.13.2_darwin_amd64.zip"
+    sha256 "0e08ebedc24511f56c4a5b3f16177767289544b0414e1ee2333ee15a04f3dd7b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_darwin_arm64.zip"
-    sha256 "dbf6238f040362ee7c82571931cee0eb8d198bb0d0316805f7407fd8d2c57084"
+    url "https://releases.hashicorp.com/envconsul/0.13.2/envconsul_0.13.2_darwin_arm64.zip"
+    sha256 "a323e17c2d69e38f1c3da7e8c3a0c0d4da3492d20a40fdcdb719556264fc2962"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_linux_amd64.zip"
-    sha256 "a28c5ebfa1bdd7c5317dcb17bb7693b0813bd44d1d477dfa6149f48052267905"
+    url "https://releases.hashicorp.com/envconsul/0.13.2/envconsul_0.13.2_linux_amd64.zip"
+    sha256 "3a2719ad53e6b180f2accc9cd1b165fdca38a2e11e72504229a1aaaac9e7bd00"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_linux_arm.zip"
-    sha256 "bd2fe1430d32cf634c4dfa5d5e0e15e40b8b8d8631f0f60ca76e28e7c1c45835"
+    url "https://releases.hashicorp.com/envconsul/0.13.2/envconsul_0.13.2_linux_arm.zip"
+    sha256 "e98e41a87f409e1a9618872e72ef4bf5d1c03f8517f17baa7745f92d7c7d4305"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_linux_arm64.zip"
-    sha256 "87867b87accaacc5dea89c8123bf2923767fa584ca29ba46103a47519dcfdeb0"
+    url "https://releases.hashicorp.com/envconsul/0.13.2/envconsul_0.13.2_linux_arm64.zip"
+    sha256 "a413d7c6cae56de2b0b7215a64e74ee718a76ad2f9205ce95871340b5d7dfbd9"
   end
 
   conflicts_with "envconsul"
