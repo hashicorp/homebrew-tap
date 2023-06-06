@@ -10,6 +10,7 @@ on:
         is_cask:
           type: boolean
           description: check if updating a cask (rather than a tap formula)
+          default: false
 
 jobs:
   update-formula:
