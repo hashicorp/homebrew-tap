@@ -1,0 +1,62 @@
+name: Manual update Product Formula in Tap
+# In the case of automation failure, this workflow allows a user to manually run a product version update.
+on:
+    workflow_dispatch:
+      inputs:
+        product:
+          description: product name as it appears in binary (ie. "vault", "vault-enterprise", etc.)
+        version:
+          description: semantic version string (ie. "1.12.2")
+        is_cask:
+          type: boolean
+          description: check if updating a cask (rather than a tap formula)
+          default: false
+
+jobs:
+  update-formula:
+    name: Update Formula
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab #v3.5.2
+
+      - name: Setup Go
+        uses: actions/setup-go@fac708d6674e30b6ba41289acaab6d4b75aa0753 #v4.0.1
+        with:
+          go-version-file: "util/formula_templater/go.mod"
+
+      - name: Build formula_templater CLI
+        run: |
+          cd util/formula_templater && go build
+
+      - name: Generate new formula
+        if: ${{ github.event.inputs.is_cask == 'false' }}
+        run: |
+          ./util/formula_templater/formula_templater \
+            ${{github.event.inputs.product}} \
+            ${{github.event.inputs.version}} \
+            ./util/formula_templater/config.hcl > ./Formula/${{github.event.inputs.product}}.rb
+
+      - name: Generate new cask
+        if: ${{ github.event.inputs.is_cask == 'true' }}
+        run: |
+          ./util/formula_templater/formula_templater \
+            ${{github.event.inputs.product}} \
+            ${{github.event.inputs.version}} \
+            ./util/formula_templater/config.hcl > ./Casks/hashicorp-${{github.event.inputs.product}}.rb
+
+      - name: Publish Change
+        run: |
+          git config user.name hc-espd-packager
+          git config user.email team-rel-eng@hashicorp.com
+
+          git add Formula/*.rb Casks/*.rb
+
+          git commit -m "Bump ${{ github.event.inputs.product }} to ${{ github.event.inputs.version }}"
+
+          # Ensure we have any changes that might have been merged before we push. This narrows the window in which a 
+          # race from multiple changes happening at once can occur. Conflicts/Races could still occur though unlikley.
+          git pull --rebase
+
+          git push
