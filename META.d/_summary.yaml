@@ -1,0 +1,8 @@
+---
+schema: 1.1
+category: tooling
+summary:
+  owner: team-rel-eng
+  description: |
+    Homebrew casks and taps for HashiCorp products.
+  visibility: external
