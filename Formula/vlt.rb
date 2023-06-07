@@ -4,31 +4,31 @@
 class Vlt < Formula
   desc "Vlt CLI"
   homepage "https://github.com/hashicorp/vlt"
-  version "0.1.6"
+  version "0.1.7"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vlt/0.1.6/vlt_0.1.6_darwin_amd64.zip"
-    sha256 "b8ec74afe5402928dda12d0a566025d6b06903c624ef3fed5df510c06483465c"
+    url "https://releases.hashicorp.com/vlt/0.1.7/vlt_0.1.7_darwin_amd64.zip"
+    sha256 "56ee68696f7f043cf4f7cdf4e01a8606d554c59afa03e080d8bd1c09d718a68d"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vlt/0.1.6/vlt_0.1.6_darwin_arm64.zip"
-    sha256 "8cf675c789b5296307974a75cb600f773f2b92689b161b5ab7f0fb4d3043b458"
+    url "https://releases.hashicorp.com/vlt/0.1.7/vlt_0.1.7_darwin_arm64.zip"
+    sha256 "9bb44491547da1431403cf1f908c9646c3167e93ea430f28b42cec8eef76b7bb"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vlt/0.1.6/vlt_0.1.6_linux_amd64.zip"
-    sha256 "7b9c537e36aeff8b2289d016e8a079a275e1206876a2c37e8b9f54a2de919f5a"
+    url "https://releases.hashicorp.com/vlt/0.1.7/vlt_0.1.7_linux_amd64.zip"
+    sha256 "adb4ae02faacb34ab4eedaf2587bb46773fbb11524cd8ebca6f0239a972d9832"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vlt/0.1.6/vlt_0.1.6_linux_arm.zip"
-    sha256 "093fb465a8de3f79357411faee1b61ae2d4a2bce2a5aaf1b26c53f8b8b0c5ed9"
+    url "https://releases.hashicorp.com/vlt/0.1.7/vlt_0.1.7_linux_arm.zip"
+    sha256 "32ae01c51ead0e3f21e9a09312eba0416eb533dff7a46ee1362f0fefb982d6ae"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vlt/0.1.6/vlt_0.1.6_linux_arm64.zip"
-    sha256 "d7b5c21628f90ff33b3d4b23ddddcbc57fa4d9c893b16af2361b462e20ff19fb"
+    url "https://releases.hashicorp.com/vlt/0.1.7/vlt_0.1.7_linux_arm64.zip"
+    sha256 "a3089a6e2da60bc9a600f4b26b6ecd894dde5c835c81e349064ffa90df9f77b9"
   end
 
   conflicts_with "vlt"
