@@ -44,6 +44,7 @@ func isProductSupported(product string) bool {
 		"terraform-ls",
 		"packer",
 		"boundary",
+		"boundary-enterprise",
 		"waypoint",
 		"boundary-desktop",
 		"sentinel",
