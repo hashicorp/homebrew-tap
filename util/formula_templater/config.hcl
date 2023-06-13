@@ -13,6 +13,20 @@ formula {
 }
 
 formula {
+    product = "boundary-enterprise"
+    name = "BoundaryEnterprise"
+    desc = "Boundary Enterprise"
+    homepage = "https://www.boundaryproject.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
     product = "consul"
     name = "Consul"
     desc = "Consul"
