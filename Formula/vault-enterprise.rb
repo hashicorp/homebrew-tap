@@ -4,31 +4,31 @@
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "1.13.2+ent"
+  version "1.13.3+ent.hsm.fips1402"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.2+ent/vault_1.13.2+ent_darwin_amd64.zip"
-    sha256 "71de1d0af36cbd2520ee5351978baee734eb303354f7a850268cb66bd5b4bd74"
+    url "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_darwin_amd64.zip"
+    sha256 ""
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.13.2+ent/vault_1.13.2+ent_darwin_arm64.zip"
-    sha256 "b35b39879ed4d12ce9b85fccfd039a7da8631399e555e01108c0858c87682892"
+    url "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_darwin_arm64.zip"
+    sha256 ""
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.2+ent/vault_1.13.2+ent_linux_amd64.zip"
-    sha256 "e9239da75f9f90570c20344d7b29900b1edd6eab416b38a2f6220a6f857cd662"
+    url "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_linux_amd64.zip"
+    sha256 "18a780bcbce85b713b53d395705db40f9ca6a2c0cd325ae0cb731eca14a08ee9"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.2+ent/vault_1.13.2+ent_linux_arm.zip"
-    sha256 "e3be47208462462cd8a371c38eab7d35e473be00bd2cdf7b232f79229f8c4547"
+    url "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_linux_arm.zip"
+    sha256 ""
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.2+ent/vault_1.13.2+ent_linux_arm64.zip"
-    sha256 "aed9f4893f97af40694aa5e9443c2e84aa4a047a84c4aa825663e27234176dd2"
+    url "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_linux_arm64.zip"
+    sha256 ""
   end
 
   conflicts_with "vault-enterprise"
