@@ -3,9 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
 	"net/http"
 	"strings"
-	"io/ioutil"
 )
 
 type ReleaseResponse Release
@@ -14,7 +14,7 @@ type Release struct {
 	Version string
 }
 
-// Return the latest version of a given product 
+// Return the latest version of a given product
 // which is fetched from the Releases API, api.releases.hashicorp.com
 func getLatestVersion(productName string) (*string, error) {
 	apiBaseURL := "https://api.releases.hashicorp.com/v1/releases"
@@ -24,9 +24,6 @@ func getLatestVersion(productName string) (*string, error) {
 	if strings.HasSuffix(strings.ToLower(productName), "-enterprise") {
 		license_class = "enterprise"
 	}
-
-	// Form the appropriate Releases API request URL
-	release := ReleaseResponse{}
 
 	if license_class == "enterprise" {
 		productName = strings.TrimSuffix(productName, "-enterprise")
@@ -50,15 +47,23 @@ func getLatestVersion(productName string) (*string, error) {
 			return nil, err
 		}
 		bodyString := string(body)
-		fmt.Println("Response body:",bodyString)
+		fmt.Println("Response body:", bodyString)
 		return nil, err
 	}
-
-	// On 200 responses, decode the response into our Release struct
+	var release ReleaseResponse
 	if err := json.NewDecoder(resp.Body).Decode(&release); err != nil {
 		return nil, err
 	}
 
-	// Return the version 
-	return &release.Version, nil
+	// TODO: We only support publishing the "base" variants for oss and enterprise.
+	latestVersion, _, _ := strings.Cut(release.Version, "+") // "1.13.3+ent.hsm.fips1402"
+	switch license_class {
+	case "enterprise":
+		v := fmt.Sprintf("%s+ent", latestVersion)
+		return &v, nil
+	case "oss":
+		return &latestVersion, nil
+	default: // exhaustive check
+		panic("unknown license_class")
+	}
 }

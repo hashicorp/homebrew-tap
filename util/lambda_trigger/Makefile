@@ -30,3 +30,4 @@ testdata:
 	curl --fail --silent 'https://raw.githubusercontent.com/hashicorp/homebrew-tap/a1a4af71310cc99c00259cda7c39a981b66442d4/Formula/nomad.rb' --output testdata/github.com_formula_nomad.rb
 	curl --fail --silent 'https://raw.githubusercontent.com/hashicorp/homebrew-tap/a1a4af71310cc99c00259cda7c39a981b66442d4/Formula/nomad-enterprise.rb' --output testdata/github.com_formula_nomad-enterprise.rb
 	curl --fail --silent 'https://raw.githubusercontent.com/hashicorp/homebrew-tap/525cf0610587cef5cb6a40f31c8d92f70f335fb4/Casks/hashicorp-boundary-desktop.rb' --output testdata/github.com_cask_boundary-desktop.rb
+	curl --fail --silent 'https://api.releases.hashicorp.com/v1/releases/vault/1.13.3+ent.hsm.fips1402?license_class=enterprise' | jq --sort-keys > testdata/releases.com_vault-enterprise_latest.json

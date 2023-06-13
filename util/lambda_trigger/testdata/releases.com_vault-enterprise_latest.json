@@ -1,0 +1,30 @@
+{
+  "builds": [
+    {
+      "arch": "amd64",
+      "os": "linux",
+      "url": "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_linux_amd64.zip"
+    }
+  ],
+  "is_prerelease": false,
+  "license_class": "enterprise",
+  "name": "vault",
+  "status": {
+    "state": "supported",
+    "timestamp_updated": "2023-06-08T01:50:27.689Z"
+  },
+  "timestamp_created": "2023-06-08T01:50:27.689Z",
+  "timestamp_updated": "2023-06-08T01:50:27.689Z",
+  "url_changelog": "https://github.com/hashicorp/vault-enterprise/blob/release/1.13.x+ent/CHANGELOG.md",
+  "url_docker_registry_dockerhub": "https://hub.docker.com/r/hashicorp/vault-enterprise",
+  "url_docker_registry_ecr": "https://gallery.ecr.aws/hashicorp/vault-enterprise",
+  "url_license": "https://github.com/hashicorp/vault/blob/main/LICENSE",
+  "url_project_website": "https://www.vaultproject.io/docs/enterprise",
+  "url_release_notes": "https://www.vaultproject.io/docs/release-notes",
+  "url_shasums": "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_SHA256SUMS",
+  "url_shasums_signatures": [
+    "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_SHA256SUMS.sig",
+    "https://releases.hashicorp.com/vault/1.13.3+ent.hsm.fips1402/vault_1.13.3+ent.hsm.fips1402_SHA256SUMS.72D7468F.sig"
+  ],
+  "version": "1.13.3+ent.hsm.fips1402"
+}
