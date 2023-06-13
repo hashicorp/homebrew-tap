@@ -48,8 +48,12 @@ func loadShasums(product, version string) (map[string]string, error) {
 	return shasums, nil
 }
 
-func getShasum(shasums map[string]string, product, version, arch string) string {
+func getShasum(shasums map[string]string, product, version, arch string) (string, error) {
 	product = returnProduct(product)
 	zip := fmt.Sprintf("%s_%s_%s.zip", product, version, arch)
-	return shasums[zip]
+	digest, ok := shasums[zip]
+	if !ok {
+		return digest, fmt.Errorf("no value found for `%s`", zip)
+	}
+	return digest, nil
 }

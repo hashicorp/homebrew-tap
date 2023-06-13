@@ -36,3 +36,17 @@ func TestPrintENTFormula(t *testing.T) {
 	require.NoError(t, err)
 	assert.Equal(t, string(expect), buf.String())
 }
+
+func TestVariantHandling(t *testing.T) {
+	product := "vault-enterprise"
+	version := "1.13.0+ent.hsm.fips1402"
+	config := "./config.hcl"
+	buf := new(bytes.Buffer)
+
+	err := printFormula(product, version, config, buf)
+	assert.Error(t, err)
+	// Check the error, mostly to check the error contains actionable information.
+	// It currently relies on ordering (darwin_amd64 is tested first), so if that changes test case should be updated
+	// as needed.
+	assert.ErrorContains(t, err, "no SHA found for darwin_amd64: no value found for `vault_1.13.0+ent.hsm.fips1402_darwin_amd64.zip`")
+}
