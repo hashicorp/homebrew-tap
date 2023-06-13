@@ -1,5 +1,6 @@
 name: Manual update Product Formula in Tap
 # In the case of automation failure, this workflow allows a user to manually run a product version update.
+# Note for casks - the templater automatically adds "hashicorp-" as a prefix, so only use product name.
 on:
     workflow_dispatch:
       inputs:
