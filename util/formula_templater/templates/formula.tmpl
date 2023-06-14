@@ -6,6 +6,7 @@ class {{ .Name }} < Formula
   homepage "{{ .Homepage }}"
   version "{{ .Version }}"
 
+  {{- if or .Architectures.DarwinAmd64 .Architectures.DarwinArm64 }}
   {{- if and .Architectures.DarwinAmd64 .Architectures.DarwinArm64 }}
 
   if OS.mac? && Hardware::CPU.intel?
@@ -34,6 +35,7 @@ class {{ .Name }} < Formula
       EOS
     end
   end
+  {{- end }}
   {{- end }}
   {{- if .Architectures.LinuxAmd64 }}
 
