@@ -257,3 +257,17 @@ func TestHandleLambdaEventNewProduct(t *testing.T) {
 	})
 	assert.NoError(t, err)
 }
+
+func TestGetLatestVersionIgnoresVariants(t *testing.T) {
+	defer gock.Off()
+	gock.New("https://api.releases.hashicorp.com").
+		Get("/v1/releases/vault/latest").
+		MatchParam("license_class", "enterprise").
+		Reply(200).
+		File("testdata/releases.com_vault-enterprise_latest.json")
+
+	gotLatest, err := getLatestVersion("vault-enterprise")
+
+	require.NoError(t, err)
+	assert.Equal(t, "1.13.3+ent", *gotLatest)
+}
