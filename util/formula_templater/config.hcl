@@ -314,12 +314,11 @@ formula {
     }
 }
 
-formula {
+cask {
     product = "boundary-desktop"
     name = "Boundary Desktop"
     desc = ""
     homepage = "https://www.boundaryproject.io/"
-    cask = true
     cask_app = "Boundary.app"
     architectures {
         darwin_amd64 = true
@@ -377,11 +376,24 @@ formula {
     name = "Vagrant"
     desc = "Development environment"
     homepage = "https://www.vagrantup.com/"
-    cask = true
+    architectures {
+        darwin_amd64 = false
+        darwin_arm64 = false
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = false
+    }
+}
+
+cask {
+    product = "vagrant"
+    name = "Vagrant"
+    desc = "Development environment"
+    homepage = "https://www.vagrantup.com/"
     cask_pkg = "vagrant.pkg"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = false
         linux_arm = false
         linux_arm64 = false
