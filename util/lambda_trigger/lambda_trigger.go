@@ -14,6 +14,15 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
+// List of products which have cask and forumla
+var caskAndFormula = []string{"vagrant", "vagrant-vmware-utility"}
+
+// List of products which have cask only
+var casks = []string{"boundary-desktop"}
+
+// Endpoint for dispatches to trigger workflows
+const workflowEndpoint = "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
+
 // ReleaseEvent event body
 type ReleaseEvent struct {
 	Product string `json:"product"`
@@ -63,10 +72,27 @@ func isProductSupported(product string) bool {
 	return false
 }
 
-func isCask(product string) bool {
-	casks := []string{"boundary-desktop", "vagrant"}
+func isFormula(product string) bool {
+	// Check cask and formula combo products
+	for _, p := range caskAndFormula {
+		if p == product {
+			return true
+		}
+	}
 
+	// Otherwise, it's a formula if not a cask
+	return !isCask(product)
+}
+
+func isCask(product string) bool {
+	// Check cask only products
 	for _, p := range casks {
+		if p == product {
+			return true
+		}
+	}
+	// Check cask and formula combo products
+	for _, p := range caskAndFormula {
 		if p == product {
 			return true
 		}
@@ -111,7 +137,6 @@ func getBrewVersion(product string, brewType string) (string, error) {
 func triggerGithubWorkflow(event *ReleaseEvent) error {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 	// Create dispatch event https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
-	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
 	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%t\"}}", event.Product, event.Version, event.Cask)
 	fmt.Printf("POSTing to Github: %s\n", postBody)
 
@@ -122,13 +147,14 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 	}
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", githubToken))
+
 	resp, err := httpClient.Do(req)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
-	fmt.Printf("Github Response: %+v", body)
+	fmt.Printf("Github Response: %s", body)
 	return err
 }
 
@@ -154,14 +180,14 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			fmt.Printf("Latest version is %s\n", *version)
 			event.Version = *version
 			oldVersion := ""
-			event.Cask = isCask(event.Product)
 
-			if event.Cask {
+			if isCask(event.Product) {
 				oldVersion, err = getCaskVersion(event.Product)
 				if err != nil && err != errBrewVersionNotFound {
 					return err
 				}
-			} else {
+			}
+			if oldVersion == "" && !isCask(event.Product) {
 				oldVersion, err = getFormulaVersion(event.Product)
 				if err != nil && err != errBrewVersionNotFound {
 					return err
@@ -178,9 +204,19 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 				return errors.New("formula/cask is already latest version")
 			}
 
-			err = triggerGithubWorkflow(event)
+			if isCask(event.Product) {
+				event.Cask = true
+				if err = triggerGithubWorkflow(event); err != nil {
+					return err
+				}
+			}
 
-			return err
+			if isFormula(event.Product) {
+				event.Cask = false
+				if err = triggerGithubWorkflow(event); err != nil {
+					return err
+				}
+			}
 		}
 	}
 
