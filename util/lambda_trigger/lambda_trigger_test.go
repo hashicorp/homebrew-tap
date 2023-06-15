@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
-	"io/ioutil"
+	"log"
 	"net/url"
 	"os"
 	"testing"
@@ -325,7 +325,7 @@ func TestHandleLambdaEvent(t *testing.T) {
 
 	t.Run("when product is formula only", func(t *testing.T) {
 		t.Run("when versions are different", func(t *testing.T) {
-			reader, writer, cleanup := enableStdoutCapture(t)
+			reader, writer, cleanup := enableLogCapture(t)
 			defer cleanup()
 			defer gock.Off()
 			// Mock all the expected http requests
@@ -341,7 +341,7 @@ func TestHandleLambdaEvent(t *testing.T) {
 
 			require.NoError(HandleLambdaEvent(generateSnsEvent("nomad", "1.3.6")))
 			writer.Close()
-			result, err := ioutil.ReadAll(reader)
+			result, err := io.ReadAll(reader)
 			require.NoError(err)
 			require.Contains(string(result), successfulTest)
 		})
@@ -361,7 +361,7 @@ func TestHandleLambdaEvent(t *testing.T) {
 
 	t.Run("when product is cask only", func(t *testing.T) {
 		t.Run("when versions are different", func(t *testing.T) {
-			reader, writer, cleanup := enableStdoutCapture(t)
+			reader, writer, cleanup := enableLogCapture(t)
 			defer cleanup()
 			defer gock.Off()
 			generateCaskMock("boundary-desktop").Reply(200).
@@ -376,7 +376,7 @@ func TestHandleLambdaEvent(t *testing.T) {
 
 			require.NoError(HandleLambdaEvent(generateSnsEvent("boundary-desktop", "1.1.2")))
 			writer.Close()
-			result, err := ioutil.ReadAll(reader)
+			result, err := io.ReadAll(reader)
 			require.NoError(err)
 			require.Contains(string(result), successfulTest)
 		})
@@ -399,7 +399,7 @@ func TestHandleLambdaEvent(t *testing.T) {
 		caskSuccess := "cask test success"
 		t.Run("when versions are different", func(t *testing.T) {
 			t.Run("it should trigger workflow twice", func(t *testing.T) {
-				reader, writer, cleanup := enableStdoutCapture(t)
+				reader, writer, cleanup := enableLogCapture(t)
 				defer cleanup()
 				defer gock.Off()
 				generateCaskMock("vagrant").Reply(200).
@@ -413,14 +413,14 @@ func TestHandleLambdaEvent(t *testing.T) {
 
 				require.NoError(HandleLambdaEvent(generateSnsEvent("vagrant", "1.0.2")))
 				writer.Close()
-				result, err := ioutil.ReadAll(reader)
+				result, err := io.ReadAll(reader)
 				require.NoError(err)
 				require.Contains(string(result), caskSuccess)
 				require.Contains(string(result), formulaSuccess)
 			})
 
 			t.Run("it should trigger cask workflow", func(t *testing.T) {
-				reader, writer, cleanup := enableStdoutCapture(t)
+				reader, writer, cleanup := enableLogCapture(t)
 				defer cleanup()
 				defer gock.Off()
 				generateCaskMock("vagrant").Reply(200).
@@ -438,13 +438,13 @@ func TestHandleLambdaEvent(t *testing.T) {
 
 				require.NoError(HandleLambdaEvent(generateSnsEvent("vagrant", "1.0.2")))
 				writer.Close()
-				result, err := ioutil.ReadAll(reader)
+				result, err := io.ReadAll(reader)
 				require.NoError(err)
 				require.Contains(string(result), caskSuccess)
 			})
 
 			t.Run("it should trigger formula workflow", func(t *testing.T) {
-				reader, writer, cleanup := enableStdoutCapture(t)
+				reader, writer, cleanup := enableLogCapture(t)
 				defer cleanup()
 				defer gock.Off()
 				generateCaskMock("vagrant").Reply(200).
@@ -462,7 +462,7 @@ func TestHandleLambdaEvent(t *testing.T) {
 
 				require.NoError(HandleLambdaEvent(generateSnsEvent("vagrant", "1.0.2")))
 				writer.Close()
-				result, err := ioutil.ReadAll(reader)
+				result, err := io.ReadAll(reader)
 				require.NoError(err)
 				require.Contains(string(result), formulaSuccess)
 			})
@@ -481,18 +481,18 @@ func TestHandleLambdaEvent(t *testing.T) {
 	})
 }
 
-// Captures content written to stdout
-func enableStdoutCapture(t *testing.T) (reader io.ReadCloser, writer io.Closer, cleanup func()) {
+// Captures content written to logger
+func enableLogCapture(t *testing.T) (reader io.ReadCloser, writer io.Closer, cleanup func()) {
 	t.Helper()
 	reader, w, err := os.Pipe()
 	if err != nil {
 		t.Fatalf("Could not setup stdout capture: %s", err)
 	}
 	writer = w
-	stdout := os.Stdout
-	os.Stdout = w
+	logWriter := log.Writer()
+	log.SetOutput(w)
 	cleanup = func() {
-		os.Stdout = stdout
+		log.SetOutput(logWriter)
 		reader.Close()
 		writer.Close()
 	}
