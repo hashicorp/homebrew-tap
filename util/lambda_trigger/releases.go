@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"strings"
 )
@@ -32,7 +33,7 @@ func getLatestVersion(productName string) (*string, error) {
 
 	// Make a GET request to the Releases API to fetch
 	// the latest version of the given product
-	fmt.Printf("Reading %s", url)
+	log.Printf("Reading %s", url)
 	resp, err := http.Get(url)
 	if err != nil {
 		return nil, err
@@ -41,13 +42,13 @@ func getLatestVersion(productName string) (*string, error) {
 
 	// Log the status code and response body from non-200 responses
 	if resp.StatusCode != http.StatusOK {
-		fmt.Println("\nNon-OK HTTP status:", resp.StatusCode)
+		log.Println("\nNon-OK HTTP status:", resp.StatusCode)
 		body, err := ioutil.ReadAll(resp.Body)
 		if err != nil {
 			return nil, err
 		}
 		bodyString := string(body)
-		fmt.Println("Response body:", bodyString)
+		log.Println("Response body:", bodyString)
 		return nil, err
 	}
 	var release ReleaseResponse

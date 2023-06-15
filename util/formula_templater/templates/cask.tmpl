@@ -3,10 +3,26 @@
 
 cask "hashicorp-{{ .Product }}" do
   version "{{ .Version }}"
+  {{- if and .Architectures.DarwinAmd64SHA .Architectures.DarwinArm64SHA }}
+  arch arm: "arm64", intel: "amd64"
+  sha256 arm: "{{ .Architectures.DarwinArm64SHA }}",
+         intel: "{{ .Architectures.DarwinAmd64SHA }}"
+  url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_#{arch}.dmg",
+      verified: "hashicorp.com/{{ .Product }}/"
+  {{- else }}
+  {{- if .Architectures.DarwinAmd64SHA }}
   sha256 "{{ .Architectures.DarwinAmd64SHA }}"
 
   url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg",
       verified: "hashicorp.com/{{ .Product }}/"
+  {{- end }}
+  {{- if .Architectures.DarwinArm64SHA }}
+  sha256 "{{ .Architectures.DarwinArm64SHA }}"
+
+  url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_arm64.dmg",
+      verified: "hashicorp.com/{{ .Product }}/"
+  {{- end }}
+  {{- end }}
   name "{{ .Name }}"
   desc "{{ .Desc }}"
   homepage "{{ .Homepage }}"

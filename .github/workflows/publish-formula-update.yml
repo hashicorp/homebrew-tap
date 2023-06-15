@@ -36,6 +36,7 @@ jobs:
         if: ${{ github.event.client_payload.cask == 'true' }}
         run: |
           ./util/formula_templater/formula_templater \
+            -cask \
             ${{github.event.client_payload.name}} \
             ${{github.event.client_payload.version}} \
             ./util/formula_templater/config.hcl > ./Casks/hashicorp-${{github.event.client_payload.name}}.rb

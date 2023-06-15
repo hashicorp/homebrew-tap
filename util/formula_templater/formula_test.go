@@ -23,6 +23,48 @@ func TestPrintOSSFormula(t *testing.T) {
 	assert.Equal(t, string(expect), buf.String())
 }
 
+func TestPrintOSSCask(t *testing.T) {
+	expect, err := os.ReadFile("testdata/boundary-desktop-cask.rb")
+	require.NoError(t, err)
+
+	product := "boundary-desktop"
+	version := "1.6.0"
+	config := "./config.hcl"
+	buf := new(bytes.Buffer)
+
+	err = printCask(product, version, config, buf)
+	require.NoError(t, err)
+	assert.Equal(t, string(expect), buf.String())
+}
+
+func TestPrintOSSCaskMultiArch(t *testing.T) {
+	expect, err := os.ReadFile("testdata/vagrant-cask.rb")
+	require.NoError(t, err)
+
+	product := "vagrant"
+	version := "2.3.6"
+	config := "./config.hcl"
+	buf := new(bytes.Buffer)
+
+	err = printCask(product, version, config, buf)
+	require.NoError(t, err)
+	assert.Equal(t, string(expect), buf.String())
+}
+
+func TestPrintOSSFormulaNoMac(t *testing.T) {
+	expect, err := os.ReadFile("testdata/vagrant-formula.rb")
+	require.NoError(t, err)
+
+	product := "vagrant"
+	version := "2.3.6"
+	config := "./config.hcl"
+	buf := new(bytes.Buffer)
+
+	err = printFormula(product, version, config, buf)
+	require.NoError(t, err)
+	assert.Equal(t, string(expect), buf.String())
+}
+
 func TestPrintENTFormula(t *testing.T) {
 	expect, err := os.ReadFile("testdata/consul-enterprise.rb")
 	require.NoError(t, err)

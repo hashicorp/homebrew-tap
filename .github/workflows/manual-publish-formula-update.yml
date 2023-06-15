@@ -43,6 +43,7 @@ jobs:
         if: ${{ github.event.inputs.is_cask == 'true' }}
         run: |
           ./util/formula_templater/formula_templater \
+            -cask \
             ${{github.event.inputs.product}} \
             ${{github.event.inputs.version}} \
             ./util/formula_templater/config.hcl > ./Casks/hashicorp-${{github.event.inputs.product}}.rb

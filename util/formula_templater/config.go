@@ -9,6 +9,7 @@ import (
 // Config configuration top level options
 type Config struct {
 	Formulae []FormulaConfig `hcl:"formula,block"`
+	Casks    []CaskConfig    `hcl:"cask,block"`
 }
 
 // FormulaConfig all required formula data
@@ -19,17 +20,28 @@ type FormulaConfig struct {
 	Desc          string `hcl:"desc"`
 	Homepage      string `hcl:"homepage"`
 	Version       string
-	Architectures FormulaArchitectures `hcl:"architectures,block"`
-	Depends       []string             `hcl:"depends,optional"`
-	Recommends    []string             `hcl:"recommends,optional"`
-	ServiceArgs   []string             `hcl:"service_args,optional"`
-	Cask          bool                 `hcl:"cask,optional"`
-	CaskApp       string               `hcl:"cask_app,optional"`
-	CaskPkg       string               `hcl:"cask_pkg,optional"`
+	Architectures Architectures `hcl:"architectures,block"`
+
+	Depends     []string `hcl:"depends,optional"`
+	Recommends  []string `hcl:"recommends,optional"`
+	ServiceArgs []string `hcl:"service_args,optional"`
 }
 
-// FormulaArchitectures architecture support
-type FormulaArchitectures struct {
+type CaskConfig struct {
+	Product       string `hcl:"product"`
+	Variant       string `hcl:"variant,optional"`
+	Name          string `hcl:"name"`
+	Desc          string `hcl:"desc"`
+	Homepage      string `hcl:"homepage"`
+	Version       string
+	Architectures Architectures `hcl:"architectures,block"`
+
+	CaskApp string `hcl:"cask_app,optional"`
+	CaskPkg string `hcl:"cask_pkg,optional"`
+}
+
+// Architectures architecture support
+type Architectures struct {
 	DarwinAmd64    bool `hcl:"darwin_amd64"`
 	DarwinAmd64SHA string
 	DarwinArm64    bool `hcl:"darwin_arm64"`
@@ -58,4 +70,14 @@ func (c Config) getFormula(product string) (FormulaConfig, error) {
 	}
 
 	return FormulaConfig{}, errors.New("Formula not found")
+}
+
+func (c Config) getCask(product string) (CaskConfig, error) {
+	for _, cask := range c.Casks {
+		if cask.Product == product {
+			return cask, nil
+		}
+	}
+
+	return CaskConfig{}, errors.New("Cask not found")
 }
