@@ -14,6 +14,17 @@ mod-download:
 build: *.go go.* mod-download
 	go build
 
+release: *.go go.* mod-download
+	@echo "Preparing artifact..."
+	@GOOS=linux GOARCH=amd64 go build -trimpath
+	@touch -d 1970-01-01T00:00:01Z lambda_trigger
+	@zip -X lambda.zip lambda_trigger
+	@openssl dgst -sha256 -hex lambda_trigger lambda.zip
+	@echo
+	@echo "AWS Lambda CodeSha256:"
+	@openssl dgst -sha256 -binary lambda.zip | openssl enc -base64
+	@echo
+	@echo "To publish, use: aws lambda update-function-code ..."
 
 .PHONY: clean
 clean:
