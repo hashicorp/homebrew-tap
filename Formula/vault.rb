@@ -4,31 +4,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.13.3"
+  version "1.13.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_darwin_amd64.zip"
-    sha256 "cb8f749a4f93e1c63baa4803dd5c039dc25a2c4f24efd3d29f7be901f6463de1"
+    url "https://releases.hashicorp.com/vault/1.13.4/vault_1.13.4_darwin_amd64.zip"
+    sha256 "642fa08aef99bd0859c610e471b02bf4d432b1661ab20690bdd17f9a52b1de3e"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_darwin_arm64.zip"
-    sha256 "ac1635022dc1145b9a8ade9160e9c2cb0f8b57800c3273fc4b28e852531b7571"
+    url "https://releases.hashicorp.com/vault/1.13.4/vault_1.13.4_darwin_arm64.zip"
+    sha256 "2b94c7295697500f55a804b2751798b2a0d7df32b69542ff757c7c05499c50ce"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_linux_amd64.zip"
-    sha256 "7ca502f1c50dd043862276705b4ccc1fa45f633345ca7d01fc5b4ba1d820c51e"
+    url "https://releases.hashicorp.com/vault/1.13.4/vault_1.13.4_linux_amd64.zip"
+    sha256 "ca9975ecfb27bc0bc29cf0433e436924c2a2b51737cafb8814b50ab5d893b46f"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_linux_arm.zip"
-    sha256 "a215e12136c25d18dd0320d560d752f4722f3d049dc65821097b8b6521fbf3d8"
+    url "https://releases.hashicorp.com/vault/1.13.4/vault_1.13.4_linux_arm.zip"
+    sha256 "5a071ac2bb72a7793f9ba3a3df65283558a3bc8965946a7acb7db62ebae715e1"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_linux_arm64.zip"
-    sha256 "8e2cf7f013cd755fcb10e8e4f2e9dc2866a8eafab76a4bd6b5ae9210e5f61f9e"
+    url "https://releases.hashicorp.com/vault/1.13.4/vault_1.13.4_linux_arm64.zip"
+    sha256 "10ed0125334c36362d4058d599bb0ee707696648677c59ec4e7644156049fbfb"
   end
 
   conflicts_with "vault"
