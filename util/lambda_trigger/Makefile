@@ -17,7 +17,7 @@ build: *.go go.* mod-download
 release: *.go go.* mod-download
 	@echo "Preparing artifact..."
 	@GOOS=linux GOARCH=amd64 go build -trimpath
-	@touch -d 1970-01-01T00:00:01Z lambda_trigger
+	@touch -d $$(TZ=UTC0 git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd") lambda_trigger
 	@zip -X lambda.zip lambda_trigger
 	@openssl dgst -sha256 -hex lambda_trigger lambda.zip
 	@echo
