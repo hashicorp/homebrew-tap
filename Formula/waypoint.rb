@@ -4,31 +4,31 @@
 class Waypoint < Formula
   desc "Waypoint"
   homepage "https://www.waypointproject.io/"
-  version "0.11.2"
+  version "0.11.3"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/waypoint/0.11.2/waypoint_0.11.2_darwin_amd64.zip"
-    sha256 "3b6eb6bffee74bc9954a2939616660f2a8f17c0569265f7dcb9d02c0b976eca6"
+    url "https://releases.hashicorp.com/waypoint/0.11.3/waypoint_0.11.3_darwin_amd64.zip"
+    sha256 "6b8f6f28404f83988359572d1dbeb4d84b2dc00b54cd3e299bdb9f09c664e020"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/waypoint/0.11.2/waypoint_0.11.2_darwin_arm64.zip"
-    sha256 "97f518757c0e51ad4f6b0b573a25c77eab41b7ff2efc90815b2e4eb473bd2cd9"
+    url "https://releases.hashicorp.com/waypoint/0.11.3/waypoint_0.11.3_darwin_arm64.zip"
+    sha256 "3980d62f9c9cd8144412d3eb4ba0f669b1dbd86bb4840a8a2d8746da92ab3339"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/waypoint/0.11.2/waypoint_0.11.2_linux_amd64.zip"
-    sha256 "d825543b2b82951cce0a8ec7451eb630e1648c4b64886bca88c8b9623f8465f2"
+    url "https://releases.hashicorp.com/waypoint/0.11.3/waypoint_0.11.3_linux_amd64.zip"
+    sha256 "17e9e39bf8ffc658ae162c8dc3418a16752109042c2e5f1e07896b117c3616d1"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/waypoint/0.11.2/waypoint_0.11.2_linux_arm.zip"
-    sha256 "3fb9b19a41307a7d3f8529467a7ae63bd89e903e44c616cf6cf0f456bedde9f6"
+    url "https://releases.hashicorp.com/waypoint/0.11.3/waypoint_0.11.3_linux_arm.zip"
+    sha256 "cbd4244541d0e93d8833a1e68c60ea6d6933014aa6f129b3ed530e140b9d92df"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/waypoint/0.11.2/waypoint_0.11.2_linux_arm64.zip"
-    sha256 "b43651b983ef58f2281aa377f0968300e28e5574c8dfac111183a53f531d41d5"
+    url "https://releases.hashicorp.com/waypoint/0.11.3/waypoint_0.11.3_linux_arm64.zip"
+    sha256 "d76c2b17561be5576411805909f373de508bdc2834bca34eb0bc4aa54c9ee376"
   end
 
   conflicts_with "waypoint"
