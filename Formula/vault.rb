@@ -4,31 +4,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.14.0"
+  version "1.14.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.14.0/vault_1.14.0_darwin_amd64.zip"
-    sha256 "5f1f9c548bffee8d843a08551aa018eb97ea15fd3215ecc8f97d6be3f15e29ba"
+    url "https://releases.hashicorp.com/vault/1.14.1/vault_1.14.1_darwin_amd64.zip"
+    sha256 "35422e5276957bcac4011fd16e39a99b068d746aae7ffb59448a3fc0dbf73b08"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.14.0/vault_1.14.0_darwin_arm64.zip"
-    sha256 "6d39460059b4a3ba723099c07f019af73687f3c05f4c390f155ad32127702fd4"
+    url "https://releases.hashicorp.com/vault/1.14.1/vault_1.14.1_darwin_arm64.zip"
+    sha256 "61201113883672a914282ca34cac659c5eba650aaa5e6cedbbc44fd5d0e31a45"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.14.0/vault_1.14.0_linux_amd64.zip"
-    sha256 "3d5c27e35d8ed43d861e892fc7d8f888f2fda4319a36f344f8c09603fb184b50"
+    url "https://releases.hashicorp.com/vault/1.14.1/vault_1.14.1_linux_amd64.zip"
+    sha256 "6031432dfc3de07f6523d206c44fc018aa969d94c8e9125a77340af359f57ea3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.14.0/vault_1.14.0_linux_arm.zip"
-    sha256 "580248d390275ccf4aa5f01cb0cbad6acef661b234accbbfb0f333e7ffea8f87"
+    url "https://releases.hashicorp.com/vault/1.14.1/vault_1.14.1_linux_arm.zip"
+    sha256 "b730d3e887a62bb9493d203f6c21b2732d4da8e81fb11ac2761a7452609d0950"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.14.0/vault_1.14.0_linux_arm64.zip"
-    sha256 "116ed35f19b3b91a7afc9533f602cd9cdbfbb08e66c785080b0046a034b0a051"
+    url "https://releases.hashicorp.com/vault/1.14.1/vault_1.14.1_linux_arm64.zip"
+    sha256 "1ab6252b04cde5d238fbd37f16c2be4585169886002ab50198fe0d9a2bf270fe"
   end
 
   conflicts_with "vault"
