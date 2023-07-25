@@ -4,31 +4,31 @@
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "1.14.0+ent"
+  version "1.14.1+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.14.0+ent/vault_1.14.0+ent_darwin_amd64.zip"
-    sha256 "52f900ef02945197b9630ab668ee526a8a2fd16167e0d78487e0e3f21aa240c8"
+    url "https://releases.hashicorp.com/vault/1.14.1+ent/vault_1.14.1+ent_darwin_amd64.zip"
+    sha256 "01c740c3548729571ee9654f765c8461c6fa354a1c233c9840ff14efabbccae2"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.14.0+ent/vault_1.14.0+ent_darwin_arm64.zip"
-    sha256 "98157572a766ce826a662555a3a85db29691ceda904e6ce13eb192ee7134545a"
+    url "https://releases.hashicorp.com/vault/1.14.1+ent/vault_1.14.1+ent_darwin_arm64.zip"
+    sha256 "87a3872ccd053baab8d5f9d355b8f0ee38544169d0bf195b292d24dd50a2ad1c"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.14.0+ent/vault_1.14.0+ent_linux_amd64.zip"
-    sha256 "8ae668fe379e48827bb1d1734447cf7900ee522107ce25922314b3b22272fcfa"
+    url "https://releases.hashicorp.com/vault/1.14.1+ent/vault_1.14.1+ent_linux_amd64.zip"
+    sha256 "055f7e9b1d36014b16195b123a25f8e2473301b8c0f7f2c5b1ed92951364dbbd"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.14.0+ent/vault_1.14.0+ent_linux_arm.zip"
-    sha256 "77b21b08fe15fe6c29bc070488e03852b7924aa0f59108389ca86093e9b32fbd"
+    url "https://releases.hashicorp.com/vault/1.14.1+ent/vault_1.14.1+ent_linux_arm.zip"
+    sha256 "2b7bd5e6aae0e97a7996622e79b99e756cd4bc4dbf9b8c7bb4e11a74e90d67cc"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.14.0+ent/vault_1.14.0+ent_linux_arm64.zip"
-    sha256 "8fcf843efc664c56b53d1700655529342b49ea247a894f90fe1f644c84c0b536"
+    url "https://releases.hashicorp.com/vault/1.14.1+ent/vault_1.14.1+ent_linux_arm64.zip"
+    sha256 "e711e7f065c5fc20b40636df452778241019e75365b6e408d92052439e1efce7"
   end
 
   conflicts_with "vault-enterprise"
