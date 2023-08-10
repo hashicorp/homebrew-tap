@@ -4,31 +4,31 @@
 class BoundaryEnterprise < Formula
   desc "Boundary Enterprise"
   homepage "https://www.boundaryproject.io/"
-  version "0.13.1+ent"
+  version "0.13.2+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.13.1+ent/boundary_0.13.1+ent_darwin_amd64.zip"
-    sha256 "8c134b7be813343442f103c08f788a1aeb698ed6802dafec1a5a82bb578485bd"
+    url "https://releases.hashicorp.com/boundary/0.13.2+ent/boundary_0.13.2+ent_darwin_amd64.zip"
+    sha256 "d2b40febc40060999d7b1eb899794434b0271796b64ed2455bf606b23d67712a"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/boundary/0.13.1+ent/boundary_0.13.1+ent_darwin_arm64.zip"
-    sha256 "6650cf368fa9bb7f87fefaeedf6f5da0c660763ac89048e2539cec528acf53de"
+    url "https://releases.hashicorp.com/boundary/0.13.2+ent/boundary_0.13.2+ent_darwin_arm64.zip"
+    sha256 "3ad618107346f7bcfcbb389f782a314351921c65b3d7bb4643ac71d80dea6579"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.13.1+ent/boundary_0.13.1+ent_linux_amd64.zip"
-    sha256 "de4af6004766ff568a8ab6700c5ec5553f44e6861a1abedb1182338f825c2c76"
+    url "https://releases.hashicorp.com/boundary/0.13.2+ent/boundary_0.13.2+ent_linux_amd64.zip"
+    sha256 "dda11361809ce2b99d49653af677d676b30b4599e2663174f8950cf346734be0"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.13.1+ent/boundary_0.13.1+ent_linux_arm.zip"
-    sha256 "20be0a49e5e9d82b4d8aeb77ee08a0b32d4083867dfc6905d19abef92c5bd2dd"
+    url "https://releases.hashicorp.com/boundary/0.13.2+ent/boundary_0.13.2+ent_linux_arm.zip"
+    sha256 "7d8903f0042fb52f439f3a3cfddf0bdd56c7c3599c5b5ae10ce40d669c50bdb2"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.13.1+ent/boundary_0.13.1+ent_linux_arm64.zip"
-    sha256 "c933bcde990aee4eb0691737697f62729d71cda818defe37e9cc58b18d24dc90"
+    url "https://releases.hashicorp.com/boundary/0.13.2+ent/boundary_0.13.2+ent_linux_arm64.zip"
+    sha256 "8d4a12cffc69e7bd94fb91e393a06f4dee3389927fe3f79e3924beeb98e281b4"
   end
 
   conflicts_with "boundary-enterprise"
