@@ -9,14 +9,8 @@ class Levant < Formula
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_darwin_arm64.zip"
+    sha256 "1cc92271029937e22b48bf9bf4e9be5b16c0864bdccb43cd3e709d99cd12808a"
   end
 
   if OS.linux? && Hardware::CPU.intel?
