@@ -4,31 +4,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.14.3"
+  version "1.14.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.14.3/vault_1.14.3_darwin_amd64.zip"
-    sha256 "17cc20567ad77ff64846900cbd610e1c07f37223d80227f990d6dcce741d5bc1"
+    url "https://releases.hashicorp.com/vault/1.14.4/vault_1.14.4_darwin_amd64.zip"
+    sha256 "84cf7214f2c2edc07f6cf6f078af55dbd69d26107642c61bc71b3d25921ef272"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.14.3/vault_1.14.3_darwin_arm64.zip"
-    sha256 "ec968d71ccef22bf586cafa68e07d358b343c27744fd180270baca7611471da8"
+    url "https://releases.hashicorp.com/vault/1.14.4/vault_1.14.4_darwin_arm64.zip"
+    sha256 "29756bed598140598ece97a64e74d0480762f9ee84078338a3effbd0c9a88066"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.14.3/vault_1.14.3_linux_amd64.zip"
-    sha256 "01e1698d2563cf4780438468f9f815eedf707e8ea01f87bb7621e24a00e21d12"
+    url "https://releases.hashicorp.com/vault/1.14.4/vault_1.14.4_linux_amd64.zip"
+    sha256 "2e94ba5f3e6b361847763a4c4fba87050221e76f02c3a118605ec56155a7a3cf"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.14.3/vault_1.14.3_linux_arm.zip"
-    sha256 "3843e319e853fa4f23ba59237e4f5481b0ba0fea0836da1e91c7d713b50dc1ca"
+    url "https://releases.hashicorp.com/vault/1.14.4/vault_1.14.4_linux_arm.zip"
+    sha256 "a70e3bf28574fed967b5fccb60a2df8b6a47e60ca074949ac7e07d87e09db864"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.14.3/vault_1.14.3_linux_arm64.zip"
-    sha256 "326922155685ab17e659e921e0e66af2694b9743005e0e73c917e5d19408986d"
+    url "https://releases.hashicorp.com/vault/1.14.4/vault_1.14.4_linux_arm64.zip"
+    sha256 "0bd1531c9c97ccfe0fc7a0b40a7ba1d694ce00037f9048982db349eb64c948a5"
   end
 
   conflicts_with "vault"
