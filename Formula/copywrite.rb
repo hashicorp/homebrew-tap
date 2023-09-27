@@ -5,21 +5,21 @@
 class Copywrite < Formula
   desc "copywrite -- utilities for managing copyright headers and license files for GitHub repos"
   homepage "https://github.com/hashicorp/copywrite"
-  version "0.16.4"
+  version "0.16.5"
   license "MPL-2.0"
 
   on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.4/copywrite_0.16.4_darwin_x86_64.tar.gz"
-      sha256 "623ecbeec3a72ce08445032fe407d61339cffcec1329a72315c87caecbacca86"
+    if Hardware::CPU.arm?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.5/copywrite_Darwin_arm64.tar.gz"
+      sha256 "30dc35717e28d849953c77e3e6ae91ef71a5f1a83883433b1408d56aedaaa17d"
 
       def install
         bin.install "copywrite"
       end
     end
-    if Hardware::CPU.arm?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.4/copywrite_0.16.4_darwin_arm64.tar.gz"
-      sha256 "e9fd16ecc0fb7edc4346c3a8abc1eac78e5351b76ca93348f9b1613129628bdb"
+    if Hardware::CPU.intel?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.5/copywrite_Darwin_x86_64.tar.gz"
+      sha256 "0d76c0ecb516e70cfb17cb50f5e6997140cf517d09f8af48576245a8584d045b"
 
       def install
         bin.install "copywrite"
@@ -28,17 +28,17 @@ class Copywrite < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.4/copywrite_0.16.4_linux_arm64.tar.gz"
-      sha256 "9c23953531bcff8d9aca45961546f0be8899b9109e2578ce73ff6bc591160530"
+    if Hardware::CPU.intel?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.5/copywrite_Linux_x86_64.tar.gz"
+      sha256 "d45b217b73e9c9bf3f3c67d65b86f1cfc2ac680a61ec2cffd5acc7534420f1b8"
 
       def install
         bin.install "copywrite"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.4/copywrite_0.16.4_linux_x86_64.tar.gz"
-      sha256 "c299f830e6eef7e126a3c6ef99ac6f43a3c132d830c769e0d36fa347fa1af254"
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.16.5/copywrite_Linux_arm64.tar.gz"
+      sha256 "a2a97d7ded78746164fa850d30004b66131e306677abf60ef37f2ef6c733a999"
 
       def install
         bin.install "copywrite"
