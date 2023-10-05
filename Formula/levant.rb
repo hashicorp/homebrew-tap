@@ -1,11 +1,14 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class Levant < Formula
   desc "Levant"
   homepage "https://github.com/hashicorp/levant"
-  version "0.3.2"
+  version "0.3.3"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_darwin_amd64.zip"
-    sha256 "7406a9f089227254f3ed7eb4f67d22dc28c44b41f2233391b5f0d3ffa1be861e"
+    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_darwin_amd64.zip"
+    sha256 "da1f7b45a5a10f8d2387ac40aac7eb52c3dbe6606e9948b51ee0efb82f88c165"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +23,18 @@ class Levant < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_linux_amd64.zip"
-    sha256 "1e06180f8d8327e721e2ad4c9637d1f391034a22709473b8ed8ee19f1cad1570"
+    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_amd64.zip"
+    sha256 "630c4c0499fdc0b904be22905e18dcd81350f8011ab1494b23f20d06f192d462"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_linux_arm.zip"
-    sha256 "3c511d66e9018fdfefb179f5558f1639aa25f2a3a3376b7033f10a505f3c09a2"
+    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_arm.zip"
+    sha256 "02c7106dbf788fdc592f30393a44c9fc4103c7ec7b5662eed351425b149e3a7e"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_linux_arm64.zip"
-    sha256 "8cb3c3c10b5415704964b437d85a2f26091bf25e8575df76403874eee78934b1"
+    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_arm64.zip"
+    sha256 "e2e3bf5aed271d848d8aac86b4649594b7f9aa1e11aa4612f5b571f97598bba4"
   end
 
   conflicts_with "levant"
