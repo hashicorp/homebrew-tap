@@ -12,8 +12,8 @@ class Levant < Formula
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_darwin_arm64.zip"
-    sha256 "1cc92271029937e22b48bf9bf4e9be5b16c0864bdccb43cd3e709d99cd12808a"
+    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_darwin_arm64.zip"
+    sha256 "aeb4e4a5bca4be48ba8706d671d50893f2db439cf61f302162293a4362bddeb0"
   end
 
   if OS.linux? && Hardware::CPU.intel?
