@@ -4,31 +4,31 @@
 class Boundary < Formula
   desc "Boundary"
   homepage "https://www.boundaryproject.io/"
-  version "0.14.1"
+  version "0.14.2"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.14.1/boundary_0.14.1_darwin_amd64.zip"
-    sha256 "2ab4701fa927d7d59b1f2e4412bb962e4fda00367b9bae9f4732c2593e5f5ff8"
+    url "https://releases.hashicorp.com/boundary/0.14.2/boundary_0.14.2_darwin_amd64.zip"
+    sha256 "1c2f32101f3c179fd3be36a9181e11cef656287e223657355d89ef8224010063"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/boundary/0.14.1/boundary_0.14.1_darwin_arm64.zip"
-    sha256 "e5f9902a0ea72cc02e8e81fa6f37aebebcb01be3fa60ceadecb71008dd405a26"
+    url "https://releases.hashicorp.com/boundary/0.14.2/boundary_0.14.2_darwin_arm64.zip"
+    sha256 "a8f5d5856931e77e897a6b47319807d9298e70b0abb81067c5773a7b558f1441"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.14.1/boundary_0.14.1_linux_amd64.zip"
-    sha256 "7e422f4b32bfa24ec57ee9979bd6585b7cc2206c6c54b112c7946586d31e327a"
+    url "https://releases.hashicorp.com/boundary/0.14.2/boundary_0.14.2_linux_amd64.zip"
+    sha256 "f9857707147490630137b8fa62f6086e235ec4d95815c4b8b56724537d8998ef"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.14.1/boundary_0.14.1_linux_arm.zip"
-    sha256 "d8613e96abdb79ddeb3b9bae7017a6aa3c0a694a572c0fedb5b8430b025051d5"
+    url "https://releases.hashicorp.com/boundary/0.14.2/boundary_0.14.2_linux_arm.zip"
+    sha256 "488214773d474ac3376f25dc46f15955e9ec8ee5b1aa5a6bd2ca2428dea712fd"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.14.1/boundary_0.14.1_linux_arm64.zip"
-    sha256 "cfd5a6be55947b7618875bebc055685477300f272a0b45a0463080300b89b57b"
+    url "https://releases.hashicorp.com/boundary/0.14.2/boundary_0.14.2_linux_arm64.zip"
+    sha256 "180ae73d2f89bbc60613ad0ce851fab8822c88a8608602ce3dbb58c7bc4bca64"
   end
 
   conflicts_with "boundary"
