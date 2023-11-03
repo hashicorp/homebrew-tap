@@ -4,31 +4,31 @@
 class Consul < Formula
   desc "Consul"
   homepage "https://www.consul.io"
-  version "1.16.3"
+  version "1.17.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.16.3/consul_1.16.3_darwin_amd64.zip"
-    sha256 "41c0a5021b206bad915074dec383bb806725640b2c818fda140d0616b4e89546"
+    url "https://releases.hashicorp.com/consul/1.17.0/consul_1.17.0_darwin_amd64.zip"
+    sha256 "0dc639b59da9ce2acfd8767125ccc760c5d97b393e0659cac25505241510f002"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul/1.16.3/consul_1.16.3_darwin_arm64.zip"
-    sha256 "290a53459d9719a9e31eebdb1fe99953b2811b969a432ba82c0e38fd01a10bdd"
+    url "https://releases.hashicorp.com/consul/1.17.0/consul_1.17.0_darwin_arm64.zip"
+    sha256 "1c52abf65d9ba248534ddbfab57f5beea3659963c278fb0d7430f5ca705c3e92"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.16.3/consul_1.16.3_linux_amd64.zip"
-    sha256 "9d0d7ad123844d43543d285cc0b3e15393d75ffa384bf84e5d64226a7f3d3132"
+    url "https://releases.hashicorp.com/consul/1.17.0/consul_1.17.0_linux_amd64.zip"
+    sha256 "4fbb6c3a05ddfc72d314149fe9765a1be89c33857b003a1d861469f2fe97e23e"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.16.3/consul_1.16.3_linux_arm.zip"
-    sha256 "67407220ee72650e14fecc49fe9f95f10faf9e422fdc478d5cc0e7812a6d34f4"
+    url "https://releases.hashicorp.com/consul/1.17.0/consul_1.17.0_linux_arm.zip"
+    sha256 "265e7134edb67aa00167c839fb73f5e410bd135ef7d0517ea810c07b46ffd652"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.16.3/consul_1.16.3_linux_arm64.zip"
-    sha256 "349d1a996349ee496d389464884a10bf0899bd46b2820bf6fc1dc29c49caa50b"
+    url "https://releases.hashicorp.com/consul/1.17.0/consul_1.17.0_linux_arm64.zip"
+    sha256 "a37ea9dd3eed18f58df6c83057fcdf9feafd100eeabb44bd217c80d60bf9f0d3"
   end
 
   conflicts_with "consul"
