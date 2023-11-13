@@ -317,7 +317,7 @@ formula {
 cask {
     product = "boundary-desktop"
     name = "Boundary Desktop"
-    desc = ""
+    desc = "Boundary Desktop"
     homepage = "https://www.boundaryproject.io/"
     cask_app = "Boundary.app"
     architectures {
@@ -332,7 +332,7 @@ cask {
 formula {
     product = "sentinel"
     name = "Sentinel"
-    desc = ""
+    desc = "Sentinel"
     homepage = "https://docs.hashicorp.com/sentinel"
     architectures {
         darwin_amd64 = true
