@@ -42,6 +42,7 @@ With the following commands, you can install the latest generally available (GA)
 # Formulae
 brew install hashicorp/tap/athena-cli
 brew install hashicorp/tap/boundary
+brew install hashicorp/tap/boundary-enterprise
 brew install hashicorp/tap/consul
 brew install hashicorp/tap/consul-dataplane
 brew install hashicorp/tap/consul-enterprise
