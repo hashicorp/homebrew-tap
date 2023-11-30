@@ -4,31 +4,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.15.2"
+  version "1.15.3"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.15.2/vault_1.15.2_darwin_amd64.zip"
-    sha256 "aba6fb4f7f19ff242f8a25eed538e6a5ea15029575e803fe0269fbc9ac9154f5"
+    url "https://releases.hashicorp.com/vault/1.15.3/vault_1.15.3_darwin_amd64.zip"
+    sha256 "cea80a5913b4025ee3b88aacb21424d152f6fe330ed0dfe0999f4cab4592bc0b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.15.2/vault_1.15.2_darwin_arm64.zip"
-    sha256 "cbb818c3ed2371d730817324d3e9c93faf1b951cb0f6824f23b248f2ea8fde66"
+    url "https://releases.hashicorp.com/vault/1.15.3/vault_1.15.3_darwin_arm64.zip"
+    sha256 "deb0ed6e988162ca23326342e786339161c22dd060e51116d7271ea6720c8fe5"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.15.2/vault_1.15.2_linux_amd64.zip"
-    sha256 "5a0820943bc212713ba57a5136b5ec96dd1a6fc5a1c61666407d996027b2e694"
+    url "https://releases.hashicorp.com/vault/1.15.3/vault_1.15.3_linux_amd64.zip"
+    sha256 "9e2d1a2a725cfd2489cd02e6cb22079082d8224a3cc6d9ac900488c911175742"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.15.2/vault_1.15.2_linux_arm.zip"
-    sha256 "2fbfd3a54952c140a5276f85dd63137eed1b004936ad1a6b9859af88d0ad2fd0"
+    url "https://releases.hashicorp.com/vault/1.15.3/vault_1.15.3_linux_arm.zip"
+    sha256 "d13848d9f79c3b7f15bfc95dc3e4953f40d1a56a027d5ebb2d5087a5e2c92b50"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.15.2/vault_1.15.2_linux_arm64.zip"
-    sha256 "02438725b1229ad32788e05daca8d4537d4dd3d0faf4d7cb891c12e1fb40c08d"
+    url "https://releases.hashicorp.com/vault/1.15.3/vault_1.15.3_linux_arm64.zip"
+    sha256 "40fe704903be4a93fd27b397d6645360308680b4b4b201b81ef342fbe7610fca"
   end
 
   conflicts_with "vault"
