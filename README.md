@@ -57,6 +57,7 @@ brew install hashicorp/tap/packer
 brew install hashicorp/tap/sentinel
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
+brew install hashicorp/tap/tfstacks
 brew install hashicorp/tap/vault
 brew install hashicorp/tap/vault-enterprise
 brew install hashicorp/tap/waypoint
