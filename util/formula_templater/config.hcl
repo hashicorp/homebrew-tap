@@ -272,8 +272,8 @@ formula {
 
 formula {
     product = "tfstacks"
-    name = "Terraform Stacks"
-    desc = "Terraform Stacks"
+    name = "Terraform Stacks CLI"
+    desc = "Terraform Stacks CLI"
     homepage = "https://www.terraform.io/"
     architectures {
         darwin_amd64 = true
