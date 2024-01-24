@@ -1,7 +1,7 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-class TerraformStacksCLI < Formula
+class Tfstacks < Formula
   desc "Terraform Stacks CLI"
   homepage "https://www.terraform.io/"
   version "0.1.0"
