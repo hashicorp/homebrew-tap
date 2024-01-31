@@ -11,5 +11,4 @@ jobs:
         with:
           workflow: homebrew-lambda-update.yml
           repo: hashicorp/releng-support
-          ref: RELENG-1105-automate-lambda-deploy
           token: ${{ secrets.ELEVATED_GITHUB_TOKEN }}
