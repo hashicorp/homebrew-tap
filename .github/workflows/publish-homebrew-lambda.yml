@@ -2,7 +2,7 @@ name: publish-homebrew-lambda
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   example:
     runs-on: ubuntu-latest
