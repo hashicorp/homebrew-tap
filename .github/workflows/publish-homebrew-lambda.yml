@@ -12,4 +12,5 @@ jobs:
         with:
           workflow: homebrew-lambda-update.yml
           repo: hashicorp/releng-support
+          ref: main
           token: ${{ secrets.ELEVATED_GITHUB_TOKEN }}
