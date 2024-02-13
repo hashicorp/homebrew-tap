@@ -4,31 +4,31 @@
 class ConsulEnterprise < Formula
   desc "Consul Enterprise"
   homepage "https://www.consul.io"
-  version "1.17.2+ent"
+  version "1.17.3+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.17.2+ent/consul_1.17.2+ent_darwin_amd64.zip"
-    sha256 "0d7621895892fb9906a68c81364aaced9e4d85c3c0087a290a932f2159afa8eb"
+    url "https://releases.hashicorp.com/consul/1.17.3+ent/consul_1.17.3+ent_darwin_amd64.zip"
+    sha256 "f87dd2e5276082997f08a82f2353fe3574dd1edfcf6b4c3b4f10a60ea75fcc10"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul/1.17.2+ent/consul_1.17.2+ent_darwin_arm64.zip"
-    sha256 "781d2a4524fa222ab0df262efb7b94f7dc515a2d2a1a71b23ba0e0562896fdfc"
+    url "https://releases.hashicorp.com/consul/1.17.3+ent/consul_1.17.3+ent_darwin_arm64.zip"
+    sha256 "9da6f9c5dd90025a1bf713f4abb4fa6211276d811743b9666acbd3f64fc43c91"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.17.2+ent/consul_1.17.2+ent_linux_amd64.zip"
-    sha256 "082e22ff22f642c0064a48ec0edea935450f51dbc7e2910fa7d455c2a92df3bf"
+    url "https://releases.hashicorp.com/consul/1.17.3+ent/consul_1.17.3+ent_linux_amd64.zip"
+    sha256 "42fb17a9c29691c5e99d9c416afd3d031e58d628b129ee9ec9040df6ed7ac0c3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.17.2+ent/consul_1.17.2+ent_linux_arm.zip"
-    sha256 "6a5b4196006f9b88f5a4e965beff5a0aaea664f590edd9e6de348c58269d1ebe"
+    url "https://releases.hashicorp.com/consul/1.17.3+ent/consul_1.17.3+ent_linux_arm.zip"
+    sha256 "5d5318ce47b90981a59cd71e57a112ffa7cc1c9f435ad4e513f2d690405564c5"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.17.2+ent/consul_1.17.2+ent_linux_arm64.zip"
-    sha256 "8ad327cc420afd65ea1774993914f5aaad47eb5cfc111f319874a34a93cd82af"
+    url "https://releases.hashicorp.com/consul/1.17.3+ent/consul_1.17.3+ent_linux_arm64.zip"
+    sha256 "2dbb331bef3073fc079660d1e9a47565c3451bdc8074ad38bd3b151184875020"
   end
 
   conflicts_with "consul-enterprise"
