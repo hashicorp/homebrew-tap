@@ -199,6 +199,20 @@ formula {
 }
 
 formula {
+    product = "hcp"
+    name = "Hcp"
+    desc = "HCP CLI"
+    homepage = "https://github.com/hashicorp/hcp"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
     product = "nomad"
     name = "Nomad"
     desc = "Nomad"
