@@ -48,6 +48,7 @@ func isProductSupported(product string) bool {
 		"envconsul",
 		"hc-install",
 		"hcdiag",
+		"hcp",
 		"levant",
 		"nomad",
 		"nomad-enterprise",
