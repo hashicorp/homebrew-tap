@@ -16,10 +16,10 @@ build: *.go go.* mod-download
 
 release: *.go go.* mod-download
 	@echo "Preparing artifact..."
-	@GOOS=linux GOARCH=amd64 go build -trimpath
-	@touch -d $$(TZ=UTC0 git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd") lambda_trigger
-	@zip -X lambda.zip lambda_trigger
-	@openssl dgst -sha256 -hex lambda_trigger lambda.zip
+	@GOOS=linux GOARCH=amd64 go build -trimpath -tags lambda.norpc -o bootstrap
+	@touch -d $$(TZ=UTC0 git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd") bootstrap
+	@zip -X lambda.zip bootstrap
+	@openssl dgst -sha256 -hex bootstrap lambda.zip
 	@echo
 	@echo "AWS Lambda CodeSha256:"
 	@openssl dgst -sha256 -binary lambda.zip | openssl enc -base64

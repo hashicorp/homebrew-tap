@@ -1,0 +1,16 @@
+name: publish-homebrew-lambda
+on:
+  push:
+    branches:
+      - master
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke homebrew lambda update workflow
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: homebrew-lambda-update.yml
+          repo: hashicorp/releng-support
+          ref: main
+          token: ${{ secrets.ELEVATED_GITHUB_TOKEN }}
