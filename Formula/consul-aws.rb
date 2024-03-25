@@ -1,3 +1,6 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class ConsulAws < Formula
   desc "Consul AWS"
   homepage "https://github.com/hashicorp/consul-aws"
