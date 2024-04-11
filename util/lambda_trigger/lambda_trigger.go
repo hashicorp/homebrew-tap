@@ -64,6 +64,7 @@ func isProductSupported(product string) bool {
 		"sentinel",
 		"vagrant",
 		"vlt",
+		"vault-radar",
 	}
 
 	for _, p := range supportedProducts {
