@@ -1,7 +1,7 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-class Sentinel < Formula
+class VaultRadar < Formula
   desc ""
   homepage "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
   version "0.5.0"
