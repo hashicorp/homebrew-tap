@@ -18,7 +18,7 @@ class Sentinel < Formula
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/sentinel/0.18.0/sentinel_0.18.0_linux_amd64.zip"
-    sha256 "a93de00efdc62b71f28036f03f7d167ab606c4e7fbb567a5954229f6d01e1df3"
+    sha256 "58c0202cc593efcf1198b6d79ab7e90d903edcfe104a093ca821865d86085cb8"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
