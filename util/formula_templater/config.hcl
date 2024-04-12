@@ -427,3 +427,17 @@ cask {
         linux_arm64 = false
     }
 }
+
+formula {
+    product = "vault-radar"
+    name = "VaultRadar"
+    desc = "Vault Radar"
+    homepage = "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = true
+    }
+}

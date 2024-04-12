@@ -61,6 +61,7 @@ brew install hashicorp/tap/terraform-ls
 brew install hashicorp/tap/tfstacks
 brew install hashicorp/tap/vault
 brew install hashicorp/tap/vault-enterprise
+brew install hashicorp/tap/vault-radar
 brew install hashicorp/tap/waypoint
 
 # Casks
