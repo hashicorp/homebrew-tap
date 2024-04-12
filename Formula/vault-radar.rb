@@ -17,7 +17,7 @@ class VaultRadar < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault-radar/0.5.0/vault-radar_0.5.0_linux_amd64.zip""
+    url "https://releases.hashicorp.com/vault-radar/0.5.0/vault-radar_0.5.0_linux_amd64.zip"
     sha256 "58c0202cc593efcf1198b6d79ab7e90d903edcfe104a093ca821865d86085cb8"
   end
 
