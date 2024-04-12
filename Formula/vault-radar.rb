@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class VaultRadar < Formula
-  desc ""
+  desc "Vault Radar"
   homepage "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
   version "0.5.0"
 
