@@ -4,31 +4,31 @@
 class NomadPack < Formula
   desc "Nomad Pack"
   homepage "https://github.com/hashicorp/nomad-pack"
-  version "0.1.0"
+  version "0.1.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_darwin_amd64.zip"
-    sha256 "64c836406dc92859fb2a7ac048f1255e36974ab4225c2b46ffb47b9a0271d637"
+    url "https://releases.hashicorp.com/nomad-pack/0.1.1/nomad-pack_0.1.1_darwin_amd64.zip"
+    sha256 "c72aac2149aca00ebeee948bbfa6103a7e5191049cc0ab2b884956853d6204c0"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_darwin_arm64.zip"
-    sha256 "b414eec23213c312996c3caa0ce0584579eaa63869e6ff4a50a0bcf171c0c4d2"
+    url "https://releases.hashicorp.com/nomad-pack/0.1.1/nomad-pack_0.1.1_darwin_arm64.zip"
+    sha256 "3596512e54a074fc6c3a69c79ed43c1e794edfc4e534766ebc1711286780558a"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_linux_amd64.zip"
-    sha256 "20604ae26caffc506a5f6ad993bc8925f6022d1875c678e91a0897e1a2411288"
+    url "https://releases.hashicorp.com/nomad-pack/0.1.1/nomad-pack_0.1.1_linux_amd64.zip"
+    sha256 "0028be2d07845918edff55177fd1db73315f7079dbb9a1dbe70c9cd362221246"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_linux_arm.zip"
-    sha256 "ce8dd02aa1984767225b45db79fc7152cf0da077774354c5dfabaeff7c2e3855"
+    url "https://releases.hashicorp.com/nomad-pack/0.1.1/nomad-pack_0.1.1_linux_arm.zip"
+    sha256 "095549eaf3021545468de2dc1c9bbcc30160b4e8e2979fe7b0b13ec9a16664c3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_linux_arm64.zip"
-    sha256 "30afcad9d542eb6938d1e8940346958df871fa3353208f7cc13b67e033b12d99"
+    url "https://releases.hashicorp.com/nomad-pack/0.1.1/nomad-pack_0.1.1_linux_arm64.zip"
+    sha256 "6784cdcc00f075e9d2d03a7d945b41a450a058a499418a2f3a8b573188b516f4"
   end
 
   conflicts_with "nomad-pack"
