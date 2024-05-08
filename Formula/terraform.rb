@@ -4,31 +4,31 @@
 class Terraform < Formula
   desc "Terraform"
   homepage "https://www.terraform.io/"
-  version "1.8.2"
+  version "1.8.3"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.8.2/terraform_1.8.2_darwin_amd64.zip"
-    sha256 "a71ada335aba64ac1851ffbb2cf8f727a06013d02474dd70c4571f585b1fe522"
+    url "https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_darwin_amd64.zip"
+    sha256 "a4f695e64948ad66fe05e2f589cfe5221b8597ff16173ebed8055d3a90aaa739"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/terraform/1.8.2/terraform_1.8.2_darwin_arm64.zip"
-    sha256 "f871f4c91eafec6e6e88253dc3cc0b6a21d63fa56fee5ee1629f3ce68a605873"
+    url "https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_darwin_arm64.zip"
+    sha256 "2622426fd6e8483db6d62605f52ea6eddb0e88a09e8cea1c24b9310879490227"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.8.2/terraform_1.8.2_linux_amd64.zip"
-    sha256 "74f3cc4151e52d94e0ecbe900552adc9b8440b4a8dc12f7fdaab2d0280788acc"
+    url "https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_linux_amd64.zip"
+    sha256 "4ff78474d0407ba6e8c3fb9ef798f2822326d121e045577f80e2a637ec33f553"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.8.2/terraform_1.8.2_linux_arm.zip"
-    sha256 "938c111ff0e0b895347c94e7865ff29edb088e205d715621d2fa63d509eeb163"
+    url "https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_linux_arm.zip"
+    sha256 "26ff2b06d13272999d56c8ca57446d51d6fdba483e385f401ad26cebd44b196a"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.8.2/terraform_1.8.2_linux_arm64.zip"
-    sha256 "e00726a0c8e4b06b31873446c639454358a0efb73a604198473f526d60e66100"
+    url "https://releases.hashicorp.com/terraform/1.8.3/terraform_1.8.3_linux_arm64.zip"
+    sha256 "5fd3c4ee4cf23f79641f77006d29544b41fbcde5d22202566322266e6fca2607"
   end
 
   conflicts_with "terraform"
