@@ -4,31 +4,31 @@
 class Sentinel < Formula
   desc ""
   homepage "https://docs.hashicorp.com/sentinel"
-  version "0.26.0"
+  version "0.26.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/sentinel/0.26.0/sentinel_0.26.0_darwin_amd64.zip"
-    sha256 "26a991182429cef43cb8439e945dc9f50f84e818bb028977787db4fa9648f244"
+    url "https://releases.hashicorp.com/sentinel/0.26.1/sentinel_0.26.1_darwin_amd64.zip"
+    sha256 "a8dfc234b5d65a3d085ac6b99cd32af943db3969163a711c71e3706944afbb6b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/sentinel/0.26.0/sentinel_0.26.0_darwin_arm64.zip"
-    sha256 "85f8a352e4ec1bc1c40b0b7110b022f36939a1e606a57501dbf252ce36f8b4e2"
+    url "https://releases.hashicorp.com/sentinel/0.26.1/sentinel_0.26.1_darwin_arm64.zip"
+    sha256 "6facbfb121b2d7b9ea1438a06ae1f46ce3cbdae364a2784ab68b2d1d3f1329a4"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/sentinel/0.26.0/sentinel_0.26.0_linux_amd64.zip"
-    sha256 "24c6aa7077a46e94f9eb94c3317fcf41d3447d39198accf5f988385dda1d79e8"
+    url "https://releases.hashicorp.com/sentinel/0.26.1/sentinel_0.26.1_linux_amd64.zip"
+    sha256 "38728b4591917644aae29d56fdbd61bb660b74ad9abe06c60dd2cd40cce6befd"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.26.0/sentinel_0.26.0_linux_arm.zip"
-    sha256 "06b7198d4f30144336467d57fdebf8c93c7491dd5308e0119c637ce9bcbe2e7d"
+    url "https://releases.hashicorp.com/sentinel/0.26.1/sentinel_0.26.1_linux_arm.zip"
+    sha256 "c0e417fc1f052015f45730bb66e843fdc5bdd4eb7ebbd7eada93fa9ce33afb73"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.26.0/sentinel_0.26.0_linux_arm64.zip"
-    sha256 "480397e67b70f7d3df07012d317ad85b732e4361dfbbfa565503332bbb37e2d4"
+    url "https://releases.hashicorp.com/sentinel/0.26.1/sentinel_0.26.1_linux_arm64.zip"
+    sha256 "3f47dc8f0a1f819572f03ef3615d15dc6b06e9232561cb9e5e19fae17d4b0751"
   end
 
   conflicts_with "sentinel"
