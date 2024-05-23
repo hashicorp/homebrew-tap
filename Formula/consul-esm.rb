@@ -1,31 +1,34 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class ConsulEsm < Formula
   desc "Consul ESM"
   homepage "https://github.com/hashicorp/consul-esm"
-  version "0.7.1"
+  version "0.7.2"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-esm/0.7.1/consul-esm_0.7.1_darwin_amd64.zip"
-    sha256 "017d94d565dc3c4769472978b033be354ded1a1b8baf1230225587e9453ce5bf"
+    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_darwin_amd64.zip"
+    sha256 "79145ce7dc6a48965a5f6ff94428bd2ccc9b465bc0d81113cd22cd3114fde942"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul-esm/0.7.1/consul-esm_0.7.1_darwin_arm64.zip"
-    sha256 "746e127366c94b8fc6838c877c41d26df65a1ca4936dbbddd596b4ef3d5622e9"
+    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_darwin_arm64.zip"
+    sha256 "7ecdab10e4a7f2533aaf0c9909b0a6a2c52f99c899447dd9c8dfece8742ca86d"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-esm/0.7.1/consul-esm_0.7.1_linux_amd64.zip"
-    sha256 "bc1d8c351d277bb1e93d3d2a209b9282ee5d84e3a82ce3c38281f40318b5268f"
+    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_linux_amd64.zip"
+    sha256 "c6ad998ac5599eacddc54800355c39d289e486f5a61e3d92a5580895e4e8bdd5"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-esm/0.7.1/consul-esm_0.7.1_linux_arm.zip"
-    sha256 "01acf7c989820f399effedd75a3bfa189de5e3853b58bb670b070fd9445f8594"
+    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_linux_arm.zip"
+    sha256 "f98d817f643621cb377c9abc5486b2edfae8c885a1831450595b74ae7bc0e2cb"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-esm/0.7.1/consul-esm_0.7.1_linux_arm64.zip"
-    sha256 "47e607ef585fb0f4fdffa9de9364e28ecba7a1c9dc80734d4a20f5744d5a37d8"
+    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_linux_arm64.zip"
+    sha256 "e4ced673bbf2c70931301a3f5a5daaa1450a82876096c4f1177a20f02edf7683"
   end
 
   conflicts_with "consul-esm"
