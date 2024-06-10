@@ -221,7 +221,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
@@ -236,7 +236,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
@@ -380,7 +380,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
 }
@@ -394,7 +394,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = false
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
 }
