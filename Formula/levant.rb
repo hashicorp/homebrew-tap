@@ -6,30 +6,19 @@ class Levant < Formula
   homepage "https://github.com/hashicorp/levant"
   version "0.3.3"
 
-  if OS.mac?
+  if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_darwin_amd64.zip"
     sha256 "da1f7b45a5a10f8d2387ac40aac7eb52c3dbe6606e9948b51ee0efb82f88c165"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_darwin_arm64.zip"
+    sha256 "aeb4e4a5bca4be48ba8706d671d50893f2db439cf61f302162293a4362bddeb0"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_amd64.zip"
     sha256 "630c4c0499fdc0b904be22905e18dcd81350f8011ab1494b23f20d06f192d462"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_arm.zip"
-    sha256 "02c7106dbf788fdc592f30393a44c9fc4103c7ec7b5662eed351425b149e3a7e"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
