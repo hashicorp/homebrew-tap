@@ -4,31 +4,31 @@
 class ConsulTemplate < Formula
   desc "Consul Template"
   homepage "https://github.com/hashicorp/consul-template"
-  version "0.38.1"
+  version "0.39.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-template/0.38.1/consul-template_0.38.1_darwin_amd64.zip"
-    sha256 "d278198825bbcc60e5cf9523b2909b8761ce67aef704ff14e4f602f04ede22c7"
+    url "https://releases.hashicorp.com/consul-template/0.39.0/consul-template_0.39.0_darwin_amd64.zip"
+    sha256 "5e773e01009892e5645b6e08e3380e132987fdecdb24221ed283bf60ddbc7e02"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul-template/0.38.1/consul-template_0.38.1_darwin_arm64.zip"
-    sha256 "f40be7f44456e3ad39decf57dda0232b86291d3bc68643ee9a467261aa3610ab"
+    url "https://releases.hashicorp.com/consul-template/0.39.0/consul-template_0.39.0_darwin_arm64.zip"
+    sha256 "b6d8c6d59e2b9a1d3f02b4f653322f940192ab47553f2810a0fab152e81a7232"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-template/0.38.1/consul-template_0.38.1_linux_amd64.zip"
-    sha256 "0014faa80000b767802643c34689852a3de80616dac4770a765d0073bb44a892"
+    url "https://releases.hashicorp.com/consul-template/0.39.0/consul-template_0.39.0_linux_amd64.zip"
+    sha256 "10e7eba0acc307ab6500e49f75bdb95d8c7273266822e936f78a1c72425e7f4f"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-template/0.38.1/consul-template_0.38.1_linux_arm.zip"
-    sha256 "3e0eccf9ed9a8be2cf070e02534391c7f98c87840d85dc4e9adccc6b0428207e"
+    url "https://releases.hashicorp.com/consul-template/0.39.0/consul-template_0.39.0_linux_arm.zip"
+    sha256 "0a200e8a149489714811b83f3aa2623f2d8f00478311d292565c381718c94160"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-template/0.38.1/consul-template_0.38.1_linux_arm64.zip"
-    sha256 "a3a7f004e159f42680398d03055413d9a81e69b66d8d437130c0e977caed1c78"
+    url "https://releases.hashicorp.com/consul-template/0.39.0/consul-template_0.39.0_linux_arm64.zip"
+    sha256 "6e5f6880fef6b08348d8d68e6027d25742c8576367f8a6714da1b8ff79fb9c85"
   end
 
   conflicts_with "consul-template"
