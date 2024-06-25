@@ -1,28 +1,28 @@
 class Enos < Formula
   desc "A tool for powering Software Quality as Code by writing Terraform-based quality requirement scenarios using a composable, modular, and declarative language."
   homepage "https://github.com/hashicorp/enos"
-  version "0.0.31"
+  version "0.0.32"
 
   depends_on "hashicorp/tap/terraform"
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://github.com/hashicorp/enos/releases/download/v0.0.31/enos_0.0.31_darwin_arm64.zip"
-    sha256 "89e5d5db94edc45f348055abb5eb015bdf45e21eefce7ae967494e78cee40b4e"
+    url "https://github.com/hashicorp/enos/releases/download/v0.0.32/enos_0.0.32_darwin_arm64.zip"
+    sha256 "cb6bf99cc11972111ef43743cce9c5d3f6ca797ddadfb77673d8822ec48630a8"
   end
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://github.com/hashicorp/enos/releases/download/v0.0.31/enos_0.0.31_darwin_amd64.zip"
-    sha256 "fc378099322dc5240460e3529a9684dcedbb8bf4d57780c33967b1c75da603e4"
+    url "https://github.com/hashicorp/enos/releases/download/v0.0.32/enos_0.0.32_darwin_amd64.zip"
+    sha256 "9fa946f3ca1a70cce9cda1684566b9b91645e5cb9ef8dbceaa74eb358ad0263a"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://github.com/hashicorp/enos/releases/download/v0.0.31/enos_0.0.31_linux_arm64.zip"
-    sha256 "2a39d3d23492071f93d3d0f6b8c97f3a8bcf98da9f021e54263044a320822bf9"
+    url "https://github.com/hashicorp/enos/releases/download/v0.0.32/enos_0.0.32_linux_arm64.zip"
+    sha256 "1a8353f89e3fbf16b7fd745188eaf919437c337e0a7faecffa2bcb251e59dbf0"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://github.com/hashicorp/enos/releases/download/v0.0.31/enos_0.0.31_linux_amd64.zip"
-    sha256 "a121048ff35b2777d217a1290eeb4253da9dd2362821c95fadb13fc5b0a049c2"
+    url "https://github.com/hashicorp/enos/releases/download/v0.0.32/enos_0.0.32_linux_amd64.zip"
+    sha256 "93b6051b659c7f7f24925bd78b4b0c1ff114db5b15b6396f6e5e0db7f71a9938"
   end
 
   def install
