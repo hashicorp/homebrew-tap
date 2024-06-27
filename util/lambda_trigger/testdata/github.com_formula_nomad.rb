@@ -4,7 +4,7 @@ class Nomad < Formula
   version "1.3.5"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_darwin_amd64.zip"
+    url "#{ENV['HOMEBREW_TAP_HASHICORP_REMOTE'].presence || 'https://releases.hashicorp.com'}/nomad/1.3.5/nomad_1.3.5_darwin_amd64.zip"
     sha256 "36322d32e0c6dc4c98681d9492422551105da89b648d1b29637accc6ed101105"
   end
 
@@ -20,17 +20,17 @@ class Nomad < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_linux_amd64.zip"
+    url "#{ENV['HOMEBREW_TAP_HASHICORP_REMOTE'].presence || 'https://releases.hashicorp.com'}/nomad/1.3.5/nomad_1.3.5_linux_amd64.zip"
     sha256 "a4bf189e6a84c4bc7d6090529c87b32e6b4b09b47163514d33305aa867d7c4dc"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_linux_arm.zip"
+    url "#{ENV['HOMEBREW_TAP_HASHICORP_REMOTE'].presence || 'https://releases.hashicorp.com'}/nomad/1.3.5/nomad_1.3.5_linux_arm.zip"
     sha256 "d0958235c852b6a5751e4362c4d6fe4e11d32c0bd17335d0905e836309fb7d52"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.3.5/nomad_1.3.5_linux_arm64.zip"
+    url "#{ENV['HOMEBREW_TAP_HASHICORP_REMOTE'].presence || 'https://releases.hashicorp.com'}/nomad/1.3.5/nomad_1.3.5_linux_arm64.zip"
     sha256 "bf8e6f9ceaa24ba3e43af3afa09d05ed2b67e95cfdbd8ba7453396c63ffe6d4b"
   end
 
