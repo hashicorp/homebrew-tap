@@ -4,31 +4,31 @@
 class TerraformLs < Formula
   desc "Terraform Language Server"
   homepage "https://github.com/hashicorp/terraform-ls"
-  version "0.33.3"
+  version "0.34.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform-ls/0.33.3/terraform-ls_0.33.3_darwin_amd64.zip"
-    sha256 "54b7b33ec3a7175224fee8d73838765c801325b34f4607c9935a6d9e7172d749"
+    url "https://releases.hashicorp.com/terraform-ls/0.34.0/terraform-ls_0.34.0_darwin_amd64.zip"
+    sha256 "dc97a2ff1b3fbd492a5896b1607bd6ede7e3a905fc1c0913ae9ca865af1c8120"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/terraform-ls/0.33.3/terraform-ls_0.33.3_darwin_arm64.zip"
-    sha256 "3f3dc8fd8613b63d4bca7dd9458ffe91a4fc0787e440a04927117dc0454469af"
+    url "https://releases.hashicorp.com/terraform-ls/0.34.0/terraform-ls_0.34.0_darwin_arm64.zip"
+    sha256 "51e47932a17945482994ca0d12d8f418b892371319c6c17529c76fa850bf89dd"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform-ls/0.33.3/terraform-ls_0.33.3_linux_amd64.zip"
-    sha256 "e1d95a8f44b55a782097de6f9094138a54e5cf51a12eab33e2055e428ab50900"
+    url "https://releases.hashicorp.com/terraform-ls/0.34.0/terraform-ls_0.34.0_linux_amd64.zip"
+    sha256 "cc68cb25c09f3d4f3e3a655a51d25ac9fff97a7ab04943f8e61ec4590ae651d2"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform-ls/0.33.3/terraform-ls_0.33.3_linux_arm.zip"
-    sha256 "67e38bc67179929ec4a67da90f905ae418003d129aecc3240f3f164b382b3bdb"
+    url "https://releases.hashicorp.com/terraform-ls/0.34.0/terraform-ls_0.34.0_linux_arm.zip"
+    sha256 "3d47e838e59970d13a3c25fcf7473580bc116233c7f2c59a89de987b1963fc28"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform-ls/0.33.3/terraform-ls_0.33.3_linux_arm64.zip"
-    sha256 "3539821cbab587a53ebb0533c370ddf15d66e4bf0448d9560611e4f7ab9f1156"
+    url "https://releases.hashicorp.com/terraform-ls/0.34.0/terraform-ls_0.34.0_linux_arm64.zip"
+    sha256 "3a1bdcbc069f1b7c7db9237b046d5785f2b5033503ecfa8adcaaa60ed27c237c"
   end
 
   conflicts_with "terraform-ls"
