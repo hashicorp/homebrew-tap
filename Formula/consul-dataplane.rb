@@ -4,31 +4,31 @@
 class ConsulDataplane < Formula
   desc "Consul Dataplane"
   homepage "https://github.com/hashicorp/consul-dataplane"
-  version "1.5.0"
+  version "1.5.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-dataplane/1.5.0/consul-dataplane_1.5.0_darwin_amd64.zip"
-    sha256 "8ac86a5d543442b54993c10c743331b20cdece045d99be26e2a611908b6003ee"
+    url "https://releases.hashicorp.com/consul-dataplane/1.5.1/consul-dataplane_1.5.1_darwin_amd64.zip"
+    sha256 "30ab2a93e2fc562b603f497b6dc3943dcd410def59e0fa84e2798e9dbd26b71b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul-dataplane/1.5.0/consul-dataplane_1.5.0_darwin_arm64.zip"
-    sha256 "dff35269ebb5baf408c1b63a7fd8f545b58236cdcf90560a6665417276467fec"
+    url "https://releases.hashicorp.com/consul-dataplane/1.5.1/consul-dataplane_1.5.1_darwin_arm64.zip"
+    sha256 "faabadcc46746aa6acd80c4381394d143e949070d686d09eb03929cef365ee71"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-dataplane/1.5.0/consul-dataplane_1.5.0_linux_amd64.zip"
-    sha256 "94b2f0fdd7f8bd7ab112adafbc7edda8a6a1988c13482178871262c2464d229d"
+    url "https://releases.hashicorp.com/consul-dataplane/1.5.1/consul-dataplane_1.5.1_linux_amd64.zip"
+    sha256 "8dbc0763f14498996b76aa23c48c168a984fb878d2a7ba28705c1e1468ffdf23"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-dataplane/1.5.0/consul-dataplane_1.5.0_linux_arm.zip"
-    sha256 "25047db84d49520f5818494b42ad2855f0f8d498eaba6087e0920e7b134a42d4"
+    url "https://releases.hashicorp.com/consul-dataplane/1.5.1/consul-dataplane_1.5.1_linux_arm.zip"
+    sha256 "6c4421237bc7bb704773a15a2f8719281fa5e13e0cdfa0627d5d4498bb15f2a0"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-dataplane/1.5.0/consul-dataplane_1.5.0_linux_arm64.zip"
-    sha256 "8a6963618bc7fa0a1a5cbbd98ac764a3f08241c907535cbba509fe073759947f"
+    url "https://releases.hashicorp.com/consul-dataplane/1.5.1/consul-dataplane_1.5.1_linux_arm64.zip"
+    sha256 "3aed449f5e278ca4ccc52503f07b07b19fae501f0e4e31165d06fde658c005c3"
   end
   
   depends_on "envoy" => :recommended
