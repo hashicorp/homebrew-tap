@@ -4,31 +4,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.17.3"
+  version "1.17.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.17.3/vault_1.17.3_darwin_amd64.zip"
-    sha256 "fd7e7c7a467723639cc0b624533a9f7aff0691bfbfe47602abac75af0be4914a"
+    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_darwin_amd64.zip"
+    sha256 "216fcc775d846c7ef323c0050c44f7712649fe19b4682f89c583779970a2b152"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.17.3/vault_1.17.3_darwin_arm64.zip"
-    sha256 "26f11328a9c9e3b5599ec63efe394aed5fed0879c662f9ca320b8ec63d839582"
+    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_darwin_arm64.zip"
+    sha256 "9cdf0918cd5519b2f323f5c3a272d91d9afed6d671b1ab5da6a36d5590d52d26"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.17.3/vault_1.17.3_linux_amd64.zip"
-    sha256 "146536fd9ef8aa1465894e718a8fe7a9ca13d68761bae900428f01f7ecd83806"
+    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_linux_amd64.zip"
+    sha256 "b652291658b5d19e228e42950f39c757306945198fa8cbb28ee621893219924c"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.17.3/vault_1.17.3_linux_arm.zip"
-    sha256 "246ddb7e194ca428b93e0a0484abd258c01b1db712546120455741a22162a1b6"
+    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_linux_arm.zip"
+    sha256 "b2e1af686d0b59297b32c9bd7d40c1a90e976f9543c7de7069eedb3520b1484f"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.17.3/vault_1.17.3_linux_arm64.zip"
-    sha256 "6c7dc39df0058b1fa9e65050227cdb12dc7913153ecd56956911fb973c353590"
+    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_linux_arm64.zip"
+    sha256 "d31f38a1daf33f67ec1c4a2d6bafe0793f1ede939ca0552dfc70f740cc57abb3"
   end
 
   conflicts_with "vault"
