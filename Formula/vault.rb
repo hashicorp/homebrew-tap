@@ -4,31 +4,31 @@
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.17.4"
+  version "1.17.5"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_darwin_amd64.zip"
-    sha256 "216fcc775d846c7ef323c0050c44f7712649fe19b4682f89c583779970a2b152"
+    url "https://releases.hashicorp.com/vault/1.17.5/vault_1.17.5_darwin_amd64.zip"
+    sha256 "72afe41e47711036a8ed521ae4408853d207c8f8f9f038484abffe05c8737005"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_darwin_arm64.zip"
-    sha256 "9cdf0918cd5519b2f323f5c3a272d91d9afed6d671b1ab5da6a36d5590d52d26"
+    url "https://releases.hashicorp.com/vault/1.17.5/vault_1.17.5_darwin_arm64.zip"
+    sha256 "a89d565f66b5ba3b5966ab23a754ef4e026644c9bb48dadd02a2d9714475ac86"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_linux_amd64.zip"
-    sha256 "b652291658b5d19e228e42950f39c757306945198fa8cbb28ee621893219924c"
+    url "https://releases.hashicorp.com/vault/1.17.5/vault_1.17.5_linux_amd64.zip"
+    sha256 "67eb9f95d37975e2525bbd455e19528a7759f3a56022de064bf8605fc220be47"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_linux_arm.zip"
-    sha256 "b2e1af686d0b59297b32c9bd7d40c1a90e976f9543c7de7069eedb3520b1484f"
+    url "https://releases.hashicorp.com/vault/1.17.5/vault_1.17.5_linux_arm.zip"
+    sha256 "8a16886e69eed6f09eaa2a3ed84f72ba1076886e5c9abcd4cf7947c58c847929"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.17.4/vault_1.17.4_linux_arm64.zip"
-    sha256 "d31f38a1daf33f67ec1c4a2d6bafe0793f1ede939ca0552dfc70f740cc57abb3"
+    url "https://releases.hashicorp.com/vault/1.17.5/vault_1.17.5_linux_arm64.zip"
+    sha256 "abafcc3cac1570abbe7bf9a2072c18bc48c9ef7e3470766562f622e6b1e0aef1"
   end
 
   conflicts_with "vault"
