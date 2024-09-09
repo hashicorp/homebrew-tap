@@ -441,3 +441,17 @@ formula {
         linux_arm64 = true
     }
 }
+
+formula {
+    product = "tf-migrate"
+    name = "tf-migrate"
+    desc = "tf-migrate"
+    homepage = "https://www.terraform.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
