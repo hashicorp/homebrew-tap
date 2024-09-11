@@ -4,31 +4,31 @@
 class HcInstall < Formula
   desc "hc-install CLI"
   homepage "https://github.com/hashicorp/hc-install"
-  version "0.8.1"
+  version "0.9.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hc-install/0.8.1/hc-install_0.8.1_darwin_amd64.zip"
-    sha256 "44987996083dc56f02789ddb1121e0adc9988e7c40c2fb5473c0403968759e9b"
+    url "https://releases.hashicorp.com/hc-install/0.9.0/hc-install_0.9.0_darwin_amd64.zip"
+    sha256 "56e567f0eb4bbf1bf4730ecf7547a52adb40deb0d13f36613e4d39acd8fb9ac2"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/hc-install/0.8.1/hc-install_0.8.1_darwin_arm64.zip"
-    sha256 "ba98b0716d6ae4e3338d5c1b19a3f6f33e4bfde4bedb13b290730d97177134c0"
+    url "https://releases.hashicorp.com/hc-install/0.9.0/hc-install_0.9.0_darwin_arm64.zip"
+    sha256 "46d91ec8690516addf67c97286494f0361a87092e9bc431931f5f50791342216"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hc-install/0.8.1/hc-install_0.8.1_linux_amd64.zip"
-    sha256 "d9e52d5d2543ba0d9d8f597f331a8be15f29547ad10b26b5c1e1305fa74e19a3"
+    url "https://releases.hashicorp.com/hc-install/0.9.0/hc-install_0.9.0_linux_amd64.zip"
+    sha256 "e31cba590d65c090d865a69e7a08b7918fa71135246b855a2b46140b5b7fcd36"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hc-install/0.8.1/hc-install_0.8.1_linux_arm.zip"
-    sha256 "efe7bed83e90e6cba950bf2fb00db7b4ed7c474fea8639e8dc916ebc71ef5a5c"
+    url "https://releases.hashicorp.com/hc-install/0.9.0/hc-install_0.9.0_linux_arm.zip"
+    sha256 "7e48775a4f752d6562a29327809a99defc7fa01c8dec1ca1015a702e72b13e94"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hc-install/0.8.1/hc-install_0.8.1_linux_arm64.zip"
-    sha256 "4dbef840f75aba9ff2e03d251dfcaefbf1647c403dce44deadc71ad60bd16b8f"
+    url "https://releases.hashicorp.com/hc-install/0.9.0/hc-install_0.9.0_linux_arm64.zip"
+    sha256 "8141240d28ea335366202166240aad310b1063d88568c69aa78008af888826fa"
   end
 
   conflicts_with "hc-install"
