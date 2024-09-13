@@ -4,26 +4,26 @@
 class VaultRadar < Formula
   desc "Vault Radar"
   homepage "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
-  version "0.13.0"
+  version "0.14.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault-radar/0.13.0/vault-radar_0.13.0_darwin_amd64.zip"
-    sha256 "3f2d5841de4900c4a814cf4eff95cad86b87f0419736987a6803e255a02df690"
+    url "https://releases.hashicorp.com/vault-radar/0.14.0/vault-radar_0.14.0_darwin_amd64.zip"
+    sha256 "e2ea53ef40e60d99fb2cb7e9b53316220787938de75f1da4eda2abef66ded5d0"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault-radar/0.13.0/vault-radar_0.13.0_darwin_arm64.zip"
-    sha256 "d60e167ab27233e92ccb121dc6397093a4989df3b3a7dd000dfaffff75f68620"
+    url "https://releases.hashicorp.com/vault-radar/0.14.0/vault-radar_0.14.0_darwin_arm64.zip"
+    sha256 "d99ff38d3bd9e80fdf61866531e718995e7e96582efa01895684e2acddedc140"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault-radar/0.13.0/vault-radar_0.13.0_linux_amd64.zip"
-    sha256 "4156d586fca754b49d5a2e9de68551750b76bb1c4a47fb085b12154f97d1ba03"
+    url "https://releases.hashicorp.com/vault-radar/0.14.0/vault-radar_0.14.0_linux_amd64.zip"
+    sha256 "8511582b13ecadf6141707d2c379d310a9cebf75f8db33f4a1fe7e2112ae4e15"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault-radar/0.13.0/vault-radar_0.13.0_linux_arm64.zip"
-    sha256 "7c7c5826276194c0e4c5747617196c6cbb887307e84c92a62899fe8c99768e30"
+    url "https://releases.hashicorp.com/vault-radar/0.14.0/vault-radar_0.14.0_linux_arm64.zip"
+    sha256 "6e64e38b3f933490956cb756b076f90ed214ab6521908d006dda3022c9902ec2"
   end
 
   conflicts_with "vault-radar"
