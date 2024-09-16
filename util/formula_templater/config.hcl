@@ -444,8 +444,8 @@ formula {
 
 formula {
     product = "tf-migrate"
-    name = "tf-migrate"
-    desc = "tf-migrate"
+    name = "TfMigrate"
+    desc = "Terraform Migrate"
     homepage = "https://www.terraform.io"
     architectures {
         darwin_amd64 = true
