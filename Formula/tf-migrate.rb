@@ -1,8 +1,8 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-class tf-migrate < Formula
-  desc "tf-migrate"
+class TfMigrate < Formula
+  desc "Terraform Migrate"
   homepage "https://www.terraform.io"
   version "0.0.2-alpha"
 
