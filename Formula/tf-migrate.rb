@@ -1,44 +1,43 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-class TfMigrate < Formula
-    desc "TfMigrate"
-    homepage "https://www.terraform.io"
-    version "1.19.1"
-  
-    if OS.mac? && Hardware::CPU.intel?
-      url "https://releases.hashicorp.com/tf-migrate/0.0.1-alpha/tf-migrate_0.0.1-alpha_darwin_amd64.zip"
-      sha256 "6ac35f82fd1ddebd21d7c1422fcf98f516965fab8c7b3d8770e7f0b5da157408"
-    end
-  
-    if OS.mac? && Hardware::CPU.arm?
-      url "https://releases.hashicorp.com/tf-migrate/0.0.1-alpha/tf-migrate_0.0.1-alpha_darwin_arm64.zip"
-      sha256 "e5faccbd20d7e82b86e06f87fd74dfbfd4077a233f16fd59b2bdc6a1239eecd9"
-    end
-  
-    if OS.linux? && Hardware::CPU.intel?
-      url "https://releases.hashicorp.com/tf-migrate/0.0.1-alpha/tf-migrate_0.0.1-alpha_linux_amd64.zip"
-      sha256 "1431098d9d5299ce60652fa40b13b349cfa2a92b25f1de6c410f18c346296818"
-    end
-  
-    if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://releases.hashicorp.com/tf-migrate/0.0.1-alpha/tf-migrate_0.0.1-alpha_linux_arm.zip"
-      sha256 "fc8b1235c44bf67b34dea908d4ed8cbd9b48262c5ff579ed3f6dc0d8b1662298"
-    end
-  
-    if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://releases.hashicorp.com/tf-migrate/0.0.1-alpha/tf-migrate_0.0.1-alpha_linux_arm64.zip"
-      sha256 "24f0fa2258faf3a4d2adbec88636f8ef7c6556c079c56499e38097610898c83e"
-    end
-  
-    conflicts_with "tf-migrate"
-  
-    def install
-      bin.install "tf-migrate"
-    end
-  
-    test do
-      system "#{bin}/tf-migrate --version"
-    end
+class tf-migrate < Formula
+  desc "tf-migrate"
+  homepage "https://www.terraform.io"
+  version "0.0.2-alpha"
+
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/tf-migrate/0.0.2-alpha/tf-migrate_0.0.2-alpha_darwin_amd64.zip"
+    sha256 "f8ccc9007e18b1307486dba281470bb090562a5fc10c9e514169597f53750ef6"
   end
-  
+
+  if OS.mac? && Hardware::CPU.arm?
+    url "https://releases.hashicorp.com/tf-migrate/0.0.2-alpha/tf-migrate_0.0.2-alpha_darwin_arm64.zip"
+    sha256 "1a2bcd06c3de2d52fad4ccce366e9dd2059b24fc02ffe88963b2d56ec688c71b"
+  end
+
+  if OS.linux? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/tf-migrate/0.0.2-alpha/tf-migrate_0.0.2-alpha_linux_amd64.zip"
+    sha256 "7f0c02ca0ea7efabb6a6125a77b46eccad35dc8a9f0af5c3544c1b1e54e02222"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/tf-migrate/0.0.2-alpha/tf-migrate_0.0.2-alpha_linux_arm.zip"
+    sha256 "26cc7bbaca6a5649eda513409bbc5dd8ffe3451a7ce84f634504971af3b324d5"
+  end
+
+  if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+    url "https://releases.hashicorp.com/tf-migrate/0.0.2-alpha/tf-migrate_0.0.2-alpha_linux_arm64.zip"
+    sha256 "d5662a1d5b6766ff08e6920b48be2f5ed82ae28c59ac190d483a814f27e7904e"
+  end
+
+  conflicts_with "tf-migrate"
+
+  def install
+    bin.install "tf-migrate"
+  end
+
+  test do
+    system "#{bin}/tf-migrate --version"
+  end
+end
