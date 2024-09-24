@@ -4,31 +4,31 @@
 class ConsulEsm < Formula
   desc "Consul ESM"
   homepage "https://github.com/hashicorp/consul-esm"
-  version "0.7.2"
+  version "0.8.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_darwin_amd64.zip"
-    sha256 "79145ce7dc6a48965a5f6ff94428bd2ccc9b465bc0d81113cd22cd3114fde942"
+    url "https://releases.hashicorp.com/consul-esm/0.8.0/consul-esm_0.8.0_darwin_amd64.zip"
+    sha256 "354b9132f2f411aad43334f84c4e824efd1b1699f6adecf31096ad1aec9c0792"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_darwin_arm64.zip"
-    sha256 "7ecdab10e4a7f2533aaf0c9909b0a6a2c52f99c899447dd9c8dfece8742ca86d"
+    url "https://releases.hashicorp.com/consul-esm/0.8.0/consul-esm_0.8.0_darwin_arm64.zip"
+    sha256 "5d1b264ddb82df8d72bd48693e5d4bb96ac2490e2e60767956c8f304e806eebf"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_linux_amd64.zip"
-    sha256 "c6ad998ac5599eacddc54800355c39d289e486f5a61e3d92a5580895e4e8bdd5"
+    url "https://releases.hashicorp.com/consul-esm/0.8.0/consul-esm_0.8.0_linux_amd64.zip"
+    sha256 "8ad873fdee0b38b5b51830b5218b04d3fe60ee47dc1d6993ce431d5ed91f223c"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_linux_arm.zip"
-    sha256 "f98d817f643621cb377c9abc5486b2edfae8c885a1831450595b74ae7bc0e2cb"
+    url "https://releases.hashicorp.com/consul-esm/0.8.0/consul-esm_0.8.0_linux_arm.zip"
+    sha256 "318cd3dcdce44c5ef88f1dafe3b82a77fbfc9f3fb8aedf03fe1c5fdd4701298a"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-esm/0.7.2/consul-esm_0.7.2_linux_arm64.zip"
-    sha256 "e4ced673bbf2c70931301a3f5a5daaa1450a82876096c4f1177a20f02edf7683"
+    url "https://releases.hashicorp.com/consul-esm/0.8.0/consul-esm_0.8.0_linux_arm64.zip"
+    sha256 "87b22ab61e9a45651fbf54a2f60c5d95e768cee013bc23d091ba354292cd8ad7"
   end
 
   conflicts_with "consul-esm"
