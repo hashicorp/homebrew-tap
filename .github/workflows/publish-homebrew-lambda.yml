@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - "util/lambda_trigger/**" # only publish lambda when changing lambda code
 jobs:
   example:
     runs-on: ubuntu-latest
