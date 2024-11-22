@@ -11,9 +11,11 @@ jobs:
     name: Update Formula
     runs-on: ubuntu-latest
     steps:
-
       - name: Checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 #v4.1.7
+        with:
+          # token under hc-github-team-es-release-engineering user
+          token: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
 
       - name: Setup Go
         uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 #v5.0.1
@@ -43,14 +45,11 @@ jobs:
 
       - name: Publish Change
         run: |
-          git config user.name hc-espd-packager
-          git config user.email team-rel-eng@hashicorp.com
-
           git add Formula/*.rb Casks/*.rb
 
           git commit -m "Bump ${{ github.event.client_payload.name }} to ${{ github.event.client_payload.version }}"
 
-          # Ensure we have any changes that might have been merged before we push. This narrows the window in which a 
+          # Ensure we have any changes that might have been merged before we push. This narrows the window in which a
           # race from multiple changes happening at once can occur. Conflicts/Races could still occur though unlikley.
           git pull --rebase
 
