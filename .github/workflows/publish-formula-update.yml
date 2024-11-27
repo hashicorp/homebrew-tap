@@ -45,6 +45,9 @@ jobs:
 
       - name: Publish Change
         run: |
+          git config user.name hc-github-team-es-release-engineering
+          git config user.email github-team-es-release-engineering@hashicorp.com
+          
           git add Formula/*.rb Casks/*.rb
 
           git commit -m "Bump ${{ github.event.client_payload.name }} to ${{ github.event.client_payload.version }}"
