@@ -4,31 +4,31 @@
 class Hcp < Formula
   desc "HCP CLI"
   homepage "https://github.com/hashicorp/hcp"
-  version "0.7.0"
+  version "0.8.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hcp/0.7.0/hcp_0.7.0_darwin_amd64.zip"
-    sha256 "0d6744fcc1f7159be6d76148541a008898ec30825ff833d8bf50989fd1b90985"
+    url "https://releases.hashicorp.com/hcp/0.8.0/hcp_0.8.0_darwin_amd64.zip"
+    sha256 "57f69f718b0c883635b50303f32acc618639b73cb0f5d320e8289585e38ba92f"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/hcp/0.7.0/hcp_0.7.0_darwin_arm64.zip"
-    sha256 "7a3fea2dccbea8686e1858d7df154407441624ea7e1df1297227e543724b6639"
+    url "https://releases.hashicorp.com/hcp/0.8.0/hcp_0.8.0_darwin_arm64.zip"
+    sha256 "c92caa9ef7a8de9766ce68baa47ef1c38e674491ab9fa64cf84128d2e5cb8663"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hcp/0.7.0/hcp_0.7.0_linux_amd64.zip"
-    sha256 "90d3dbdbbb22fb32fc75c721cb076e0a2a115f510684dc49050eb040344f05a2"
+    url "https://releases.hashicorp.com/hcp/0.8.0/hcp_0.8.0_linux_amd64.zip"
+    sha256 "5b00869908c25ff68291b51c5d3538655eb31b927c71db37baa7b89441e99f78"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hcp/0.7.0/hcp_0.7.0_linux_arm.zip"
-    sha256 "a43d2a3fbc5e1ce7521afde7ce8f6b8c32e57ed291619488d5cbd1e79d425291"
+    url "https://releases.hashicorp.com/hcp/0.8.0/hcp_0.8.0_linux_arm.zip"
+    sha256 "082f2e7721acf5eee60d557fdd489cf766a91167e2366b52a213c602160d9b38"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hcp/0.7.0/hcp_0.7.0_linux_arm64.zip"
-    sha256 "b44d1a5fd8c1a0a68782a9a02b4fa43d62d497a8381df3b647762b5c5c4ea7d8"
+    url "https://releases.hashicorp.com/hcp/0.8.0/hcp_0.8.0_linux_arm64.zip"
+    sha256 "b98b0a535263b0947aee13e8abdc5d1f402b316d5535201c6903abe96335fb09"
   end
 
   conflicts_with "hcp"
