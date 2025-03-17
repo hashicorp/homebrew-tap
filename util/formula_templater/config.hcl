@@ -199,6 +199,20 @@ formula {
 }
 
 formula {
+    product = "hcp"
+    name = "Hcp"
+    desc = "HCP CLI"
+    homepage = "https://github.com/hashicorp/hcp"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
     product = "nomad"
     name = "Nomad"
     desc = "Nomad"
@@ -207,7 +221,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
@@ -222,7 +236,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
@@ -261,6 +275,20 @@ formula {
     name = "TerraformLs"
     desc = "Terraform Language Server"
     homepage = "https://github.com/hashicorp/terraform-ls"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "tfstacks"
+    name = "Tfstacks"
+    desc = "Terraform Stacks CLI"
+    homepage = "https://www.terraform.io/"
     architectures {
         darwin_amd64 = true
         darwin_arm64 = true
@@ -352,7 +380,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
 }
@@ -364,9 +392,9 @@ formula {
     homepage = "https://github.com/hashicorp/levant"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
 }
@@ -397,5 +425,33 @@ cask {
         linux_amd64 = false
         linux_arm = false
         linux_arm64 = false
+    }
+}
+
+formula {
+    product = "vault-radar"
+    name = "VaultRadar"
+    desc = "Vault Radar"
+    homepage = "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "tf-migrate"
+    name = "TfMigrate"
+    desc = "Terraform Migrate"
+    homepage = "https://www.terraform.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
     }
 }

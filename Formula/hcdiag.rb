@@ -4,31 +4,31 @@
 class Hcdiag < Formula
   desc "Hcdiag"
   homepage "https://github.com/hashicorp/hcdiag"
-  version "0.5.1"
+  version "0.5.6"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hcdiag/0.5.1/hcdiag_0.5.1_darwin_amd64.zip"
-    sha256 "be5432b1d8c933bafb2f63df7456501e383052613dea81bb3adee2d636790b48"
+    url "https://releases.hashicorp.com/hcdiag/0.5.6/hcdiag_0.5.6_darwin_amd64.zip"
+    sha256 "8c8fc38904c9936b17737ac801c91391a3fba49519005753083cd15ffa5a7602"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/hcdiag/0.5.1/hcdiag_0.5.1_darwin_arm64.zip"
-    sha256 "0ec738d2dcbd370c54a7fb2986f1a24998ab6e181e4724255ea8f9a13b356df4"
+    url "https://releases.hashicorp.com/hcdiag/0.5.6/hcdiag_0.5.6_darwin_arm64.zip"
+    sha256 "679a5327b912c1d4609000f522f90ab885d0b93c0a514b06b35a8167159b1041"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hcdiag/0.5.1/hcdiag_0.5.1_linux_amd64.zip"
-    sha256 "c1be38a9d3c3d4cd46997a63989740c49061918455f40bc5f6bda84683133c90"
+    url "https://releases.hashicorp.com/hcdiag/0.5.6/hcdiag_0.5.6_linux_amd64.zip"
+    sha256 "90fb965883d5c1203a3f394c2eb906bad48507f9d530c4b036728370b472b5a0"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hcdiag/0.5.1/hcdiag_0.5.1_linux_arm.zip"
-    sha256 "9f5b1fab24d365485ad6300c20a75db61d9827ac8dcce4e5d1fe28b294779c60"
+    url "https://releases.hashicorp.com/hcdiag/0.5.6/hcdiag_0.5.6_linux_arm.zip"
+    sha256 "a8deece1311561076d3c39fb9d11884fa9b900f603e330dc61a095f32007e1f8"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hcdiag/0.5.1/hcdiag_0.5.1_linux_arm64.zip"
-    sha256 "2c7bddf5f9f70a8f8c9d590a5d1359d5f423af59b3ceeb374d292c3c5417c9ba"
+    url "https://releases.hashicorp.com/hcdiag/0.5.6/hcdiag_0.5.6_linux_arm64.zip"
+    sha256 "1ed7a992161e4d0e60d504eaf9809e6a0ca8af1037eb646c357d7d5af9bcaf8f"
   end
 
   conflicts_with "hcdiag"

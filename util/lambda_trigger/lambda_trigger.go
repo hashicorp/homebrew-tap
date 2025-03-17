@@ -48,12 +48,14 @@ func isProductSupported(product string) bool {
 		"envconsul",
 		"hc-install",
 		"hcdiag",
+		"hcp",
 		"levant",
 		"nomad",
 		"nomad-enterprise",
 		"nomad-pack",
 		"terraform",
 		"terraform-ls",
+		"tfstacks",
 		"packer",
 		"boundary",
 		"boundary-enterprise",
@@ -62,6 +64,8 @@ func isProductSupported(product string) bool {
 		"sentinel",
 		"vagrant",
 		"vlt",
+		"vault-radar",
+		"tf-migrate",
 	}
 
 	for _, p := range supportedProducts {

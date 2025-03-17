@@ -1,0 +1,18 @@
+name: publish-homebrew-lambda
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "util/lambda_trigger/**" # only publish lambda when changing lambda code
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Invoke homebrew lambda update workflow
+        uses: benc-uk/workflow-dispatch@25b02cc069be46d637e8fe2f1e8484008e9e9609 # v1.2.3
+        with:
+          workflow: homebrew-lambda-update.yml
+          repo: hashicorp/releng-support
+          ref: main
+          token: ${{ secrets.ELEVATED_GITHUB_TOKEN }}

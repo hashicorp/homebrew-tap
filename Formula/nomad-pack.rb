@@ -1,31 +1,29 @@
+# Copyright (c) HashiCorp, Inc.
+# SPDX-License-Identifier: MPL-2.0
+
 class NomadPack < Formula
   desc "Nomad Pack"
   homepage "https://github.com/hashicorp/nomad-pack"
-  version "0.0.1-techpreview.3"
+  version "0.2.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_darwin_amd64.zip"
-    sha256 "3a73f692053d4e12c904d782a35d5cab6669cb4a3e9f5398802c1f9fc7050330"
+    url "https://releases.hashicorp.com/nomad-pack/0.2.0/nomad-pack_0.2.0_darwin_amd64.zip"
+    sha256 "e0a1a7db24783b5b9faaa13b49050eb9b643be02357c5d7dd3c0de5ad4d9e6d9"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_darwin_arm64.zip"
-    sha256 "445263a0b55c0978953a75f935b65c45007f548342ac63fc12f5352c610130dc"
+    url "https://releases.hashicorp.com/nomad-pack/0.2.0/nomad-pack_0.2.0_darwin_arm64.zip"
+    sha256 "68d33c69c616377267c77a2ccb63e3a4365406764f495ae21d19a890274e49a0"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_linux_amd64.zip"
-    sha256 "825cbe6f6053ad4eab4bc298a901cb957b6331fdb3db4b6a896e620a2b96f3c3"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_linux_arm.zip"
-    sha256 "a91b42ff413b80d6f20954e086ae42b88c3b1e28fee0f057cc6f18967eb9001d"
+    url "https://releases.hashicorp.com/nomad-pack/0.2.0/nomad-pack_0.2.0_linux_amd64.zip"
+    sha256 "32533e635b78101056f411366e26aca7778ea80f8556002f825784e1d75a4437"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad-pack/0.0.1-techpreview.3/nomad-pack_0.0.1-techpreview.3_linux_arm64.zip"
-    sha256 "838236643b8c8f26fe2afddd97ffc13cceaed31538ae6f2be2f46f8d520769cb"
+    url "https://releases.hashicorp.com/nomad-pack/0.2.0/nomad-pack_0.2.0_linux_arm64.zip"
+    sha256 "63c918f90d790d70b87f7c550366ad03238aab8a3eb0edb70ecad009659e453c"
   end
 
   conflicts_with "nomad-pack"

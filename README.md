@@ -1,3 +1,5 @@
+[![Heimdall](https://heimdall.hashicorp.services/api/v1/assets/homebrew-tap/badge.svg?key=f0ea6d408d7a7798bcd4f6ef4a40fe9c791109ca85d2f20d5630a9f4abafa9f6)](https://heimdall.hashicorp.services/site/assets/homebrew-tap)
+
 # HashiCorp Homebrew Tap
 
 ## What is Homebrew?
@@ -49,6 +51,7 @@ brew install hashicorp/tap/consul-template
 brew install hashicorp/tap/consul-terraform-sync
 brew install hashicorp/tap/hc-install
 brew install hashicorp/tap/hcdiag
+brew install hashicorp/tap/hcp
 brew install hashicorp/tap/levant
 brew install hashicorp/tap/nomad
 brew install hashicorp/tap/nomad-enterprise
@@ -57,8 +60,11 @@ brew install hashicorp/tap/packer
 brew install hashicorp/tap/sentinel
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
+brew install hashicorp/tap/tf-migrate
+brew install hashicorp/tap/tfstacks
 brew install hashicorp/tap/vault
 brew install hashicorp/tap/vault-enterprise
+brew install hashicorp/tap/vault-radar
 brew install hashicorp/tap/waypoint
 
 # Casks
