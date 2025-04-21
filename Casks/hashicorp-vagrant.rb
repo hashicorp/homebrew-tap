@@ -2,10 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 cask "hashicorp-vagrant" do
-  version "2.4.3"
+  version "2.4.4"
   arch arm: "arm64", intel: "amd64"
-  sha256 arm: "3cfe992d505271620da797cd1c43648dc9cf546c3d90f7c4d45f04741d29803f",
-         intel: "3cfe992d505271620da797cd1c43648dc9cf546c3d90f7c4d45f04741d29803f"
+  sha256 arm: "955b1011273721928dbf3316194bf402e1f2a817a7ba98e6e1863d4413e54a44",
+         intel: "955b1011273721928dbf3316194bf402e1f2a817a7ba98e6e1863d4413e54a44"
   url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}_darwin_#{arch}.dmg",
       verified: "hashicorp.com/vagrant/"
   name "Vagrant"
