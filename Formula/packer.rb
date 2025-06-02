@@ -4,31 +4,31 @@
 class Packer < Formula
   desc "Packer"
   homepage "https://www.packer.io/"
-  version "1.12.0"
+  version "1.13.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.12.0/packer_1.12.0_darwin_amd64.zip"
-    sha256 "2cdaa91b640974ad65fa95b112f4604a9c272e38f7e9f9d853aa33774aa4feeb"
+    url "https://releases.hashicorp.com/packer/1.13.0/packer_1.13.0_darwin_amd64.zip"
+    sha256 "09d5979b8e9b963f9e660e2457e69a8c79525cd0cbde69f8817039c842356c3e"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/packer/1.12.0/packer_1.12.0_darwin_arm64.zip"
-    sha256 "448bebeb5741eebd5fdc92609e75213665366970cd607ec57e7a5516d7067b3d"
+    url "https://releases.hashicorp.com/packer/1.13.0/packer_1.13.0_darwin_arm64.zip"
+    sha256 "c53bc7e835ab2e75bb60524555e3deb976fcef4e791f8613048ea225691175af"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/packer/1.12.0/packer_1.12.0_linux_amd64.zip"
-    sha256 "e859a76659570d1e29fa55396d5d908091bacacd4567c17770e616c4b58c9ace"
+    url "https://releases.hashicorp.com/packer/1.13.0/packer_1.13.0_linux_amd64.zip"
+    sha256 "51d5920da4f35f9de67043e3861ae61cbdf019dd87011f2c16fa6146b7e78970"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.12.0/packer_1.12.0_linux_arm.zip"
-    sha256 "29c8cb058b6d0d68c84e4a322c4abb1b11bdfe926d9a16ccbf4e026b8df75e49"
+    url "https://releases.hashicorp.com/packer/1.13.0/packer_1.13.0_linux_arm.zip"
+    sha256 "c36d3ad631e9aea0fd9be55b84ac36749daba494cfe3d4d97d7134f60efabb97"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/packer/1.12.0/packer_1.12.0_linux_arm64.zip"
-    sha256 "a9ea40e7757cd000836b650bd2ed825dc3af9a7d73f4e19119df4c1aa13d0fe6"
+    url "https://releases.hashicorp.com/packer/1.13.0/packer_1.13.0_linux_arm64.zip"
+    sha256 "dbb7b764e8ac15376e9330d40a0a23a97baa5435a1698883551a1599cebf1976"
   end
 
   conflicts_with "packer"
