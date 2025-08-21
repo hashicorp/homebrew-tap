@@ -4,31 +4,31 @@
 class Envconsul < Formula
   desc "Env Consul"
   homepage "https://github.com/hashicorp/envconsul"
-  version "0.13.3"
+  version "0.13.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/envconsul/0.13.3/envconsul_0.13.3_darwin_amd64.zip"
-    sha256 "d84c9f68941b232a2bf18dc5f6e791142caab5eb721ff09fe415f6f358234be7"
+    url "https://releases.hashicorp.com/envconsul/0.13.4/envconsul_0.13.4_darwin_amd64.zip"
+    sha256 "e89a41c90213a481d10a2a383afb9b13c5a758bc20685b59f1ce4a08a0f3dc40"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/envconsul/0.13.3/envconsul_0.13.3_darwin_arm64.zip"
-    sha256 "018c7c698c4264eb7132712e46cbf5a39f55ff41051ac12e36adc8b4c6da180b"
+    url "https://releases.hashicorp.com/envconsul/0.13.4/envconsul_0.13.4_darwin_arm64.zip"
+    sha256 "2833c08107942526529f17808e22ee4f0a5da7cb575a367077bfeafc57b168ec"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/envconsul/0.13.3/envconsul_0.13.3_linux_amd64.zip"
-    sha256 "675ff2af4137590745b3e6281ff26ad937ebffd949b2479715c39b800c2ea927"
+    url "https://releases.hashicorp.com/envconsul/0.13.4/envconsul_0.13.4_linux_amd64.zip"
+    sha256 "53656bd797ea7e1b91459edfc072613e3a229ede5bd8619465cf961ec450fdc5"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/envconsul/0.13.3/envconsul_0.13.3_linux_arm.zip"
-    sha256 "6014ac448fff30d2cc6d9cbefbfcad1aee07ae2b583a830f05c6293fd1b71a88"
+    url "https://releases.hashicorp.com/envconsul/0.13.4/envconsul_0.13.4_linux_arm.zip"
+    sha256 "0907bab0cbc917c45a050f365181d2964ab6b64d68442a746a04fb0220a85aad"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/envconsul/0.13.3/envconsul_0.13.3_linux_arm64.zip"
-    sha256 "fa6346f6f89a3e68bbdb6ae70e52955ee90f38372ac25509fbe623b9fefbf75c"
+    url "https://releases.hashicorp.com/envconsul/0.13.4/envconsul_0.13.4_linux_arm64.zip"
+    sha256 "4ca7189ee4c0a4183ebc7298daadb4be3db898a5d3d45f3f704b892692938044"
   end
 
   conflicts_with "envconsul"
