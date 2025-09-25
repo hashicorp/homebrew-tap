@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: MPL-2.0
 
 cask "hashicorp-boundary-desktop" do
-  version "2.3.3"
-  sha256 "738bfdcad34004e3f550f38c8f5dced9c7454e1dbc567a52f5a9539c21c8cc28"
+  version "2.4.0"
+  sha256 "f3559241ee4ee2f08f07c91b663d4c97d8091fa677143c2c9ecf083160b8833d"
 
   url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_amd64.dmg",
       verified: "hashicorp.com/boundary-desktop/"
