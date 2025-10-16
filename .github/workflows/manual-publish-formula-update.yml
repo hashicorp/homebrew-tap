@@ -17,6 +17,9 @@ jobs:
   update-formula:
     name: Update Formula
     runs-on: ubuntu-latest
+    # We need to grant the GITHUB_TOKEN write access to the repository contents in order for git push to work
+    permissions:
+        contents: write
     steps:
 
       - name: Checkout
@@ -56,6 +59,11 @@ jobs:
           git add Formula/*.rb Casks/*.rb
 
           git commit -m "Bump ${{ github.event.inputs.product }} to ${{ github.event.inputs.version }}"
+          
+          # Set the remote URL to use the GITHUB_TOKEN for authentication.
+          # This ensures that subsequent 'git pull' and 'git push' commands are authenticated.
+          # The variable 'github.repository' automatically resolves to the correct owner/repo name.
+          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
 
           # Ensure we have any changes that might have been merged before we push. This narrows the window in which a 
           # race from multiple changes happening at once can occur. Conflicts/Races could still occur though unlikley.
