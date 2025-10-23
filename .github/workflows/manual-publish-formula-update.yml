@@ -53,8 +53,8 @@ jobs:
 
       - name: Publish Change
         run: |
-          git config user.name hc-espd-packager
-          git config user.email team-rel-eng@hashicorp.com
+          git config user.name hc-github-team-es-release-engineering
+          git config user.email github-team-es-release-engineering@hashicorp.com
 
           git add Formula/*.rb Casks/*.rb
 
@@ -63,7 +63,7 @@ jobs:
           # Set the remote URL to use the GITHUB_TOKEN for authentication.
           # This ensures that subsequent 'git pull' and 'git push' commands are authenticated.
           # The variable 'github.repository' automatically resolves to the correct owner/repo name.
-          git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+          git remote set-url origin "https://x-access-token:${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}@github.com/${{ github.repository }}"
 
           # Ensure we have any changes that might have been merged before we push. This narrows the window in which a 
           # race from multiple changes happening at once can occur. Conflicts/Races could still occur though unlikley.
