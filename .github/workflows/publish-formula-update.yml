@@ -7,9 +7,53 @@ on:
     types: [version-updated]
 
 jobs:
+  check-version:
+    name: Check if update is needed
+    runs-on: ubuntu-latest
+    outputs:
+      should_update: ${{ steps.version_check.outputs.should_update }}
+      current_version: ${{ steps.version_check.outputs.current_version }}
+      incoming_version: ${{ steps.version_check.outputs.incoming_version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 #v5.0.0
+        with:
+          token: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
+
+      - name: Check if version is latest
+        id: version_check
+        run: |
+          # Run the version check script and capture its output
+          SCRIPT_OUTPUT=$(./.github/scripts/check-version.sh \
+            "${{ github.event.client_payload.name }}" \
+            "${{ github.event.client_payload.version }}" \
+            "${{ github.event.client_payload.cask }}")
+          
+          # Parse the output and set GitHub Action outputs
+          echo "$SCRIPT_OUTPUT" | while IFS='=' read -r key value; do
+            if [[ -n "$key" && -n "$value" ]]; then
+              echo "$key=$value" >> $GITHUB_OUTPUT
+            fi
+          done
+
+      - name: Display version information
+        run: |
+          echo "::notice::Version Check Results"
+          echo "::notice::Product: ${{ github.event.client_payload.name }}"
+          echo "::notice::Current Version: ${{ steps.version_check.outputs.current_version }}"
+          echo "::notice::Incoming Version: ${{ steps.version_check.outputs.incoming_version }}"
+          echo "::notice::Should Update: ${{ steps.version_check.outputs.should_update }}"
+
+      - name: Skip update notification
+        if: ${{ steps.version_check.outputs.should_update == 'false' }}
+        run: |
+          echo "::notice::Skipping update for ${{ github.event.client_payload.name }}. Incoming version ${{ github.event.client_payload.version }} is not newer than the current version."
+
   update-formula:
     name: Update Formula
     runs-on: ubuntu-latest
+    needs: check-version
+    if: ${{ needs.check-version.outputs.should_update == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 #v5.0.0
