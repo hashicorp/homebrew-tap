@@ -2,7 +2,13 @@
 all: formula_templater lambda_trigger
 
 #.PHONY: test
-test-all: ci-test-formula_templater ci-test-lambda_trigger
+test-all: ci-test-formula_templater ci-test-lambda_trigger test-version-check
+
+.PHONY: test-version-check
+test-version-check:
+	@echo "Running BATS tests for check-version.sh script..."
+	@which bats > /dev/null || (echo "Error: bats not found. Install with 'brew install bats-core' or see .github/scripts/tests/README.md" && exit 1)
+	bats .github/scripts/tests/check-version.bats
 
 .PHONY: tools
 tools:
