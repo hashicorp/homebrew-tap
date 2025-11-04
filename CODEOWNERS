@@ -1,4 +1,5 @@
 # These owners will be the default owners for everything in
-# the repo, unless a later match takes precedence. 
-
+# the repo, unless a later match takes precedence.
 * @hashicorp/team-selfmanaged-releng
+
+Formula/enos.rb @hashicorp/team-vault-quality
