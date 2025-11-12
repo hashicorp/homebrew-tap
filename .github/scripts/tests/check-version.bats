@@ -23,7 +23,7 @@ setup() {
     
     # Copy test data
     cp "$TEST_DIR/data/test-formula.rb" "$TEMP_DIR/Formula/"
-    cp "$TEST_DIR/data/hashi-test-cask.rb" "$TEMP_DIR/Casks/"
+    cp "$TEST_DIR/data/test-cask.rb" "$TEMP_DIR/Casks/"
     cp "$TEST_DIR/data/old-version.rb" "$TEMP_DIR/Formula/"
 }
 
@@ -34,15 +34,12 @@ teardown() {
 
 # Helper function to run the script and capture output
 run_check_version() {
-    if [ $# -eq 0 ]; then
-        run bash -c "$SCRIPT_PATH 2>&1"
-    elif [ $# -eq 1 ]; then
-        run bash -c "$SCRIPT_PATH '$1' 2>&1"
-    elif [ $# -eq 2 ]; then
-        run bash -c "$SCRIPT_PATH '$1' '$2' 2>&1"
-    else
-        run bash -c "$SCRIPT_PATH '$1' '$2' '$3' 2>&1"
-    fi
+    case $# in
+        0) run "$SCRIPT_PATH" ;;
+        1) run "$SCRIPT_PATH" "$1" ;;
+        2) run "$SCRIPT_PATH" "$1" "$2" ;;
+        *) run "$SCRIPT_PATH" "$1" "$2" "$3" ;;
+    esac
 }
 
 # Helper function to parse script output
