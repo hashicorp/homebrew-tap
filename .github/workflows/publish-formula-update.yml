@@ -16,7 +16,7 @@ jobs:
       incoming_version: ${{ steps.version_check.outputs.incoming_version }}
     steps:
       - name: Checkout
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 #v6.0.0
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 #v6.0.1
         with:
           ref: master
           token: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
@@ -57,7 +57,7 @@ jobs:
     if: ${{ needs.check-version.outputs.should_update == 'true' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 #v6.0.0
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 #v6.0.1
         with:
           # token under hc-github-team-es-release-engineering user
           token: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
