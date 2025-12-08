@@ -43,6 +43,6 @@ Note: Any project that is live on [releases.hashicorp.com](https://releases.hash
 
 - Build the formula templater: `cd util/formula_templater && go build`
 
-- Use the templater to create the project specific Formula or Cask file, and pipe the output to the appropriate location: `./formula_templater awesomeproject 1.0.0 ./config.hcl > /path/to/homebrew-tap/Formula|Cask/awesomeproject.rb`
+- Use the templater to create the project specific Formula or Cask file, and pipe the output to the appropriate location: `./formula_templater [-cask] awesomeproject 1.0.0 ./config.hcl > /path/to/homebrew-tap/Formula|Cask/awesomeproject.rb`
 
 - Open a PR with your changes, and we'll review and merge. Post-merge, you can expect the new project to be available via the HashiCorp Homebrew Tap in just a minute or so
