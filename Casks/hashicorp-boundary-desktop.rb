@@ -4,8 +4,9 @@
 cask "hashicorp-boundary-desktop" do
   version "2.4.0"
   sha256 "f3559241ee4ee2f08f07c91b663d4c97d8091fa677143c2c9ecf083160b8833d"
+  arch arm: "arm64", intel: "amd64"
 
-  url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_amd64.dmg",
+  url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_#{arch}.dmg",
       verified: "hashicorp.com/boundary-desktop/"
   name "Boundary Desktop"
   desc ""
