@@ -350,7 +350,7 @@ cask {
     cask_app = "Boundary.app"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = false
         linux_arm = false
         linux_arm64 = false
