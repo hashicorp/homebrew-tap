@@ -2,11 +2,10 @@
 # SPDX-License-Identifier: MPL-2.0
 
 cask "hashicorp-boundary-desktop" do
-  version "2.4.0"
-  sha256 arm: "d886fb8082733d9a87e7430403fe3eba00904e973c45cb8331062a985883b29a",
-         intel: "f3559241ee4ee2f08f07c91b663d4c97d8091fa677143c2c9ecf083160b8833d"
+  version "2.5.0"
   arch arm: "arm64", intel: "amd64"
-
+  sha256 arm: "5aead407bc3fcb931d610ce181b4231cd19f6f812c6142a1b05fb0a6706888c7",
+         intel: "def99bc55bc2f5be86543a40a53323ba05363342eb15fbdd08f191552d3d7515"
   url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_#{arch}.dmg",
       verified: "hashicorp.com/boundary-desktop/"
   name "Boundary Desktop"
