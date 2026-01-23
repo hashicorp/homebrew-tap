@@ -4,31 +4,31 @@
 class TfMigrate < Formula
   desc "Terraform Migrate"
   homepage "https://www.terraform.io"
-  version "1.2.0"
+  version "2.0.0-beta1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tf-migrate/1.2.0/tf-migrate_1.2.0_darwin_amd64.zip"
-    sha256 "19ec12bd6315f1a686618200b93736d6747e19a1b18d8f54cd3c033cc9234b71"
+    url "https://releases.hashicorp.com/tf-migrate/2.0.0-beta1/tf-migrate_2.0.0-beta1_darwin_amd64.zip"
+    sha256 "e0e8faa8d7682274ec0250d8143db5bd3e6b612da16e495f13b1155529ab89af"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/tf-migrate/1.2.0/tf-migrate_1.2.0_darwin_arm64.zip"
-    sha256 "6a5c2f01e61e6b8753a183c2377fb1fa498d61533579a64ea211da0830c0c2f5"
+    url "https://releases.hashicorp.com/tf-migrate/2.0.0-beta1/tf-migrate_2.0.0-beta1_darwin_arm64.zip"
+    sha256 "2a8148c72c0832bbdd84973d398eb2b480271bc59fe0647a5fc2c3bd1ea46c62"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tf-migrate/1.2.0/tf-migrate_1.2.0_linux_amd64.zip"
-    sha256 "824ef0b03c7c038e2a25405488ab47b8fbe1b9e3b96ae4c16656f5d6f33ae32f"
+    url "https://releases.hashicorp.com/tf-migrate/2.0.0-beta1/tf-migrate_2.0.0-beta1_linux_amd64.zip"
+    sha256 "20d132a512820561aeb45fe81044c4da1a917229ec5c08dc2f295f598c34fb17"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tf-migrate/1.2.0/tf-migrate_1.2.0_linux_arm.zip"
-    sha256 "79e68f991f1f4771b6507bf2331888acdc9f4b860c01a7b939149cd1e2caccd6"
+    url "https://releases.hashicorp.com/tf-migrate/2.0.0-beta1/tf-migrate_2.0.0-beta1_linux_arm.zip"
+    sha256 "b2a4bc22bce7d1899f39ec961f67c4a098fb0ad30df126d8d2f55db0a2e328c5"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tf-migrate/1.2.0/tf-migrate_1.2.0_linux_arm64.zip"
-    sha256 "a31e23c487d438c00296b520d46941fe7b290b433d360b4952cd9440e66378ff"
+    url "https://releases.hashicorp.com/tf-migrate/2.0.0-beta1/tf-migrate_2.0.0-beta1_linux_arm64.zip"
+    sha256 "26fa40f64ff9ef02777f2050f3e2d05c4f962cdb561e6ae9d4e21a655f931350"
   end
 
   conflicts_with "tf-migrate"
