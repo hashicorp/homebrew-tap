@@ -21,11 +21,6 @@ class Vault < Formula
     sha256 "4088617653eba4ea341b6166130239fcbe42edc7839c7f7c6209d280948769c7"
   end
 
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.21.1/vault_1.21.1_linux_arm.zip"
-    sha256 "56641846b7713fdcae77aa0b34fbd3fb67ab0aaa4e2df2d9e55ddf4c06cd8576"
-  end
-
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://releases.hashicorp.com/vault/1.21.1/vault_1.21.1_linux_arm64.zip"
     sha256 "f83f541e4293289bf1cc3f1e62e41a29a9ce20aeb9a152ada2b00ca42e7e856d"

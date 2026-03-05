@@ -307,7 +307,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["server", "-dev"]
@@ -322,7 +322,7 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["server", "-dev"]
