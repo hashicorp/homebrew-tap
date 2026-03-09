@@ -1,29 +1,29 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class VaultRadar < Formula
   desc "Vault Radar"
   homepage "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
-  version "0.43.0"
+  version "0.44.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault-radar/0.43.0/vault-radar_0.43.0_darwin_amd64.zip"
-    sha256 "b700580a9804b2e48db3e0573be9361d2c32bb620af6d50fdf5dc49ab6033a13"
+    url "https://releases.hashicorp.com/vault-radar/0.44.0/vault-radar_0.44.0_darwin_amd64.zip"
+    sha256 "67a70d2b58f77402c7c3e6fe53a4f72aa1445bce1934a9397026ae17bb5d8f29"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault-radar/0.43.0/vault-radar_0.43.0_darwin_arm64.zip"
-    sha256 "b26882e151794c94b60f2f4ede2932fa4641bef65287041f159ebe9ba352d9f9"
+    url "https://releases.hashicorp.com/vault-radar/0.44.0/vault-radar_0.44.0_darwin_arm64.zip"
+    sha256 "488fa5c7d4b84a6323d2138532b4e6b87e11fdde8dd9507427a04abbecb07b10"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault-radar/0.43.0/vault-radar_0.43.0_linux_amd64.zip"
-    sha256 "0bac898352d07fa3b995b55263311b683b60185024a260966c0722920c72d887"
+    url "https://releases.hashicorp.com/vault-radar/0.44.0/vault-radar_0.44.0_linux_amd64.zip"
+    sha256 "8994569468d4d03cef90e9e334c4849096fe484e7625e2abb7a4c1756d8e4d8e"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault-radar/0.43.0/vault-radar_0.43.0_linux_arm64.zip"
-    sha256 "6a1cb912c86f86c390852a23851fcf4f2c85f27c203b5025824b73eea2b60907"
+    url "https://releases.hashicorp.com/vault-radar/0.44.0/vault-radar_0.44.0_linux_arm64.zip"
+    sha256 "af13de8998c214ca86d6ae181fc2ffe5239723611420935e694381ac0367d222"
   end
 
   conflicts_with "vault-radar"

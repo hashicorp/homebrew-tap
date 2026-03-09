@@ -1,34 +1,29 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "1.21.1+ent"
+  version "1.21.4+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.21.1+ent/vault_1.21.1+ent_darwin_amd64.zip"
-    sha256 "08e6623e690804d4d6ef897dcc3d168c3403b072a21a5223f2d3e70097db9135"
+    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_darwin_amd64.zip"
+    sha256 "5ed135d6f9850988837bf8ab39d89f2215850ad383c4939f255014a0dbf41c61"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.21.1+ent/vault_1.21.1+ent_darwin_arm64.zip"
-    sha256 "1a2e5977de77e0ccb2350879cf12133ecdf16df2f11cb4776997cc839f1a77db"
+    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_darwin_arm64.zip"
+    sha256 "94b1abe944b34273aefd56bb20959d68f9457cd8b5805a6b38dad4e22833b922"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.21.1+ent/vault_1.21.1+ent_linux_amd64.zip"
-    sha256 "7b6ab5c6a2b04e2c1c4f0192257eb61595ef6be04e8100ad952f096b0f038f48"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.21.1+ent/vault_1.21.1+ent_linux_arm.zip"
-    sha256 "b3c0e3207c24d7533e382a52462482d282227f451e5eed9916103a9284302cf5"
+    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_linux_amd64.zip"
+    sha256 "9644574bd5c5615b552a0b2286e6bd688529c010bc684d9e3ef1c76054347963"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.21.1+ent/vault_1.21.1+ent_linux_arm64.zip"
-    sha256 "3e287c3a8ff76f6eb0499678bc2045e86ad6047d2a0cbd4b0182d5aee1efd34b"
+    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_linux_arm64.zip"
+    sha256 "a466e851cd926a15b4584d7e890a494e9cebdff137c835fb82c3e775351c2527"
   end
 
   conflicts_with "vault-enterprise"
