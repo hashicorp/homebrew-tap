@@ -1,51 +1,26 @@
-# HashiCorp Homebrew Tap
+# petems/homebrew-tap
 
-## What is Homebrew?
+Peter Souter's personal [Homebrew](https://brew.sh/) tap — a mix of casks
+for macOS apps and legacy formulae from the HashiCorp ecosystem.
 
-Package manager for macOS (or Linux), see more at https://brew.sh
+## Add the tap
 
-## What is Tap?
+    brew tap petems/tap
 
-A third-party (in relation to Homebrew) repository providing installable
-packages (so called formulae) on macOS and Linux.
+## Casks
 
-See more at https://docs.brew.sh/Taps
+| Cask | Description |
+|---|---|
+| [`cc-dailyuse-bar`](https://github.com/petems/cc-dailyuse-bar) | Menu bar app for monitoring Anthropic Claude Code usage |
 
-## How do I install packages from here?
+Install with:
 
-```sh
-brew install hashicorp/tap/name
-```
+    brew install --cask petems/tap/cc-dailyuse-bar
 
-You can also only add the tap which makes formulae within it
-available in search results (`brew search` output):
+## Formulae (legacy)
 
-```sh
-brew tap hashicorp/tap
-```
-
-While you may search across taps, it is necessary to always use
-fully qualified name (incl. the `hashicorp/tap/` prefix)
-when refering to formulae in external tap such as this one
-outside of search.
-
-## Why should I install packages from this tap?
-
-Formulae for the same HashiCorp software may exist in other taps
-or the [community-maintained main tap](https://github.com/Homebrew/homebrew-core).
-This may raise a question of why would someone prefer one tap over the other.
-
-The _community-maintained tap_ compiles HashiCorp software on Homebrew's own infrastructure, and builds it according to the local formulae definition.
-
-Formulae _in this tap_ are maintained by HashiCorp, which means that it distributes
-the exact (byte-to-byte) same binaries which are published to https://releases.hashicorp.com
-
- - macOS binaries are signed by HashiCorp and the signature can be verified
-	per instructions on the [HashiCorp's Security](https://www.hashicorp.com/security#code-signature-verification) page
- - Teams maintaining HashiCorp software choose Go version and any build flags _deliberately_ while
- 	factoring in support, security and other concerns. Binaries distributed through this tap reflect this.
- - Updating of formulae is automated, which means that updates become available as they're released.
-
-### Why doesn't HashiCorp maintain formulae in the `homebrew-core` (main tap)?
-
-Homebrew's core team prefers to keep `homebrew-core` as community maintained and built from source to maintain consistency across vendors in terms of expectations around contents and updates. See [relevant discussion](https://discourse.brew.sh/t/maintenance-of-formulas-by-vendor/7649) for more information.
+The [`Formula/`](./Formula) directory contains tooling from when this tap
+focused on HashiCorp products (consul, nomad, packer, terraform,
+terraform-ls, vault). These are unmaintained — kept for archival reasons —
+and may not work with current Homebrew or upstream releases. PRs to update
+or retire them are welcome.
