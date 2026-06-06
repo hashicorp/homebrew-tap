@@ -6,6 +6,9 @@ class Vagrant < Formula
   homepage "https://www.vagrantup.com/"
   version "2.4.9"
 
+  depends_on :linux
+  depends_on arch: :x86_64
+
   if OS.linux? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9_linux_amd64.zip"
     sha256 "77d4d533c82c420b6b594992a902ec43fcd9f50380dc002a599e93fc744f8cfa"
