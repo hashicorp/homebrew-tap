@@ -458,7 +458,7 @@ formula {
 
 formula {
     product = "tfctl"
-    name = "tfctl"
+    name = "Tfctl"
     desc = ""
     homepage = "https://www.terraform.io"
     architectures {
