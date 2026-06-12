@@ -1,7 +1,7 @@
 # Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
-class tfctl < Formula
+class Tfctl < Formula
   desc ""
   homepage "https://www.terraform.io"
   version "0.2.0"
