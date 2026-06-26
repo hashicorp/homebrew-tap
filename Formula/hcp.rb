@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Hcp < Formula
-  desc "HCP CLI"
+  desc "CLI for HashiCorp Cloud Platform"
   homepage "https://github.com/hashicorp/hcp"
   version "0.11.0"
 
@@ -31,13 +31,11 @@ class Hcp < Formula
     sha256 "2a2528756df22dbab5cfb0645ae3098c811a5f033c9a98e6171c6aa8f728bf5e"
   end
 
-  conflicts_with "hcp"
-
   def install
     bin.install "hcp"
   end
 
   test do
-    system "#{bin}/hcp --version"
+    system bin/"hcp", "--version"
   end
 end

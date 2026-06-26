@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class HcInstall < Formula
-  desc "hc-install CLI"
+  desc "CLI for installing HashiCorp products"
   homepage "https://github.com/hashicorp/hc-install"
   version "0.9.5"
 
@@ -31,13 +31,11 @@ class HcInstall < Formula
     sha256 "8e05d5526e796f2fa945b41570541a40dff4a3af6cd081744e04c728d7d62f52"
   end
 
-  conflicts_with "hc-install"
-
   def install
     bin.install "hc-install"
   end
 
   test do
-    system "#{bin}/hc-install --version"
+    system bin/"hc-install", "--version"
   end
 end

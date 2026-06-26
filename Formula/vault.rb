@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Vault < Formula
-  desc "Vault"
+  desc "Secrets management tool"
   homepage "https://www.vaultproject.io"
   version "2.0.3"
 
@@ -26,14 +26,12 @@ class Vault < Formula
     sha256 "9423a715aea0689f9e498fe7cc5ea692aa1eff282f8b9bc26af28cad69d6d841"
   end
 
-  conflicts_with "vault"
-
   def install
     bin.install "vault"
   end
 
   service do
-    run [bin/"vault", "server", "-dev"]
+    run [opt_bin/"vault", "server", "-dev"]
     keep_alive successful_exit: false
     working_dir var
     log_path var/"log/vault.log"
@@ -41,6 +39,6 @@ class Vault < Formula
   end
 
   test do
-    system "#{bin}/vault --version"
+    system bin/"vault", "--version"
   end
 end

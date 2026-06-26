@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Waypoint < Formula
-  desc "Waypoint"
+  desc "Application deployment platform"
   homepage "https://www.waypointproject.io/"
   version "0.11.4"
 
@@ -31,13 +31,11 @@ class Waypoint < Formula
     sha256 "bbf331be8785a99a0bfcb4707a013355ba58516d0e9b1b78fd8808e4d2213e66"
   end
 
-  conflicts_with "waypoint"
-
   def install
     bin.install "waypoint"
   end
 
   test do
-    system "#{bin}/waypoint --version"
+    system bin/"waypoint", "--version"
   end
 end

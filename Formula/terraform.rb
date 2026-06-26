@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Terraform < Formula
-  desc "Terraform"
+  desc "Infrastructure as code tool"
   homepage "https://www.terraform.io/"
   version "1.15.7"
 
@@ -31,13 +31,11 @@ class Terraform < Formula
     sha256 "7a9e92105ede978cf9049a2fbe53dfe67c6a8da4b4d7f613d89e7dd7c63ec40d"
   end
 
-  conflicts_with "terraform"
-
   def install
     bin.install "terraform"
   end
 
   test do
-    system "#{bin}/terraform --version"
+    system bin/"terraform", "--version"
   end
 end

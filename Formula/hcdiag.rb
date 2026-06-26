@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Hcdiag < Formula
-  desc "Hcdiag"
+  desc "Diagnostic tool for HashiCorp products"
   homepage "https://github.com/hashicorp/hcdiag"
   version "0.5.13"
 
@@ -31,13 +31,11 @@ class Hcdiag < Formula
     sha256 "12551b7a8b86c93053831f7cadaff921273cca60dc53915220a3bad35fcf118e"
   end
 
-  conflicts_with "hcdiag"
-
   def install
     bin.install "hcdiag"
   end
 
   test do
-    system "#{bin}/hcdiag --version"
+    system bin/"hcdiag", "--version"
   end
 end

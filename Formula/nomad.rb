@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Nomad < Formula
-  desc "Nomad"
+  desc "Workload orchestrator and scheduler"
   homepage "https://www.nomadproject.io/"
   version "2.0.3"
 
@@ -26,14 +26,12 @@ class Nomad < Formula
     sha256 "61cd1bf830b5db07e87ab5d1dbb73a7b23fbe4c5aed6d81dd0cddc04001b5500"
   end
 
-  conflicts_with "nomad"
-
   def install
     bin.install "nomad"
   end
 
   service do
-    run [bin/"nomad", "agent", "-dev"]
+    run [opt_bin/"nomad", "agent", "-dev"]
     keep_alive successful_exit: false
     working_dir var
     log_path var/"log/nomad.log"
@@ -41,6 +39,6 @@ class Nomad < Formula
   end
 
   test do
-    system "#{bin}/nomad --version"
+    system bin/"nomad", "--version"
   end
 end

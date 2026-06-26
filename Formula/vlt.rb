@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Vlt < Formula
-  desc "Vlt CLI"
+  desc "CLI for HashiCorp Vault"
   homepage "https://github.com/hashicorp/vlt"
   version "1.0.0"
 
@@ -31,13 +31,11 @@ class Vlt < Formula
     sha256 "e20529046b9a24fac9bc5d271c13db745d181c55ceed285f8d36af61a562143e"
   end
 
-  conflicts_with "vlt"
-
   def install
     bin.install "vlt"
   end
 
   test do
-    system "#{bin}/vlt --version"
+    system bin/"vlt", "--version"
   end
 end

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Packer < Formula
-  desc "Packer"
+  desc "Machine image builder"
   homepage "https://www.packer.io/"
   version "1.15.4"
 
@@ -31,13 +31,11 @@ class Packer < Formula
     sha256 "23e6d2e596dd9e2527e0f7bea9aedd26059729375a0d17c462c2621f1b97b82d"
   end
 
-  conflicts_with "packer"
-
   def install
     bin.install "packer"
   end
 
   test do
-    system "#{bin}/packer --version"
+    system bin/"packer", "--version"
   end
 end

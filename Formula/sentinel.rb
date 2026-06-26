@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Sentinel < Formula
-  desc ""
+  desc "Policy as code framework"
   homepage "https://docs.hashicorp.com/sentinel"
   version "0.41.0"
 
@@ -31,13 +31,11 @@ class Sentinel < Formula
     sha256 "e4735fcfcc3f2ef161ff2b17207da2f9235ca38ba92609be43e45199f807f1b4"
   end
 
-  conflicts_with "sentinel"
-
   def install
     bin.install "sentinel"
   end
 
   test do
-    system "#{bin}/sentinel --version"
+    system bin/"sentinel", "--version"
   end
 end

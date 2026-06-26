@@ -4,7 +4,6 @@
 class TfMigrate < Formula
   desc "Terraform Migrate"
   homepage "https://www.terraform.io"
-  version "2.0.0-beta2"
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/tf-migrate/2.0.0-beta2/tf-migrate_2.0.0-beta2_darwin_amd64.zip"
@@ -31,13 +30,11 @@ class TfMigrate < Formula
     sha256 "9bb4a195b3928d3684a3b0b3ad3b10a87466b56bd1f9df43622e9a45d8dd5dbc"
   end
 
-  conflicts_with "tf-migrate"
-
   def install
     bin.install "tf-migrate"
   end
 
   test do
-    system "#{bin}/tf-migrate --version"
+    system bin/"tf-migrate", "--version"
   end
 end

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class Tfctl < Formula
-  desc ""
+  desc "CLI for Terraform Cloud"
   homepage "https://www.terraform.io"
   version "0.3.0"
 
@@ -31,13 +31,11 @@ class Tfctl < Formula
     sha256 "1060b2903cd8f9cb0af5c878cf89790e0f588b735b6715d2eeadd52c5a71f8c5"
   end
 
-  conflicts_with "tfctl"
-
   def install
     bin.install "tfctl"
   end
 
   test do
-    system "#{bin}/tfctl --version"
+    system bin/"tfctl", "--version"
   end
 end

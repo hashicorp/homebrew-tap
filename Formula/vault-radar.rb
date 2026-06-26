@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 class VaultRadar < Formula
-  desc "Vault Radar"
+  desc "Security scanning tool"
   homepage "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
   version "0.50.0"
 
@@ -26,13 +26,11 @@ class VaultRadar < Formula
     sha256 "b19482e2f2ca65c3317644d67b594e58e2e426719694bbeda2372bf369323385"
   end
 
-  conflicts_with "vault-radar"
-
   def install
     bin.install "vault-radar"
   end
 
   test do
-    system "#{bin}/vault-radar --version"
+    system bin/"vault-radar", "--version"
   end
 end

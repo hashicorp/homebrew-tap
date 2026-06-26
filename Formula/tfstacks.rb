@@ -31,13 +31,11 @@ class Tfstacks < Formula
     sha256 "ab4654dc5565ef52f8e3e504233b690e9d1d2102ad0a666ad204fbd9cd4fdffc"
   end
 
-  conflicts_with "tfstacks"
-
   def install
     bin.install "tfstacks"
   end
 
   test do
-    system "#{bin}/tfstacks --version"
+    system bin/"tfstacks", "--version"
   end
 end
