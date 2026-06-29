@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 class NomadEnterprise < Formula
   desc "Nomad Enterprise"
   homepage "https://www.nomadproject.io/"
