@@ -4,11 +4,11 @@
 class ConsulTerraformSync < Formula
   desc "Consul Terraform Sync"
   homepage "https://github.com/hashicorp/consul-terraform-sync"
-  version "0.9.0"
+  version "0.9.1"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.0/consul-terraform-sync_0.9.0_darwin_amd64.zip"
-    sha256 "8a2f3b848d6e42b4598df6b75161b4ffa3545e87a086ecb07abb3612738062e0"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_darwin_amd64.zip"
+    sha256 "9004d6808e8b6c3f44cde4701c45ae9f0643503ef7ffee96a3c14ef47189a116"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -23,18 +23,18 @@ class ConsulTerraformSync < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.0/consul-terraform-sync_0.9.0_linux_amd64.zip"
-    sha256 "600051190f59e2caaa70cc47593ec7cb3a4f35eadc3573668bdcabcdf94ed9c4"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_amd64.zip"
+    sha256 "4536c56a7d8e6e18f9cd4915d70690b27eec95037e9e5f1d1f764b92da5bd4e3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.0/consul-terraform-sync_0.9.0_linux_arm.zip"
-    sha256 "da5a561660e81ee3056629959f1a0b781ba941b58fe3c204d870d0c28e3dadf0"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_arm.zip"
+    sha256 "ab799fa142b83634deaad63d98c984878f50f1c67c9d345e4b736d5c2e3eaebe"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.0/consul-terraform-sync_0.9.0_linux_arm64.zip"
-    sha256 "db2aa8c1b7c35d8942eaffb1befaf18a0b1269b43abddf4c6e4db9fc4894c522"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_arm64.zip"
+    sha256 "e5e93554cf0789f4513078711abe93bb71d5536f8bb722e950fe051f9bde1043"
   end
 
   conflicts_with "consul-terraform-sync"
