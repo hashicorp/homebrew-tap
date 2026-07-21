@@ -469,3 +469,17 @@ formula {
         linux_arm64 = true
     }
 }
+
+formula {
+    product = "tfpolicy"
+    name = "TerraformPolicy"
+    desc = "Terraform Policy"
+    homepage = "https://developer.hashicorp.com/terraform/policy/reference/cli"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+}
