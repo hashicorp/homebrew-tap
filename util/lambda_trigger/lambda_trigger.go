@@ -66,6 +66,7 @@ func isProductSupported(product string) bool {
 		"vlt",
 		"vault-radar",
 		"tf-migrate",
+		"tfpolicy",
 	}
 
 	for _, p := range supportedProducts {
