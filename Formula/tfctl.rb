@@ -4,31 +4,31 @@
 class Tfctl < Formula
   desc ""
   homepage "https://www.terraform.io"
-  version "0.3.0"
+  version "0.4.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tfctl/0.3.0/tfctl_0.3.0_darwin_amd64.zip"
-    sha256 "a12de01e640cb9dea6080b7e8a2cdb74c5efe466f3ff6ba19c520c03d383dac9"
+    url "https://releases.hashicorp.com/tfctl/0.4.0/tfctl_0.4.0_darwin_amd64.zip"
+    sha256 "19786ebddb3cbd922402d21577e85842385910a666e62b1f9b0de46520c527d7"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/tfctl/0.3.0/tfctl_0.3.0_darwin_arm64.zip"
-    sha256 "045a5d7ebf2913006213b485353acf7c832bbf28e1cf3a6a34313dd761d4f535"
+    url "https://releases.hashicorp.com/tfctl/0.4.0/tfctl_0.4.0_darwin_arm64.zip"
+    sha256 "e53f2b965eec2435d5543ff4b6ff799b4beac0e0c233a3a355158abe4c524632"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tfctl/0.3.0/tfctl_0.3.0_linux_amd64.zip"
-    sha256 "5526b438bb66c5bc872f55c4bbb7325bb3e9d162ddd392eed3d60f407598cf62"
+    url "https://releases.hashicorp.com/tfctl/0.4.0/tfctl_0.4.0_linux_amd64.zip"
+    sha256 "055d365cf165708dd304747f27a7242c51ce61a0bf680bd83fd3abe7cbcaa356"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tfctl/0.3.0/tfctl_0.3.0_linux_arm.zip"
-    sha256 "5526b438bb66c5bc872f55c4bbb7325bb3e9d162ddd392eed3d60f407598cf62"
+    url "https://releases.hashicorp.com/tfctl/0.4.0/tfctl_0.4.0_linux_arm.zip"
+    sha256 "055d365cf165708dd304747f27a7242c51ce61a0bf680bd83fd3abe7cbcaa356"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tfctl/0.3.0/tfctl_0.3.0_linux_arm64.zip"
-    sha256 "1060b2903cd8f9cb0af5c878cf89790e0f588b735b6715d2eeadd52c5a71f8c5"
+    url "https://releases.hashicorp.com/tfctl/0.4.0/tfctl_0.4.0_linux_arm64.zip"
+    sha256 "5f2caf7900b8f43dd72f390b992bafceab4ae85bbc58b60325bb1888ef9a0e53"
   end
 
   conflicts_with "tfctl"
