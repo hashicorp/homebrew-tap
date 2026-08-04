@@ -1,7 +1,7 @@
 # Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
-class TerraformPolicy < Formula
+class Tfpolicy < Formula
   desc "Terraform Policy"
   homepage "https://developer.hashicorp.com/terraform/policy/reference/cli"
   version "0.1.0"
