@@ -8,22 +8,22 @@ class Tfm < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://github.com/hashicorp-services/tfm/releases/download/v0.17.0/tfm_darwin_x86_64"
-    sha256 "b2749aa2a1be2790c3c2f5dea9419c5511a8c38f9c29cda94e8a5f1d88efc856"
+    sha256 "11fbe29dd6846fbfb677dafaf4a0283b65faefa18ba1208ef3c67deaf8a566bb"
   end
 
   if OS.mac? && Hardware::CPU.arm?
     url "https://github.com/hashicorp-services/tfm/releases/download/v0.17.0/tfm_darwin_arm64"
-    sha256 "e3cc2b369b95a38c2de2ee173ee9596e2524803bb768bff7b6d5210e61671090"
+    sha256 "5d88073e6841308b0d31ee2d86939b7285326580cfc66de19054b54b4b8b93f5"
   end
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://github.com/hashicorp-services/tfm/releases/download/v0.17.0/tfm_linux_x86_64"
-    sha256 "b66c3ab55ee1dd5db12bae00a8423b3767e49923ee1092548510e233af2404cf"
+    sha256 "2a06ae6a14abfbeb829dd0d0a442608f90e9c859b577082c23282e9980e728b5"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://github.com/hashicorp-services/tfm/releases/download/v0.17.0/tfm_linux_arm64"
-    sha256 "3b0f4978d2f182212a05d17b535afb34d2326247c4842c04addfc6983222da08"
+    sha256 "650cfe222650ed5ef5eed57229183a39214946333242b7171e94cf01fc27f0dd"
   end
 
   def install
