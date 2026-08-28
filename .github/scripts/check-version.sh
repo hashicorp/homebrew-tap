@@ -2,9 +2,9 @@
 
 # Version checking script for Homebrew tap updates
 # Usage: check-version.sh <product_name> <incoming_version> <is_cask>
-# 
+#
 # Modes:
-# - Cask mode: is_cask="true" (checks ./Casks/<product_name>.rb)
+# - Cask mode: is_cask="true" (checks ./Casks/hashicorp-<product_name>.rb)
 # - Formula mode: is_cask="false" (checks ./Formula/<product_name>.rb)
 # - Both mode: NOT SUPPORTED - script only handles one file at a time
 #   For both mode, call this script twice with different is_cask values
@@ -58,7 +58,7 @@ get_file_path() {
     local is_cask="$2"
     
     if [[ "$is_cask" == "true" ]]; then
-        echo "./Casks/${product_name}.rb"
+        echo "./Casks/hashicorp-${product_name}.rb"
     else
         echo "./Formula/${product_name}.rb"
     fi
