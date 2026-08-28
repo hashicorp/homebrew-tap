@@ -151,7 +151,7 @@ jobs:
 
           # Enable auto-merge so the PR merges automatically once required checks pass.
           if [[ -n "$PR_NUMBER" ]]; then
-            gh pr merge "$PR_NUMBER" --auto --merge
+            gh pr merge "$PR_NUMBER" --auto --squash
           else
             echo "::error::Could not determine PR number for ${BRANCH} — auto-merge not enabled."
             exit 1
