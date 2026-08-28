@@ -6,8 +6,10 @@ on:
       inputs:
         product:
           description: product name as it appears in binary (ie. "vault", "vault-enterprise", etc.)
+          required: true
         version:
           description: semantic version string (ie. "1.12.2")
+          required: true
         is_cask:
           type: boolean
           description: check if updating a cask (rather than a tap formula)
@@ -51,17 +53,71 @@ jobs:
             ${{github.event.inputs.version}} \
             ./util/formula_templater/config.hcl > ./Casks/hashicorp-${{github.event.inputs.product}}.rb
 
-      - name: Publish Change
+      - name: Publish Change via Pull Request
+        env:
+          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
+          PRODUCT: ${{ github.event.inputs.product }}
+          VERSION: ${{ github.event.inputs.version }}
+          IS_CASK: ${{ github.event.inputs.is_cask }}
         run: |
           git config user.name hc-github-team-es-release-engineering
           git config user.email github-team-es-release-engineering@hashicorp.com
 
-          git add Formula/*.rb Casks/*.rb
+          # Stage only the file that was generated — avoids glob expansion errors
+          # when the other directory has no matching changes.
+          if [[ "$IS_CASK" == "true" ]]; then
+            git add "Casks/hashicorp-${PRODUCT}.rb"
+          else
+            git add "Formula/${PRODUCT}.rb"
+          fi
 
-          git commit -m "Bump ${{ github.event.inputs.product }} to ${{ github.event.inputs.version }}"
+          # Exit early if the generated file is identical to what is already
+          # committed (e.g. re-running for a version that is already current).
+          if git diff --staged --quiet; then
+            echo "::notice::Generated file is unchanged — nothing to commit for ${PRODUCT} ${VERSION}."
+            exit 0
+          fi
 
-          # Ensure we have any changes that might have been merged before we push. This narrows the window in which a 
-          # race from multiple changes happening at once can occur. Conflicts/Races could still occur though unlikley.
-          git pull --rebase
+          # Deterministic branch name — one open PR per product per version.
+          BRANCH="automation/bump-${PRODUCT}-${VERSION}"
 
-          git push
+          git checkout -b "$BRANCH"
+          git commit -m "Bump ${PRODUCT} to ${VERSION}"
+
+          # Fetch the remote branch first so --force-with-lease has a tracking ref
+          # to compare against. actions/checkout only fetches master, so without
+          # this fetch the lease check has nothing to compare and behaves like
+          # plain --force. The 2>/dev/null || true makes it a no-op when the
+          # branch doesn't exist yet (first push).
+          git fetch origin "$BRANCH" 2>/dev/null || true
+          git push --force-with-lease origin "$BRANCH"
+
+          # Open a PR only if one doesn't already exist for this branch.
+          # Capture the PR number at creation time to avoid a second API call
+          # and the race condition of querying a PR that may not be indexed yet.
+          EXISTING_PR=$(gh pr list \
+            --head "$BRANCH" \
+            --state open \
+            --json number \
+            --jq '.[0].number')
+
+          if [[ -z "$EXISTING_PR" ]]; then
+            PR_URL=$(gh pr create \
+              --base master \
+              --head "$BRANCH" \
+              --title "Bump ${PRODUCT} to ${VERSION}" \
+              --body "Automated version bump for \`${PRODUCT}\` to \`${VERSION}\`.")
+            # Extract the PR number from the URL returned by gh pr create.
+            PR_NUMBER="${PR_URL##*/}"
+          else
+            echo "::notice::PR #${EXISTING_PR} already exists for ${BRANCH}, skipping PR creation."
+            PR_NUMBER="$EXISTING_PR"
+          fi
+
+          # Enable auto-merge so the PR merges automatically once required checks pass.
+          if [[ -n "$PR_NUMBER" ]]; then
+            gh pr merge "$PR_NUMBER" --auto --merge
+          else
+            echo "::error::Could not determine PR number for ${BRANCH} — auto-merge not enabled."
+            exit 1
+          fi
