@@ -1,4 +1,6 @@
 #!/bin/bash
+# Copyright IBM Corp. 2020, 2026
+
 
 # Version checking script for Homebrew tap updates
 # Usage: check-version.sh <product_name> <incoming_version> <is_cask>
