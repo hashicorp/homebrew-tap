@@ -85,7 +85,7 @@ jobs:
           git commit -m "Bump ${PRODUCT} to ${VERSION}"
 
           # Fetch the remote branch first so --force-with-lease has a tracking ref
-          # to compare against. actions/checkout only fetches master, so without
+          # to compare against. actions/checkout only fetches main, so without
           # this fetch the lease check has nothing to compare and behaves like
           # plain --force. The 2>/dev/null || true makes it a no-op when the
           # branch doesn't exist yet (first push).
@@ -103,7 +103,7 @@ jobs:
 
           if [[ -z "$EXISTING_PR" ]]; then
             PR_URL=$(gh pr create \
-              --base master \
+              --base main \
               --head "$BRANCH" \
               --title "Bump ${PRODUCT} to ${VERSION}" \
               --body "Automated version bump for \`${PRODUCT}\` to \`${VERSION}\`.")
