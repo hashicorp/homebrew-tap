@@ -57,6 +57,6 @@ class Hcp < Formula
   end
 
   test do
-    system "#{bin}/hcp --version"
+    system "#{bin}/hcp version"
   end
 end

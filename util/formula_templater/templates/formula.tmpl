@@ -116,6 +116,10 @@ class {{ .Name }} < Formula
   {{- end }}
 
   test do
-    system "#{bin}/{{ .Product }} --version"
+  {{- if .Plugin }}
+    assert_match "plugin", shell_output("#{bin}/{{ .Product }} 2>&1", 1)
+  {{- else }}
+    system "#{bin}/{{ .Product }}{{ if .VersionArgs }}{{ range .VersionArgs }} {{ . }}{{ end }}{{ else }} --version{{ end }}"
+  {{- end }}
   end
 end

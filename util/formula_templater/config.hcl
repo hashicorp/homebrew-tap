@@ -11,6 +11,7 @@ formula {
         linux_arm64 = true
     }
     autocomplete = true
+    version_args = ["-version"]
 }
 
 formula {
@@ -26,6 +27,7 @@ formula {
         linux_arm64 = true
     }
     autocomplete = true
+    version_args = ["-version"]
 }
 
 formula {
@@ -219,6 +221,7 @@ formula {
         linux_arm64 = true
     }
     autocomplete = true
+    version_args = ["version"]
 }
 
 formula {
@@ -309,6 +312,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    plugin = true
 }
 
 formula {

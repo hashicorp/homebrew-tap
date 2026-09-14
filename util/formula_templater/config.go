@@ -30,6 +30,12 @@ type FormulaConfig struct {
 	// Never enable it for binaries without that support: the shell would run
 	// the tool for real on every TAB.
 	Autocomplete bool `hcl:"autocomplete,optional"`
+	// VersionArgs overrides the "--version" invocation used by the test block
+	// for binaries that only accept e.g. "-version" or "version".
+	VersionArgs []string `hcl:"version_args,optional"`
+	// Plugin marks go-plugin binaries that refuse to run standalone; the test
+	// block then only asserts the plugin banner instead of a version.
+	Plugin bool `hcl:"plugin,optional"`
 }
 
 type CaskConfig struct {

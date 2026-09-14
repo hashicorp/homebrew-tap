@@ -57,6 +57,6 @@ class BoundaryEnterprise < Formula
   end
 
   test do
-    system "#{bin}/boundary --version"
+    system "#{bin}/boundary -version"
   end
 end
