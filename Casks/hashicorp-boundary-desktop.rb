@@ -6,8 +6,10 @@ cask "hashicorp-boundary-desktop" do
 
   on_macos do
     arch arm: "arm64", intel: "amd64"
-    sha256 arm: "183ca42ce04b6cbf98661c54bc6bc79a1c8da401c0bcb2a4ef5b9b69bdfb119a",
+
+    sha256 arm:   "183ca42ce04b6cbf98661c54bc6bc79a1c8da401c0bcb2a4ef5b9b69bdfb119a",
            intel: "05640df4f9bb297c05f03be23f96a7d1f9c6a83e2cf4e9ca530bafee71e73880"
+
     url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_#{arch}.dmg",
         verified: "hashicorp.com/boundary-desktop/"
 
@@ -15,7 +17,8 @@ cask "hashicorp-boundary-desktop" do
   end
 
   name "Boundary Desktop"
-  desc ""
+  desc "Desktop client for Boundary"
   homepage "https://www.boundaryproject.io/"
 
+  depends_on :macos
 end

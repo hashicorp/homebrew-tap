@@ -14,7 +14,8 @@ cask "hashicorp-boundary-desktop" do
   end
 
   name "Boundary Desktop"
-  desc ""
+  desc "Desktop client for Boundary"
   homepage "https://www.boundaryproject.io/"
 
+  depends_on :macos
 end
