@@ -345,7 +345,7 @@ formula {
 cask {
     product = "boundary-desktop"
     name = "Boundary Desktop"
-    desc = ""
+    desc = "Desktop client for Boundary"
     homepage = "https://www.boundaryproject.io/"
     cask_app = "Boundary.app"
     architectures {
