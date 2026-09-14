@@ -26,6 +26,7 @@ cask "hashicorp-vagrant" do
   name "Vagrant"
   desc "Development environment"
   homepage "https://www.vagrantup.com/"
+  depends_on :macos
 
   livecheck do
     url "https://github.com/hashicorp/vagrant"

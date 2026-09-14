@@ -17,5 +17,6 @@ cask "hashicorp-boundary-desktop" do
   name "Boundary Desktop"
   desc ""
   homepage "https://www.boundaryproject.io/"
+  depends_on :macos
 
 end
