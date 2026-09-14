@@ -2,7 +2,7 @@ name: publish-homebrew-lambda
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "util/lambda_trigger/**" # only publish lambda when changing lambda code
 jobs:
