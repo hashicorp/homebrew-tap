@@ -35,6 +35,25 @@ class TfMigrate < Formula
 
   def install
     bin.install "tf-migrate"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"tf-migrate").write "complete -C #{opt_bin}/tf-migrate tf-migrate\n"
+    (zsh_completion/"_tf-migrate").write <<~EOS
+      #compdef tf-migrate
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/tf-migrate)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"tf-migrate.fish").write <<~EOS
+      function __complete_tf-migrate
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/tf-migrate
+      end
+      complete -f -c tf-migrate -a "(__complete_tf-migrate)"
+    EOS
   end
 
   test do

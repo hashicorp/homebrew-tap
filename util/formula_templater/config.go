@@ -25,6 +25,11 @@ type FormulaConfig struct {
 	Depends     []string `hcl:"depends,optional"`
 	Recommends  []string `hcl:"recommends,optional"`
 	ServiceArgs []string `hcl:"service_args,optional"`
+	// Autocomplete marks binaries that complete themselves via COMP_LINE
+	// (posener/complete, i.e. those with an -autocomplete-install flag).
+	// Never enable it for binaries without that support: the shell would run
+	// the tool for real on every TAB.
+	Autocomplete bool `hcl:"autocomplete,optional"`
 }
 
 type CaskConfig struct {
