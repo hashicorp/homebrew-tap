@@ -1,34 +1,34 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Hcdiag < Formula
   desc "Hcdiag"
   homepage "https://github.com/hashicorp/hcdiag"
-  version "0.5.11"
+  version "0.5.13"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hcdiag/0.5.11/hcdiag_0.5.11_darwin_amd64.zip"
-    sha256 "98b394175b5490accc777dc2d117bc3c48e369b6af57f5e10aa1a7b563d18bba"
+    url "https://releases.hashicorp.com/hcdiag/0.5.13/hcdiag_0.5.13_darwin_amd64.zip"
+    sha256 "28f58db0239b4d4ff2259f2591b9e461410522e0a5963ab9b747ef8023f41495"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/hcdiag/0.5.11/hcdiag_0.5.11_darwin_arm64.zip"
-    sha256 "24fa64731e3407d9fa034709e2a85ab464c73e54401d99b59ec1388b695c3149"
+    url "https://releases.hashicorp.com/hcdiag/0.5.13/hcdiag_0.5.13_darwin_arm64.zip"
+    sha256 "81e18ed8937e5e5ec8b5d6e02d30089ac1ef7498ea8854482220aa7f50f54b4f"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/hcdiag/0.5.11/hcdiag_0.5.11_linux_amd64.zip"
-    sha256 "0093c601b2a1bd0b0a0ecb0806f8de34c104bafdcd9cc2239af90e999d572d8a"
+    url "https://releases.hashicorp.com/hcdiag/0.5.13/hcdiag_0.5.13_linux_amd64.zip"
+    sha256 "856c86e3f208775ea8982aa76754fd38f192762541225aa3fc127fd19743bb8a"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hcdiag/0.5.11/hcdiag_0.5.11_linux_arm.zip"
-    sha256 "dc910c2c8ef8afc71ea916cd11410e4b27bf3bd26f9f454643f427ac3e05b971"
+    url "https://releases.hashicorp.com/hcdiag/0.5.13/hcdiag_0.5.13_linux_arm.zip"
+    sha256 "848ddc1a6bd6882f96042038a9822068a82256fc2111ffab43f329de4a5aad26"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/hcdiag/0.5.11/hcdiag_0.5.11_linux_arm64.zip"
-    sha256 "cedcfe262d52d31a91f28f3804126ae3e826ef29a455d6620d7f735ebd60e056"
+    url "https://releases.hashicorp.com/hcdiag/0.5.13/hcdiag_0.5.13_linux_arm64.zip"
+    sha256 "12551b7a8b86c93053831f7cadaff921273cca60dc53915220a3bad35fcf118e"
   end
 
   conflicts_with "hcdiag"

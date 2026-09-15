@@ -23,7 +23,8 @@ setup() {
     
     # Copy test data
     cp "$TEST_DIR/data/test-formula.rb" "$TEMP_DIR/Formula/"
-    cp "$TEST_DIR/data/test-cask.rb" "$TEMP_DIR/Casks/"
+    # Cask filenames are prefixed with "hashicorp-" on disk; mirror that here.
+    cp "$TEST_DIR/data/test-cask.rb" "$TEMP_DIR/Casks/hashicorp-test-cask.rb"
     cp "$TEST_DIR/data/old-version.rb" "$TEMP_DIR/Formula/"
 }
 
@@ -112,10 +113,20 @@ get_output_value() {
     [ "$should_update" = "true" ]
 }
 
-
 @test "cask version comparison works (older)" {
     run_check_version "test-cask" "2.0.9" "true"
     [ "$status" -eq 0 ]
+    should_update=$(get_output_value "$output" "should_update")
+    [ "$should_update" = "false" ]
+}
+
+@test "cask path resolves to hashicorp- prefix" {
+    # Confirms get_file_path uses ./Casks/hashicorp-<product>.rb for casks.
+    # Without the prefix the file would not be found and should_update would
+    # always be reported as true (new-product path), bypassing version gating.
+    run_check_version "test-cask" "2.1.0" "true"
+    [ "$status" -eq 0 ]
+    # Same version → should NOT update; proves the file was actually read.
     should_update=$(get_output_value "$output" "should_update")
     [ "$should_update" = "false" ]
 }

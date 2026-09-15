@@ -1,43 +1,62 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class BoundaryEnterprise < Formula
   desc "Boundary Enterprise"
   homepage "https://www.boundaryproject.io/"
-  version "0.21.1+ent"
+  version "1.0.1+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.21.1+ent/boundary_0.21.1+ent_darwin_amd64.zip"
-    sha256 "0b5a1cf86888706775997b07293e3b878072ec2c11e2141950073f348c223768"
+    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_darwin_amd64.zip"
+    sha256 "f43beba75a82691afa1c3261d881077bd860862de2c17bb96b6707f6f963079c"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/boundary/0.21.1+ent/boundary_0.21.1+ent_darwin_arm64.zip"
-    sha256 "7cd7565efe65c0292a978d79d5c8e574a7cc82e73f758d0d66b4550655110271"
+    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_darwin_arm64.zip"
+    sha256 "e2ad45320f2e4d975bcab2561886aadec9dd7a3253f92db29f2b55024b615698"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.21.1+ent/boundary_0.21.1+ent_linux_amd64.zip"
-    sha256 "ca525b22d8422cfec964ccbfc42da1ba25eb0d84b53ae55a19d6530d18169912"
+    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_linux_amd64.zip"
+    sha256 "f74035e77cc4dab5c7f0f4c1fd886489ed6c8c6f928a456dea60f9424fec20bd"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.21.1+ent/boundary_0.21.1+ent_linux_arm.zip"
-    sha256 "fb0cd156a159fe23195caeb4a3c4393944f6606e19b6230860f72b8e27f9c8c3"
+    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_linux_arm.zip"
+    sha256 "99836b80f34850216a18649f47ca330a4c33b2bd9932f5c3c8f4cbf3cb5f7fdc"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.21.1+ent/boundary_0.21.1+ent_linux_arm64.zip"
-    sha256 "faed2cbe67a7b050d35e72f3519eb3cfc3d649aeda9b865bb024acbf34308ea4"
+    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_linux_arm64.zip"
+    sha256 "9b5f5ba8cc9204f6e9f988b22000f1fed9845e424fc7712978906c0c1443d64d"
   end
 
   conflicts_with "boundary-enterprise"
 
   def install
     bin.install "boundary"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"boundary").write "complete -C #{opt_bin}/boundary boundary\n"
+    (zsh_completion/"_boundary").write <<~EOS
+      #compdef boundary
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/boundary)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"boundary.fish").write <<~EOS
+      function __complete_boundary
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/boundary
+      end
+      complete -f -c boundary -a "(__complete_boundary)"
+    EOS
   end
 
   test do
-    system "#{bin}/boundary --version"
+    system "#{bin}/boundary -version"
   end
 end

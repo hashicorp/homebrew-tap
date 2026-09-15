@@ -1,17 +1,23 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 cask "hashicorp-boundary-desktop" do
-  version "2.5.0"
-  arch arm: "arm64", intel: "amd64"
-  sha256 arm: "5aead407bc3fcb931d610ce181b4231cd19f6f812c6142a1b05fb0a6706888c7",
-         intel: "def99bc55bc2f5be86543a40a53323ba05363342eb15fbdd08f191552d3d7515"
-  url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_#{arch}.dmg",
-      verified: "hashicorp.com/boundary-desktop/"
+  version "2.6.2"
+
+  on_macos do
+    arch arm: "arm64", intel: "amd64"
+
+    sha256 arm:   "183ca42ce04b6cbf98661c54bc6bc79a1c8da401c0bcb2a4ef5b9b69bdfb119a",
+           intel: "05640df4f9bb297c05f03be23f96a7d1f9c6a83e2cf4e9ca530bafee71e73880"
+
+    url "https://releases.hashicorp.com/boundary-desktop/#{version}/boundary-desktop_#{version}_darwin_#{arch}.dmg"
+
+    app "Boundary.app"
+  end
+
   name "Boundary Desktop"
-  desc ""
+  desc "Desktop client for Boundary"
   homepage "https://www.boundaryproject.io/"
 
-  app "Boundary.app"
-
+  depends_on :macos
 end

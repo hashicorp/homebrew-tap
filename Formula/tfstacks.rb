@@ -1,34 +1,34 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Tfstacks < Formula
   desc "Terraform Stacks CLI"
   homepage "https://www.terraform.io/"
-  version "1.2.0"
+  version "1.4.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tfstacks/1.2.0/tfstacks_1.2.0_darwin_amd64.zip"
-    sha256 "d34773cc19e9b873bf4e92420d4db59a071ca28a7443ee0adcadb3c1202e87d5"
+    url "https://releases.hashicorp.com/tfstacks/1.4.0/tfstacks_1.4.0_darwin_amd64.zip"
+    sha256 "c37c19abac9056c9469f65a191b60ce6f1ce2272e01720e785a90425cf52ce42"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/tfstacks/1.2.0/tfstacks_1.2.0_darwin_arm64.zip"
-    sha256 "f3c44f8b6aecad884fab324d7cd155a7f1eef966e2ea5164c30ecc98efce7c6a"
+    url "https://releases.hashicorp.com/tfstacks/1.4.0/tfstacks_1.4.0_darwin_arm64.zip"
+    sha256 "96269405488c9bbf45ff4443963d5586862dde02ce52aaead3dcc914feeb509d"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tfstacks/1.2.0/tfstacks_1.2.0_linux_amd64.zip"
-    sha256 "b46ea7e8c32b7e27b1f2f89b5de480423003884cc2df767beb2f46fcec72fa59"
+    url "https://releases.hashicorp.com/tfstacks/1.4.0/tfstacks_1.4.0_linux_amd64.zip"
+    sha256 "0bf905fae38df1613fb04957ab08b2f0924c05fd64d2adcae8bbd6736fea4316"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tfstacks/1.2.0/tfstacks_1.2.0_linux_arm.zip"
-    sha256 "afda090c7e6269c2e26081bfe1d17b79aa1e293b85f7d59a0601f95254be3fea"
+    url "https://releases.hashicorp.com/tfstacks/1.4.0/tfstacks_1.4.0_linux_arm.zip"
+    sha256 "d5ea09ec53e10e936e2fac43555eb1500c146e3955cb30cf563be4ab0049afeb"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tfstacks/1.2.0/tfstacks_1.2.0_linux_arm64.zip"
-    sha256 "ab4654dc5565ef52f8e3e504233b690e9d1d2102ad0a666ad204fbd9cd4fdffc"
+    url "https://releases.hashicorp.com/tfstacks/1.4.0/tfstacks_1.4.0_linux_arm64.zip"
+    sha256 "1884a28d34c8e1299dcd6dfa1580cb674dd4278c792da22e6576d5d51c703aa5"
   end
 
   conflicts_with "tfstacks"
@@ -38,6 +38,6 @@ class Tfstacks < Formula
   end
 
   test do
-    system "#{bin}/tfstacks --version"
+    assert_match "plugin", shell_output("#{bin}/tfstacks 2>&1", 1)
   end
 end

@@ -1,3 +1,5 @@
+// Copyright IBM Corp. 2020, 2026
+
 package main
 
 import (
@@ -66,6 +68,7 @@ func isProductSupported(product string) bool {
 		"vlt",
 		"vault-radar",
 		"tf-migrate",
+		"tfpolicy",
 	}
 
 	for _, p := range supportedProducts {
@@ -116,7 +119,7 @@ func getCaskVersion(product string) (string, error) {
 }
 
 func getBrewVersion(product string, brewType string) (string, error) {
-	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/%s/%s.rb", brewType, product)
+	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/main/%s/%s.rb", brewType, product)
 	resp, err := http.Get(formulaURL)
 	if err != nil {
 		return "", err

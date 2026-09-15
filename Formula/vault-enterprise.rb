@@ -1,35 +1,54 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "1.21.4+ent"
+  version "2.1.0+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_darwin_amd64.zip"
-    sha256 "5ed135d6f9850988837bf8ab39d89f2215850ad383c4939f255014a0dbf41c61"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_darwin_amd64.zip"
+    sha256 "c864ccb91ce36a12591e004ed16bcc7801772330d14ff945dff5046655a8f1e7"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_darwin_arm64.zip"
-    sha256 "94b1abe944b34273aefd56bb20959d68f9457cd8b5805a6b38dad4e22833b922"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_darwin_arm64.zip"
+    sha256 "5cba1f78a4596ea5cc10278b9ac755cdbfbf14df1db4abe78f9f08e9f5a31caa"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_linux_amd64.zip"
-    sha256 "9644574bd5c5615b552a0b2286e6bd688529c010bc684d9e3ef1c76054347963"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_linux_amd64.zip"
+    sha256 "0a9a0e4e445d789ff6f9f6cf83fa3c5de1f42ea4bd823e64980862d733370df3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.21.4+ent/vault_1.21.4+ent_linux_arm64.zip"
-    sha256 "a466e851cd926a15b4584d7e890a494e9cebdff137c835fb82c3e775351c2527"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_linux_arm64.zip"
+    sha256 "a0fbfb3fb07e5c4574f07062338f8fb10b4464c0622e3cc9b3b030d3c9afc2da"
   end
 
   conflicts_with "vault-enterprise"
 
   def install
     bin.install "vault"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"vault").write "complete -C #{opt_bin}/vault vault\n"
+    (zsh_completion/"_vault").write <<~EOS
+      #compdef vault
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/vault)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"vault.fish").write <<~EOS
+      function __complete_vault
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/vault
+      end
+      complete -f -c vault -a "(__complete_vault)"
+    EOS
   end
 
   service do

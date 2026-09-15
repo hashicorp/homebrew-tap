@@ -1,35 +1,54 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class NomadEnterprise < Formula
   desc "Nomad Enterprise"
   homepage "https://www.nomadproject.io/"
-  version "1.11.3+ent"
+  version "2.0.5+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.11.3+ent/nomad_1.11.3+ent_darwin_amd64.zip"
-    sha256 "c2ebcbd65f391944c6741a68a2928e6d1f86b0e1572f759d1aa13fec1b0e7af5"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_darwin_amd64.zip"
+    sha256 "4d8050051c48ab91d7e281691e67ab173ffc4ee87ae913c442cb80588f87c951"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad/1.11.3+ent/nomad_1.11.3+ent_darwin_arm64.zip"
-    sha256 "8d47f402981b51e56807f6c4ad5ac174ce63226f0265b2b1c3615b653248d188"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_darwin_arm64.zip"
+    sha256 "9d50beb8ffc63fcdfb27c082facfbf64dc25086b8ae26e1c98f877ea09334185"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.11.3+ent/nomad_1.11.3+ent_linux_amd64.zip"
-    sha256 "a567ce7647217066a1de0f2b3f6c616faed48bd0b059eca701d806b33b8ee51a"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_linux_amd64.zip"
+    sha256 "37e51fee58d2f7c88ec9e38c9e61a6c0ad4c91a2370ea798427f50991f7cd3ab"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.11.3+ent/nomad_1.11.3+ent_linux_arm64.zip"
-    sha256 "32cf5c683293f0b970813b8a3b8cc692a63e6a296e8606d996b1e3f532b41c87"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_linux_arm64.zip"
+    sha256 "cf66d9346b4e034b2b7fcb14d763612dea6d993a9743c4fa4cf84191e3827a3a"
   end
 
   conflicts_with "nomad-enterprise"
 
   def install
     bin.install "nomad"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"nomad").write "complete -C #{opt_bin}/nomad nomad\n"
+    (zsh_completion/"_nomad").write <<~EOS
+      #compdef nomad
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/nomad)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"nomad.fish").write <<~EOS
+      function __complete_nomad
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/nomad
+      end
+      complete -f -c nomad -a "(__complete_nomad)"
+    EOS
   end
 
   service do
