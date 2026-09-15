@@ -10,6 +10,8 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
+    version_args = ["-version"]
 }
 
 formula {
@@ -24,6 +26,8 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
+    version_args = ["-version"]
 }
 
 formula {
@@ -39,6 +43,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["agent", "-dev", "-bind", "127.0.0.1"]
+    autocomplete = true
 }
 
 formula {
@@ -54,6 +59,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["agent", "-dev", "-bind", "127.0.0.1"]
+    autocomplete = true
 }
 
 formula {
@@ -68,6 +74,7 @@ formula {
         linux_arm = false
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 
@@ -126,6 +133,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -154,6 +162,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -182,6 +191,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -210,6 +220,8 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
+    version_args = ["version"]
 }
 
 formula {
@@ -225,6 +237,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -240,6 +253,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -254,6 +268,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -268,6 +283,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -296,6 +312,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    plugin = true
 }
 
 formula {
@@ -311,6 +328,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["server", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -326,6 +344,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["server", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -340,6 +359,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 cask {
@@ -383,6 +403,7 @@ formula {
         linux_arm = false
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -454,6 +475,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -468,11 +490,12 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
     product = "tfpolicy"
-    name = "TerraformPolicy"
+    name = "Tfpolicy"
     desc = "Terraform Policy"
     homepage = "https://developer.hashicorp.com/terraform/policy/reference/cli"
     architectures {
@@ -482,4 +505,5 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }

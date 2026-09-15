@@ -37,6 +37,21 @@ fully qualified name (incl. the `hashicorp/tap/` prefix)
 when refering to formulae in external taps such as this one
 outside of search.
 
+## Trusting formulae from this tap
+
+Homebrew ignores formulae, casks and commands from third-party taps until they
+are trusted (see `brew trust --help`). Installing with the fully qualified name,
+as shown above, trusts that formula or cask automatically.
+
+If you added the tap with `brew tap hashicorp/tap`, Homebrew warns that the tap
+is not trusted until at least one of its formulae or casks is. Trust only the
+ones you need rather than the whole tap:
+
+```sh
+brew trust --formula hashicorp/tap/name
+brew trust --cask hashicorp/tap/name
+```
+
 ## What packages are available?
 
 With the following commands, you can install the latest generally available (GA) version of each product:
