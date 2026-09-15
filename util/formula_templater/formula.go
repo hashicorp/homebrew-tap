@@ -42,7 +42,6 @@ func printCask(product, version, configLocation string, out io.Writer) error {
 	}
 
 	t := template.Must(template.New("cask").Parse(caskTemplate))
-
 	return t.Execute(out, productConfig)
 }
 

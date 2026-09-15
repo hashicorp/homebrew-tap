@@ -1,40 +1,54 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class NomadEnterprise < Formula
   desc "Nomad Enterprise"
   homepage "https://www.nomadproject.io/"
-  version "1.6.3+ent"
+  version "2.0.5+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.6.3+ent/nomad_1.6.3+ent_darwin_amd64.zip"
-    sha256 "5b38c6ac5e65b5e11bac0d92bb44658bd043ec6b82b5709eece8aa979d215509"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_darwin_amd64.zip"
+    sha256 "4d8050051c48ab91d7e281691e67ab173ffc4ee87ae913c442cb80588f87c951"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad/1.6.3+ent/nomad_1.6.3+ent_darwin_arm64.zip"
-    sha256 "965fb1a852cd705cacfcbad512ce4ff823a93b306abadb208994cd5eb59c4eac"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_darwin_arm64.zip"
+    sha256 "9d50beb8ffc63fcdfb27c082facfbf64dc25086b8ae26e1c98f877ea09334185"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.6.3+ent/nomad_1.6.3+ent_linux_amd64.zip"
-    sha256 "af8a796101e7aebc79280a06690e6a2e3ea6d1779c0e81a294646c23c507f7fb"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.6.3+ent/nomad_1.6.3+ent_linux_arm.zip"
-    sha256 "1ef3024224f1c40b896369df21dbcfa05d3f3fa890f3fe0b9e080783d102b7c0"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_linux_amd64.zip"
+    sha256 "37e51fee58d2f7c88ec9e38c9e61a6c0ad4c91a2370ea798427f50991f7cd3ab"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.6.3+ent/nomad_1.6.3+ent_linux_arm64.zip"
-    sha256 "be0988505d674af02aaa3a18a9306fffe878492cdd24c8b2543583d831db33b2"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_linux_arm64.zip"
+    sha256 "cf66d9346b4e034b2b7fcb14d763612dea6d993a9743c4fa4cf84191e3827a3a"
   end
 
   conflicts_with "nomad-enterprise"
 
   def install
     bin.install "nomad"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"nomad").write "complete -C #{opt_bin}/nomad nomad\n"
+    (zsh_completion/"_nomad").write <<~EOS
+      #compdef nomad
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/nomad)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"nomad.fish").write <<~EOS
+      function __complete_nomad
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/nomad
+      end
+      complete -f -c nomad -a "(__complete_nomad)"
+    EOS
   end
 
   service do

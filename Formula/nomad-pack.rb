@@ -1,40 +1,54 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class NomadPack < Formula
   desc "Nomad Pack"
   homepage "https://github.com/hashicorp/nomad-pack"
-  version "0.1.0"
+  version "0.4.2"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_darwin_amd64.zip"
-    sha256 "64c836406dc92859fb2a7ac048f1255e36974ab4225c2b46ffb47b9a0271d637"
+    url "https://releases.hashicorp.com/nomad-pack/0.4.2/nomad-pack_0.4.2_darwin_amd64.zip"
+    sha256 "c8a77d76b22c11474b546e1496ca50e544ea3dd2a3b5568e56694c91388040f8"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_darwin_arm64.zip"
-    sha256 "b414eec23213c312996c3caa0ce0584579eaa63869e6ff4a50a0bcf171c0c4d2"
+    url "https://releases.hashicorp.com/nomad-pack/0.4.2/nomad-pack_0.4.2_darwin_arm64.zip"
+    sha256 "f79be784281fecc64fa0af4a93bda487b0d1ee152d0dad635b93ce98e77522d7"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_linux_amd64.zip"
-    sha256 "20604ae26caffc506a5f6ad993bc8925f6022d1875c678e91a0897e1a2411288"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_linux_arm.zip"
-    sha256 "ce8dd02aa1984767225b45db79fc7152cf0da077774354c5dfabaeff7c2e3855"
+    url "https://releases.hashicorp.com/nomad-pack/0.4.2/nomad-pack_0.4.2_linux_amd64.zip"
+    sha256 "58399149a2b3944d17294fb5c98b30cd02fc9fd1f8d5275713be3dbc5345bfb4"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad-pack/0.1.0/nomad-pack_0.1.0_linux_arm64.zip"
-    sha256 "30afcad9d542eb6938d1e8940346958df871fa3353208f7cc13b67e033b12d99"
+    url "https://releases.hashicorp.com/nomad-pack/0.4.2/nomad-pack_0.4.2_linux_arm64.zip"
+    sha256 "d0e537be563f5c18d7183d20c44388d4bb74c22f5dd3583882e4577e0f77c160"
   end
 
   conflicts_with "nomad-pack"
 
   def install
     bin.install "nomad-pack"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"nomad-pack").write "complete -C #{opt_bin}/nomad-pack nomad-pack\n"
+    (zsh_completion/"_nomad-pack").write <<~EOS
+      #compdef nomad-pack
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/nomad-pack)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"nomad-pack.fish").write <<~EOS
+      function __complete_nomad-pack
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/nomad-pack
+      end
+      complete -f -c nomad-pack -a "(__complete_nomad-pack)"
+    EOS
   end
 
   test do

@@ -5,42 +5,40 @@
 class Copywrite < Formula
   desc "copywrite -- utilities for managing copyright headers and license files for GitHub repos"
   homepage "https://github.com/hashicorp/copywrite"
-  version "0.17.0"
+  version "0.25.3"
   license "MPL-2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.17.0/copywrite_0.17.0_darwin_arm64.tar.gz"
-      sha256 "9294288de4a8dd1d1b08bb18ae5d6c420ff284566a0d6a9ba552376a2222637a"
+    if Hardware::CPU.intel?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.25.3/copywrite_0.25.3_darwin_x86_64.tar.gz"
+      sha256 "7247dfda6948d4ec42b7c110c73c066a1b439bcc60e43afcce42195ddb998ec3"
 
-      def install
+      define_method(:install) do
         bin.install "copywrite"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.17.0/copywrite_0.17.0_darwin_x86_64.tar.gz"
-      sha256 "0537909162139b4c8774458a81085e249f4dda5ff5ce88f419db628fa0b232a8"
+    if Hardware::CPU.arm?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.25.3/copywrite_0.25.3_darwin_arm64.tar.gz"
+      sha256 "0525e75332fe027729f9dd17dbf33e3e4621a2bd10e63bf409260008533b995a"
 
-      def install
+      define_method(:install) do
         bin.install "copywrite"
       end
     end
   end
 
   on_linux do
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.17.0/copywrite_0.17.0_linux_arm64.tar.gz"
-      sha256 "c2a14809392865ad51155b9207708bd4c173d595956e3e3113afd85d5f5d22d3"
-
-      def install
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.25.3/copywrite_0.25.3_linux_x86_64.tar.gz"
+      sha256 "e43f4b72fff3f219c5a5f883438d63edd5b68f5bea90a5d18abb3001c8c3aedc"
+      define_method(:install) do
         bin.install "copywrite"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/hashicorp/copywrite/releases/download/v0.17.0/copywrite_0.17.0_linux_x86_64.tar.gz"
-      sha256 "5094807eb8ec05ddb3dccdc0429c1e1ca9fec37056089f0299bf555d89902667"
-
-      def install
+    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
+      url "https://github.com/hashicorp/copywrite/releases/download/v0.25.3/copywrite_0.25.3_linux_arm64.tar.gz"
+      sha256 "e1eb389e4afdb29693e0cf5984d07395a3940f55678bb705e5e1d34f699c158c"
+      define_method(:install) do
         bin.install "copywrite"
       end
     end

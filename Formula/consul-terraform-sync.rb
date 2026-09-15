@@ -1,14 +1,14 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class ConsulTerraformSync < Formula
   desc "Consul Terraform Sync"
   homepage "https://github.com/hashicorp/consul-terraform-sync"
-  version "0.7.1"
+  version "0.9.1"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.1/consul-terraform-sync_0.7.1_darwin_amd64.zip"
-    sha256 "fc0a19476d28230ea753d11e375f03adc726f14aa12f2ddd89328889a07ff2db"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_darwin_amd64.zip"
+    sha256 "9004d6808e8b6c3f44cde4701c45ae9f0643503ef7ffee96a3c14ef47189a116"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -23,24 +23,43 @@ class ConsulTerraformSync < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.1/consul-terraform-sync_0.7.1_linux_amd64.zip"
-    sha256 "afd03bdd150a1949a65b5b48f7d299eab4f2e93639e2957ec792c2b746e34682"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_amd64.zip"
+    sha256 "4536c56a7d8e6e18f9cd4915d70690b27eec95037e9e5f1d1f764b92da5bd4e3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.1/consul-terraform-sync_0.7.1_linux_arm.zip"
-    sha256 "a1f632edbe288171b9402c4f6ba98b32a0e87df208b03dc9a51339078e615d8b"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_arm.zip"
+    sha256 "ab799fa142b83634deaad63d98c984878f50f1c67c9d345e4b736d5c2e3eaebe"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.1/consul-terraform-sync_0.7.1_linux_arm64.zip"
-    sha256 "1f942d8d745b8ddecbf565e6ca57bb9ac3a80c26adee7faa0556737844449ad2"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_arm64.zip"
+    sha256 "e5e93554cf0789f4513078711abe93bb71d5536f8bb722e950fe051f9bde1043"
   end
 
   conflicts_with "consul-terraform-sync"
 
   def install
     bin.install "consul-terraform-sync"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"consul-terraform-sync").write "complete -C #{opt_bin}/consul-terraform-sync consul-terraform-sync\n"
+    (zsh_completion/"_consul-terraform-sync").write <<~EOS
+      #compdef consul-terraform-sync
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/consul-terraform-sync)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"consul-terraform-sync.fish").write <<~EOS
+      function __complete_consul-terraform-sync
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/consul-terraform-sync
+      end
+      complete -f -c consul-terraform-sync -a "(__complete_consul-terraform-sync)"
+    EOS
   end
 
   test do

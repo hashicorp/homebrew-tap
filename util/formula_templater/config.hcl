@@ -10,6 +10,8 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
+    version_args = ["-version"]
 }
 
 formula {
@@ -24,6 +26,8 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
+    version_args = ["-version"]
 }
 
 formula {
@@ -39,6 +43,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["agent", "-dev", "-bind", "127.0.0.1"]
+    autocomplete = true
 }
 
 formula {
@@ -54,6 +59,7 @@ formula {
         linux_arm64 = true
     }
     service_args = ["agent", "-dev", "-bind", "127.0.0.1"]
+    autocomplete = true
 }
 
 formula {
@@ -68,6 +74,7 @@ formula {
         linux_arm = false
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 
@@ -126,6 +133,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -154,6 +162,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -182,6 +191,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -199,6 +209,22 @@ formula {
 }
 
 formula {
+    product = "hcp"
+    name = "Hcp"
+    desc = "HCP CLI"
+    homepage = "https://github.com/hashicorp/hcp"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    autocomplete = true
+    version_args = ["version"]
+}
+
+formula {
     product = "nomad"
     name = "Nomad"
     desc = "Nomad"
@@ -207,10 +233,11 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -222,10 +249,11 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["agent", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -240,6 +268,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -254,6 +283,7 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -271,6 +301,21 @@ formula {
 }
 
 formula {
+    product = "tfstacks"
+    name = "Tfstacks"
+    desc = "Terraform Stacks CLI"
+    homepage = "https://www.terraform.io/"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    plugin = true
+}
+
+formula {
     product = "vault"
     name = "Vault"
     desc = "Vault"
@@ -279,10 +324,11 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["server", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -294,10 +340,11 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
     service_args = ["server", "-dev"]
+    autocomplete = true
 }
 
 formula {
@@ -312,17 +359,18 @@ formula {
         linux_arm = true
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 cask {
     product = "boundary-desktop"
     name = "Boundary Desktop"
-    desc = ""
+    desc = "Desktop client for Boundary"
     homepage = "https://www.boundaryproject.io/"
     cask_app = "Boundary.app"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = false
         linux_arm = false
         linux_arm64 = false
@@ -352,9 +400,10 @@ formula {
         darwin_amd64 = true
         darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
+    autocomplete = true
 }
 
 formula {
@@ -364,9 +413,9 @@ formula {
     homepage = "https://github.com/hashicorp/levant"
     architectures {
         darwin_amd64 = true
-        darwin_arm64 = false
+        darwin_arm64 = true
         linux_amd64 = true
-        linux_arm = true
+        linux_arm = false
         linux_arm64 = true
     }
 }
@@ -398,4 +447,63 @@ cask {
         linux_arm = false
         linux_arm64 = false
     }
+}
+
+formula {
+    product = "vault-radar"
+    name = "VaultRadar"
+    desc = "Vault Radar"
+    homepage = "https://developer.hashicorp.com/hcp/docs/vault-radar/cli"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = true
+    }
+}
+
+formula {
+    product = "tf-migrate"
+    name = "TfMigrate"
+    desc = "Terraform Migrate"
+    homepage = "https://www.terraform.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    autocomplete = true
+}
+
+formula {
+    product = "tfctl"
+    name = "Tfctl"
+    desc = ""
+    homepage = "https://www.terraform.io"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    autocomplete = true
+}
+
+formula {
+    product = "tfpolicy"
+    name = "Tfpolicy"
+    desc = "Terraform Policy"
+    homepage = "https://developer.hashicorp.com/terraform/policy/reference/cli"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = true
+        linux_arm64 = true
+    }
+    autocomplete = true
 }

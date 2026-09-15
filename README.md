@@ -1,3 +1,5 @@
+[![Heimdall](https://heimdall.hashicorp.services/api/v1/assets/homebrew-tap/badge.svg?key=f0ea6d408d7a7798bcd4f6ef4a40fe9c791109ca85d2f20d5630a9f4abafa9f6)](https://heimdall.hashicorp.services/site/assets/homebrew-tap)
+
 # HashiCorp Homebrew Tap
 
 ## What is Homebrew?
@@ -35,6 +37,21 @@ fully qualified name (incl. the `hashicorp/tap/` prefix)
 when refering to formulae in external taps such as this one
 outside of search.
 
+## Trusting formulae from this tap
+
+Homebrew ignores formulae, casks and commands from third-party taps until they
+are trusted (see `brew trust --help`). Installing with the fully qualified name,
+as shown above, trusts that formula or cask automatically.
+
+If you added the tap with `brew tap hashicorp/tap`, Homebrew warns that the tap
+is not trusted until at least one of its formulae or casks is. Trust only the
+ones you need rather than the whole tap:
+
+```sh
+brew trust --formula hashicorp/tap/name
+brew trust --cask hashicorp/tap/name
+```
+
 ## What packages are available?
 
 With the following commands, you can install the latest generally available (GA) version of each product:
@@ -50,6 +67,7 @@ brew install hashicorp/tap/consul-template
 brew install hashicorp/tap/consul-terraform-sync
 brew install hashicorp/tap/hc-install
 brew install hashicorp/tap/hcdiag
+brew install hashicorp/tap/hcp
 brew install hashicorp/tap/levant
 brew install hashicorp/tap/nomad
 brew install hashicorp/tap/nomad-enterprise
@@ -58,8 +76,13 @@ brew install hashicorp/tap/packer
 brew install hashicorp/tap/sentinel
 brew install hashicorp/tap/terraform
 brew install hashicorp/tap/terraform-ls
+brew install hashicorp/tap/tf-migrate
+brew install hashicorp/tap/tfctl
+brew install hashicorp/tap/tfpolicy
+brew install hashicorp/tap/tfstacks
 brew install hashicorp/tap/vault
 brew install hashicorp/tap/vault-enterprise
+brew install hashicorp/tap/vault-radar
 brew install hashicorp/tap/waypoint
 
 # Casks

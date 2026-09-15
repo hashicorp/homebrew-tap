@@ -48,12 +48,14 @@ func isProductSupported(product string) bool {
 		"envconsul",
 		"hc-install",
 		"hcdiag",
+		"hcp",
 		"levant",
 		"nomad",
 		"nomad-enterprise",
 		"nomad-pack",
 		"terraform",
 		"terraform-ls",
+		"tfstacks",
 		"packer",
 		"boundary",
 		"boundary-enterprise",
@@ -62,6 +64,9 @@ func isProductSupported(product string) bool {
 		"sentinel",
 		"vagrant",
 		"vlt",
+		"vault-radar",
+		"tf-migrate",
+		"tfpolicy",
 	}
 
 	for _, p := range supportedProducts {
@@ -112,7 +117,7 @@ func getCaskVersion(product string) (string, error) {
 }
 
 func getBrewVersion(product string, brewType string) (string, error) {
-	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/%s/%s.rb", brewType, product)
+	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/main/%s/%s.rb", brewType, product)
 	resp, err := http.Get(formulaURL)
 	if err != nil {
 		return "", err
