@@ -37,27 +37,72 @@ class {{ .Name }} < Formula
   end
   {{- end }}
   {{- end }}
+  {{- /* A formula must declare a URL on every platform it is loaded on, even
+         ones it cannot install on. Linux-only products use the first Linux
+         build as the unconditional URL and gate installs with depends_on. */}}
+  {{- $linuxOnly := not (or .Architectures.DarwinAmd64 .Architectures.DarwinArm64) }}
+  {{- $fallback := "" }}
+  {{- if $linuxOnly }}
+  {{- if .Architectures.LinuxAmd64 }}{{ $fallback = "linux_amd64" }}
+  {{- else if .Architectures.LinuxArm }}{{ $fallback = "linux_arm" }}
+  {{- else if .Architectures.LinuxArm64 }}{{ $fallback = "linux_arm64" }}
+  {{- end }}
+  {{- end }}
   {{- if .Architectures.LinuxAmd64 }}
+  {{- if eq $fallback "linux_amd64" }}
+
+  url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_amd64.zip"
+  sha256 "{{ .Architectures.LinuxAmd64SHA }}"
+  {{- else }}
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_amd64.zip"
     sha256 "{{ .Architectures.LinuxAmd64SHA }}"
   end
   {{- end }}
+  {{- end }}
   {{- if .Architectures.LinuxArm }}
+  {{- if eq $fallback "linux_arm" }}
+
+  url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm.zip"
+  sha256 "{{ .Architectures.LinuxArmSHA }}"
+  {{- else }}
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm.zip"
     sha256 "{{ .Architectures.LinuxArmSHA }}"
   end
   {{- end }}
+  {{- end }}
   {{- if .Architectures.LinuxArm64 }}
+  {{- if eq $fallback "linux_arm64" }}
+
+  url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm64.zip"
+  sha256 "{{ .Architectures.LinuxArm64SHA }}"
+  {{- else }}
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm64.zip"
     sha256 "{{ .Architectures.LinuxArm64SHA }}"
   end
+  {{- end }}
+  {{- end }}
+  {{- if $linuxOnly }}
 
+  depends_on :linux
+  {{- /* With a single Linux build, a fallback URL alone would let other
+         architectures download the wrong binary. */}}
+  {{- if eq $fallback "linux_amd64" }}
+  {{- if not (or .Architectures.LinuxArm .Architectures.LinuxArm64) }}
+  depends_on arch: :x86_64
+  {{- end }}
+  {{- else if eq $fallback "linux_arm" }}
+  {{- if not .Architectures.LinuxArm64 }}
+  depends_on arch: :arm
+  {{- end }}
+  {{- else if eq $fallback "linux_arm64" }}
+  depends_on arch: :arm64
+  {{- end }}
   {{- end }}
 
   {{- with .Depends }}
