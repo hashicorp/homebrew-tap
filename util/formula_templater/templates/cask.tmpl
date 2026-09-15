@@ -7,22 +7,21 @@ cask "hashicorp-{{ .Product }}" do
   on_macos do
   {{- if and .Architectures.DarwinAmd64SHA .Architectures.DarwinArm64SHA }}
     arch arm: "arm64", intel: "amd64"
-    sha256 arm: "{{ .Architectures.DarwinArm64SHA }}",
+
+    sha256 arm:   "{{ .Architectures.DarwinArm64SHA }}",
            intel: "{{ .Architectures.DarwinAmd64SHA }}"
-    url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_#{arch}.dmg",
-        verified: "hashicorp.com/{{ .Product }}/"
+
+    url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_#{arch}.dmg"
   {{- else }}
   {{- if .Architectures.DarwinAmd64SHA }}
     sha256 "{{ .Architectures.DarwinAmd64SHA }}"
 
-    url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg",
-        verified: "hashicorp.com/{{ .Product }}/"
+    url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_amd64.dmg"
   {{- end }}
   {{- if .Architectures.DarwinArm64SHA }}
     sha256 "{{ .Architectures.DarwinArm64SHA }}"
 
-    url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_arm64.dmg",
-        verified: "hashicorp.com/{{ .Product }}/"
+    url "https://releases.hashicorp.com/{{ .Product }}/#{version}/{{ .Product }}_#{version}_darwin_arm64.dmg"
   {{- end }}
   {{- end }}
 
@@ -36,12 +35,12 @@ cask "hashicorp-{{ .Product }}" do
 
   {{- if eq .Product "vagrant" }}
 
-    uninstall script: {
-      executable: "uninstall.tool",
-      input: ["Yes"],
-      sudo:  true,
-    },
-    pkgutil: "com.{{ .Product}}.{{ .Product }}"
+    uninstall script:  {
+                executable: "uninstall.tool",
+                input:      ["Yes"],
+                sudo:       true,
+              },
+              pkgutil: "com.{{ .Product}}.{{ .Product }}"
 
     zap trash: "~/.{{ .Product }}.d"
   {{- end}}
@@ -59,4 +58,5 @@ cask "hashicorp-{{ .Product }}" do
   end
   {{- end }}
 
+  depends_on :macos
 end

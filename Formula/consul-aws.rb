@@ -36,6 +36,25 @@ class ConsulAws < Formula
 
   def install
     bin.install "consul-aws"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"consul-aws").write "complete -C #{opt_bin}/consul-aws consul-aws\n"
+    (zsh_completion/"_consul-aws").write <<~EOS
+      #compdef consul-aws
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/consul-aws)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"consul-aws.fish").write <<~EOS
+      function __complete_consul-aws
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/consul-aws
+      end
+      complete -f -c consul-aws -a "(__complete_consul-aws)"
+    EOS
   end
 
   test do

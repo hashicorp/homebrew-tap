@@ -4,32 +4,51 @@
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "2.0.3+ent"
+  version "2.1.0+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/2.0.3+ent/vault_2.0.3+ent_darwin_amd64.zip"
-    sha256 "9816c92cc9c3a5130dc020b88febcf546f650e88986624df33aae29729b7c33f"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_darwin_amd64.zip"
+    sha256 "c864ccb91ce36a12591e004ed16bcc7801772330d14ff945dff5046655a8f1e7"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/2.0.3+ent/vault_2.0.3+ent_darwin_arm64.zip"
-    sha256 "67616d1e41e75dcb00f79bf5a3c43e22cc29dba4a834854e6b14c8f6ef3a1021"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_darwin_arm64.zip"
+    sha256 "5cba1f78a4596ea5cc10278b9ac755cdbfbf14df1db4abe78f9f08e9f5a31caa"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/2.0.3+ent/vault_2.0.3+ent_linux_amd64.zip"
-    sha256 "14239bce32f4826c7bc0b563dc67f46cc21db3854897997fcabb5e8339c87428"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_linux_amd64.zip"
+    sha256 "0a9a0e4e445d789ff6f9f6cf83fa3c5de1f42ea4bd823e64980862d733370df3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/2.0.3+ent/vault_2.0.3+ent_linux_arm64.zip"
-    sha256 "5f0b8436c3e30d2d22d8e45c01a6f8755ec38f207894a4d13b05b751c09ea634"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_linux_arm64.zip"
+    sha256 "a0fbfb3fb07e5c4574f07062338f8fb10b4464c0622e3cc9b3b030d3c9afc2da"
   end
 
   conflicts_with "vault-enterprise"
 
   def install
     bin.install "vault"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"vault").write "complete -C #{opt_bin}/vault vault\n"
+    (zsh_completion/"_vault").write <<~EOS
+      #compdef vault
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/vault)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"vault.fish").write <<~EOS
+      function __complete_vault
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/vault
+      end
+      complete -f -c vault -a "(__complete_vault)"
+    EOS
   end
 
   service do
