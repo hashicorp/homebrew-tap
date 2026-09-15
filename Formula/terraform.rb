@@ -35,6 +35,25 @@ class Terraform < Formula
 
   def install
     bin.install "terraform"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"terraform").write "complete -C #{opt_bin}/terraform terraform\n"
+    (zsh_completion/"_terraform").write <<~EOS
+      #compdef terraform
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/terraform)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"terraform.fish").write <<~EOS
+      function __complete_terraform
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/terraform
+      end
+      complete -f -c terraform -a "(__complete_terraform)"
+    EOS
   end
 
   test do

@@ -82,6 +82,27 @@ class {{ .Name }} < Formula
 
   def install
     bin.install "{{ .Product }}"
+  {{- if .Autocomplete }}
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"{{ .Product }}").write "complete -C #{opt_bin}/{{ .Product }} {{ .Product }}\n"
+    (zsh_completion/"_{{ .Product }}").write <<~EOS
+      #compdef {{ .Product }}
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/{{ .Product }})"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"{{ .Product }}.fish").write <<~EOS
+      function __complete_{{ .Product }}
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/{{ .Product }}
+      end
+      complete -f -c {{ .Product }} -a "(__complete_{{ .Product }})"
+    EOS
+  {{- end }}
   end
   {{- if .ServiceArgs }}
 
@@ -95,6 +116,10 @@ class {{ .Name }} < Formula
   {{- end }}
 
   test do
-    system "#{bin}/{{ .Product }} --version"
+  {{- if .Plugin }}
+    assert_match "plugin", shell_output("#{bin}/{{ .Product }} 2>&1", 1)
+  {{- else }}
+    system "#{bin}/{{ .Product }}{{ if .VersionArgs }}{{ range .VersionArgs }} {{ . }}{{ end }}{{ else }} --version{{ end }}"
+  {{- end }}
   end
 end
