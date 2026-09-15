@@ -35,9 +35,28 @@ class BoundaryEnterprise < Formula
 
   def install
     bin.install "boundary"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"boundary").write "complete -C #{opt_bin}/boundary boundary\n"
+    (zsh_completion/"_boundary").write <<~EOS
+      #compdef boundary
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/boundary)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"boundary.fish").write <<~EOS
+      function __complete_boundary
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/boundary
+      end
+      complete -f -c boundary -a "(__complete_boundary)"
+    EOS
   end
 
   test do
-    system "#{bin}/boundary --version"
+    system "#{bin}/boundary -version"
   end
 end

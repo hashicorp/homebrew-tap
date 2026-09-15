@@ -34,6 +34,6 @@ class Enos < Formula
   end
 
   test do
-    system "#{bin}/enos --version"
+    system "#{bin}/enos version"
   end
 end

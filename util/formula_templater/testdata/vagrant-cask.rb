@@ -6,19 +6,20 @@ cask "hashicorp-vagrant" do
 
   on_macos do
     arch arm: "arm64", intel: "amd64"
-    sha256 arm: "4daf4d4c323cce7bf98065ecf5338e9800038a522cd81356c77555d9cd2f0db9",
+
+    sha256 arm:   "4daf4d4c323cce7bf98065ecf5338e9800038a522cd81356c77555d9cd2f0db9",
            intel: "4daf4d4c323cce7bf98065ecf5338e9800038a522cd81356c77555d9cd2f0db9"
-    url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}_darwin_#{arch}.dmg",
-        verified: "hashicorp.com/vagrant/"
+
+    url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}_darwin_#{arch}.dmg"
 
     pkg "vagrant.pkg"
 
-    uninstall script: {
-      executable: "uninstall.tool",
-      input: ["Yes"],
-      sudo:  true,
-    },
-    pkgutil: "com.vagrant.vagrant"
+    uninstall script:  {
+                executable: "uninstall.tool",
+                input:      ["Yes"],
+                sudo:       true,
+              },
+              pkgutil: "com.vagrant.vagrant"
 
     zap trash: "~/.vagrant.d"
   end
@@ -32,4 +33,5 @@ cask "hashicorp-vagrant" do
     strategy :git
   end
 
+  depends_on :macos
 end

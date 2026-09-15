@@ -28,7 +28,7 @@ const test_oss_version_cask = "1.5.0"
 func TestOSSGetFormulaVersion(t *testing.T) {
 	defer gock.Off()
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Formula/nomad.rb").
+		Get("/hashicorp/homebrew-tap/main/Formula/nomad.rb").
 		Reply(200).
 		File("testdata/github.com_formula_nomad.rb")
 
@@ -55,7 +55,7 @@ func TestOSSGetLatestVersion(t *testing.T) {
 func TestOSSGetCaskVersion(t *testing.T) {
 	defer gock.Off()
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Casks/hashicorp-boundary-desktop.rb").
+		Get("/hashicorp/homebrew-tap/main/Casks/hashicorp-boundary-desktop.rb").
 		Reply(200).
 		File("testdata/github.com_cask_boundary-desktop.rb")
 
@@ -82,7 +82,7 @@ func TestOSSGetLatestCaskVersion(t *testing.T) {
 func TestENTGetFormulaVersion(t *testing.T) {
 	defer gock.Off()
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Formula/nomad-enterprise.rb").
+		Get("/hashicorp/homebrew-tap/main/Formula/nomad-enterprise.rb").
 		Reply(200).
 		File("testdata/github.com_formula_nomad-enterprise.rb")
 
@@ -109,10 +109,10 @@ func TestENTGetLatestVersion(t *testing.T) {
 func TestNewProduct(t *testing.T) {
 	defer gock.Off()
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Formula/a-new-product.rb").
+		Get("/hashicorp/homebrew-tap/main/Formula/a-new-product.rb").
 		Reply(404)
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Cask/a-new-product.rb").
+		Get("/hashicorp/homebrew-tap/main/Cask/a-new-product.rb").
 		Reply(404)
 
 	_, err := getFormulaVersion("a-new-product")
@@ -188,7 +188,7 @@ func TestHandleLambdaEventExistingProduct(t *testing.T) {
 		Reply(200).
 		File("testdata/releases.com_boundary-desktop.json")
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Casks/hashicorp-boundary-desktop.rb").
+		Get("/hashicorp/homebrew-tap/main/Casks/hashicorp-boundary-desktop.rb").
 		Reply(200).
 		File("testdata/github.com_cask_boundary-desktop.rb")
 	oldSupportedRecord := events.SNSEventRecord{
@@ -209,7 +209,7 @@ func TestHandleLambdaEventNewProduct(t *testing.T) {
 	defer gock.Off()
 	// To test "new" since our product list is hard-coded we re-use an existing product but return a 404 instead
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Casks/hashicorp-boundary-desktop.rb").
+		Get("/hashicorp/homebrew-tap/main/Casks/hashicorp-boundary-desktop.rb").
 		Reply(404)
 	gock.New("https://api.releases.hashicorp.com").
 		Get("/v1/releases/boundary-desktop/latest").
@@ -239,7 +239,7 @@ func TestHandleLambdaEventNewProduct(t *testing.T) {
 	// And we'll also test the Formula bits too, because why not.
 	// To test "new" since our product list is hard-coded we re-use an existing product but return a 404 instead
 	gock.New("https://raw.githubusercontent.com").
-		Get("/hashicorp/homebrew-tap/master/Formula/nomad.rb").
+		Get("/hashicorp/homebrew-tap/main/Formula/nomad.rb").
 		Reply(404)
 	gock.New("https://api.releases.hashicorp.com").
 		Get("/v1/releases/nomad/latest").
@@ -559,7 +559,7 @@ func generateReleasesLatestMock(product string) *gock.Request {
 // Generates the base mock used when requesting formula for version check
 func generateFormulaMock(product string) *gock.Request {
 	return gock.New("https://raw.githubusercontent.com").
-		Get(fmt.Sprintf("/hashicorp/homebrew-tap/master/Formula/%s.rb", product))
+		Get(fmt.Sprintf("/hashicorp/homebrew-tap/main/Formula/%s.rb", product))
 }
 
 // Generates the base mock used when requesting cask for version check
@@ -568,7 +568,7 @@ func generateCaskMock(product string) *gock.Request {
 	// Casks always have "hashicorp-" prefix so add
 	product = "hashicorp-" + product
 	return gock.New("https://raw.githubusercontent.com").
-		Get(fmt.Sprintf("/hashicorp/homebrew-tap/master/Casks/%s.rb", product))
+		Get(fmt.Sprintf("/hashicorp/homebrew-tap/main/Casks/%s.rb", product))
 }
 
 // Generates the base mock used when sending a repository dispatch notification

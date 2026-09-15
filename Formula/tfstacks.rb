@@ -38,6 +38,6 @@ class Tfstacks < Formula
   end
 
   test do
-    system "#{bin}/tfstacks --version"
+    assert_match "plugin", shell_output("#{bin}/tfstacks 2>&1", 1)
   end
 end
