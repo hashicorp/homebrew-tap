@@ -1,4 +1,4 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class HcInstall < Formula
@@ -35,6 +35,25 @@ class HcInstall < Formula
 
   def install
     bin.install "hc-install"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"hc-install").write "complete -C #{opt_bin}/hc-install hc-install\n"
+    (zsh_completion/"_hc-install").write <<~EOS
+      #compdef hc-install
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/hc-install)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"hc-install.fish").write <<~EOS
+      function __complete_hc-install
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/hc-install
+      end
+      complete -f -c hc-install -a "(__complete_hc-install)"
+    EOS
   end
 
   test do

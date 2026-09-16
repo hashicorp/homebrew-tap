@@ -1,4 +1,4 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class ConsulTerraformSync < Formula
@@ -41,6 +41,25 @@ class ConsulTerraformSync < Formula
 
   def install
     bin.install "consul-terraform-sync"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"consul-terraform-sync").write "complete -C #{opt_bin}/consul-terraform-sync consul-terraform-sync\n"
+    (zsh_completion/"_consul-terraform-sync").write <<~EOS
+      #compdef consul-terraform-sync
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/consul-terraform-sync)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"consul-terraform-sync.fish").write <<~EOS
+      function __complete_consul-terraform-sync
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/consul-terraform-sync
+      end
+      complete -f -c consul-terraform-sync -a "(__complete_consul-terraform-sync)"
+    EOS
   end
 
   test do
