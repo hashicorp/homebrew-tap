@@ -8,9 +8,9 @@ See a project available on releases.hashicorp.com that isn't available via the h
 
 - Clone this repo: `git clone git@github.com:hashicorp/homebrew-tap.git`
 
-- Add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/master/util/lambda_trigger/lambda_trigger.go#L25) under `util/lambda_trigger/lambda_trigger.go`
+- Add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/main/util/lambda_trigger/lambda_trigger.go#L25) under `util/lambda_trigger/lambda_trigger.go`
 
-- If the project should be delivered as a [Cask](https://github.com/Homebrew/homebrew-cask) (rather than a Formula), additionally add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/master/util/lambda_trigger/lambda_trigger.go#L54) under `util/lambda_trigger/lambda_trigger.go`
+- If the project should be delivered as a [Cask](https://github.com/Homebrew/homebrew-cask) (rather than a Formula), additionally add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/main/util/lambda_trigger/lambda_trigger.go#L54) under `util/lambda_trigger/lambda_trigger.go`
 
 - Make your additions to `util/formula_templater/config.hcl`
 
