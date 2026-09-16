@@ -1,4 +1,4 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 cask "hashicorp-vagrant" do
@@ -10,8 +10,7 @@ cask "hashicorp-vagrant" do
     sha256 arm:   "4daf4d4c323cce7bf98065ecf5338e9800038a522cd81356c77555d9cd2f0db9",
            intel: "4daf4d4c323cce7bf98065ecf5338e9800038a522cd81356c77555d9cd2f0db9"
 
-    url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}_darwin_#{arch}.dmg",
-        verified: "hashicorp.com/vagrant/"
+    url "https://releases.hashicorp.com/vagrant/#{version}/vagrant_#{version}_darwin_#{arch}.dmg"
 
     pkg "vagrant.pkg"
 
