@@ -1,40 +1,29 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Levant < Formula
   desc "Levant"
   homepage "https://github.com/hashicorp/levant"
-  version "0.3.3"
+  version "0.4.0"
 
-  if OS.mac?
-    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_darwin_amd64.zip"
-    sha256 "da1f7b45a5a10f8d2387ac40aac7eb52c3dbe6606e9948b51ee0efb82f88c165"
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_darwin_amd64.zip"
+    sha256 "5c82f04a8c229b0a6a212b110229be0917595ab3be9b89cdcb7f7da8c667a789"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_darwin_arm64.zip"
+    sha256 "50bc8792f672042e3c23a70b994d2c2075fe8b5c3f9ae0cb5caf55e4c6c4559e"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_amd64.zip"
-    sha256 "630c4c0499fdc0b904be22905e18dcd81350f8011ab1494b23f20d06f192d462"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_arm.zip"
-    sha256 "02c7106dbf788fdc592f30393a44c9fc4103c7ec7b5662eed351425b149e3a7e"
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_linux_amd64.zip"
+    sha256 "44ff68a3f25b15aded1da2b7bae6ddbcdac09e4517d526d69ed79180bc4240ed"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/levant/0.3.3/levant_0.3.3_linux_arm64.zip"
-    sha256 "e2e3bf5aed271d848d8aac86b4649594b7f9aa1e11aa4612f5b571f97598bba4"
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_linux_arm64.zip"
+    sha256 "ee57441091f62f55b3103af6374cff066721f582a8b06b52ba0ebe3b8fb4f102"
   end
 
   conflicts_with "levant"

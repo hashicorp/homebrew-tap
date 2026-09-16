@@ -1,34 +1,34 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Sentinel < Formula
   desc ""
   homepage "https://docs.hashicorp.com/sentinel"
-  version "0.23.1"
+  version "0.41.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/sentinel/0.23.1/sentinel_0.23.1_darwin_amd64.zip"
-    sha256 "3b02b0ac37bdb0f135e08454f42a796f36b5ead9044abffd305c497c8ea4b396"
+    url "https://releases.hashicorp.com/sentinel/0.41.0/sentinel_0.41.0_darwin_amd64.zip"
+    sha256 "a011fa4c759fa6b1d677a39fe3c92d9a50c61a30e0828c5d36cae26b4000aabc"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/sentinel/0.23.1/sentinel_0.23.1_darwin_arm64.zip"
-    sha256 "44ad8edc19ff7fb4f09b073e8cb1790cf2ac0a76e21c33c88edc48f15da21ca6"
+    url "https://releases.hashicorp.com/sentinel/0.41.0/sentinel_0.41.0_darwin_arm64.zip"
+    sha256 "1ce9485f96ad51520cf19a74ce4ed4a4edc3ffc988fd537a26a4bd937662bf65"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/sentinel/0.23.1/sentinel_0.23.1_linux_amd64.zip"
-    sha256 "f0fdab98f475a6327e8d1e777c0d575dc88cea81cdaadd632523d0167a283f64"
+    url "https://releases.hashicorp.com/sentinel/0.41.0/sentinel_0.41.0_linux_amd64.zip"
+    sha256 "357ca824c9ac3ab11520a5ad2c2547b34aeb01dd4e3b9f1c7dc325d0be8a9935"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.23.1/sentinel_0.23.1_linux_arm.zip"
-    sha256 "43b4b1cec6b10ff7e359ae8132b9150ce3ff9be547ba54e0dc071d5436978352"
+    url "https://releases.hashicorp.com/sentinel/0.41.0/sentinel_0.41.0_linux_arm.zip"
+    sha256 "0d51c258bbc87da69cfea5031824dc7c2053e01b87875508dff087229f5ab034"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/sentinel/0.23.1/sentinel_0.23.1_linux_arm64.zip"
-    sha256 "ade4b41272b810716b938c60433c4bc9af6021e5804e1aff38d59bf26965859a"
+    url "https://releases.hashicorp.com/sentinel/0.41.0/sentinel_0.41.0_linux_arm64.zip"
+    sha256 "e4735fcfcc3f2ef161ff2b17207da2f9235ca38ba92609be43e45199f807f1b4"
   end
 
   conflicts_with "sentinel"

@@ -1,40 +1,54 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "1.15.2+ent"
+  version "2.1.0+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.15.2+ent/vault_1.15.2+ent_darwin_amd64.zip"
-    sha256 "be6569df6f66fb8e7dc256204e2b5fb9952f5f78ffefdd2fe3587f70c82b007a"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_darwin_amd64.zip"
+    sha256 "c864ccb91ce36a12591e004ed16bcc7801772330d14ff945dff5046655a8f1e7"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.15.2+ent/vault_1.15.2+ent_darwin_arm64.zip"
-    sha256 "898d3980f6416ee7dd309c2d815af30340a19d9aa300095ab1dc408abf57038d"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_darwin_arm64.zip"
+    sha256 "5cba1f78a4596ea5cc10278b9ac755cdbfbf14df1db4abe78f9f08e9f5a31caa"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.15.2+ent/vault_1.15.2+ent_linux_amd64.zip"
-    sha256 "0306ba125aaf15b91c06c1fa744aab853ee2e41565aa1bf4a0396f8d3404f9ad"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.15.2+ent/vault_1.15.2+ent_linux_arm.zip"
-    sha256 "f003cfc224c50717c570ec34fd4e49e34e2474d0c51025fee34f5f219be14093"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_linux_amd64.zip"
+    sha256 "0a9a0e4e445d789ff6f9f6cf83fa3c5de1f42ea4bd823e64980862d733370df3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.15.2+ent/vault_1.15.2+ent_linux_arm64.zip"
-    sha256 "bca338c6a3b7d4fd52b4fa075c721a80c72b449d6233ef0015da8c06e70eb855"
+    url "https://releases.hashicorp.com/vault/2.1.0+ent/vault_2.1.0+ent_linux_arm64.zip"
+    sha256 "a0fbfb3fb07e5c4574f07062338f8fb10b4464c0622e3cc9b3b030d3c9afc2da"
   end
 
   conflicts_with "vault-enterprise"
 
   def install
     bin.install "vault"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"vault").write "complete -C #{opt_bin}/vault vault\n"
+    (zsh_completion/"_vault").write <<~EOS
+      #compdef vault
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/vault)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"vault.fish").write <<~EOS
+      function __complete_vault
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/vault
+      end
+      complete -f -c vault -a "(__complete_vault)"
+    EOS
   end
 
   service do

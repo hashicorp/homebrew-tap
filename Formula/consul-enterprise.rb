@@ -1,40 +1,59 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class ConsulEnterprise < Formula
   desc "Consul Enterprise"
   homepage "https://www.consul.io"
-  version "1.17.0+ent"
+  version "2.0.4+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.17.0+ent/consul_1.17.0+ent_darwin_amd64.zip"
-    sha256 "1db68002ba0bb0b07073a4f4522746450fbeb2d3f84d00dfa051b0aa0e7ee281"
+    url "https://releases.hashicorp.com/consul/2.0.4+ent/consul_2.0.4+ent_darwin_amd64.zip"
+    sha256 "8184af77b05c614c10b58935de7b9aa9e4e774e8d2f6a161ef75ed089bf1a14e"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul/1.17.0+ent/consul_1.17.0+ent_darwin_arm64.zip"
-    sha256 "2e5891e7f9062e2ccae7b46b95dbb227d6c40367de6690d94baf65ceb0a4dfb2"
+    url "https://releases.hashicorp.com/consul/2.0.4+ent/consul_2.0.4+ent_darwin_arm64.zip"
+    sha256 "15791a24b58c167e5c2957cdb019b90e75d2d3c4d0fe70fcebc0e0f7a732a14d"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.17.0+ent/consul_1.17.0+ent_linux_amd64.zip"
-    sha256 "5c8a23e9893b9c115859a41615f6a3d07799ed98a99d4c37c5426f2be964ebb0"
+    url "https://releases.hashicorp.com/consul/2.0.4+ent/consul_2.0.4+ent_linux_amd64.zip"
+    sha256 "ed024cafa7f78e88b7c9336ac9ca0a42bd414e310905960d610e6935ad01a0cc"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.17.0+ent/consul_1.17.0+ent_linux_arm.zip"
-    sha256 "8fa9460d09299d79d32afa915902d358f1e61186fc4ccf77b6f714d9d60ad245"
+    url "https://releases.hashicorp.com/consul/2.0.4+ent/consul_2.0.4+ent_linux_arm.zip"
+    sha256 "8482c08f1c4c88d5b42528eef0ea929c8166103e2a902036923943ce3ec59816"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.17.0+ent/consul_1.17.0+ent_linux_arm64.zip"
-    sha256 "a6fd345508c7fd9f1d5495f326902df6be2bc6a0ca10a8890e931f1e87df3f3f"
+    url "https://releases.hashicorp.com/consul/2.0.4+ent/consul_2.0.4+ent_linux_arm64.zip"
+    sha256 "fd060805ed685f7c6b7ed47bba73e4ed916ea3e2c0a203d63e0e5b5d045bb8a9"
   end
 
   conflicts_with "consul-enterprise"
 
   def install
     bin.install "consul"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"consul").write "complete -C #{opt_bin}/consul consul\n"
+    (zsh_completion/"_consul").write <<~EOS
+      #compdef consul
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/consul)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"consul.fish").write <<~EOS
+      function __complete_consul
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/consul
+      end
+      complete -f -c consul -a "(__complete_consul)"
+    EOS
   end
 
   service do

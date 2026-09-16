@@ -1,15 +1,16 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Vagrant < Formula
   desc "Development environment"
   homepage "https://www.vagrantup.com/"
-  version "2.4.0"
+  version "2.4.9"
 
-  if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vagrant/2.4.0/vagrant_2.4.0_linux_amd64.zip"
-    sha256 "a638c22f9dd35481a4486bdb0eca614ad695036aa444cc3aace4513d3de0cbbe"
-  end
+  url "https://releases.hashicorp.com/vagrant/2.4.9/vagrant_2.4.9_linux_amd64.zip"
+  sha256 "77d4d533c82c420b6b594992a902ec43fcd9f50380dc002a599e93fc744f8cfa"
+
+  depends_on :linux
+  depends_on arch: :x86_64
 
   conflicts_with "vagrant"
 

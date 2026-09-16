@@ -1,0 +1,136 @@
+NOTICES AND INFORMATION
+========================
+
+This file contains notices and information for third-party software included
+with or used by the HashiCorp Homebrew Tap repository.
+
+================================================================================
+
+HashiCorp Homebrew Tap
+Copyright IBM Corp. 2020, 2025
+Licensed under the Mozilla Public License, version 2.0 (MPL-2.0)
+https://github.com/hashicorp/homebrew-tap
+
+================================================================================
+
+THIRD-PARTY SOFTWARE NOTICES AND INFORMATION
+This project incorporates components from the projects listed below.
+
+================================================================================
+
+Go Dependencies - Formula Templater Utility
+--------------------------------------------
+
+1. github.com/hashicorp/hcl/v2 v2.16.1
+   Copyright (c) HashiCorp, Inc.
+   License: MPL-2.0
+   https://github.com/hashicorp/hcl
+
+2. github.com/stretchr/testify v1.8.2
+   Copyright (c) 2012-2020 Mat Ryer, Tyler Bunnell and contributors
+   License: MIT
+   https://github.com/stretchr/testify
+
+3. github.com/agext/levenshtein v1.2.3
+   Copyright (c) 2016 Abhinav Gupta
+   License: Apache-2.0
+   https://github.com/agext/levenshtein
+
+4. github.com/apparentlymart/go-textseg/v13 v13.0.0
+   Copyright (c) 2017 Martin Atkins
+   License: MIT and Apache-2.0
+   https://github.com/apparentlymart/go-textseg
+
+5. github.com/davecgh/go-spew v1.1.1
+   Copyright (c) 2012-2016 Dave Collins
+   License: ISC
+   https://github.com/davecgh/go-spew
+
+6. github.com/google/go-cmp v0.5.9
+   Copyright (c) 2017 The Go Authors
+   License: BSD-3-Clause
+   https://github.com/google/go-cmp
+
+7. github.com/mitchellh/go-wordwrap v1.0.1
+   Copyright (c) 2014 Mitchell Hashimoto
+   License: MIT
+   https://github.com/mitchellh/go-wordwrap
+
+8. github.com/pmezard/go-difflib v1.0.0
+   Copyright (c) 2013 Patrick Mezard
+   License: BSD-3-Clause
+   https://github.com/pmezard/go-difflib
+
+9. github.com/zclconf/go-cty v1.13.0
+   Copyright (c) 2017-2018 Martin Atkins
+   License: MIT
+   https://github.com/zclconf/go-cty
+
+10. golang.org/x/text v0.7.0
+    Copyright (c) 2009 The Go Authors
+    License: BSD-3-Clause
+    https://golang.org/x/text
+
+11. gopkg.in/yaml.v3 v3.0.1
+    Copyright (c) 2011-2019 Canonical Ltd
+    License: MIT and Apache-2.0
+    https://github.com/go-yaml/yaml
+
+================================================================================
+
+Go Dependencies - Lambda Trigger Utility
+-----------------------------------------
+
+1. github.com/aws/aws-lambda-go v1.19.1
+   Copyright (c) 2016 Amazon.com, Inc.
+   License: Apache-2.0
+   https://github.com/aws/aws-lambda-go
+
+2. github.com/h2non/gock v1.2.0
+   Copyright (c) 2016 Tomas Aparicio
+   License: MIT
+   https://github.com/h2non/gock
+
+3. github.com/h2non/parth v0.0.0-20190131123155-b4df798d6542
+   Copyright (c) 2016 Tomas Aparicio
+   License: MIT
+   https://github.com/h2non/parth
+
+================================================================================
+
+GitHub Actions
+--------------
+
+1. actions/checkout v6.0.2
+   Copyright (c) GitHub, Inc.
+   License: MIT
+   https://github.com/actions/checkout
+
+2. actions/setup-go v6.2.0
+   Copyright (c) GitHub, Inc.
+   License: MIT
+   https://github.com/actions/setup-go
+
+3. benc-uk/workflow-dispatch v1.2.3
+   Copyright (c) Ben Coleman
+   License: MIT
+   https://github.com/benc-uk/workflow-dispatch
+
+================================================================================
+
+ADDITIONAL INFORMATION
+
+Homebrew
+--------
+This repository is designed to work with Homebrew, the package manager for macOS.
+Homebrew itself is licensed under the BSD-2-Clause License.
+https://github.com/Homebrew/brew
+
+The HashiCorp products distributed via this tap (Terraform, Vault, Consul, Nomad,
+Packer, Boundary, Waypoint, and others) are separate software products with their
+own licenses. Please refer to the individual product repositories and documentation
+for their respective licensing terms.
+
+================================================================================
+
+END OF NOTICES AND INFORMATION

@@ -1,4 +1,4 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Waypoint < Formula
@@ -35,6 +35,25 @@ class Waypoint < Formula
 
   def install
     bin.install "waypoint"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"waypoint").write "complete -C #{opt_bin}/waypoint waypoint\n"
+    (zsh_completion/"_waypoint").write <<~EOS
+      #compdef waypoint
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/waypoint)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"waypoint.fish").write <<~EOS
+      function __complete_waypoint
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/waypoint
+      end
+      complete -f -c waypoint -a "(__complete_waypoint)"
+    EOS
   end
 
   test do
