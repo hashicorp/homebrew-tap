@@ -1,3 +1,5 @@
+# Copyright IBM Corp. 2020, 2026
+
 class Enos < Formula
   desc "A tool for powering Software Quality as Code by writing Terraform-based quality requirement scenarios using a composable, modular, and declarative language."
   homepage "https://github.com/hashicorp/enos"
@@ -32,6 +34,6 @@ class Enos < Formula
   end
 
   test do
-    system "#{bin}/enos --version"
+    system "#{bin}/enos version"
   end
 end
