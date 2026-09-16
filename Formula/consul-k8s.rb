@@ -1,34 +1,34 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class ConsulK8s < Formula
   desc "Consul K8s"
   homepage "https://github.com/hashicorp/consul-k8s"
-  version "2.0.3"
+  version "2.0.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-k8s/2.0.3/consul-k8s_2.0.3_darwin_amd64.zip"
-    sha256 "281f6b4b73bcc05240a645b6e11bf579954fbfe58571b7daebfe241e8a4dbef2"
+    url "https://releases.hashicorp.com/consul-k8s/2.0.4/consul-k8s_2.0.4_darwin_amd64.zip"
+    sha256 "df0da65b85df293f40635acf10997667035be75e10554dbc3b11c2022a0201b6"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul-k8s/2.0.3/consul-k8s_2.0.3_darwin_arm64.zip"
-    sha256 "86e54668db0cf8204415e1314d487f6f45259b43b6d938e70450166a0f8628b5"
+    url "https://releases.hashicorp.com/consul-k8s/2.0.4/consul-k8s_2.0.4_darwin_arm64.zip"
+    sha256 "ee14f43815fc8bf26204d3494207c8062f7896cfc1d5a9f56dca7e5fd8ffe0a7"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-k8s/2.0.3/consul-k8s_2.0.3_linux_amd64.zip"
-    sha256 "60eeeb99b4337623a82c5197a86e31362b50a885496d8c55fd246e6dbe6994f0"
+    url "https://releases.hashicorp.com/consul-k8s/2.0.4/consul-k8s_2.0.4_linux_amd64.zip"
+    sha256 "a94528d21f8b6a33a1809d5ccb83ca7a72d6634df3a5cc2608ae9e33d9f81b1f"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-k8s/2.0.3/consul-k8s_2.0.3_linux_arm.zip"
-    sha256 "93f0a7dace3f219f5229bddbf0342ce51d30d9d51968bcd6fd30cf0238dd0c86"
+    url "https://releases.hashicorp.com/consul-k8s/2.0.4/consul-k8s_2.0.4_linux_arm.zip"
+    sha256 "dfff8c475d125b85e46ee5a8ca4827d4a2f06547a286aa5193a5ca1fd8d75411"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-k8s/2.0.3/consul-k8s_2.0.3_linux_arm64.zip"
-    sha256 "3f7c13796db4b168aaa3f2a791d4cfd1720868b52727fe626b74ebfbe7eaaddf"
+    url "https://releases.hashicorp.com/consul-k8s/2.0.4/consul-k8s_2.0.4_linux_arm64.zip"
+    sha256 "ae3e7be5820ebb35ccfc2d7f5508e9db1dccd46e8146d2ef812dcd71da51a0a9"
   end
 
   conflicts_with "consul-k8s"

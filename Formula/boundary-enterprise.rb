@@ -1,34 +1,34 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class BoundaryEnterprise < Formula
   desc "Boundary Enterprise"
   homepage "https://www.boundaryproject.io/"
-  version "1.0.1+ent"
+  version "1.0.2+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_darwin_amd64.zip"
-    sha256 "f43beba75a82691afa1c3261d881077bd860862de2c17bb96b6707f6f963079c"
+    url "https://releases.hashicorp.com/boundary/1.0.2+ent/boundary_1.0.2+ent_darwin_amd64.zip"
+    sha256 "d7b154722d08be2c137fece7745407a413d7e9419a72fd6fcd41578ca30269e9"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_darwin_arm64.zip"
-    sha256 "e2ad45320f2e4d975bcab2561886aadec9dd7a3253f92db29f2b55024b615698"
+    url "https://releases.hashicorp.com/boundary/1.0.2+ent/boundary_1.0.2+ent_darwin_arm64.zip"
+    sha256 "faca9be2c8817abf39508cee9fec09b77c36588e1f63585bc00e1a523a43077c"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_linux_amd64.zip"
-    sha256 "f74035e77cc4dab5c7f0f4c1fd886489ed6c8c6f928a456dea60f9424fec20bd"
+    url "https://releases.hashicorp.com/boundary/1.0.2+ent/boundary_1.0.2+ent_linux_amd64.zip"
+    sha256 "d32956ff858cdc60a4309cfc094392547fa67e6dc9267d8e196ab6d88027ecbd"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_linux_arm.zip"
-    sha256 "99836b80f34850216a18649f47ca330a4c33b2bd9932f5c3c8f4cbf3cb5f7fdc"
+    url "https://releases.hashicorp.com/boundary/1.0.2+ent/boundary_1.0.2+ent_linux_arm.zip"
+    sha256 "6c6fd2de703e9a735df7ab5fa8320f4364e88962e9b196a27c4850f2372c407b"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/1.0.1+ent/boundary_1.0.1+ent_linux_arm64.zip"
-    sha256 "9b5f5ba8cc9204f6e9f988b22000f1fed9845e424fc7712978906c0c1443d64d"
+    url "https://releases.hashicorp.com/boundary/1.0.2+ent/boundary_1.0.2+ent_linux_arm64.zip"
+    sha256 "975250804d1f08fb1e1020090030e866fb75c41bb7ba3b78a4a0ebe96a0b0e08"
   end
 
   conflicts_with "boundary-enterprise"
