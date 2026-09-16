@@ -1,4 +1,4 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class {{ .Name }} < Formula
@@ -37,27 +37,72 @@ class {{ .Name }} < Formula
   end
   {{- end }}
   {{- end }}
+  {{- /* A formula must declare a URL on every platform it is loaded on, even
+         ones it cannot install on. Linux-only products use the first Linux
+         build as the unconditional URL and gate installs with depends_on. */}}
+  {{- $linuxOnly := not (or .Architectures.DarwinAmd64 .Architectures.DarwinArm64) }}
+  {{- $fallback := "" }}
+  {{- if $linuxOnly }}
+  {{- if .Architectures.LinuxAmd64 }}{{ $fallback = "linux_amd64" }}
+  {{- else if .Architectures.LinuxArm }}{{ $fallback = "linux_arm" }}
+  {{- else if .Architectures.LinuxArm64 }}{{ $fallback = "linux_arm64" }}
+  {{- end }}
+  {{- end }}
   {{- if .Architectures.LinuxAmd64 }}
+  {{- if eq $fallback "linux_amd64" }}
+
+  url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_amd64.zip"
+  sha256 "{{ .Architectures.LinuxAmd64SHA }}"
+  {{- else }}
 
   if OS.linux? && Hardware::CPU.intel?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_amd64.zip"
     sha256 "{{ .Architectures.LinuxAmd64SHA }}"
   end
   {{- end }}
+  {{- end }}
   {{- if .Architectures.LinuxArm }}
+  {{- if eq $fallback "linux_arm" }}
+
+  url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm.zip"
+  sha256 "{{ .Architectures.LinuxArmSHA }}"
+  {{- else }}
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm.zip"
     sha256 "{{ .Architectures.LinuxArmSHA }}"
   end
   {{- end }}
+  {{- end }}
   {{- if .Architectures.LinuxArm64 }}
+  {{- if eq $fallback "linux_arm64" }}
+
+  url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm64.zip"
+  sha256 "{{ .Architectures.LinuxArm64SHA }}"
+  {{- else }}
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://releases.hashicorp.com/{{ .Product }}/{{ .Version }}/{{ .Product }}_{{ .Version }}_linux_arm64.zip"
     sha256 "{{ .Architectures.LinuxArm64SHA }}"
   end
+  {{- end }}
+  {{- end }}
+  {{- if $linuxOnly }}
 
+  depends_on :linux
+  {{- /* With a single Linux build, a fallback URL alone would let other
+         architectures download the wrong binary. */}}
+  {{- if eq $fallback "linux_amd64" }}
+  {{- if not (or .Architectures.LinuxArm .Architectures.LinuxArm64) }}
+  depends_on arch: :x86_64
+  {{- end }}
+  {{- else if eq $fallback "linux_arm" }}
+  {{- if not .Architectures.LinuxArm64 }}
+  depends_on arch: :arm
+  {{- end }}
+  {{- else if eq $fallback "linux_arm64" }}
+  depends_on arch: :arm64
+  {{- end }}
   {{- end }}
 
   {{- with .Depends }}
@@ -82,6 +127,27 @@ class {{ .Name }} < Formula
 
   def install
     bin.install "{{ .Product }}"
+  {{- if .Autocomplete }}
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"{{ .Product }}").write "complete -C #{opt_bin}/{{ .Product }} {{ .Product }}\n"
+    (zsh_completion/"_{{ .Product }}").write <<~EOS
+      #compdef {{ .Product }}
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/{{ .Product }})"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"{{ .Product }}.fish").write <<~EOS
+      function __complete_{{ .Product }}
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/{{ .Product }}
+      end
+      complete -f -c {{ .Product }} -a "(__complete_{{ .Product }})"
+    EOS
+  {{- end }}
   end
   {{- if .ServiceArgs }}
 
@@ -95,6 +161,10 @@ class {{ .Name }} < Formula
   {{- end }}
 
   test do
-    system "#{bin}/{{ .Product }} --version"
+  {{- if .Plugin }}
+    assert_match "plugin", shell_output("#{bin}/{{ .Product }} 2>&1", 1)
+  {{- else }}
+    system "#{bin}/{{ .Product }}{{ if .VersionArgs }}{{ range .VersionArgs }} {{ . }}{{ end }}{{ else }} --version{{ end }}"
+  {{- end }}
   end
 end
