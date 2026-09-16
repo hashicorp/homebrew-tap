@@ -18,7 +18,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
         with:
-          ref: master
+          ref: main
           token: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
 
       - name: Check if version is latest
@@ -63,7 +63,7 @@ jobs:
           token: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
 
       - name: Setup Go
-        uses: actions/setup-go@4b73464bb391d4059bd26b0524d20df3927bd417 #v6.3.0
+        uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c #v6.4.0
         with:
           go-version-file: "util/formula_templater/go.mod"
 
@@ -120,7 +120,7 @@ jobs:
           git commit -m "Bump ${PRODUCT} to ${VERSION}"
 
           # Fetch the remote branch first so --force-with-lease has a tracking ref
-          # to compare against. actions/checkout only fetches master, so without
+          # to compare against. actions/checkout only fetches main, so without
           # this fetch the lease check has nothing to compare and behaves like
           # plain --force. The 2>/dev/null || true makes it a no-op when the
           # branch doesn't exist yet (first push).
@@ -138,7 +138,7 @@ jobs:
 
           if [[ -z "$EXISTING_PR" ]]; then
             PR_URL=$(gh pr create \
-              --base master \
+              --base main \
               --head "$BRANCH" \
               --title "Bump ${PRODUCT} to ${VERSION}" \
               --body "Automated version bump for \`${PRODUCT}\` to \`${VERSION}\`.")

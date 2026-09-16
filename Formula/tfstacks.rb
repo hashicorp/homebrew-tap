@@ -1,4 +1,4 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Tfstacks < Formula
@@ -38,6 +38,6 @@ class Tfstacks < Formula
   end
 
   test do
-    system "#{bin}/tfstacks --version"
+    assert_match "plugin", shell_output("#{bin}/tfstacks 2>&1", 1)
   end
 end
