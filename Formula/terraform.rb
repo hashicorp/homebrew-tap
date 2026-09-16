@@ -1,34 +1,34 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class Terraform < Formula
   desc "Terraform"
   homepage "https://www.terraform.io/"
-  version "1.5.0"
+  version "1.16.1"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_darwin_amd64.zip"
-    sha256 "dd64d8a2a75519b933b4f1d76417675ea66bdb45c2a2672cf511825091eba789"
+    url "https://releases.hashicorp.com/terraform/1.16.1/terraform_1.16.1_darwin_amd64.zip"
+    sha256 "3f165e7fabdb8ec44151494418efa1e8095c3f589ed8376a93578a96867a062c"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_darwin_arm64.zip"
-    sha256 "0765371227ab09e1bb64d606fcfe3d157a2992ac3b82ffabfb9976db53bd791e"
+    url "https://releases.hashicorp.com/terraform/1.16.1/terraform_1.16.1_darwin_arm64.zip"
+    sha256 "e22cba761ddbd4d218939b28715ab3af37aaf8a42efa41f7d75b2c3d73636060"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_amd64.zip"
-    sha256 "9ae1bcfef088e9aaabeaf6fdc6cce01187dc4936f1564899ee6fa6baec5ad19c"
+    url "https://releases.hashicorp.com/terraform/1.16.1/terraform_1.16.1_linux_amd64.zip"
+    sha256 "745d33b4b02b7980c62a38ec1beea24ee084ea8caf3f503c200554bd9a0cbe49"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_arm.zip"
-    sha256 "833559af90ff54f2ebcf9f70f9043e2d3fb54c1a0c38711f2522a16f909dc852"
+    url "https://releases.hashicorp.com/terraform/1.16.1/terraform_1.16.1_linux_arm.zip"
+    sha256 "d60ad6dfa813ea89470ad1ea2f54776e5b4a6c1687161957158c718a60a14020"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.5.0/terraform_1.5.0_linux_arm64.zip"
-    sha256 "7d0bb120dc90dc05011f7a6c7c027f2ac1b13c0d5721b8c935f2f440e539a968"
+    url "https://releases.hashicorp.com/terraform/1.16.1/terraform_1.16.1_linux_arm64.zip"
+    sha256 "423288a23ab024d42ac05c409972585f7ec0cf1be572b773ad952f9a1c41387d"
   end
 
   conflicts_with "terraform"

@@ -1,34 +1,29 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class Vault < Formula
   desc "Vault"
   homepage "https://www.vaultproject.io"
-  version "1.13.3"
+  version "2.1.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_darwin_amd64.zip"
-    sha256 "cb8f749a4f93e1c63baa4803dd5c039dc25a2c4f24efd3d29f7be901f6463de1"
+    url "https://releases.hashicorp.com/vault/2.1.0/vault_2.1.0_darwin_amd64.zip"
+    sha256 "4ec95a88b3ab2a4f367da41ab98946204d5d85b36b26b71c6685db997dfde36e"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_darwin_arm64.zip"
-    sha256 "ac1635022dc1145b9a8ade9160e9c2cb0f8b57800c3273fc4b28e852531b7571"
+    url "https://releases.hashicorp.com/vault/2.1.0/vault_2.1.0_darwin_arm64.zip"
+    sha256 "c6589dc658f72ebd2792b1fba7b2e53413367ad673ae2513cfdec6422ed4da2c"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_linux_amd64.zip"
-    sha256 "7ca502f1c50dd043862276705b4ccc1fa45f633345ca7d01fc5b4ba1d820c51e"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_linux_arm.zip"
-    sha256 "a215e12136c25d18dd0320d560d752f4722f3d049dc65821097b8b6521fbf3d8"
+    url "https://releases.hashicorp.com/vault/2.1.0/vault_2.1.0_linux_amd64.zip"
+    sha256 "08e8a13d29d20c5e28ef5e2c187bf3a2e84712a43615de1b3d24701ad9aab972"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/1.13.3/vault_1.13.3_linux_arm64.zip"
-    sha256 "8e2cf7f013cd755fcb10e8e4f2e9dc2866a8eafab76a4bd6b5ae9210e5f61f9e"
+    url "https://releases.hashicorp.com/vault/2.1.0/vault_2.1.0_linux_arm64.zip"
+    sha256 "319b3eb7b0c2ad218453f5d1af5c23cac81a024db3a07ccd2494ecd31f2090c3"
   end
 
   conflicts_with "vault"

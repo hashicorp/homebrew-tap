@@ -1,37 +1,29 @@
+# Copyright IBM Corp. 2020, 2025
+# SPDX-License-Identifier: MPL-2.0
+
 class Levant < Formula
   desc "Levant"
   homepage "https://github.com/hashicorp/levant"
-  version "0.3.2"
+  version "0.4.0"
 
-  if OS.mac?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_darwin_amd64.zip"
-    sha256 "7406a9f089227254f3ed7eb4f67d22dc28c44b41f2233391b5f0d3ffa1be861e"
+  if OS.mac? && Hardware::CPU.intel?
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_darwin_amd64.zip"
+    sha256 "5c82f04a8c229b0a6a212b110229be0917595ab3be9b89cdcb7f7da8c667a789"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    def caveats
-      <<~EOS
-        The darwin_arm64 architecture is not supported for this product
-        at this time, however we do plan to support this in the future. The
-        darwin_amd64 binary has been installed and may work in
-        compatibility mode, but it is not fully supported.
-      EOS
-    end
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_darwin_arm64.zip"
+    sha256 "50bc8792f672042e3c23a70b994d2c2075fe8b5c3f9ae0cb5caf55e4c6c4559e"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_linux_amd64.zip"
-    sha256 "1e06180f8d8327e721e2ad4c9637d1f391034a22709473b8ed8ee19f1cad1570"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_linux_arm.zip"
-    sha256 "3c511d66e9018fdfefb179f5558f1639aa25f2a3a3376b7033f10a505f3c09a2"
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_linux_amd64.zip"
+    sha256 "44ff68a3f25b15aded1da2b7bae6ddbcdac09e4517d526d69ed79180bc4240ed"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/levant/0.3.2/levant_0.3.2_linux_arm64.zip"
-    sha256 "8cb3c3c10b5415704964b437d85a2f26091bf25e8575df76403874eee78934b1"
+    url "https://releases.hashicorp.com/levant/0.4.0/levant_0.4.0_linux_arm64.zip"
+    sha256 "ee57441091f62f55b3103af6374cff066721f582a8b06b52ba0ebe3b8fb4f102"
   end
 
   conflicts_with "levant"

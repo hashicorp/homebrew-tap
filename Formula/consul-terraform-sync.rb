@@ -1,11 +1,14 @@
+# Copyright IBM Corp. 2020, 2025
+# SPDX-License-Identifier: MPL-2.0
+
 class ConsulTerraformSync < Formula
   desc "Consul Terraform Sync"
   homepage "https://github.com/hashicorp/consul-terraform-sync"
-  version "0.7.0"
+  version "0.9.1"
 
   if OS.mac?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_darwin_amd64.zip"
-    sha256 "dfb11f751de5d8eb5ed19d1aa2ee63a2dda417eea2d900cea6f31ae5b5ea88e6"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_darwin_amd64.zip"
+    sha256 "9004d6808e8b6c3f44cde4701c45ae9f0643503ef7ffee96a3c14ef47189a116"
   end
 
   if OS.mac? && Hardware::CPU.arm?
@@ -20,18 +23,18 @@ class ConsulTerraformSync < Formula
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_linux_amd64.zip"
-    sha256 "40bcb6fa6ab043cad6c7e2425a723f0531b1539ec2502ac2d6fc44180df1efb4"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_amd64.zip"
+    sha256 "4536c56a7d8e6e18f9cd4915d70690b27eec95037e9e5f1d1f764b92da5bd4e3"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_linux_arm.zip"
-    sha256 "25b3b0b220d6ef31f5864d7babeac24c6cfd5e49f25ed773b14a207d2b127e11"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_arm.zip"
+    sha256 "ab799fa142b83634deaad63d98c984878f50f1c67c9d345e4b736d5c2e3eaebe"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul-terraform-sync/0.7.0/consul-terraform-sync_0.7.0_linux_arm64.zip"
-    sha256 "6b5adba79bbfd059879572007feb8aec47f61d23f78309b92107f3c403f96703"
+    url "https://releases.hashicorp.com/consul-terraform-sync/0.9.1/consul-terraform-sync_0.9.1_linux_arm64.zip"
+    sha256 "e5e93554cf0789f4513078711abe93bb71d5536f8bb722e950fe051f9bde1043"
   end
 
   conflicts_with "consul-terraform-sync"

@@ -1,8 +1,9 @@
 ---
 schema: 1.1
-category: tooling
+partition: release-engineering
+category: none
 summary:
-  owner: team-rel-eng
+  owner: team-selfmanaged-releng
   description: |
     Homebrew casks and taps for HashiCorp products.
   visibility: external

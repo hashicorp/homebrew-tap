@@ -14,6 +14,17 @@ mod-download:
 build: *.go go.* mod-download
 	go build
 
+release: *.go go.* mod-download
+	@echo "Preparing artifact..."
+	@GOOS=linux GOARCH=amd64 go build -trimpath -tags lambda.norpc -o bootstrap
+	@touch -d $$(TZ=UTC0 git show --quiet --date='format-local:%Y-%m-%dT%H:%M:%SZ' --format="%cd") bootstrap
+	@zip -X lambda.zip bootstrap
+	@openssl dgst -sha256 -hex bootstrap lambda.zip
+	@echo
+	@echo "AWS Lambda CodeSha256:"
+	@openssl dgst -sha256 -binary lambda.zip | openssl enc -base64
+	@echo
+	@echo "To publish, use: aws lambda update-function-code ..."
 
 .PHONY: clean
 clean:
@@ -30,3 +41,4 @@ testdata:
 	curl --fail --silent 'https://raw.githubusercontent.com/hashicorp/homebrew-tap/a1a4af71310cc99c00259cda7c39a981b66442d4/Formula/nomad.rb' --output testdata/github.com_formula_nomad.rb
 	curl --fail --silent 'https://raw.githubusercontent.com/hashicorp/homebrew-tap/a1a4af71310cc99c00259cda7c39a981b66442d4/Formula/nomad-enterprise.rb' --output testdata/github.com_formula_nomad-enterprise.rb
 	curl --fail --silent 'https://raw.githubusercontent.com/hashicorp/homebrew-tap/525cf0610587cef5cb6a40f31c8d92f70f335fb4/Casks/hashicorp-boundary-desktop.rb' --output testdata/github.com_cask_boundary-desktop.rb
+	curl --fail --silent 'https://api.releases.hashicorp.com/v1/releases/vault/1.13.3+ent.hsm.fips1402?license_class=enterprise' | jq --sort-keys > testdata/releases.com_vault-enterprise_latest.json

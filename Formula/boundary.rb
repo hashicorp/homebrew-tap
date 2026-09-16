@@ -1,34 +1,34 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class Boundary < Formula
   desc "Boundary"
   homepage "https://www.boundaryproject.io/"
-  version "0.13.0"
+  version "0.21.3"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.13.0/boundary_0.13.0_darwin_amd64.zip"
-    sha256 "59c01ef00146aa7b0df15376a7cb3df613b7baf5d04f19145754403772cf59a3"
+    url "https://releases.hashicorp.com/boundary/0.21.3/boundary_0.21.3_darwin_amd64.zip"
+    sha256 "d349e100b3f951caca9ed46a509458a0f5a265e7c6a8c0fca612d922a9e15af4"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/boundary/0.13.0/boundary_0.13.0_darwin_arm64.zip"
-    sha256 "e9ea1d985dfdf18edbf7ba35997fefa731cca31f3e6d0a26070d7ec971640b4e"
+    url "https://releases.hashicorp.com/boundary/0.21.3/boundary_0.21.3_darwin_arm64.zip"
+    sha256 "7d64c6bf6ca437b10a143d47bb85cfaff0af7ba83c598a38b1ac275d2acc75c1"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/boundary/0.13.0/boundary_0.13.0_linux_amd64.zip"
-    sha256 "cc9d2303067958ac63f772a26a684f7f6cda4664f7d8f6e39758dc46ee6de542"
+    url "https://releases.hashicorp.com/boundary/0.21.3/boundary_0.21.3_linux_amd64.zip"
+    sha256 "1a948c143b849cedba91127aa11155c6006d84051282a0d93f3d89525b460d12"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.13.0/boundary_0.13.0_linux_arm.zip"
-    sha256 "eba25a8a6b1df5041ff37f31944079c6e64714d0d880dbfec4d0d6009f3830f8"
+    url "https://releases.hashicorp.com/boundary/0.21.3/boundary_0.21.3_linux_arm.zip"
+    sha256 "382e5df3f0a6961bec4711e09f443d199255ba88afdf8db4bd19bbdde5ed6349"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/boundary/0.13.0/boundary_0.13.0_linux_arm64.zip"
-    sha256 "52a648ad255fadf6f6c6eb65893a15134b70d351f08b2ba3c5e8e66e454905db"
+    url "https://releases.hashicorp.com/boundary/0.21.3/boundary_0.21.3_linux_arm64.zip"
+    sha256 "7b023a78f3ba4c100d665daf9a93861785396a40b7d3e5878c1e86b48d24b966"
   end
 
   conflicts_with "boundary"

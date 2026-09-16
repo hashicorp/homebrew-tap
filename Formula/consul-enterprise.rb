@@ -1,34 +1,34 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class ConsulEnterprise < Formula
   desc "Consul Enterprise"
   homepage "https://www.consul.io"
-  version "1.15.3+ent"
+  version "2.0.3+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.15.3+ent/consul_1.15.3+ent_darwin_amd64.zip"
-    sha256 "fe1e0f025ddbed16adff2cc55e2ab783a9fb163e74adb238a306a2e14321acae"
+    url "https://releases.hashicorp.com/consul/2.0.3+ent/consul_2.0.3+ent_darwin_amd64.zip"
+    sha256 "521b9e881a6cd478dab2d8318df287316761bd4f22d7670017a5ad22956fc76c"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul/1.15.3+ent/consul_1.15.3+ent_darwin_arm64.zip"
-    sha256 "571f7b1050813e764ac9deea8a7f0ace385a4da5b9e915b3476d94939d605ce7"
+    url "https://releases.hashicorp.com/consul/2.0.3+ent/consul_2.0.3+ent_darwin_arm64.zip"
+    sha256 "5c4baf96610d3efb318c23da1fb8f54ce1a76d623ff5b94452c342e5db42c102"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.15.3+ent/consul_1.15.3+ent_linux_amd64.zip"
-    sha256 "802d33211d968bb7ed4be10048d6a4bdae86349472560ed00a9ee92030bb3ded"
+    url "https://releases.hashicorp.com/consul/2.0.3+ent/consul_2.0.3+ent_linux_amd64.zip"
+    sha256 "7e5f5212ac898215813ad1f437988a2ca8a452032da2158a7ad4265e34d1fe10"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.15.3+ent/consul_1.15.3+ent_linux_arm.zip"
-    sha256 "19136346e86fbbc1a64ad16ab2a65977c31edfce8197a381fdb88c97f553cee5"
+    url "https://releases.hashicorp.com/consul/2.0.3+ent/consul_2.0.3+ent_linux_arm.zip"
+    sha256 "cd2edc499e0796841d9983a493cd377429c183421e06501f87c1d1e21555a9f1"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.15.3+ent/consul_1.15.3+ent_linux_arm64.zip"
-    sha256 "8734daf41c24371caf27455121fad05209edc4b2f88b2ed82b084c787ef4e59b"
+    url "https://releases.hashicorp.com/consul/2.0.3+ent/consul_2.0.3+ent_linux_arm64.zip"
+    sha256 "bd23b095dfbbaf294f2e9c4d7d8c4691ad53046a56fad0e9fd0dfc0887a1b2df"
   end
 
   conflicts_with "consul-enterprise"

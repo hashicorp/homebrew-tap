@@ -1,34 +1,29 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class NomadEnterprise < Formula
   desc "Nomad Enterprise"
   homepage "https://www.nomadproject.io/"
-  version "1.5.6+ent"
+  version "2.0.5+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.6+ent/nomad_1.5.6+ent_darwin_amd64.zip"
-    sha256 "fb6ec18c453fd63dfc8a4039682c9218b555a47c5f0151cd1e38c2acd02fa718"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_darwin_amd64.zip"
+    sha256 "4d8050051c48ab91d7e281691e67ab173ffc4ee87ae913c442cb80588f87c951"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/nomad/1.5.6+ent/nomad_1.5.6+ent_darwin_arm64.zip"
-    sha256 "1a8ec16ed3de0b7464a2e23015882af18c8fc55b5904fe6feaf0d8fe6bfa1cc6"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_darwin_arm64.zip"
+    sha256 "9d50beb8ffc63fcdfb27c082facfbf64dc25086b8ae26e1c98f877ea09334185"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/nomad/1.5.6+ent/nomad_1.5.6+ent_linux_amd64.zip"
-    sha256 "9fa48eb0500ce01b80b538c6639e4dbbc1a8886c4e05ec2cc45c927fce421272"
-  end
-
-  if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.6+ent/nomad_1.5.6+ent_linux_arm.zip"
-    sha256 "392e3c5739fb50a943cda790866bd638751170efb196b3f8e540dbffe4747ee8"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_linux_amd64.zip"
+    sha256 "37e51fee58d2f7c88ec9e38c9e61a6c0ad4c91a2370ea798427f50991f7cd3ab"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/nomad/1.5.6+ent/nomad_1.5.6+ent_linux_arm64.zip"
-    sha256 "e230a199a47eb481c57331b3aa13a4cc425cab72feee8f1b9843565fd66ee78c"
+    url "https://releases.hashicorp.com/nomad/2.0.5+ent/nomad_2.0.5+ent_linux_arm64.zip"
+    sha256 "cf66d9346b4e034b2b7fcb14d763612dea6d993a9743c4fa4cf84191e3827a3a"
   end
 
   conflicts_with "nomad-enterprise"

@@ -1,34 +1,34 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class Consul < Formula
   desc "Consul"
   homepage "https://www.consul.io"
-  version "1.15.3"
+  version "2.0.3"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.15.3/consul_1.15.3_darwin_amd64.zip"
-    sha256 "9c9dea85bac9376ab6e121402afaf0a5748873b117fa2b13b01984961b589d8f"
+    url "https://releases.hashicorp.com/consul/2.0.3/consul_2.0.3_darwin_amd64.zip"
+    sha256 "9a8ced39610be73c4b6c918e64c1589a3fe9747f3a2188b8da55d0a35ddca4e0"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul/1.15.3/consul_1.15.3_darwin_arm64.zip"
-    sha256 "6689163ded7cc897d41ae2002e5f1f840b2b62c6167a8f95c6f8123fb95c6f5c"
+    url "https://releases.hashicorp.com/consul/2.0.3/consul_2.0.3_darwin_arm64.zip"
+    sha256 "fed05e8e2a296989c1a5c86e3b38d5f4dbdc7d83e0c0acf4c5fe7e302e8f4fde"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/1.15.3/consul_1.15.3_linux_amd64.zip"
-    sha256 "86c6fe308d2e4eea106d21e20c307726eb87be87eab1f6dfb0d53db81b31d334"
+    url "https://releases.hashicorp.com/consul/2.0.3/consul_2.0.3_linux_amd64.zip"
+    sha256 "3020eea3fdfd939eb021ecaca105a1513af52b22e76f2ee97ea85acc6ff2f832"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.15.3/consul_1.15.3_linux_arm.zip"
-    sha256 "6a6df60acf9a6d3a33f466a1cfd27cad76a171bf4efcc89939171f1314e67a3c"
+    url "https://releases.hashicorp.com/consul/2.0.3/consul_2.0.3_linux_arm.zip"
+    sha256 "4c083e3e4b5285d264117dfdc8d831656add844281638440c28860b42f515d13"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/1.15.3/consul_1.15.3_linux_arm64.zip"
-    sha256 "7c5eeaa4fa55166d5e8b8e52bb57f9e68e98d3f4f3b4e34fe6c3db783e506f72"
+    url "https://releases.hashicorp.com/consul/2.0.3/consul_2.0.3_linux_arm64.zip"
+    sha256 "7551d8f07cbfb633d260fe27a9f7144ce08f1cb964e31e15788309dfb6c2fda5"
   end
 
   conflicts_with "consul"

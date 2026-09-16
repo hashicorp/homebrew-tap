@@ -1,34 +1,34 @@
-# Copyright (c) HashiCorp, Inc.
+# Copyright IBM Corp. 2020, 2025
 # SPDX-License-Identifier: MPL-2.0
 
 class Waypoint < Formula
   desc "Waypoint"
   homepage "https://www.waypointproject.io/"
-  version "0.11.1"
+  version "0.11.4"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/waypoint/0.11.1/waypoint_0.11.1_darwin_amd64.zip"
-    sha256 "f8aea7d352504842c8310744b17540ba265d9b75df70defcfaf0b92fd868bb0a"
+    url "https://releases.hashicorp.com/waypoint/0.11.4/waypoint_0.11.4_darwin_amd64.zip"
+    sha256 "8942a7d00aaf0b39cec05e2f7da8788a2be0f2be0084236d228d031c6e56521f"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/waypoint/0.11.1/waypoint_0.11.1_darwin_arm64.zip"
-    sha256 "b156ea1371c319ce5f5a160d8acb2c76aefbbc28e72712c5aaf06ac19091c125"
+    url "https://releases.hashicorp.com/waypoint/0.11.4/waypoint_0.11.4_darwin_arm64.zip"
+    sha256 "c23da6fe2ba4db6f63963ef2e72caa71faae70b4f598d439d6f35d6abb79f557"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/waypoint/0.11.1/waypoint_0.11.1_linux_amd64.zip"
-    sha256 "849221f7bfeb1309e913d5ce4cf391184fdb5f2295ac67160e48d36550be10db"
+    url "https://releases.hashicorp.com/waypoint/0.11.4/waypoint_0.11.4_linux_amd64.zip"
+    sha256 "96d314f1bc182a30ca9e93910981fbd4ecf7290763c55d2d4e8ddce2b23abdca"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/waypoint/0.11.1/waypoint_0.11.1_linux_arm.zip"
-    sha256 "ca06ae1056b8bed39b20ca60aa9c9692f897f0081608360e53ab9e4fe8daf201"
+    url "https://releases.hashicorp.com/waypoint/0.11.4/waypoint_0.11.4_linux_arm.zip"
+    sha256 "81f9cb034cd8107dc5972130e379559c384249fe068a00653fc11c3bbb98ca31"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/waypoint/0.11.1/waypoint_0.11.1_linux_arm64.zip"
-    sha256 "297b346e963f9f1483318b461afe09c8d68c7057a113391fdd360b05afe49ae7"
+    url "https://releases.hashicorp.com/waypoint/0.11.4/waypoint_0.11.4_linux_arm64.zip"
+    sha256 "bbf331be8785a99a0bfcb4707a013355ba58516d0e9b1b78fd8808e4d2213e66"
   end
 
   conflicts_with "waypoint"

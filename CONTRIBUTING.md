@@ -8,9 +8,9 @@ See a project available on releases.hashicorp.com that isn't available via the h
 
 - Clone this repo: `git clone git@github.com:hashicorp/homebrew-tap.git`
 
-- Add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/master/util/lambda_trigger/lambda_trigger.go#L25) under `util/lambda_trigger/lambda_trigger.go`
+- Add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/main/util/lambda_trigger/lambda_trigger.go#L25) under `util/lambda_trigger/lambda_trigger.go`
 
-- If the project should be delivered as a [Cask](https://github.com/Homebrew/homebrew-cask) (rather than a Formula), additionally add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/master/util/lambda_trigger/lambda_trigger.go#L54) under `util/lambda_trigger/lambda_trigger.go`
+- If the project should be delivered as a [Cask](https://github.com/Homebrew/homebrew-cask) (rather than a Formula), additionally add the project to the [supported list](https://github.com/hashicorp/homebrew-tap/blob/main/util/lambda_trigger/lambda_trigger.go#L54) under `util/lambda_trigger/lambda_trigger.go`
 
 - Make your additions to `util/formula_templater/config.hcl`
 
@@ -43,6 +43,6 @@ Note: Any project that is live on [releases.hashicorp.com](https://releases.hash
 
 - Build the formula templater: `cd util/formula_templater && go build`
 
-- Use the templater to create the project specific Formula or Cask file, and pipe the output to the appropriate location: `./formula_templater awesomeproject 1.0.0 ./config.hcl > /path/to/homebrew-tap/Formula|Cask/awesomeproject.rb`
+- Use the templater to create the project specific Formula or Cask file, and pipe the output to the appropriate location: `./formula_templater [-cask] awesomeproject 1.0.0 ./config.hcl > /path/to/homebrew-tap/Formula|Cask/awesomeproject.rb`
 
 - Open a PR with your changes, and we'll review and merge. Post-merge, you can expect the new project to be available via the HashiCorp Homebrew Tap in just a minute or so

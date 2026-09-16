@@ -15,6 +15,15 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
+// List of products which have cask and forumla
+var caskAndFormula = []string{"vagrant", "vagrant-vmware-utility"}
+
+// List of products which have cask only
+var casks = []string{"boundary-desktop"}
+
+// Endpoint for dispatches to trigger workflows
+const workflowEndpoint = "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
+
 // ReleaseEvent event body
 type ReleaseEvent struct {
 	Product string `json:"product"`
@@ -39,12 +48,14 @@ func isProductSupported(product string) bool {
 		"envconsul",
 		"hc-install",
 		"hcdiag",
+		"hcp",
 		"levant",
 		"nomad",
 		"nomad-enterprise",
 		"nomad-pack",
 		"terraform",
 		"terraform-ls",
+		"tfstacks",
 		"packer",
 		"boundary",
 		"boundary-enterprise",
@@ -53,6 +64,9 @@ func isProductSupported(product string) bool {
 		"sentinel",
 		"vagrant",
 		"vlt",
+		"vault-radar",
+		"tf-migrate",
+		"tfpolicy",
 	}
 
 	for _, p := range supportedProducts {
@@ -64,10 +78,27 @@ func isProductSupported(product string) bool {
 	return false
 }
 
-func isCask(product string) bool {
-	casks := []string{"boundary-desktop", "vagrant"}
+func isFormula(product string) bool {
+	// Check cask and formula combo products
+	for _, p := range caskAndFormula {
+		if p == product {
+			return true
+		}
+	}
 
+	// Otherwise, it's a formula if not a cask
+	return !isCask(product)
+}
+
+func isCask(product string) bool {
+	// Check cask only products
 	for _, p := range casks {
+		if p == product {
+			return true
+		}
+	}
+	// Check cask and formula combo products
+	for _, p := range caskAndFormula {
 		if p == product {
 			return true
 		}
@@ -86,7 +117,7 @@ func getCaskVersion(product string) (string, error) {
 }
 
 func getBrewVersion(product string, brewType string) (string, error) {
-	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/master/%s/%s.rb", brewType, product)
+	formulaURL := fmt.Sprintf("https://raw.githubusercontent.com/hashicorp/homebrew-tap/main/%s/%s.rb", brewType, product)
 	resp, err := http.Get(formulaURL)
 	if err != nil {
 		return "", err
@@ -112,7 +143,6 @@ func getBrewVersion(product string, brewType string) (string, error) {
 func triggerGithubWorkflow(event *ReleaseEvent) error {
 	githubToken := os.Getenv("GITHUB_TOKEN")
 	// Create dispatch event https://docs.github.com/en/rest/reference/repos#create-a-repository-dispatch-event
-	workflowEndpoint := "https://api.github.com/repos/hashicorp/homebrew-tap/dispatches"
 	postBody := fmt.Sprintf("{\"event_type\": \"version-updated\", \"client_payload\":{\"name\":\"%s\",\"version\":\"%s\",\"cask\":\"%t\"}}", event.Product, event.Version, event.Cask)
 	log.Printf("POSTing to Github: %s", postBody)
 
@@ -123,13 +153,14 @@ func triggerGithubWorkflow(event *ReleaseEvent) error {
 	}
 	req.Header.Add("Content-Type", "application/json")
 	req.Header.Add("Authorization", fmt.Sprintf("Bearer %s", githubToken))
+
 	resp, err := httpClient.Do(req)
 	if err != nil {
 		return err
 	}
 	defer resp.Body.Close()
 	body, err := io.ReadAll(resp.Body)
-	log.Printf("Github Response: %+v", body)
+	log.Printf("Github Response: %s", body)
 	return err
 }
 
@@ -155,14 +186,14 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 			log.Printf("Latest version is %s", *version)
 			event.Version = *version
 			oldVersion := ""
-			event.Cask = isCask(event.Product)
 
-			if event.Cask {
+			if isCask(event.Product) {
 				oldVersion, err = getCaskVersion(event.Product)
 				if err != nil && err != errBrewVersionNotFound {
 					return err
 				}
-			} else {
+			}
+			if oldVersion == "" && !isCask(event.Product) {
 				oldVersion, err = getFormulaVersion(event.Product)
 				if err != nil && err != errBrewVersionNotFound {
 					return err
@@ -179,9 +210,19 @@ func HandleLambdaEvent(snsEvent events.SNSEvent) error {
 				return errors.New("formula/cask is already latest version")
 			}
 
-			err = triggerGithubWorkflow(event)
+			if isCask(event.Product) {
+				event.Cask = true
+				if err = triggerGithubWorkflow(event); err != nil {
+					return err
+				}
+			}
 
-			return err
+			if isFormula(event.Product) {
+				event.Cask = false
+				if err = triggerGithubWorkflow(event); err != nil {
+					return err
+				}
+			}
 		}
 	}
 

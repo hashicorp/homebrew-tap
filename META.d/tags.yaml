@@ -1,4 +1,4 @@
 ---
-# excemption required by automation
+# exemption required by automation
 tags:
   exempt: github-default-branch-protection-rule
