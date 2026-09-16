@@ -382,7 +382,7 @@ cask {
 formula {
     product = "sentinel"
     name = "Sentinel"
-    desc = ""
+    desc = "Sentinel"
     homepage = "https://docs.hashicorp.com/sentinel"
     architectures {
         darwin_amd64 = true
