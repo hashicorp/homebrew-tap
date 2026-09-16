@@ -1,4 +1,4 @@
-# Copyright IBM Corp. 2020, 2025
+# Copyright IBM Corp. 2020, 2026
 # SPDX-License-Identifier: MPL-2.0
 
 class Hcp < Formula
@@ -35,9 +35,28 @@ class Hcp < Formula
 
   def install
     bin.install "hcp"
+
+    # The binary completes itself when invoked with COMP_LINE set, rather than
+    # emitting a script, so these mirror what -autocomplete-install writes to rc files.
+    (bash_completion/"hcp").write "complete -C #{opt_bin}/hcp hcp\n"
+    (zsh_completion/"_hcp").write <<~EOS
+      #compdef hcp
+      local -a matches
+      matches=( ${(f)"$(COMP_LINE="$words" COMP_POINT=$(( 1 + ${#${(j. .)words[1,CURRENT-1]}} + $#PREFIX )) #{opt_bin}/hcp)"} )
+      compadd -Q -S '' -a matches
+    EOS
+    (fish_completion/"hcp.fish").write <<~EOS
+      function __complete_hcp
+          set -lx COMP_LINE (commandline -cp)
+          test -z (commandline -ct)
+          and set COMP_LINE "$COMP_LINE "
+          #{opt_bin}/hcp
+      end
+      complete -f -c hcp -a "(__complete_hcp)"
+    EOS
   end
 
   test do
-    system "#{bin}/hcp --version"
+    system "#{bin}/hcp version"
   end
 end
