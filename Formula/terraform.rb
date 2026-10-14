@@ -4,31 +4,31 @@
 class Terraform < Formula
   desc "Terraform"
   homepage "https://www.terraform.io/"
-  version "1.16.5"
+  version "1.16.6"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_darwin_amd64.zip"
-    sha256 "9809158e481cf2d3a8433e59179f397b8edb5172397711bd98f6bb32edcaf53b"
+    url "https://releases.hashicorp.com/terraform/1.16.6/terraform_1.16.6_darwin_amd64.zip"
+    sha256 "794a36c3f7ebf6c58f2089c226068a539d1705ba358a5679b51671c8dc7ebc7b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_darwin_arm64.zip"
-    sha256 "ecdef65e24193d627f27c39baeda31295f08c938d8a3d4764f442fb916d4b7dc"
+    url "https://releases.hashicorp.com/terraform/1.16.6/terraform_1.16.6_darwin_arm64.zip"
+    sha256 "85e1bc78ab45bdc5f82a7bac3929e37d072834a584d22583a2498dc67bb624cd"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_linux_amd64.zip"
-    sha256 "2bc2fcfff033265c9e02ca0351f01794eb122f62a9b2a49a3294b9e49eaab5e4"
+    url "https://releases.hashicorp.com/terraform/1.16.6/terraform_1.16.6_linux_amd64.zip"
+    sha256 "38034b38d03096399a7a1264a14561a8029b2b496fd1f169452656e53968f1b7"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_linux_arm.zip"
-    sha256 "e69839d7c3e8d7d1c49e78a1ca6902e95818a14179dad8732b13171bbc60809e"
+    url "https://releases.hashicorp.com/terraform/1.16.6/terraform_1.16.6_linux_arm.zip"
+    sha256 "d86a3f37fc60fd8d173d3c966957d8a0fa7c8ee131ee9ec100be8d06733c7728"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/terraform/1.16.5/terraform_1.16.5_linux_arm64.zip"
-    sha256 "61a50b00485ee4810cf20581ef080fc54d34d666e175c58d9a10501c65c1ccde"
+    url "https://releases.hashicorp.com/terraform/1.16.6/terraform_1.16.6_linux_arm64.zip"
+    sha256 "a750b5a11038f165846b2658c40c88cd7070aa67a61bab431a14ba27928ea9ea"
   end
 
   conflicts_with "terraform"
