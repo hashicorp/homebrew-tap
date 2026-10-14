@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 #v7.0.1
         with:
           # token under hc-github-team-es-release-engineering user
+          ref: main
           token: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
 
       - name: Setup Go
@@ -53,9 +54,8 @@ jobs:
             ${{github.event.inputs.version}} \
             ./util/formula_templater/config.hcl > ./Casks/hashicorp-${{github.event.inputs.product}}.rb
 
-      - name: Publish Change via Pull Request
+      - name: Publish Change
         env:
-          GH_TOKEN: ${{ secrets.HOMEBREW_TAP_UPDATER_TOKEN }}
           PRODUCT: ${{ github.event.inputs.product }}
           VERSION: ${{ github.event.inputs.version }}
           IS_CASK: ${{ github.event.inputs.is_cask }}
@@ -78,46 +78,10 @@ jobs:
             exit 0
           fi
 
-          # Deterministic branch name — one open PR per product per version.
-          BRANCH="automation/bump-${PRODUCT}-${VERSION}"
-
-          git checkout -b "$BRANCH"
           git commit -m "Bump ${PRODUCT} to ${VERSION}"
 
-          # Fetch the remote branch first so --force-with-lease has a tracking ref
-          # to compare against. actions/checkout only fetches main, so without
-          # this fetch the lease check has nothing to compare and behaves like
-          # plain --force. The 2>/dev/null || true makes it a no-op when the
-          # branch doesn't exist yet (first push).
-          git fetch origin "$BRANCH" 2>/dev/null || true
-          git push --force-with-lease origin "$BRANCH"
+          # Rebase onto any updates published since checkout before pushing.
+          git pull --rebase origin main
 
-          # Open a PR only if one doesn't already exist for this branch.
-          # Capture the PR number at creation time to avoid a second API call
-          # and the race condition of querying a PR that may not be indexed yet.
-          EXISTING_PR=$(gh pr list \
-            --head "$BRANCH" \
-            --state open \
-            --json number \
-            --jq '.[0].number')
-
-          if [[ -z "$EXISTING_PR" ]]; then
-            PR_URL=$(gh pr create \
-              --base main \
-              --head "$BRANCH" \
-              --title "Bump ${PRODUCT} to ${VERSION}" \
-              --body "Automated version bump for \`${PRODUCT}\` to \`${VERSION}\`.")
-            # Extract the PR number from the URL returned by gh pr create.
-            PR_NUMBER="${PR_URL##*/}"
-          else
-            echo "::notice::PR #${EXISTING_PR} already exists for ${BRANCH}, skipping PR creation."
-            PR_NUMBER="$EXISTING_PR"
-          fi
-
-          # Enable auto-merge so the PR merges automatically once required checks pass.
-          if [[ -n "$PR_NUMBER" ]]; then
-            gh pr merge "$PR_NUMBER" --auto --squash
-          else
-            echo "::error::Could not determine PR number for ${BRANCH} — auto-merge not enabled."
-            exit 1
-          fi
+          # The service user is allowed to bypass the pull request requirement.
+          git push origin HEAD:main
