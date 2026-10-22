@@ -4,31 +4,31 @@
 class Consul < Formula
   desc "Consul"
   homepage "https://www.consul.io"
-  version "2.0.4"
+  version "2.1.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/2.0.4/consul_2.0.4_darwin_amd64.zip"
-    sha256 "d8c1456641dd5cb9e453bfb054e44abd8152d4e13113cd6e2093cb99b4804845"
+    url "https://releases.hashicorp.com/consul/2.1.0/consul_2.1.0_darwin_amd64.zip"
+    sha256 "40e614b6bf47e85387c7a9f65b97e4f0a6f21057c4e50e1b05cbc4691b338d99"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/consul/2.0.4/consul_2.0.4_darwin_arm64.zip"
-    sha256 "1f51416d27cf5404106e6b2d24de60d4a3677d1a99045e38986f0cc23cb78303"
+    url "https://releases.hashicorp.com/consul/2.1.0/consul_2.1.0_darwin_arm64.zip"
+    sha256 "236d6a579c5fcfb065f416bd3a296ad199a1116c2667481bffdfdc60a5e61468"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/consul/2.0.4/consul_2.0.4_linux_amd64.zip"
-    sha256 "7a28033850a24fd411722593931625d8b548a27646c3ab70c1379ea7fd2af423"
+    url "https://releases.hashicorp.com/consul/2.1.0/consul_2.1.0_linux_amd64.zip"
+    sha256 "a9c9cdf1ed93bd29a9671b02e5433131f3f777bab16c076fcef712a2820bfe33"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/2.0.4/consul_2.0.4_linux_arm.zip"
-    sha256 "bcfd998627f01e683880b9eeaf77762bb2fc1ef9588ab6c23328cebd727e2b57"
+    url "https://releases.hashicorp.com/consul/2.1.0/consul_2.1.0_linux_arm.zip"
+    sha256 "6bea91aca838972fe709554787bccbefc8913948456dbec90a9db32dc72b679c"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/consul/2.0.4/consul_2.0.4_linux_arm64.zip"
-    sha256 "8530dd2f92c1f4acddf152a96e2629a89e6f0f19229889d20dbf8092927aa742"
+    url "https://releases.hashicorp.com/consul/2.1.0/consul_2.1.0_linux_arm64.zip"
+    sha256 "eb34b81592e25eadb3fbc553afb2036004dcd316d99a1a8e40a177fde4e0e537"
   end
 
   conflicts_with "consul"
