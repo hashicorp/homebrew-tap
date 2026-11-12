@@ -284,6 +284,7 @@ func Test_isProductSupported(t *testing.T) {
 	require := require.New(t)
 	t.Run("when product is supported", func(t *testing.T) {
 		require.True(isProductSupported("vault"))
+		require.True(isProductSupported("trex"))
 	})
 
 	t.Run("when product is not supported", func(t *testing.T) {

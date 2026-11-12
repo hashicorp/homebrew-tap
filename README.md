@@ -80,6 +80,7 @@ brew install hashicorp/tap/tf-migrate
 brew install hashicorp/tap/tfctl
 brew install hashicorp/tap/tfpolicy
 brew install hashicorp/tap/tfstacks
+brew install hashicorp/tap/trex
 brew install hashicorp/tap/vault
 brew install hashicorp/tap/vault-enterprise
 brew install hashicorp/tap/vault-radar

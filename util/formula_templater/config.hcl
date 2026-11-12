@@ -394,6 +394,20 @@ formula {
 }
 
 formula {
+    product = "trex"
+    name = "Trex"
+    desc = "Rewrite Terraform configuration files"
+    homepage = "https://github.com/hashicorp/terraform-provider-trex"
+    architectures {
+        darwin_amd64 = true
+        darwin_arm64 = true
+        linux_amd64 = true
+        linux_arm = false
+        linux_arm64 = true
+    }
+}
+
+formula {
     product = "nomad-pack"
     name = "NomadPack"
     desc = "Nomad Pack"
