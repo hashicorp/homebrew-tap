@@ -4,26 +4,26 @@
 class VaultEnterprise < Formula
   desc "Vault Enterprise"
   homepage "https://www.vaultproject.io"
-  version "2.2.1+ent"
+  version "2.2.2+ent"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/2.2.1+ent/vault_2.2.1+ent_darwin_amd64.zip"
-    sha256 "25a92822dfd2c8456fe95707f861cb3986f5702af68c4546a11b1beb7b83ddeb"
+    url "https://releases.hashicorp.com/vault/2.2.2+ent/vault_2.2.2+ent_darwin_amd64.zip"
+    sha256 "bdb333de9768b9002b1726f0747799e4e6c7100349974fd279f467ba7ee7d94b"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/vault/2.2.1+ent/vault_2.2.1+ent_darwin_arm64.zip"
-    sha256 "9eb2cfdbebddfc1e141ab984269cbeb5e563d5223d841f1546de42af125c190c"
+    url "https://releases.hashicorp.com/vault/2.2.2+ent/vault_2.2.2+ent_darwin_arm64.zip"
+    sha256 "5aec68de3739616da9109493006292526fd701c8aa4617c7d710c068b333bb90"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/vault/2.2.1+ent/vault_2.2.1+ent_linux_amd64.zip"
-    sha256 "bb2c1083cc98b373db353ec2ca2eddb1cf96320ca7c92f52db4e712dd3273ec3"
+    url "https://releases.hashicorp.com/vault/2.2.2+ent/vault_2.2.2+ent_linux_amd64.zip"
+    sha256 "23199c7d6d15789507d91890116d2e5c2d7495dd82fe4d9572954b2b50cedfbd"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/vault/2.2.1+ent/vault_2.2.1+ent_linux_arm64.zip"
-    sha256 "d5a5d10c322b8de5ab44fcdc9820dcb8f4cf07f6aed9aaebcab38c9c7460ab81"
+    url "https://releases.hashicorp.com/vault/2.2.2+ent/vault_2.2.2+ent_linux_arm64.zip"
+    sha256 "bc1291499867d1385c0145ea8ec560b8f1eb6e02698162bf214ca22de7ed0237"
   end
 
   conflicts_with "vault-enterprise"
