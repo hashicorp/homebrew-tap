@@ -59,12 +59,17 @@ type Architectures struct {
 	DarwinAmd64SHA string
 	DarwinArm64    bool `hcl:"darwin_arm64"`
 	DarwinArm64SHA string
+	FreeBSDAMD64   bool `hcl:"freebsd_amd64,optional"`
 	LinuxAmd64     bool `hcl:"linux_amd64"`
 	LinuxAmd64SHA  string
 	LinuxArm       bool `hcl:"linux_arm"`
 	LinuxArmSHA    string
 	LinuxArm64     bool `hcl:"linux_arm64"`
 	LinuxArm64SHA  string
+	OpenBSDAMD64   bool `hcl:"openbsd_amd64,optional"`
+	SolarisAMD64   bool `hcl:"solaris_amd64,optional"`
+	WindowsAMD64   bool `hcl:"windows_amd64,optional"`
+	WindowsARM64   bool `hcl:"windows_arm64,optional"`
 }
 
 func loadConfig(filepath string) (Config, error) {

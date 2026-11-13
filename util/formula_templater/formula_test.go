@@ -94,3 +94,20 @@ func TestVariantHandling(t *testing.T) {
 	// as needed.
 	assert.ErrorContains(t, err, "no SHA found for darwin_amd64: no value found for `vault_1.13.0+ent.hsm.fips1402_darwin_amd64.zip`")
 }
+
+func TestTrexArchitectures(t *testing.T) {
+	config, err := loadConfig("./config.hcl")
+	require.NoError(t, err)
+
+	trex, err := config.getFormula("trex")
+	require.NoError(t, err)
+	assert.True(t, trex.Architectures.DarwinAmd64)
+	assert.True(t, trex.Architectures.DarwinArm64)
+	assert.True(t, trex.Architectures.FreeBSDAMD64)
+	assert.True(t, trex.Architectures.LinuxAmd64)
+	assert.True(t, trex.Architectures.LinuxArm64)
+	assert.True(t, trex.Architectures.OpenBSDAMD64)
+	assert.True(t, trex.Architectures.SolarisAMD64)
+	assert.True(t, trex.Architectures.WindowsAMD64)
+	assert.True(t, trex.Architectures.WindowsARM64)
+}
