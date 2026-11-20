@@ -4,31 +4,31 @@
 class Tfpolicy < Formula
   desc "Terraform Policy"
   homepage "https://developer.hashicorp.com/terraform/policy/reference/cli"
-  version "0.1.0"
+  version "0.5.0"
 
   if OS.mac? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tfpolicy/0.1.0/tfpolicy_0.1.0_darwin_amd64.zip"
-    sha256 "bd317b6c0df941e5385a59482bd9b9ab1fd50382431a1070cfacb35833958c0b"
+    url "https://releases.hashicorp.com/tfpolicy/0.5.0/tfpolicy_0.5.0_darwin_amd64.zip"
+    sha256 "07f520a7e9229d067f832f74ac63d4f439d4c1effe9dd8fe3deade18c3c434f9"
   end
 
   if OS.mac? && Hardware::CPU.arm?
-    url "https://releases.hashicorp.com/tfpolicy/0.1.0/tfpolicy_0.1.0_darwin_arm64.zip"
-    sha256 "df6294bbc538ef7eff51819be2671295d721c8de4841ad5b7d4907f58d250394"
+    url "https://releases.hashicorp.com/tfpolicy/0.5.0/tfpolicy_0.5.0_darwin_arm64.zip"
+    sha256 "055f5a83cb3ad82a966062f442acb74d4588143678b9fcc3aa2da24f17d989c8"
   end
 
   if OS.linux? && Hardware::CPU.intel?
-    url "https://releases.hashicorp.com/tfpolicy/0.1.0/tfpolicy_0.1.0_linux_amd64.zip"
-    sha256 "568c02d03aa8c066935eefd4d3d86a7afbbd040aa2ac47711e4eb37a6a281259"
+    url "https://releases.hashicorp.com/tfpolicy/0.5.0/tfpolicy_0.5.0_linux_amd64.zip"
+    sha256 "bee5d7e83e196c853bbb7eb46b39a0646d6b044eb1b6dc1fdfaf3a9c9eb6f6df"
   end
 
   if OS.linux? && Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tfpolicy/0.1.0/tfpolicy_0.1.0_linux_arm.zip"
-    sha256 "ba4e3857257901aff50737b9769ee0fa06c2868677869818d45da5e3cf690f8b"
+    url "https://releases.hashicorp.com/tfpolicy/0.5.0/tfpolicy_0.5.0_linux_arm.zip"
+    sha256 "437e0f21c7e417b5c657f2a5741441ea2d51af56da44a8bd304b5e0123e1457c"
   end
 
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-    url "https://releases.hashicorp.com/tfpolicy/0.1.0/tfpolicy_0.1.0_linux_arm64.zip"
-    sha256 "e31d4a69a973e01049f007e7362c7b59c091468df5584050329ee4ae49154c00"
+    url "https://releases.hashicorp.com/tfpolicy/0.5.0/tfpolicy_0.5.0_linux_arm64.zip"
+    sha256 "dff844259f41a9d72c55fbad1a55fe45569d405c71aaa694d6e428595a52a902"
   end
 
   conflicts_with "tfpolicy"
